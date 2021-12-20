@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import Input from './components/Input';
-import RemoveMe from './components/RemoveMe';
+// import { useState } from 'react';
+// import Input from './components/Input';
+import Accueil from './components/Accueil/Accueil';
 
 function App() {
-  const [state, setState] = useState({});
+  // const [state, setState] = useState({});
   return (
     <div className="App">
-      <RemoveMe />
-      <Input
+      <Accueil />
+      {/* <Input
         type="text"
         className="input-orange"
         value={state?.firstname}
@@ -34,7 +34,7 @@ function App() {
         value={state?.telephone}
         name="telephone"
         handleChange={(e) => setState({ ...state, telephone: e.target.value })}
-      />
+      /> */}
     </div>
   );
 }
