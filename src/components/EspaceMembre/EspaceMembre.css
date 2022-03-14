@@ -1,0 +1,44 @@
+h1 {
+  color: #333;
+}
+
+.rectangle {
+  position: absolute;
+  background-color: #adadad;
+  display: block;
+  width: 7%;
+  height: 100%;
+  z-index: 1;
+}
+
+.request-access {
+  position: absolute;
+  background-color: #e5e5e5;
+  color: #333;
+  display: inline-block;
+  width: 33%;
+  height: 0;
+  margin: 7%;
+  border-style: solid;
+  border-width: 29vw 70vw 29vw 10vw;
+  border-color: transparent transparent transparent #adadad;
+}
+
+.small-logo {
+  position: absolute;
+  transform: translateX(-50%);
+  top: 50px;
+  left: 50%;
+  text-align: center;
+  color: #e5e5e5;
+  z-index: 1;
+}
+
+.small-logo img {
+  width: 78px;
+}
+
+.member-area {
+  position: absolute;
+  z-index: 1;
+}

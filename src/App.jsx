@@ -1,13 +1,15 @@
-// import { useState } from 'react';
-// import Input from './components/Input';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Accueil from './components/Accueil/Accueil';
+import EspaceMembre from './components/EspaceMembre/EspaceMembre';
 
 function App() {
-  // const [state, setState] = useState({});
   return (
     <div className="App">
-      <Accueil />
-      {/* <Input
+      <Routes>
+        <Route path="/" element={<Accueil />} />
+        <Route path="/espace-membre" element={<EspaceMembre />} />
+        {/* <Input
         type="text"
         className="input-orange"
         value={state?.firstname}
@@ -24,17 +26,11 @@ function App() {
       <Input
         type="text"
         className="input-orange"
-        value={state?.email}
-        name="email"
-        handleChange={(e) => setState({ ...state, email: e.target.value })}
-      />
-      <Input
-        type="text"
-        className="input-orange"
         value={state?.telephone}
         name="telephone"
         handleChange={(e) => setState({ ...state, telephone: e.target.value })}
       /> */}
+      </Routes>
     </div>
   );
 }
