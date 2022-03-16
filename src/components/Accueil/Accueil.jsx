@@ -5,11 +5,11 @@ function Accueil() {
   return (
     <div className="accueil">
       <div className="background-image">
-        <img src="./assets/background_accueil.jpg" alt="Background" />
+        <img src="assets/background_accueil.jpg" alt="Background" />
       </div>
       <div className="big-logo">
         <div>
-          <img src="./assets/logo_csdd_2021_detoure.png" alt="Logo CSDD" />
+          <img src="assets/logo.png" alt="Logo CSDD" />
         </div>
       </div>
       <div className="content">

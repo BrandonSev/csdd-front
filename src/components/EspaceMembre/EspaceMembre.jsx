@@ -1,44 +1,54 @@
 import React, { useState } from 'react';
 import './EspaceMembre.css';
-import Input from '../Input';
+
+import Logo from '../Logo/Logo';
+import Button from '../Button/Button';
 
 function EspaceMembre() {
-  const [state, setState] = useState({});
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = '';
   return (
-    <div>
-      <div className="rectangle" />
-      <div className="request-access">
-        <div className="small-logo">
-          <img src="./assets/logo_csdd_2021_detoure.png" alt="Logo CSDD" />
+    <>
+      <Logo />
+      <div className="container-form-access-member">
+        <div className="left">
+          <Button className="access" buttonName="Demande d&#39;accès" />
         </div>
-        <button className="request-access-button" type="button">
-          Demande d&#39;accés
-        </button>
+        <div className="formulaire">
+          <div className="wrapper-connect">
+            <h1>Espace Membre</h1>
+            <form>
+              <label htmlFor="email" className="email">
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                  placeholder="Entrer votre email de connexion"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+              <label htmlFor="password" className="password">
+                Password
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  minLength="10"
+                  placeholder="Entrer votre mot de passe de connexion"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+              <Button className="connection" buttonName="Connexion" />
+              <p>Mot de passe oublié ?</p>
+            </form>
+          </div>
+        </div>
       </div>
-      <div className="member-area">
-        <h1>Espace Membre</h1>
-        <Input
-          label="Email"
-          type="text"
-          className="input-orange"
-          name="email"
-          value={state?.email}
-          handleChange={(e) => setState({ ...state, email: e.target.value })}
-        />
-        <Input
-          label="Password"
-          type="text"
-          className="input-orange"
-          name="password"
-          value={state?.password}
-          handleChange={(e) => setState({ ...state, password: e.target.value })}
-        />
-        <button className="connexion-button" type="button">
-          Connexion
-        </button>
-        <h6>Mot de passe oublié ?</h6>
-      </div>
-    </div>
+    </>
   );
 }
 
