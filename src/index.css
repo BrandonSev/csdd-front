@@ -1,3 +1,33 @@
-body {
+/* Mise en place d'un box-sizing à l'ensemble du site sans marge */
+
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+/* Mise en forme du body dans son conteneur */
+
+body {
+  max-width: 1360 px;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  background-color: #e5e5e5;
+  color: #333;
+}
+
+/* Style des input */
+
+input {
+  display: flex;
+}
+
+input:focus-visible {
+  outline: #af1616 auto 1px;
+}
+
+/* Style des boutons */
+
+button {
+  cursor: pointer;
 }
