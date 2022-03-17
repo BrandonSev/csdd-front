@@ -1,14 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Accueil from './components/Accueil/Accueil';
-import EspaceMembre from './components/EspaceMembre/EspaceMembre';
+import Home from './components/DashboardPages/Home/Home';
+import MemberArea from './components/DashboardPages/MemberArea/MemberArea';
+import AccessRequest from './components/DashboardPages/AccessRequest/AccessRequest';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/espace-membre" element={<EspaceMembre />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/MemberArea" element={<MemberArea />} />
+        <Route path="/AccessRequest" element={<AccessRequest />} />
         {/* <Input
         type="text"
         className="input-orange"

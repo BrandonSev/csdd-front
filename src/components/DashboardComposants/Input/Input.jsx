@@ -1,12 +1,17 @@
 import React from 'react';
 
+import './Input.css';
+
 function Input({
   label,
   type,
-  className,
+  required,
   name,
+  className,
+  minLength,
+  pattern,
   value,
-  handleChange,
+  onChange,
   disabled,
 }) {
   return (
@@ -14,12 +19,15 @@ function Input({
       <label htmlFor={name}>
         {label}
         <input
-          id={name}
           type={type}
-          className={className}
+          required={required}
           name={name}
+          id={name}
+          className={className}
+          minLength={minLength}
+          pattern={pattern}
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
           disabled={disabled}
         />
       </label>
