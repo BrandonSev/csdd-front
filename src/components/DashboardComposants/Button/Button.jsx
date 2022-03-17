@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Button({ buttonName, className }) {
+function Button({ className, buttonName }) {
   return (
     <div>
       <button className={`button ${className}`} type="submit">

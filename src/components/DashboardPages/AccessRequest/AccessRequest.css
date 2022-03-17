@@ -1,0 +1,118 @@
+/* Positionnement du logo */
+
+.logo {
+  position: absolute;
+  width: 30px;
+  left: 0.25rem;
+  top: 0.25rem;
+}
+
+/* Container global access request */
+
+.container-form-access-request {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Container demande d'accès */
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100vh;
+}
+
+/* Stylisation du bouton accès */
+
+.access {
+  width: 100%;
+  height: 50px;
+  background-color: #fca311;
+  border-radius: 5px;
+  border: 2px solid #af1616;
+}
+
+/* Stylisation du formulaire member area */
+
+.formulaire-access-request {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 100vh;
+  background-color: #adadad;
+}
+
+.wrapper-access-request {
+  width: 70%;
+}
+
+label {
+  display: block;
+  margin: 1rem 0;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 2px solid #fca311;
+  margin: 1vh auto 4vh;
+}
+
+/* Stylisation du bouton member area */
+
+.connection {
+  width: 100%;
+  height: 50px;
+  background-color: #fca311;
+  border-radius: 5px;
+  border: 2px solid #af1616;
+  margin: 1rem 0;
+}
+
+/* Média Queries - Adaptation sur écran de plus de 768px de large */
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 60px;
+    left: 0.5rem;
+    top: 0.5rem;
+  }
+
+  .right {
+    width: 30%;
+  }
+
+  .formulaire-access-request {
+    width: 70%;
+  }
+
+  .wrapper-access-request {
+    width: 74%;
+  }
+}
+
+/* Média Queries - Adaptation sur écran de plus de 1024px de large */
+
+@media screen and (min-width: 1024px) {
+  .logo {
+    width: 90px;
+    left: 0.75rem;
+    top: 0.75rem;
+  }
+
+  .right {
+    width: 30%;
+  }
+
+  .formulaire-access-request {
+    width: 70%;
+  }
+
+  .wrapper-access-request {
+    width: 71%;
+  }
+}
