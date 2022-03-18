@@ -38,7 +38,6 @@ function EspaceMembre() {
                 type="email"
                 name="email"
                 id="email"
-                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                 onChange={formik.handleChange}
                 value={formik.values.email}
               />
@@ -47,7 +46,6 @@ function EspaceMembre() {
                 type="password"
                 name="password"
                 id="password"
-                minLength="10"
                 onChange={formik.handleChange}
                 value={formik.values.password}
               />

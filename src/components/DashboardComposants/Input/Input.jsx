@@ -8,8 +8,6 @@ function Input({
   required,
   name,
   className,
-  minLength,
-  pattern,
   value,
   onChange,
   disabled,
@@ -24,8 +22,6 @@ function Input({
           name={name}
           id={name}
           className={className}
-          minLength={minLength}
-          pattern={pattern}
           value={value}
           onChange={onChange}
           disabled={disabled}
