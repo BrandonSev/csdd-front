@@ -1,0 +1,19 @@
+.container {
+  height: 500px;
+  width: auto;
+}
+
+.mySwiper {
+  height: 400px;
+  width: 100vw;
+}
+
+carousel-container {
+  width: 100%;
+  height: 50vh;
+}
+
+.carousel-slider{
+  height: 400px;
+  width: 80%;
+}
