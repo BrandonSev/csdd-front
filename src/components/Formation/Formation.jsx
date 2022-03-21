@@ -1,60 +1,83 @@
 import React from 'react';
 import './Formation.css';
 
+import Button from '../DashboardComposants/Button/Button';
+
 function Formation() {
   return (
     <div className="container">
-      <div className="child1">
-        <div className="Image_Container">
-          <img src="#" alt="PROGRESSION DE DESSIN" />
+      <div className="child">
+        <div className="formation-image-container">
+          <img
+            className="formation-image"
+            src="#"
+            alt="PROGRESSION DE DESSIN"
+          />
         </div>
-        <div className="BTN">
-          <button className="formationBtn">PROGRESSION DE DESSIN</button>
-        </div>
-      </div>
-
-      <div className="child2">
-        <div className="Image_Container">
-          <img src="#" alt="PROGRESSION D'ATELIER" />
-        </div>
-        <div className="BTN">
-          <button className="formationBtn">PROGRESSION D'ATELIER</button>
+        <div className="formation-btn-container">
+          <Button
+            className="formation-btn"
+            buttonName="PROGRESSION DE DESSIN"
+          />
         </div>
       </div>
 
-      <div className="child3">
-        <div className="Image_Container">
-          <img src="#" alt="MINI-STAGE" />
+      <div className="child">
+        <div className="formation-image-container">
+          <img
+            className="formation-image"
+            src="#"
+            alt="PROGRESSION D'ATELIER"
+          />
         </div>
-        <div className="BTN">
-          <button className="formationBtn">MINI-STAGE</button>
-        </div>
-      </div>
-
-      <div className="child4">
-        <div className="Image_Container">
-          <img src="#" alt="PROGRESSION D'ATELIER" />
-        </div>
-        <div className="BTN">
-          <button className="formationBtn">PROGRESSION D'ATELIER</button>
+        <div className="formation-btn-container">
+          <Button
+            className="formation-btn"
+            buttonName="PROGRESSION D'ATELIER"
+          />
         </div>
       </div>
 
-      <div className="child5">
-        <div className="Image_Container">
-          <img src="#" alt="PARCOUR DE FORMATION" />
+      <div className="child">
+        <div className="formation-image-container">
+          <img className="formation-image" src="#" alt="MINI-STAGE" />
         </div>
-        <div className="BTN">
-          <button className="formationBtn">PARCOUR DE FORMATION</button>
+        <div className="formation-btn-container">
+          <Button
+            className="formation-btn"
+            buttonName="PROGRESSION D'ATELIER"
+          />
         </div>
       </div>
 
-      <div className="child6">
-        <div className="Image_Container">
-          <img src="#" alt="ARCHIVE" />
+      <div className="child">
+        <div className="formation-image-container">
+          <img
+            className="formation-image"
+            src="#"
+            alt="PROGRESSION D'ATELIER"
+          />
         </div>
-        <div className="BTN">
-          <button className="formationBtn">ARCHIVE</button>
+        <div className="formation-btn-container">
+          <Button className="formation-btn" buttonName="MINI-STAGE" />
+        </div>
+      </div>
+
+      <div className="child">
+        <div className="formation-image-container">
+          <img className="formation-image" src="#" alt="PARCOUR DE FORMATION" />
+        </div>
+        <div className="formation-btn-container">
+          <Button className="formation-btn" buttonName="PARCOUR DE FORMATION" />
+        </div>
+      </div>
+
+      <div className="child">
+        <div className="formation-image-container">
+          <img className="formation-image" src="#" alt="ARCHIVE" />
+        </div>
+        <div className="formation-btn-container">
+          <Button className="formation-btn" buttonName="ARCHIVE" />
         </div>
       </div>
     </div>
