@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+import { Swiper } from 'swiper/react/swiper';
+import { SwiperSlide } from 'swiper/react/swiper-slide';
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import 'swiper/swiper-bundle.css';
 
-const API_URL = process.env.REACT_APP_CSDD_URL
+const API_URL = process.env.REACT_APP_CSDD_URL;
+
+SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -16,10 +22,9 @@ function Events() {
   }, []);
 
   return (
-  <div>
+  <div className="carousel-events">
     <h1>Events<h1>
-    <div className="carousel-events">
-        <div className="swiper-container">
+      <div className="content-carousel">
         <Swiper
           className="mySwiper"
           modules={[Autoplay, Navigation, Pagination]}
@@ -52,10 +57,8 @@ function Events() {
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="4" />
           </SwiperSlide>
-          </Swiper>
-        </div>
-
-  {events &&
+        
+  {/* {events &&
     events.map((event) => (
       <div key={event.id}>
         <img src={event.event_link} alt="" className="event_link" />
@@ -65,9 +68,13 @@ function Events() {
           <p className="overlay-description">{event.description}</p>
         </div>
       </div>
-      </div>
-    ))};
-    )};
-
+    ))
+    }; */}
+          </Swiper>
+          </div>
+          </div>
+    );
+    }
+    
 
 export default Events;
