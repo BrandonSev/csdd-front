@@ -1,4 +1,19 @@
-.container-home {
-  background-color: red;
+.body-homePage {
+  margin: 5vh;
+}
+.news{
+  display:flex;
+  width: 100%;
+  max-height: 30vh;
+}
+
+.container-info {
+  display: block;
+  width:70%;
+}
+
+.container-medias{
+  display:block;
+  width:30%;
 }
 

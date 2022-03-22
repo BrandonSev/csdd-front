@@ -1,0 +1,8 @@
+.media-container {
+  display: block;
+  justify-content: center;
+}
+.image-media {
+  height: 60px;
+  width: 200px;
+}
