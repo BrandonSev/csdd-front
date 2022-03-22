@@ -1,9 +1,9 @@
 import React from 'react';
-import './Accueil.css';
+import './Home.css';
 
-function Accueil() {
+function Home() {
   return (
-    <div className="accueil">
+    <div className="home">
       <div className="background-image">
         <img src="assets/background_accueil.jpg" alt="Background" />
       </div>
@@ -23,4 +23,4 @@ function Accueil() {
   );
 }
 
-export default Accueil;
+export default Home;
