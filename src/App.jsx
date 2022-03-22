@@ -6,7 +6,7 @@ import LoginPage from './components/SitePages/LoginPage/LoginPage';
 import Register from './components/SitePages/Register/Register';
 import Formation from './components/SitePages/Formation/Formation';
 import Memoire from './components/SitePages/Memoire/Memoire';
-import ComissionDesRites from './components/SitePages/ComissionDesRite/ComissionDesrites';
+import CommissionDesRites from './components/SitePages/CommissionDesRites/CommissionDesrites';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/Formation" element={<Formation />} />
         <Route path="/Memoire" element={<Memoire />} />
-        <Route path="/Comission" element={<ComissionDesRites />} />
+        <Route path="/Commission" element={<CommissionDesRites />} />
       </Routes>
     </div>
   );
