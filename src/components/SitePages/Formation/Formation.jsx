@@ -1,11 +1,11 @@
 import React from 'react';
 import './Formation.css';
 
-import Button from '../DashboardComposants/Button/Button';
+import Button from '../../Button/Button';
 
 function Formation() {
   return (
-    <div className="container">
+    <div className="formation-container">
       <div className="child">
         <div className="formation-image-container">
           <img
@@ -40,7 +40,11 @@ function Formation() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="MINI-STAGE" />
+          <img
+            className="formation-image"
+            src="#"
+            alt="PROGRESSION D'ATELIER"
+          />
         </div>
         <div className="formation-btn-container">
           <Button
@@ -52,11 +56,7 @@ function Formation() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img
-            className="formation-image"
-            src="#"
-            alt="PROGRESSION D'ATELIER"
-          />
+          <img className="formation-image" src="#" alt="MINI-STAGE" />
         </div>
         <div className="formation-btn-container">
           <Button className="formation-btn" buttonName="MINI-STAGE" />

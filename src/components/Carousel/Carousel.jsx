@@ -25,45 +25,6 @@ function Carousel() {
   return (
     <div className="container">
       <div>Je suis un carousel </div>
-      <div className="swiper-container">
-        <Swiper
-          className="mySwiper"
-          modules={[Autoplay, Navigation, Pagination]}
-          spaceBetween={0}
-          slidesPerView={1}
-          navigation
-          pagination
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          loop
-          autoplay
-          centeredSlides
-          speed={500}
-          breakpoints={{
-            768: {
-              spaceBetween: 0,
-              slidesPerView: 1,
-            },
-          }}
-        >
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="2" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" alt="3" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="4" />
-          </SwiperSlide>
-          <SwiperSlide>
-
-            
-          </SwiperSlide>
-        </Swiper>
-      </div>
     </div>
   );
 }
