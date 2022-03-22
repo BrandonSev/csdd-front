@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Input from '../DashboardComposants/Input/Input';
-import Button from '../DashboardComposants/Button/Button';
 import './MonCompte.css';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
 
 const MonCompte = () => {
   const [open, setOpen] = useState(false);
