@@ -81,19 +81,6 @@ button {
   margin: 0 auto 4vh;
 }
 
-label {
-  display: block;
-  margin: 1rem 0;
-}
-
-input {
-  width: 100%;
-  height: 50px;
-  border-radius: 5px;
-  border: 2px solid #fca311;
-  margin: 1vh auto 2vh;
-}
-
 /* Média Queries - Adaptation sur écran de plus de 768px de large */
 
 @media screen and (min-width: 768px) {
@@ -138,16 +125,12 @@ input {
     width: 71%;
   }
 
-  label {
-    width: 95%;
-    margin: 0;
-  }
-
   .grid-form-access-request {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     justify-content: center;
+    gap: 1rem;
     margin: 0;
     padding: 0;
   }
@@ -199,6 +182,36 @@ input {
 
   .grid-li-confirm-password {
     grid-row: 4;
+    grid-column: 3;
+  }
+
+  .grid-li-province-name {
+    grid-row: 5;
+    grid-column: 1;
+  }
+
+  .grid-li-adoption-place {
+    grid-row: 5;
+    grid-column: 2;
+  }
+
+  .grid-li-adoption-date {
+    grid-row: 5;
+    grid-column: 3;
+  }
+
+  .grid-li-room {
+    grid-row: 6;
+    grid-column: 1;
+  }
+
+  .grid-li-reception-place {
+    grid-row: 6;
+    grid-column: 2;
+  }
+
+  .grid-li-reception-date {
+    grid-row: 6;
     grid-column: 3;
   }
 }
