@@ -30,8 +30,8 @@ function Events() {
         </div>
       </div>
       </div>
-      </div>
-    ))};}
+    ))};
+    )};
 
 
 export default Events;

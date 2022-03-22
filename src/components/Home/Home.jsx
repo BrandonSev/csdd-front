@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from '../Carousel/Carousel';
 import Carousel2 from '../Carousel/Carousel2';
+import Events from '../Events/Events';
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <div className="container-home">
         <div> Composant menu</div>
         <Carousel />
+        <Events/>
         <div>Bulletin d informations</div>
         <div>page lien medias</div>
         <div>Composant Carousel livres</div>

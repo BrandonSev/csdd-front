@@ -10,8 +10,8 @@ const API_URL = process.env.REACT_APP_CSDD_URL;
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-function Carousel(events) {
-  const [state, setState] = useState([]);
+function Carousel() {
+  const [setState] = useState([]);
 
   useEffect(() => {
     axios
@@ -58,7 +58,10 @@ function Carousel(events) {
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="4" />
           </SwiperSlide>
-          {/* <SwiperSlide></SwiperSlide> */}
+          <SwiperSlide>
+
+            
+          </SwiperSlide>
         </Swiper>
       </div>
     </div>
