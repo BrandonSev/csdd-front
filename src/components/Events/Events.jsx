@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
@@ -22,8 +22,8 @@ function Events() {
   }, []);
 
   return (
-  <div className="carousel-events">
-    <h1>Events<h1>
+    <div className="carousel-events">
+      <h1>Events</h1>
       <div className="content-carousel">
         <Swiper
           className="mySwiper"
@@ -43,7 +43,6 @@ function Events() {
           //     spaceBetween: 0,
           //     slidesPerView: 1,
           //   },
-          
         >
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="1" />
@@ -57,8 +56,8 @@ function Events() {
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="4" />
           </SwiperSlide>
-        
-  {/* {events &&
+
+          {/* {events &&
     events.map((event) => (
       <div key={event.id}>
         <img src={event.event_link} alt="" className="event_link" />
@@ -70,11 +69,10 @@ function Events() {
       </div>
     ))
     }; */}
-          </Swiper>
-          </div>
-          </div>
-    );
-    }
-    
+        </Swiper>
+      </div>
+    </div>
+  );
+}
 
 export default Events;
