@@ -24,6 +24,7 @@ function Input({
         value={value}
         onChange={onChange}
         disabled={disabled}
+        style={{ marginTop: '0.5rem' }}
       />
     </label>
   );
