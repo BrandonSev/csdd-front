@@ -17,12 +17,12 @@
     "linebreak-style": ["error", "unix"],
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
-  },
-  "prettier/prettier": [
-    "error",
-    {
+    "react/prop-types": "off",
+    "prettier/prettier": [
+      "warn",
+      {
       "endOfLine": "auto"
-    }
-  ]
+      }
+    ]
+  }
 }

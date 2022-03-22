@@ -13,21 +13,20 @@ function Input({
   disabled,
 }) {
   return (
-    <form>
-      <label htmlFor={name}>
-        {label}
-        <input
-          type={type}
-          required={required}
-          name={name}
-          id={name}
-          className={className}
-          value={value}
-          onChange={onChange}
-          disabled={disabled}
-        />
-      </label>
-    </form>
+    <label htmlFor={name}>
+      {label}
+      <input
+        type={type}
+        required={required}
+        name={name}
+        id={name}
+        className={className}
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        style={{ marginTop: '0.5rem' }}
+      />
+    </label>
   );
 }
 

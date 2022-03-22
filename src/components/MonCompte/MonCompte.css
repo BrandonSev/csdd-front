@@ -1,0 +1,157 @@
+.profil-page .title {
+  text-align: center;
+  padding: 5rem 6rem;
+  background-color: #333;
+  color: #e5e5e5;
+}
+
+.profil-page .wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.profil-page .wrapper h3 {
+  padding-bottom: 1rem;
+}
+
+.profil-page .left-block {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-top: 1rem;
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+  background-color: #adadad;
+  border-right: 1px solid #333;
+  width: 50%;
+}
+
+.profil-page .left-block .user-info {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.profil-page .left-block .user-info > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.profil-page .left-block .avatar-image {
+  display: flex;
+  justify-content: center;
+}
+
+.profil-page .left-block.open {
+  transform: translateX(0);
+}
+
+.profil-page .left-block.open span:nth-child(1) {
+  transform: rotate(-45deg);
+}
+
+.profil-page .left-block.open span:nth-child(2) {
+  transform: translateY(2px) translateX(-2px) rotate(45deg);
+}
+
+.profil-page .left-block .burger {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: fixed;
+  top: 2rem;
+  right: -2.3rem;
+}
+
+.profil-page .left-block .burger span {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background-color: #333;
+  transition: transform 0.4s;
+}
+
+.profil-page .left-block .burger span:nth-child(2) {
+  display: block;
+  margin-top: 0.3rem;
+  transform-origin: top right;
+}
+
+.profil-page .right-block {
+  padding: 4rem 1rem 0 1rem;
+  background-color: #adadad;
+}
+
+.profil-page .right-block .donnee-perso {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1rem;
+  margin-top: 1rem;
+}
+
+.profil-page .right-block .donnee-perso .button {
+  grid-column: 2;
+  width: 100%;
+}
+
+.profil-page .right-block .info-corpo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1rem;
+  margin-top: 1rem;
+}
+
+.profil-page .right-block .info-corpo .button {
+  grid-column: 2;
+}
+
+.profil-page .right-block .wrapper-corpo {
+  margin-top: 2rem;
+}
+
+.profil-page .right-block .wrapper-password {
+  margin-top: 3rem;
+}
+
+.profil-page .right-block .password {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem 0;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .profil-page .wrapper {
+    display: flex;
+  }
+
+  .profil-page .left-block {
+    position: inherit;
+    display: block;
+    transform: translateX(0);
+    padding-top: 3rem;
+    width: 50%;
+  }
+
+  .profil-page .left-block .burger {
+    display: none;
+  }
+
+  .profil-page .right-block {
+    width: 100%;
+    padding: 3rem;
+  }
+
+  .profil-page .right-block .donnee-perso {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .profil-page .right-block .donnee-perso .button {
+    grid-column: 3;
+    grid-row: 4;
+    width: 100%;
+  }
+
+  .profil-page .right-block .password {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 1rem;
+  }
+}
