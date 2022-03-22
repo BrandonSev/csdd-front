@@ -9,7 +9,7 @@ function Home() {
       </div>
       <div className="big-logo">
         <div>
-          <img src="assets/logo.png" alt="Logo CSDD" />
+          <img src="assets/logo-detoure-blanc.png" alt="Logo CSDD" />
         </div>
       </div>
       <div className="content">

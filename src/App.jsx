@@ -1,17 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/DashboardPages/Home/Home';
-import MemberArea from './components/DashboardPages/MemberArea/MemberArea';
-import AccessRequest from './components/DashboardPages/AccessRequest/AccessRequest';
-import Formation from './components/Formation/Formation';
+import Home from './components/SitePages/Home/Home';
+import LoginPage from './components/SitePages/LoginPage/LoginPage';
+import Register from './components/SitePages/Register/Register';
+import Formation from './components/SitePages/Formation/Formation';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/MemberArea" element={<MemberArea />} />
-        <Route path="/AccessRequest" element={<AccessRequest />} />
+        <Route path="/LoginPage" element={<LoginPage />} />
+        <Route path="/Register" element={<Register />} />
         <Route path="/Formation" element={<Formation />} />
       </Routes>
     </div>

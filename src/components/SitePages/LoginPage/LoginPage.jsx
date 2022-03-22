@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { BiUser } from 'react-icons/bi';
 
-import './MemberArea.css';
+import './LoginPage.css';
 
-import Logo from '../../DashboardComposants/Logo/Logo';
-import Input from '../../DashboardComposants/Input/Input';
-import Button from '../../DashboardComposants/Button/Button';
+import Logo from '../../Logo/Logo';
+import Input from '../../Input/Input';
+import Button from '../../Button/Button';
 
-function EspaceMembre() {
+function LoginPage() {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -23,12 +23,12 @@ function EspaceMembre() {
   return (
     <>
       <Logo />
-      <div className="container-form-access-member">
+      <div className="container-form-register">
         <div className="left">
-          <Button className="access-request" buttonName="Demande d&#39;accès" />
+          <Button className="register" buttonName="Demande d&#39;accès" />
         </div>
-        <div className="formulaire-member-area">
-          <div className="wrapper-connect-member-area">
+        <div className="formulaire-login-page">
+          <div className="wrapper-connect-login-page">
             <h1>
               <BiUser /> Espace Membre
             </h1>
@@ -59,4 +59,4 @@ function EspaceMembre() {
   );
 }
 
-export default EspaceMembre;
+export default LoginPage;
