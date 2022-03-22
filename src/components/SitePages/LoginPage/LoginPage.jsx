@@ -25,7 +25,7 @@ function LoginPage() {
       <Logo />
       <div className="container-form-register">
         <div className="left">
-          <Button className="register" buttonName="Demande d&#39;accès" />
+          <Button className="login-register" buttonName="Demande d&#39;accès" />
         </div>
         <div className="formulaire-login-page">
           <div className="wrapper-connect-login-page">
@@ -49,7 +49,7 @@ function LoginPage() {
                 onChange={formik.handleChange}
                 value={formik.values.password}
               />
-              <Button className="connection" buttonName="Connexion" />
+              <Button className="login-connection" buttonName="Connexion" />
               <p>Mot de passe oublié ?</p>
             </form>
           </div>

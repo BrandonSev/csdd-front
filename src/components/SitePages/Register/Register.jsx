@@ -28,9 +28,6 @@ function Register() {
       receptionPlace: '',
       receptionDate: '',
     },
-    // onSubmit: (values) => {
-    //   alert(JSON.stringify(values, null, 2));
-    // },
   });
 
   return (
@@ -136,7 +133,7 @@ function Register() {
                 </li>
                 <li className="grid-li-confirm-password">
                   <Input
-                    label="Confirmation mot de passe"
+                    label="Confirmer mot de passe"
                     type="password"
                     name="confirm-password"
                     id="confirm-password"
@@ -216,7 +213,7 @@ function Register() {
           </div>
         </div>
         <div className="right">
-          <Button className="connection" buttonName="Connexion" />
+          <Button className="register-connection" buttonName="Connexion" />
         </div>
       </div>
     </>
