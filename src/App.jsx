@@ -7,7 +7,8 @@ import LoginPage from './components/SitePages/LoginPage/LoginPage';
 import Register from './components/SitePages/Register/Register';
 import Formation from './components/SitePages/Formation/Formation';
 import Memoire from './components/SitePages/Memoire/Memoire';
-import ComissionDesrites from './components/SitePages/ComissionDesRite/ComissionDesrites';
+import CommissionDesRites from './components/SitePages/CommissionDesRites/CommissionDesrites';
+
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/Formation" element={<Formation />} />
         <Route path="/Memoire" element={<Memoire />} />
-        <Route path="/Comission" element={<ComissionDesrites />} />
+        <Route path="/Commission" element={<CommissionDesRites />} />
+
       </Routes>
     </div>
   );
