@@ -60,6 +60,7 @@
   border: solid;
   border-color: #af1616;
   z-index: 1;
+  margin: 1vh auto 2vh;
 }
 
 /* Média Queries - Adaptation sur écran de plus de 768px de large */
