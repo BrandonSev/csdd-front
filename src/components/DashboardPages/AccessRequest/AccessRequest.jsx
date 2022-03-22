@@ -21,6 +21,12 @@ function AccessRequest() {
       email: '',
       password: '',
       confirmPassword: '',
+      provinceName: '',
+      adoptionPlace: '',
+      adoptionDate: '',
+      room: '',
+      receptionPlace: '',
+      receptionDate: '',
     },
     // onSubmit: (values) => {
     //   alert(JSON.stringify(values, null, 2));
@@ -62,8 +68,8 @@ function AccessRequest() {
                   <Input
                     label="Date de naissance"
                     type="date"
-                    name="birthDate"
-                    id="birthDate"
+                    name="birth-date"
+                    id="birth-date"
                     onChange={formik.handleChange}
                     value={formik.values.birthDate}
                   />
@@ -82,8 +88,8 @@ function AccessRequest() {
                   <Input
                     label="Code postal"
                     type="number"
-                    name="postalCode"
-                    id="postalCode"
+                    name="postal-code"
+                    id="postal-code"
                     onChange={formik.handleChange}
                     value={formik.values.postalCode}
                   />
@@ -102,8 +108,8 @@ function AccessRequest() {
                   <Input
                     label="Numéro de téléphone"
                     type="tel"
-                    name="phoneNumber"
-                    id="phoneNumber"
+                    name="phone-number"
+                    id="phone-number"
                     onChange={formik.handleChange}
                     value={formik.values.phoneNumber}
                   />
@@ -132,10 +138,70 @@ function AccessRequest() {
                   <Input
                     label="Confirmation mot de passe"
                     type="password"
-                    name="confirmPassword"
-                    id="confirmPassword"
+                    name="confirm-password"
+                    id="confirm-password"
                     onChange={formik.handleChange}
                     value={formik.values.confirmPassword}
+                  />
+                </li>
+                <li className="grid-li-province-name">
+                  <Input
+                    label="Nom de Province"
+                    type="text"
+                    name="province-name"
+                    id="province-name"
+                    onChange={formik.handleChange}
+                    value={formik.values.provinceName}
+                  />
+                </li>
+                <li className="grid-li-adoption-place">
+                  <Input
+                    label="Lieu d'adoption"
+                    type="text"
+                    name="adoption-place"
+                    id="adoption-place"
+                    onChange={formik.handleChange}
+                    value={formik.values.adoptionPlace}
+                  />
+                </li>
+                <li className="grid-li-adoption-date">
+                  <Input
+                    label="Date d'adoption"
+                    type="date"
+                    name="adoption-date"
+                    id="adoption-date"
+                    onChange={formik.handleChange}
+                    value={formik.values.adoptionDate}
+                  />
+                </li>
+                <li className="grid-li-room">
+                  <Input
+                    label="Chambre"
+                    type="text"
+                    name="room"
+                    id="room"
+                    onChange={formik.handleChange}
+                    value={formik.values.room}
+                  />
+                </li>
+                <li className="grid-li-reception-place">
+                  <Input
+                    label="Lieu de réception"
+                    type="text"
+                    name="reception-place"
+                    id="reception-place"
+                    onChange={formik.handleChange}
+                    value={formik.values.receptionPlace}
+                  />
+                </li>
+                <li className="grid-li-reception-date">
+                  <Input
+                    label="Date de réception"
+                    type="date"
+                    name="reception-date"
+                    id="reception-date"
+                    onChange={formik.handleChange}
+                    value={formik.values.receptionDate}
                   />
                 </li>
               </ul>
