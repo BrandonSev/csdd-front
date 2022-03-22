@@ -7,9 +7,9 @@
   top: 0.25rem;
 }
 
-/* Container global access request / member area */
+/* Container global register / login page */
 
-.container-form-access-member {
+.container-form-register {
   display: flex;
   justify-content: space-between;
 }
@@ -27,17 +27,18 @@
 
 /* Stylisation du bouton accès */
 
-.access-request {
+.register {
   width: 100%;
   height: 50px;
   background-color: #fca311;
   border-radius: 5px;
   border: 2px solid #af1616;
+  padding: 1rem;
 }
 
-/* Stylisation du formulaire member area */
+/* Stylisation du formulaire login page */
 
-.formulaire-member-area {
+.formulaire-login-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,11 +46,11 @@
   height: 100vh;
 }
 
-.wrapper-connect-member-area {
+.wrapper-connect-login-page {
   width: 60%;
 }
 
-/* Stylisation du bouton member area */
+/* Stylisation du bouton login page */
 
 .connection {
   width: 100%;
@@ -73,11 +74,11 @@
     width: 32%;
   }
 
-  .formulaire-member-area {
+  .formulaire-login-page {
     width: 68%;
   }
 
-  .wrapper-connect-member-area {
+  .wrapper-connect-login-page {
     width: 60%;
   }
 }
@@ -95,11 +96,11 @@
     width: 30.8%;
   }
 
-  .formulaire-member-area {
+  .formulaire-login-page {
     width: 69.2%;
   }
 
-  .wrapper-connect-member-area {
+  .wrapper-connect-login-page {
     width: 60%;
   }
 }

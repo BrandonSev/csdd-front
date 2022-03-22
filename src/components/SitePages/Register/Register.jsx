@@ -2,13 +2,13 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { BiUser } from 'react-icons/bi';
 
-import './AccessRequest.css';
+import './Register.css';
 
-import Logo from '../../DashboardComposants/Logo/Logo';
-import Input from '../../DashboardComposants/Input/Input';
-import Button from '../../DashboardComposants/Button/Button';
+import Logo from '../../Logo/Logo';
+import Input from '../../Input/Input';
+import Button from '../../Button/Button';
 
-function AccessRequest() {
+function Register() {
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -36,14 +36,14 @@ function AccessRequest() {
   return (
     <>
       <Logo />
-      <div className="container-form-access-member">
-        <div className="formulaire-access-request">
-          <div className="wrapper-access-request">
+      <div className="container-form-register">
+        <div className="formulaire-register">
+          <div className="wrapper-register">
             <h1>
               <BiUser /> Demande d&#39;accès
             </h1>
             <form onSubmit={formik.handleSubmit}>
-              <ul className="grid-form-access-request">
+              <ul className="grid-form-register">
                 <li className="grid-li-firstname">
                   <Input
                     label="Prénom"
@@ -211,10 +211,7 @@ function AccessRequest() {
                   buttonName="Données corporation"
                 />
               </div>
-              <Button
-                className="access-request"
-                buttonName="Demander un accès"
-              />
+              <Button className="register" buttonName="Demander un accès" />
             </form>
           </div>
         </div>
@@ -226,4 +223,4 @@ function AccessRequest() {
   );
 }
 
-export default AccessRequest;
+export default Register;
