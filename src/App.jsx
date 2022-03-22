@@ -8,6 +8,7 @@ import Register from './components/SitePages/Register/Register';
 import Formation from './components/SitePages/Formation/Formation';
 import Memoire from './components/SitePages/Memoire/Memoire';
 import CommissionDesRites from './components/SitePages/CommissionDesRites/CommissionDesRites';
+import MonCompte from './components/MonCompte';
 
 function App() {
   return (
