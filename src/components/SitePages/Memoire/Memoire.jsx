@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../DashboardComposants/Button/Button';
+import Button from '../../Button/Button';
 
 function Memoire() {
   return (
