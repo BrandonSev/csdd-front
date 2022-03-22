@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../../Button/Button';
 
-function ComissionDesRites() {
+function CommissionDesRites() {
   return (
     <div className="formation-container">
       <div className="child">
@@ -56,4 +56,4 @@ function ComissionDesRites() {
   );
 }
 
-export default ComissionDesRites;
+export default CommissionDesRites;
