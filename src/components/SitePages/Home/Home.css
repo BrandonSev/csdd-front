@@ -50,15 +50,17 @@
   z-index: 1;
 }
 
-.home button {
+a {
+  text-decoration: none;
+}
+
+.home a {
   background-color: #fca311;
   color: #333;
   width: 374px;
   height: 55px;
   font-size: 35px;
   font-weight: bold;
-  border: solid;
-  border-color: #af1616;
   z-index: 1;
   margin: 1vh auto 2vh;
 }
