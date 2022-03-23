@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { BiUser } from 'react-icons/bi';
 
@@ -14,9 +15,6 @@ function LoginPage() {
       email: '',
       password: '',
     },
-    // onSubmit: (values) => {
-    //   alert(JSON.stringify(values, null, 2));
-    // },
   });
 
   useEffect(() => {}, []);
@@ -25,7 +23,9 @@ function LoginPage() {
       <Logo />
       <div className="container-form-register">
         <div className="left">
-          <Button className="button-yellow" buttonName="Demande d&#39;accès" />
+          <NavLink to="/Register" className="button-yellow" type="button">
+            Demander un accès
+          </NavLink>
         </div>
         <div className="formulaire-login-page">
           <div className="wrapper-connect-login-page">

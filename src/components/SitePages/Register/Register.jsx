@@ -177,6 +177,7 @@ function Register() {
                     type="text"
                     name="room"
                     id="room"
+                    disabled="disabled"
                     onChange={formik.handleChange}
                     value={formik.values.room}
                   />
@@ -187,6 +188,7 @@ function Register() {
                     type="text"
                     name="reception-place"
                     id="reception-place"
+                    disabled="disabled"
                     onChange={formik.handleChange}
                     value={formik.values.receptionPlace}
                   />
@@ -197,6 +199,7 @@ function Register() {
                     type="date"
                     name="reception-date"
                     id="reception-date"
+                    disabled="disabled"
                     onChange={formik.handleChange}
                     value={formik.values.receptionDate}
                   />
