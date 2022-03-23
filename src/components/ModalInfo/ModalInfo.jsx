@@ -3,18 +3,18 @@ import info from '../../assets/info.pdf';
 
 function ModalInfo() {
   return (
-    <>
+    <div className="container-modalInfo">
       <iframe
         className="info"
         src={info}
-        alt="bulletin d'information"
+        // alt="bulletin d'information"
         type="application/pdf"
-        frameborder="0"
+        frameBorder="0"
         height="100%"
         width="100%"
-      ></iframe>
-      {/* <img className="modal-img" src="#" alt="bulletin d'information"></img> */}
-    </>
+      />
+      {/* <img className="modal-img-info" src="#" alt="bulletin d'information"></img> */}
+    </div>
   );
 }
 
