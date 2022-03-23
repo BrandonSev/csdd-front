@@ -14,10 +14,12 @@ function CommissionDesRites() {
           />
         </div>
         <div className="formation-btn-container">
-          <Button
-            className="formation-btn"
-            buttonName="DEROULEMENT CELEBRATIONS"
-          />
+          <div>
+            <Button
+              className="formation-btn"
+              buttonName="DEROULEMENT CELEBRATIONS"
+            />
+          </div>
         </div>
       </div>
 
@@ -30,10 +32,12 @@ function CommissionDesRites() {
           />
         </div>
         <div className="formation-btn-container">
-          <Button
-            className="formation-btn"
-            buttonName="ENSEIGNEMENT COMPAGNONIQUE"
-          />
+          <div>
+            <Button
+              className="formation-btn"
+              buttonName="ENSEIGNEMENT COMPAGNONIQUE"
+            />
+          </div>
         </div>
       </div>
 
@@ -46,10 +50,12 @@ function CommissionDesRites() {
           />
         </div>
         <div className="formation-btn-container">
-          <Button
-            className="formation-btn"
-            buttonName="CULTURE COMPAGNONIQUE"
-          />
+          <div>
+            <Button
+              className="formation-btn"
+              buttonName="CULTURE COMPAGNONIQUE"
+            />
+          </div>
         </div>
       </div>
     </div>
