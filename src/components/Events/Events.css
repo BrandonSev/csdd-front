@@ -9,7 +9,7 @@
   margin:auto;
 }
 
-img {
+.mySwiper-container img {
   height:20vh;
   width: 100%;
 }
@@ -18,7 +18,7 @@ img {
   .mySwiper-container {
   height: 30vh;
 }
-img {
+.mySwiper-container img {
   height:30vh;
 }
 }
@@ -28,7 +28,7 @@ img {
   .mySwiper-container {
   height: 40vh;
 }
-img {
+.mySwiper-container img {
   height:40vh;
 }
   }

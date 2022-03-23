@@ -2,10 +2,9 @@ import React from 'react';
 import './JobOffers.css';
 
 function JobOffers() {
-  
   return (
     <div>
-      <h2 className="offer-title">Offres d'embauche</h2>
+      <h2 className="offer-title">Offres d embauche</h2>
       <div className="job-offers-container">
         <h4>reference</h4>
         <h4> city</h4>
