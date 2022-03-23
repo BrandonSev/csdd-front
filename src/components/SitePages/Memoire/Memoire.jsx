@@ -10,7 +10,9 @@ function Memoire() {
           <img className="formation-image" src="#" alt="INNOVATIONS" />
         </div>
         <div className="formation-btn-container">
-          <Button className="formation-btn" buttonName="INNOVATIONS" />
+          <div>
+            <Button className="formation-btn" buttonName="INNOVATIONS" />
+          </div>
         </div>
       </div>
 
@@ -19,7 +21,9 @@ function Memoire() {
           <img className="formation-image" src="#" alt="CONGRES GALERY" />
         </div>
         <div className="formation-btn-container">
-          <Button className="formation-btn" buttonName="CONGRES GALERY" />
+          <div>
+            <Button className="formation-btn" buttonName="CONGRES GALERY" />
+          </div>
         </div>
       </div>
 
@@ -32,10 +36,12 @@ function Memoire() {
           />
         </div>
         <div className="formation-btn-container">
-          <Button
-            className="formation-btn"
-            buttonName="CONCOURS DE FERRONERIE"
-          />
+          <div>
+            <Button
+              className="formation-btn"
+              buttonName="CONCOURS DE FERRONERIE"
+            />
+          </div>
         </div>
       </div>
 
@@ -44,7 +50,12 @@ function Memoire() {
           <img className="formation-image" src="#" alt="CONCOURS DE SOUDURE" />
         </div>
         <div className="formation-btn-container">
-          <Button className="formation-btn" buttonName="CONCOURS DE SOUDURE" />
+          <div>
+            <Button
+              className="formation-btn"
+              buttonName="CONCOURS DE SOUDURE"
+            />
+          </div>
         </div>
       </div>
     </div>
