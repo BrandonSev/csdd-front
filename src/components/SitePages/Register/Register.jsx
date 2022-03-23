@@ -202,18 +202,23 @@ function Register() {
                   />
                 </li>
               </ul>
-              <div className="button-corporate-data">
+              <div className="corporate-data">
                 <Button
-                  className="corporate-data"
+                  className="button-red"
                   buttonName="Données corporation"
                 />
               </div>
-              <Button className="register" buttonName="Demander un accès" />
+              <div className="register">
+                <Button
+                  className="button-yellow"
+                  buttonName="Demander un accès"
+                />
+              </div>
             </form>
           </div>
         </div>
         <div className="right">
-          <Button className="register-connection" buttonName="Connexion" />
+          <Button className="button-yellow" buttonName="Connexion" />
         </div>
       </div>
     </>
