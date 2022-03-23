@@ -30,14 +30,14 @@ function Events() {
           className="mySwiper-container"
           modules={[Autoplay, Navigation, Pagination]}
           spaceBetween={0}
-          slidesPerView={"auto"}
+          slidesPerView={'auto'}
           navigation
           pagination={{ clickable: true }}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
           loop={false}
           autoplay
-          centeredSlides={true}
+          centeredSlides
           speed={500}
         >
           <SwiperSlide>
