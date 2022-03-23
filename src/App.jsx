@@ -11,6 +11,7 @@ import CommissionDesRites from './components/SitePages/CommissionDesRites/Commis
 import MonCompte from './components/SitePages/MonCompte';
 import Navbar from './components/Navbar';
 import EventsDashboard from './components/SitePages/EventsDashboard/EventsDashboard';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/Commission" element={<CommissionDesRites />} />
         <Route path="/Events-dashboard" element={<EventsDashboard />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

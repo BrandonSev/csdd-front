@@ -1,0 +1,7 @@
+.footer .footer-logo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+  padding: 2rem 0;
+}
