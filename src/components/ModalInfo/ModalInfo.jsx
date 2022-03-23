@@ -7,12 +7,12 @@ function ModalInfo() {
       <iframe
         className="info"
         src={info}
-        alt="bulletin d'information"
+        // alt="bulletin d'information"
         type="application/pdf"
-        frameborder="0"
+        frameBorder="0"
         height="100%"
         width="100%"
-      ></iframe>
+      />
       {/* <img className="modal-img" src="#" alt="bulletin d'information"></img> */}
     </>
   );

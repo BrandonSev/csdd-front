@@ -10,27 +10,24 @@ import MediaLink from '../../MediaLink/MediaLink';
 function HomePage() {
   const [displayPdf, setDisplayPdf] = useState(true);
 
-  const handleClick = (e) => {
+  const handleClickPdf = () => {
     setDisplayPdf(true);
   };
 
   return (
     <div className="body-homePage">
       <div className="container-home">
-        <div> Composant menu</div>
-        <div>
-          <Events />
-        </div>
+        <Events />
         <section className="news">
           <div className="container-info">
             <h3>Bulletin d informations</h3>
             <Button
-              className="info-button"
+              className="button-red"
               buttonName="Afficher"
-              onClick={handleClick}
+              onClick={handleClickPdf}
             />
             {displayPdf && (
-              <ModalInfo onClick={(e) => setDisplayPdf(!displayPdf)} />
+              <ModalInfo onClick={() => setDisplayPdf(!displayPdf)} />
             )}
           </div>
           <div className="container-medias">

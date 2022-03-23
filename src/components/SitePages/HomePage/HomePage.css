@@ -1,6 +1,14 @@
 .body-homePage {
   margin: 5vh;
 }
+
+.container-home {
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:2rem 1rem;
+  margin-top: 1rem;
+}
+
 .news{
   display:flex;
   width: 100%;
