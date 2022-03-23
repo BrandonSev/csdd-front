@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
-import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/swiper-bundle.css';
 
 const API_URL = process.env.REACT_APP_CSDD_URL;
 
-SwiperCore.use([Autoplay, Navigation, Pagination]);
-
 function Events() {
+  // eslint-disable-next-line no-unused-vars
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -18,6 +17,7 @@ function Events() {
       .then(({ data }) => {
         setEvents(data);
       })
+      // eslint-disable-next-line no-console
       .catch((err) => console.error(err.message));
   }, []);
 
@@ -32,8 +32,6 @@ function Events() {
           slidesPerView={1}
           navigation
           pagination
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
           loop
           autoplay
           centeredSlides
