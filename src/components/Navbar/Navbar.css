@@ -1,7 +1,3 @@
-.navbar {
-  padding: 3rem 1rem;
-}
-
 .navbar .wrapper-navbar {
   display: flex;
   align-items: center;
@@ -15,6 +11,27 @@
 
 .navbar .wrapper-navbar .navbar-logo {
   flex: 1;
+}
+
+.navbar .navbar-wrapper-mobile {
+  height: 0;
+  text-align: center;
+  background-color: #adadad;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+  transition: height 0.4s;
+}
+
+.navbar .navbar-mobile {
+  padding: 2rem 0;
+}
+
+.navbar .navbar-mobile > *:not(:last-child) {
+  padding-bottom: 1.5rem;
+}
+
+.navbar .navbar-wrapper-mobile.open {
+  height: 260px;
 }
 
 .navbar .wrapper-navbar .burger {
@@ -31,4 +48,28 @@
 
 .navbar .wrapper-navbar .burger span:nth-child(2) {
   margin-top: 0.3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar .navbar-wrapper-mobile.open,
+  .navbar .navbar-wrapper-mobile {
+    display: none;
+  }
+
+  .navbar .wrapper-navbar .burger {
+    display: none;
+  }
+
+  .navbar .wrapper-navbar .avatar-logo {
+    display: block;
+  }
+
+  .navbar .wrapper-navbar .navbar-menu {
+    display: flex;
+    margin-right: 2rem;
+  }
+
+  .navbar .wrapper-navbar .navbar-menu > * {
+    padding-right: 2rem;
+  }
 }
