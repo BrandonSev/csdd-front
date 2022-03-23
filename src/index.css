@@ -53,7 +53,17 @@ a {
   text-align: center;
   padding: 1rem 2rem;
   background-color: #af1616;
+  border-radius: 5px;
   color: #e5e5e5;
+  margin: 0;
+}
+
+.button-yellow {
+  text-align: center;
+  padding: 1rem 2rem;
+  background-color: #fca311;
+  border-radius: 5px;
+  color: #333;
   margin: 0;
 }
 

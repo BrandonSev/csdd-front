@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
@@ -15,9 +16,9 @@ function Home() {
       <div className="content">
         <h1>CSDD</h1>
         <h2>Compagnons Serrurier Du Devoir</h2>
-        <button className="enter-button" type="button">
+        <NavLink to="/LoginPage" className="button-yellow" type="button">
           Entrer
-        </button>
+        </NavLink>
       </div>
     </div>
   );

@@ -25,39 +25,19 @@
 
 /* Stylisation bouton */
 
-button {
+.corporate-data button {
   margin: 0 auto 2vh;
 }
 
-.button-corporate-data {
+.corporate-data {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.corporate-data {
-  height: 50px;
-  background-color: #af1616;
-  border-radius: 5px;
-  border: 2px solid #fca311;
-  color: #fff;
-  padding: 0 4rem;
-}
-
-.register {
+.register button {
   width: 100%;
   height: 50px;
-  background-color: #fca311;
-  border-radius: 5px;
-  border: 2px solid #af1616;
-}
-
-.register-connection {
-  height: 50px;
-  background-color: #fca311;
-  border-radius: 5px;
-  border: 2px solid #af1616;
-  padding: 0 1rem;
 }
 
 /* Stylisation du formulaire register */
