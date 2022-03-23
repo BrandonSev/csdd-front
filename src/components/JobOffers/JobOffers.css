@@ -1,0 +1,4 @@
+.offer-title, .job{
+  display:flex;
+  justify-content: center;
+}
