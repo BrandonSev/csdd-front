@@ -12,7 +12,7 @@ const Navbar = () => {
             <img
               src="assets/logo-detoure-noir.png"
               alt="logo detoure noir"
-              width={80}
+              width={40}
             />
           </div>
           <ul className="navbar-menu">
@@ -28,9 +28,6 @@ const Navbar = () => {
             <li>
               <NavLink to="/memoire">Commission de rîtes</NavLink>
             </li>
-            <li>
-              <NavLink to="/memoire">Forum</NavLink>
-            </li>
           </ul>
           <div className="avatar-logo">
             <img
@@ -41,7 +38,7 @@ const Navbar = () => {
           </div>
           <button
             type="button"
-            className="burger"
+            className={`burger ${open ? 'open' : ''}`}
             onClick={() => setOpen(!open)}
           >
             <span />
@@ -62,9 +59,6 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink to="/memoire">Commission de rîtes</NavLink>
-          </li>
-          <li>
-            <NavLink to="/memoire">Forum</NavLink>
           </li>
         </ul>
       </div>
