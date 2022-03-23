@@ -4,6 +4,7 @@ import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/swiper-bundle.css';
+import './Events.css';
 
 const API_URL = process.env.REACT_APP_CSDD_URL;
 
@@ -22,27 +23,22 @@ function Events() {
   }, []);
 
   return (
-    <div className="carousel-events">
-      <h1>Events</h1>
-      <div className="content-carousel">
+    <div className="carousel-container">
+      <h2>Events</h2>
+      <div className="carousel-slider">
         <Swiper
-          className="mySwiper"
+          className="mySwiper-container"
           modules={[Autoplay, Navigation, Pagination]}
           spaceBetween={0}
-          slidesPerView={1}
+          slidesPerView={"auto"}
           navigation
-          pagination
+          pagination={{ clickable: true }}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
-          loop
+          loop={false}
           autoplay
-          centeredSlides
+          centeredSlides={true}
           speed={500}
-          // breakpoints={{
-          //   768: {
-          //     spaceBetween: 0,
-          //     slidesPerView: 1,
-          //   },
         >
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="1" />
@@ -56,19 +52,18 @@ function Events() {
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="4" />
           </SwiperSlide>
-
-          {/* {events &&
-    events.map((event) => (
-      <div key={event.id}>
-        <img src={event.event_link} alt="" className="event_link" />
-        <div className="overlay">
-          <h3 className="overlay-filename">{event.filename}</h3>
-          <h4 className="overlay-date">{event.event_date} </h4>
-          <p className="overlay-description">{event.description}</p>
-        </div>
-      </div>
-    ))
-    }; */}
+          {events &&
+            events.map((event) => (
+              <div key={event.id}>
+                <img src={event.event_link} alt="" className="event_link" />
+                <div className="overlay">
+                  <h3 className="overlay-filename">{event.filename}</h3>
+                  <h4 className="overlay-date">{event.event_date} </h4>
+                  <p className="overlay-description">{event.description}</p>
+                </div>
+              </div>
+            ))}
+          ;
         </Swiper>
       </div>
     </div>
