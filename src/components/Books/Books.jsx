@@ -10,9 +10,10 @@ import './Books.css';
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 function Books() {
+  
   return (
     <div className="carousel-container-books">
-      <h2>Books</h2>
+      <h3>Books</h3>
       <div className="carousel-slider-books">
         <Swiper
           className="mySwiper-container"
