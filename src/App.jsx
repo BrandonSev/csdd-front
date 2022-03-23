@@ -10,6 +10,7 @@ import Memoire from './components/SitePages/Memoire/Memoire';
 import CommissionDesRites from './components/SitePages/CommissionDesRites/CommissionDesRites';
 import MonCompte from './components/SitePages/MonCompte';
 import Navbar from './components/Navbar';
+import EventsDashboard from './components/SitePages/EventsDashboard/EventsDashboard';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/mon-compte" element={<MonCompte />} />
         <Route path="/Memoire" element={<Memoire />} />
         <Route path="/Commission" element={<CommissionDesRites />} />
+        <Route path="/Events-dashboard" element={<EventsDashboard />} />
       </Routes>
     </div>
   );
