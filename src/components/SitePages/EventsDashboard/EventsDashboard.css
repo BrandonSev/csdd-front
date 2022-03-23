@@ -1,0 +1,82 @@
+.evenementDashboard-container {
+  margin: 0 4vw;
+}
+
+.event-title {
+  font-size: 5vw;
+  text-align: center;
+}
+
+.selectComponant {
+  font-size: 4vw;
+  margin-top: 3vw;
+}
+
+.css-6j8wv5-Input {
+  height: 2vw;
+}
+
+@media (min-width: 600px) {
+  .evenementDashboard-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    margin: 0 8vw;
+  }
+
+  .SelectComponent-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .event-title {
+    font-size: 2vw;
+    text-align: center;
+  }
+
+  .selectComponant {
+    font-size: 2vw;
+    margin-top: 3vw;
+  }
+
+  .css-6j8wv5-Input {
+    height: 2vw;
+  }
+
+  .events-Input label {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    margin-top: 2vw;
+    font-size: 2vw;
+    font-weight: bold;
+  }
+
+  .events-Input {
+    margin-top: 5vw;
+  }
+
+  .events-Input input {
+    border-color: #ccc;
+  }
+
+  .eventsBtn-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 1vw;
+    grid-row-gap: 1vw;
+    position: relative;
+    width: 20vw;
+    left: 62.5vw;
+    top: 2vw;
+  }
+
+  .Events-btn {
+    width: 100%;
+    height: 100%;
+    background: #af1616;
+    margin-top: 2vw;
+  }
+}
