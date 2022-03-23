@@ -48,12 +48,12 @@
 .profil-page .left-block.open .burger span:nth-child(1) {
   position: absolute;
   right: 0;
-  top: 6px;
+  top: 7px;
   transform: rotate(-45deg);
 }
 
 .profil-page .left-block.open .burger span:nth-child(2) {
-  transform: translateY(2px) translateX(-2px) rotate(45deg);
+  transform: translateY(3px) translateX(-2px) rotate(45deg);
 }
 
 .profil-page .left-block .burger {
