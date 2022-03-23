@@ -41,7 +41,7 @@ button {
   border-radius: 5px;
   border: 2px solid #fca311;
   color: #fff;
-  padding: 0 10px;
+  padding: 0 4rem;
 }
 
 .register {
@@ -52,13 +52,12 @@ button {
   border: 2px solid #af1616;
 }
 
-.connection {
-  width: 100%;
+.register-connection {
   height: 50px;
   background-color: #fca311;
   border-radius: 5px;
   border: 2px solid #af1616;
-  padding: 0 10px;
+  padding: 0 1rem;
 }
 
 /* Stylisation du formulaire register */
@@ -79,6 +78,16 @@ button {
 
 .wrapper-register h1 {
   margin: 0 auto 4vh;
+}
+
+/* Marge sur les labels et inputs */
+
+.grid-form-register label {
+  margin: 1rem 0;
+}
+
+.grid-form-register input {
+  margin: 1vh auto 2vh;
 }
 
 /* Média Queries - Adaptation sur écran de plus de 768px de large */

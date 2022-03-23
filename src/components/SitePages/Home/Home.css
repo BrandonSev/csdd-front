@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
 }
 
 .background-image img {
@@ -60,6 +60,7 @@
   border: solid;
   border-color: #af1616;
   z-index: 1;
+  margin: 1vh auto 2vh;
 }
 
 /* Média Queries - Adaptation sur écran de plus de 768px de large */
@@ -74,6 +75,6 @@
 
 @media screen and (min-width: 1024px) {
   .home {
-    height: 125vh;
+    height: 100vh;
   }
 }
