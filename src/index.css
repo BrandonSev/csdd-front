@@ -9,9 +9,6 @@
 /* Mise en forme du body dans son conteneur */
 
 body {
-  max-width: 1360 px;
-  justify-content: space-evenly;
-  margin: 0 auto;
   background-color: #e5e5e5;
   color: #333;
 }
@@ -42,8 +39,6 @@ ul li {
 
 .container {
   max-width: 1330px;
-  padding-left: 16px;
-  padding-right: 16px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -58,4 +53,11 @@ ul li {
 
 .w-100 {
   width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
 }
 
 .background-image img {
@@ -75,6 +75,6 @@
 
 @media screen and (min-width: 1024px) {
   .home {
-    height: 125vh;
+    height: 100vh;
   }
 }

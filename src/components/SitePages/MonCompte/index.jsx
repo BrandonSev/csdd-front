@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './MonCompte.css';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
+import Input from '../../Input/Input';
+import Button from '../../Button/Button';
 
 const MonCompte = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,11 @@ const MonCompte = () => {
       <div className="wrapper">
         <div className={`left-block ${open && 'open'}`}>
           <div className="avatar-image">
-            <img src="assets/logo.png" width={180} alt="avatar profil" />
+            <img
+              src="assets/logo-detoure-noir.png"
+              width={180}
+              alt="avatar profil"
+            />
           </div>
           <div className="user-info">
             <p>Status: Mon status</p>
@@ -54,7 +58,7 @@ const MonCompte = () => {
               <Input label="Date de réception: " />
               <Button
                 className="button button-red w-100"
-                buttonName="Envoyer"
+                buttonName="Valider"
               />
             </form>
           </div>
@@ -62,10 +66,10 @@ const MonCompte = () => {
             <h3>Mot de passe</h3>
             <form className="password">
               <Input label="Mot de passe: " />
-              <Input label="Confirmer mot de passe: " />
+              <Input label="Confirmer: " />
               <Button
                 className="button button-red w-100"
-                buttonName="Envoyer"
+                buttonName="Valider"
               />
             </form>
           </div>
