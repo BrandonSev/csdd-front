@@ -15,10 +15,12 @@ function HomePage() {
   };
 
   return (
-    <div className="body-homePage">
-      <div className="container-home">
-        <Events />
-        <section className="news">
+    <div className="container">
+      <div className="container-homePage">
+        <div className="container-events">
+          <Events />
+        </div>
+        <div className="news">
           <div className="container-info">
             <h3>Bulletin d informations</h3>
             <Button
@@ -33,15 +35,13 @@ function HomePage() {
           <div className="container-medias">
             <MediaLink />
           </div>
-        </section>
-
-        <div>
+        </div>
+        <div className="container-books">
           <Books />
         </div>
-        <div>
+        <div className="container-jobOffers">
           <JobOffers />
         </div>
-        <div>Composant footer</div>
       </div>
     </div>
   );

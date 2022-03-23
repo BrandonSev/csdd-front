@@ -1,12 +1,21 @@
-.body-homePage {
-  margin: 5vh;
+h3{
+  padding-bottom: 1rem;
 }
 
-.container-home {
+.container{
+  padding-left:1rem;
+  padding-right:1rem;
+}
+
+.container-homePage {
   display:grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(4, 25%);
   gap:2rem 1rem;
-  margin-top: 1rem;
+}
+
+.container-events{
+  grid-row:1;
 }
 
 .news{
@@ -16,12 +25,12 @@
 }
 
 .container-info {
-  display: block;
   width:70%;
+  margin-right: 1rem;
 }
 
 .container-medias{
-  display:block;
   width:30%;
 }
+
 

@@ -23,7 +23,7 @@ function Events() {
 
   return (
     <div className="carousel-container">
-      <h2>Events</h2>
+      <h3>Events</h3>
       <div className="carousel-slider">
         <Swiper
           className="mySwiper-container"
@@ -62,7 +62,6 @@ function Events() {
                 </div>
               </div>
             ))}
-          ;
         </Swiper>
       </div>
     </div>
