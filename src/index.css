@@ -30,10 +30,32 @@ input:focus-visible {
 
 button {
   cursor: pointer;
+  background-color: transparent;
+  border: 0;
 }
 
 /* Suppression du style des balises ul li par défaut */
 
 ul li {
   list-style-type: none;
+}
+
+.container {
+  max-width: 1330px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.button-red {
+  text-align: center;
+  padding: 1rem 2rem;
+  background-color: #af1616;
+  color: #e5e5e5;
+  margin: 0;
+}
+
+.w-100 {
+  width: 100%;
 }
