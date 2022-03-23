@@ -10,6 +10,7 @@ import Memoire from './components/SitePages/Memoire/Memoire';
 import CommissionDesRites from './components/SitePages/CommissionDesRites/CommissionDesRites';
 import MonCompte from './components/SitePages/MonCompte';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/Memoire" element={<Memoire />} />
         <Route path="/Commission" element={<CommissionDesRites />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
