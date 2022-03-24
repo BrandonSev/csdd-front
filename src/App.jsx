@@ -12,6 +12,7 @@ import MonCompte from './components/SitePages/MonCompte';
 import Navbar from './components/Navbar';
 import EventsDashboard from './components/SitePages/EventsDashboard/EventsDashboard';
 import Footer from './components/Footer';
+import DashboardPage from './components/Dashboard/DashboardPage';
 import JobOffersDashboard from './components/SitePages/JobOffersDashboard/JobOffersDashboard';
 import VieDeLaCorpo from './components/SitePages/VieDeLaCorpo/Corpo';
 
@@ -35,6 +36,9 @@ function App() {
         <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
       </Routes>
       <Footer />
+      <Routes>
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Routes>
     </div>
   );
 }
