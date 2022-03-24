@@ -12,6 +12,7 @@ import MonCompte from './components/SitePages/MonCompte';
 import Navbar from './components/Navbar';
 import EventsDashboard from './components/SitePages/EventsDashboard/EventsDashboard';
 import Footer from './components/Footer';
+import JobOffersDashboard from './components/SitePages/JobOffersDashboard/JobOffersDashboard';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route path="/Memoire" element={<Memoire />} />
         <Route path="/Commission" element={<CommissionDesRites />} />
         <Route path="/Events-dashboard" element={<EventsDashboard />} />
-
+        <Route path="/JobOffers-dashboard" element={<JobOffersDashboard />} />
       </Routes>
       <Footer />
     </div>
