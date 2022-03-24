@@ -10,7 +10,7 @@ const options = [
   { value: 'Choice 3', label: 'Choice 3' },
 ];
 
-function eventsDashboard() {
+function jobOffersDashboard() {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -78,4 +78,4 @@ function eventsDashboard() {
   );
 }
 
-export default eventsDashboard;
+export default jobOffersDashboard;
