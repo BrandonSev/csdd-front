@@ -31,8 +31,7 @@ function Register() {
   });
 
   const [show, setShow] = useState(false);
-  const handleClick = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
     setShow(!show);
   };
 
@@ -147,70 +146,73 @@ function Register() {
                     value={formik.values.confirmPassword}
                   />
                 </li>
-                <li className="grid-li-province-name">
-                  <Input
-                    label="Nom de Province"
-                    type="text"
-                    name="province-name"
-                    id="province-name"
-                    onChange={formik.handleChange}
-                    value={formik.values.provinceName}
-                  />
-                </li>
-                <li className="grid-li-adoption-place">
-                  <Input
-                    label="Lieu d'adoption"
-                    type="text"
-                    name="adoption-place"
-                    id="adoption-place"
-                    onChange={formik.handleChange}
-                    value={formik.values.adoptionPlace}
-                  />
-                </li>
-                <li className="grid-li-adoption-date">
-                  <Input
-                    label="Date d'adoption"
-                    type="date"
-                    name="adoption-date"
-                    id="adoption-date"
-                    onChange={formik.handleChange}
-                    value={formik.values.adoptionDate}
-                  />
-                </li>
-                <li className="grid-li-room">
-                  <Input
-                    label="Chambre"
-                    type="text"
-                    name="room"
-                    id="room"
-                    disabled="disabled"
-                    onChange={formik.handleChange}
-                    value={formik.values.room}
-                  />
-                </li>
-                <li className="grid-li-reception-place">
-                  <Input
-                    label="Lieu de réception"
-                    type="text"
-                    name="reception-place"
-                    id="reception-place"
-                    disabled="disabled"
-                    onChange={formik.handleChange}
-                    value={formik.values.receptionPlace}
-                  />
-                </li>
-                <li className="grid-li-reception-date">
-                  <Input
-                    label="Date de réception"
-                    type="date"
-                    name="reception-date"
-                    id="reception-date"
-                    disabled="disabled"
-                    onClick={() => setShow(!show)}
-                    onChange={formik.handleChange}
-                    value={formik.values.receptionDate}
-                  />
-                </li>
+                {show && (
+                  <>
+                    <li className="grid-li-province-name">
+                      <Input
+                        label="Nom de Province"
+                        type="text"
+                        name="province-name"
+                        id="province-name"
+                        onChange={formik.handleChange}
+                        value={formik.values.provinceName}
+                      />
+                    </li>
+                    <li className="grid-li-adoption-place">
+                      <Input
+                        label="Lieu d'adoption"
+                        type="text"
+                        name="adoption-place"
+                        id="adoption-place"
+                        onChange={formik.handleChange}
+                        value={formik.values.adoptionPlace}
+                      />
+                    </li>
+                    <li className="grid-li-adoption-date">
+                      <Input
+                        label="Date d'adoption"
+                        type="date"
+                        name="adoption-date"
+                        id="adoption-date"
+                        onChange={formik.handleChange}
+                        value={formik.values.adoptionDate}
+                      />
+                    </li>
+                    <li className="grid-li-room">
+                      <Input
+                        label="Chambre"
+                        type="text"
+                        name="room"
+                        id="room"
+                        disabled="disabled"
+                        onChange={formik.handleChange}
+                        value={formik.values.room}
+                      />
+                    </li>
+                    <li className="grid-li-reception-place">
+                      <Input
+                        label="Lieu de réception"
+                        type="text"
+                        name="reception-place"
+                        id="reception-place"
+                        disabled="disabled"
+                        onChange={formik.handleChange}
+                        value={formik.values.receptionPlace}
+                      />
+                    </li>
+                    <li className="grid-li-reception-date">
+                      <Input
+                        label="Date de réception"
+                        type="date"
+                        name="reception-date"
+                        id="reception-date"
+                        disabled="disabled"
+                        onChange={formik.handleChange}
+                        value={formik.values.receptionDate}
+                      />
+                    </li>
+                  </>
+                )}
               </ul>
               <div className="corporate-data">
                 <Button
