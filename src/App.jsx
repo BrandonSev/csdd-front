@@ -30,7 +30,7 @@ function App() {
         <Route path="/Memoire" element={<Memoire />} />
         <Route path="/Commission" element={<CommissionDesRites />} />
         <Route path="/Events-dashboard" element={<EventsDashboard />} />
-        <Route path="/JobOffers-dashboard" element={<JobOffersDashboard />} />
+        <Route path="/jobOffers-dashboard" element={<JobOffersDashboard />} />
       </Routes>
       <Footer />
     </div>
