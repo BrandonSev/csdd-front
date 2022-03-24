@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
           <ul className="navbar-menu">
             <li>
-              <NavLink to="/memoire">Vie de la corporation</NavLink>
+              <NavLink to="/vie-de-la-corpo">Vie de la corporation</NavLink>
             </li>
             <li>
               <NavLink to="/memoire">Memoire</NavLink>
