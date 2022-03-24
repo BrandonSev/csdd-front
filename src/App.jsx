@@ -26,10 +26,9 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/formation" element={<Formation />} />
         <Route path="/mon-compte" element={<MonCompte />} />
-        <Route path="/Memoire" element={<Memoire />} />
-        <Route path="/Commission" element={<CommissionDesRites />} />
+        <Route path="/memoire" element={<Memoire />} />
+        <Route path="/commission" element={<CommissionDesRites />} />
         <Route path="/Events-dashboard" element={<EventsDashboard />} />
-
       </Routes>
       <Footer />
     </div>
