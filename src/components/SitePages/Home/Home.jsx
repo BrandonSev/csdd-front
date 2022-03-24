@@ -17,7 +17,7 @@ function Home() {
       <div className="content">
         <h1>CSDD</h1>
         <h2>Compagnons Serrurier Du Devoir</h2>
-        <NavLink to="/LoginPage" className="button-yellow" type="button">
+        <NavLink to="/Login" className="button-yellow" type="button">
           Entrer
         </NavLink>
       </div>
