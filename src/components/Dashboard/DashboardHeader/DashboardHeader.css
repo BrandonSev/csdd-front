@@ -1,0 +1,8 @@
+.dashboard-header {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 2.5rem 1rem;
+  background-color: #fff;
+}

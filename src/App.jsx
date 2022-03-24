@@ -12,6 +12,7 @@ import MonCompte from './components/SitePages/MonCompte';
 import Navbar from './components/Navbar';
 import EventsDashboard from './components/SitePages/EventsDashboard/EventsDashboard';
 import Footer from './components/Footer';
+import DashboardPage from './components/Dashboard/DashboardPage';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         <Route path="/Events-dashboard" element={<EventsDashboard />} />
       </Routes>
       <Footer />
+      <Routes>
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Routes>
     </div>
   );
 }
