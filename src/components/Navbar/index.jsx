@@ -55,7 +55,7 @@ const Navbar = () => {
       <div className={`navbar-wrapper-mobile ${open ? 'open' : ''}`}>
         <ul className={`navbar-mobile ${open ? 'open' : ''}`}>
           <li>
-            <NavLink to="/memoire" onClick={handleClick}>
+            <NavLink to="/vie-de-la-corpo" onClick={handleClick}>
               Vie de la corporation
             </NavLink>
           </li>
