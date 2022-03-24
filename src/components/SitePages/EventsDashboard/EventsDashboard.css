@@ -1,7 +1,3 @@
-.evenementDashboard-container {
-  margin: 0 4vw;
-}
-
 .event-title {
   font-size: 5vw;
   text-align: center;
@@ -12,8 +8,43 @@
   margin-top: 3vw;
 }
 
+.evenementDashboard-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.SelectComponent-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.eventsBtn-container {
+  position: relative;
+  margin-top: 2vw;
+}
+
 .css-6j8wv5-Input {
   height: 2vw;
+}
+
+.Events-btn {
+  width: 100%;
+  height: 100%;
+  background: #af1616;
+}
+
+.btn-event {
+  height: 11vw;
+}
+
+.css-b62m3t-container {
+  z-index: -1;
+}
+
+.button-name {
+  font-size: 6vw;
 }
 
 @media (min-width: 600px) {
@@ -21,7 +52,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    margin: 0 8vw;
+    margin: 0 7vw;
   }
 
   .SelectComponent-container {
@@ -36,7 +67,7 @@
   }
 
   .selectComponant {
-    font-size: 2vw;
+    font-size: 1vw;
     margin-top: 3vw;
   }
 
@@ -56,6 +87,10 @@
     margin-top: 5vw;
   }
 
+  .events-Input h1 {
+    font-size: 1.5vw;
+  }
+
   .events-Input input {
     border-color: #ccc;
   }
@@ -68,7 +103,7 @@
     grid-row-gap: 1vw;
     position: relative;
     width: 20vw;
-    left: 39vw;
+    left: 34vw;
     top: 2vw;
   }
 
@@ -80,5 +115,9 @@
 
   .btn-event {
     height: 2vw;
+  }
+
+  .button-name {
+    font-size: 1vw;
   }
 }
