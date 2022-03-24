@@ -68,7 +68,7 @@
     grid-row-gap: 1vw;
     position: relative;
     width: 20vw;
-    left: 62.5vw;
+    left: 39vw;
     top: 2vw;
   }
 
@@ -76,6 +76,9 @@
     width: 100%;
     height: 100%;
     background: #af1616;
-    margin-top: 2vw;
+  }
+
+  .btn-event {
+    height: 2vw;
   }
 }
