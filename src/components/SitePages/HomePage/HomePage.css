@@ -2,17 +2,22 @@ h3{
   padding-bottom: 1rem;
 }
 
-.container{
+/* bordure du site */
+
+ .homePage  {
   padding-left:1rem;
   padding-right:1rem;
 }
 
+/* grille de la page */
 .container-homePage {
   display:grid;
   grid-template-columns: 100%;
   grid-template-rows: repeat(4, 25%);
   gap:2rem 1rem;
 }
+
+/* container des parties de page */
 
 .container-events{
   grid-row:1;

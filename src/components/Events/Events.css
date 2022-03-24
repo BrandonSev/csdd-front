@@ -25,29 +25,3 @@
   width:100%;
   margin:auto;
 }
-
-.swiper-button-next{
-color:green;
-}
-
-.swiper-button-prev{
-color:red;
-}
-
-  /* @media screen and (min-width: 768px) {
-  .mySwiper-container {
-  height: 30vh;
-}
-.mySwiper-container img {
-  height:30vh;
-}
-}
-
-  @media screen and (min-width: 1024px) {
-  .mySwiper-container {
-  height: 40vh;
-}
-.mySwiper-container img {
-  height:40vh;
-}
-  } */
