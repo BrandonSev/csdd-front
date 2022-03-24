@@ -3,7 +3,6 @@ import { useFormik } from 'formik';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
-import DashboardPage from '../../Dashboard/DashboardPage';
 import DashboardBody from '../../Dashboard/DashboardBody/index';
 import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
@@ -69,7 +68,7 @@ function eventsDashboard() {
               value={formik.values.Link}
             />
             <div className="eventsBtn-container">
-              <div></div>
+              <div />
               <div className="btn-event">
                 <Button className="Events-btn" buttonName="Valider" />
               </div>
