@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { BiUser } from 'react-icons/bi';
 
@@ -29,6 +29,12 @@ function Register() {
       receptionDate: '',
     },
   });
+
+  const [show, setShow] = useState(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShow(!show);
+  };
 
   return (
     <>
@@ -200,6 +206,7 @@ function Register() {
                     name="reception-date"
                     id="reception-date"
                     disabled="disabled"
+                    onClick={() => setShow(!show)}
                     onChange={formik.handleChange}
                     value={formik.values.receptionDate}
                   />
@@ -209,6 +216,7 @@ function Register() {
                 <Button
                   className="button-red"
                   buttonName="Données corporation"
+                  onClick={handleClick}
                 />
               </div>
               <div className="register">
