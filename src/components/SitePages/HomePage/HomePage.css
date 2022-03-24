@@ -1,7 +1,19 @@
+h3{
+  padding-bottom: 1rem;
+}
+
+/* bordure du site */
+
+ .homePage  {
+  padding-left:1rem;
+  padding-right:1rem;
+}
+
+/* grille de la page */
 .container-homePage {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: repeat(4, 25%);
+  grid-template-rows: repeat(4, 1fr);
   gap: 2rem 1rem;
 }
 
@@ -22,4 +34,14 @@
 
 .container-medias {
   width: 30%;
+}
+
+@media screen and (min-width: 768px){
+  .container-homePage {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 35% 20% 25% 20%;
+  gap: 2rem 1rem;
+}
+  
 }

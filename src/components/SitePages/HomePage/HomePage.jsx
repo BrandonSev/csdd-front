@@ -15,7 +15,7 @@ function HomePage() {
   };
 
   return (
-    <div className="container">
+    <div className="container homePage">
       <div className="container-homePage">
         <div className="container-events">
           <Events />
