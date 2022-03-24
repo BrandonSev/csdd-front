@@ -48,6 +48,10 @@ a {
   cursor: pointer;
 }
 
+h3 {
+  padding-bottom: 1rem;
+}
+
 .container {
   max-width: 1330px;
   margin: 0 auto;
