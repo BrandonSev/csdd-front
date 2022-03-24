@@ -11,31 +11,27 @@ h3{
 
 /* grille de la page */
 .container-homePage {
-  display:grid;
+  display: grid;
   grid-template-columns: 100%;
   grid-template-rows: repeat(4, 25%);
-  gap:2rem 1rem;
+  gap: 2rem 1rem;
 }
 
-/* container des parties de page */
-
-.container-events{
-  grid-row:1;
+.container-events {
+  grid-row: 1;
 }
 
-.news{
-  display:flex;
+.news {
+  display: flex;
   width: 100%;
   max-height: 30vh;
 }
 
 .container-info {
-  width:70%;
+  width: 70%;
   margin-right: 1rem;
 }
 
-.container-medias{
-  width:30%;
+.container-medias {
+  width: 30%;
 }
-
-

@@ -3,6 +3,7 @@ import React from 'react';
 import './Input.css';
 
 function Input({
+  labelClassName,
   label,
   type,
   required,
@@ -13,7 +14,7 @@ function Input({
   disabled,
 }) {
   return (
-    <label htmlFor={name}>
+    <label htmlFor={name} className={labelClassName}>
       {label}
       <input
         type={type}
