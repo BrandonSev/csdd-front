@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
           <ul className="navbar-menu">
             <li>
-              <NavLink to="/memoire">Vie de la corporation</NavLink>
+              <NavLink to="/vie-de-la-corpo">Vie de la corporation</NavLink>
             </li>
             <li>
               <NavLink to="/memoire">Memoire</NavLink>
@@ -55,7 +55,7 @@ const Navbar = () => {
       <div className={`navbar-wrapper-mobile ${open ? 'open' : ''}`}>
         <ul className={`navbar-mobile ${open ? 'open' : ''}`}>
           <li>
-            <NavLink to="/memoire" onClick={handleClick}>
+            <NavLink to="/vie-de-la-corpo" onClick={handleClick}>
               Vie de la corporation
             </NavLink>
           </li>
