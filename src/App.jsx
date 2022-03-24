@@ -13,6 +13,8 @@ import Navbar from './components/Navbar';
 import EventsDashboard from './components/SitePages/EventsDashboard/EventsDashboard';
 import Footer from './components/Footer';
 import DashboardPage from './components/Dashboard/DashboardPage';
+import JobOffersDashboard from './components/SitePages/JobOffersDashboard/JobOffersDashboard';
+import VieDeLaCorpo from './components/SitePages/VieDeLaCorpo/Corpo';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path="/memoire" element={<Memoire />} />
         <Route path="/commission" element={<CommissionDesRites />} />
         <Route path="/Events-dashboard" element={<EventsDashboard />} />
+        <Route path="/jobOffers-dashboard" element={<JobOffersDashboard />} />
+        <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
       </Routes>
       <Footer />
       <Routes>
