@@ -39,13 +39,11 @@
 }
 
 .home h1 {
-  font-size: 45px;
   color: #e5e5e5;
   z-index: 1;
 }
 
 .home h2 {
-  font-size: 40px;
   color: #e5e5e5;
   z-index: 1;
 }
@@ -54,7 +52,6 @@
   display: block;
   width: 375px;
   height: 55px;
-  font-size: 35px;
   font-weight: bold;
   z-index: 1;
   margin: 1vh auto 2vh;

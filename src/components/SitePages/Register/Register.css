@@ -70,17 +70,6 @@
   margin: 1vh auto 2vh;
 }
 
-/* Masquer les données de corporation par défaut */
-
-/* .grid-li-province-name,
-.grid-li-adoption-place,
-.grid-li-adoption-date,
-.grid-li-room,
-.grid-li-reception-place,
-.grid-li-reception-date {
-  display: none;
-} */
-
 /* Média Queries - Adaptation sur écran de plus de 768px de large */
 
 @media screen and (min-width: 768px) {
@@ -100,6 +89,10 @@
 
   .wrapper-register {
     width: 74%;
+  }
+
+  .corporate-data button {
+    width: 50%;
   }
 }
 

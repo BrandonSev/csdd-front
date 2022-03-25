@@ -1,0 +1,7 @@
+.container-message {
+  width: 100%;
+}
+
+.container-message .datetime {
+  font-style: italic;
+}

@@ -12,9 +12,9 @@ import MonCompte from './components/SitePages/MonCompte';
 import Navbar from './components/Navbar';
 import EventsDashboard from './components/SitePages/EventsDashboard/EventsDashboard';
 import Footer from './components/Footer';
-import DashboardPage from './components/Dashboard/DashboardPage';
 import JobOffersDashboard from './components/SitePages/JobOffersDashboard/JobOffersDashboard';
 import VieDeLaCorpo from './components/SitePages/VieDeLaCorpo/Corpo';
+import DashboardMessage from './components/DashboardMessage/DashboardMessage';
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
       </Routes>
       <Footer />
       <Routes>
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard/message" element={<DashboardMessage />} />
       </Routes>
     </div>
   );
