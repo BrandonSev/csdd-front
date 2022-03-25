@@ -32,8 +32,8 @@ function App() {
         <Route path="/mon-compte" element={<MonCompte />} />
         <Route path="/memoire" element={<Memoire />} />
         <Route path="/commission" element={<CommissionDesRites />} />
-        <Route path="/Events-dashboard" element={<EventsDashboard />} />
-        <Route path="/jobOffers-dashboard" element={<JobOffersDashboard />} />
+        <Route path="/Dashboard/Events" element={<EventsDashboard />} />
+        <Route path="/Dashboard/JobOffers" element={<JobOffersDashboard />} />
         <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
       </Routes>
       <Footer />

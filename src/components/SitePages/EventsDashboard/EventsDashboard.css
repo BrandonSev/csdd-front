@@ -43,10 +43,6 @@
   z-index: -1;
 }
 
-.button-name {
-  font-size: 6vw;
-}
-
 @media (min-width: 600px) {
   .evenementDashboard-container {
     display: grid;
@@ -111,10 +107,6 @@
 
   .btn-event {
     height: 2vw;
-  }
-
-  .button-name {
-    font-size: 1vw;
   }
 
   .css-tj5bde-Svg {
