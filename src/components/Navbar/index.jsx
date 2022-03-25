@@ -17,7 +17,7 @@ const Navbar = () => {
           <div className="navbar-logo">
             <NavLink to="/home" onClick={handleClick}>
               <img
-                src="assets/logo-detoure-noir.png"
+                src="/assets/logo-detoure-noir.png"
                 alt="logo detoure noir"
                 width={50}
               />
