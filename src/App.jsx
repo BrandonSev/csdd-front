@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import DashboardPage from './components/Dashboard/DashboardPage';
 import JobOffersDashboard from './components/SitePages/JobOffersDashboard/JobOffersDashboard';
 import VieDeLaCorpo from './components/SitePages/VieDeLaCorpo/Corpo';
+import UserDashboard from './components/SitePages/UserDashboard';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
       <Footer />
       <Routes>
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard/users" element={<UserDashboard />} />
       </Routes>
     </div>
   );
