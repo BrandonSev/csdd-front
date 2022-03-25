@@ -87,10 +87,6 @@
     margin-top: 5vw;
   }
 
-  .events-Input h1 {
-    font-size: 1.5vw;
-  }
-
   .events-Input input {
     border-color: #ccc;
   }
@@ -119,5 +115,14 @@
 
   .button-name {
     font-size: 1vw;
+  }
+
+  .css-tj5bde-Svg {
+    border: 1px solid black;
+    border-radius: 100%;
+  }
+
+  .css-tlfecz-indicatorContainer {
+    color: hsl(0deg 0% 0%);
   }
 }
