@@ -10,7 +10,6 @@ import './Books.css';
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 function Books() {
-  
   return (
     <div className="carousel-container-books">
       <h3>Books</h3>
@@ -22,8 +21,6 @@ function Books() {
           slidesPerView={2}
           navigation
           pagination={{ clickable: true }}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
           loop
           autoplay
           centeredSlides={false}

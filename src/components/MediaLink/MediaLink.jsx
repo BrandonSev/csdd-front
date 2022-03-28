@@ -10,6 +10,7 @@ function MediaLink() {
           href="https://fr-fr.facebook.com/pages/category/Community/Echo-de-lEnclume-1712717015659831/"
           title="Echo de l Enclume"
           target="_blank"
+          rel="noreferrer"
         />
         <img className="image-media" src="#" alt="Echo de l'enclume" />
         <p>Echo de l enclume</p>
@@ -18,6 +19,7 @@ function MediaLink() {
           href="https://twitter.com/les_compagnons?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
           title="Les Compagnons"
           target="_blank"
+          rel="noreferrer"
         />
         <img
           className="image-media"
