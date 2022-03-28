@@ -34,7 +34,9 @@
 }
 
 .navbar .navbar-wrapper-mobile.open {
-  height: calc((3 * 43px) + 19px + 6rem); /* 4element dans le menu , le dernier pas de padding, donc 3 * hauteur du <li> + 19 = dernier li sans le padding + 6rem qui correspond au padding du parent */
+  height: calc(
+    (3 * 43px) + 19px + 6rem
+  ); /* 4element dans le menu , le dernier pas de padding, donc 3 * hauteur du <li> + 19 = dernier li sans le padding + 6rem qui correspond au padding du parent */
 }
 
 .navbar .wrapper-navbar .burger {

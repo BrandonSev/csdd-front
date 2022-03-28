@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import HomePage from './components/SitePages/HomePage/HomePage';
@@ -16,31 +16,45 @@ import JobOffersDashboard from './components/SitePages/JobOffersDashboard/JobOff
 import VieDeLaCorpo from './components/SitePages/VieDeLaCorpo/Corpo';
 import DashboardMessage from './components/DashboardMessage/DashboardMessage';
 import UserDashboard from './components/SitePages/UserDashboard';
+import MediaDashboard from './components/SitePages/MediaDashboard';
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedInAdmin, setLoggedInAdmin] = useState(true);
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-      <Navbar />
-      <Routes>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/formation" element={<Formation />} />
-        <Route path="/mon-compte" element={<MonCompte />} />
-        <Route path="/memoire" element={<Memoire />} />
-        <Route path="/commission" element={<CommissionDesRites />} />
-        <Route path="/Dashboard/Events" element={<EventsDashboard />} />
-        <Route path="/Dashboard/JobOffers" element={<JobOffersDashboard />} />
-        <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
-      </Routes>
-      <Footer />
-      <Routes>
-        <Route path="/dashboard/message" element={<DashboardMessage />} />
-        <Route path="/dashboard/users" element={<UserDashboard />} />
-      </Routes>
+      {loggedIn && !loggedInAdmin ? (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/formation" element={<Formation />} />
+            <Route path="/memoire" element={<Memoire />} />
+            <Route path="/commission" element={<CommissionDesRites />} />
+            <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
+            <Route path="/mon-compte" element={<MonCompte />} />
+          </Routes>
+          <Footer />
+        </>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      )}
+      {loggedIn && loggedInAdmin && (
+        <Routes>
+          <Route path="/dashboard/message" element={<DashboardMessage />} />
+          <Route path="/dashboard/utilisateurs" element={<UserDashboard />} />
+          <Route path="/dashboard/medias" element={<MediaDashboard />} />
+          <Route path="/dashboard/evenements" element={<EventsDashboard />} />
+          <Route
+            path="/dashboard/offre-embauche"
+            element={<JobOffersDashboard />}
+          />
+        </Routes>
+      )}
     </div>
   );
 }

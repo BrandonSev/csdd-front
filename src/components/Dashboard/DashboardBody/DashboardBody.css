@@ -5,7 +5,7 @@
   padding-bottom: 2rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .dashboard-body {
     padding-top: calc(99px + 2.5rem);
     padding-left: calc(400px + 2.5rem);

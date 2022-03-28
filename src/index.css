@@ -19,11 +19,6 @@ input {
   display: flex;
 }
 
-input:disabled {
-  background-color: #e5e5e5;
-  border: 2px solid #af1616;
-}
-
 input:focus-visible {
   outline: #af1616 auto 1px;
 }
@@ -79,6 +74,10 @@ h3 {
 
 .w-100 {
   width: 100%;
+}
+
+.active {
+  background-color: #af1616;
 }
 
 @media screen and (min-width: 1024px) {

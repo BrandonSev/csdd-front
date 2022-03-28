@@ -1,30 +1,30 @@
-import React from 'react'
-import "./UserDashboard.css"
-import Dashboard from "../../Dashboard"
-import DashboardMenu from "../../Dashboard/DashboardMenu"
-import DashboardHeader from "../../Dashboard/DashboardHeader"
-import DashboardBody from "../../Dashboard/DashboardBody"
-import Button from "../../Button/Button"
-import Input from "../../Input/Input"
+import React from 'react';
+import './UserDashboard.css';
+import Dashboard from '../../Dashboard';
+import DashboardMenu from '../../Dashboard/DashboardMenu';
+import DashboardHeader from '../../Dashboard/DashboardHeader';
+import DashboardBody from '../../Dashboard/DashboardBody';
+import Button from '../../Button/Button';
+import Input from '../../Input/Input';
 
 function UserDashboard() {
   return (
     <Dashboard>
-      <DashboardMenu active="user"/>
+      <DashboardMenu active="user" />
       <DashboardHeader />
       <DashboardBody>
         <div className="dashboard-user-title">
           <h1>Utilisateurs</h1>
-          <Button className="button-yellow" buttonName="Supprimer ce compte"/>
+          <Button className="button-yellow" buttonName="Supprimer ce compte" />
         </div>
         <div className="dashboard-user-search">
           <div className="user-avatar">
-            <img src="/assets/logo-detoure-noir.png" width={"20%"} alt="avatar" />
+            <img src="/assets/logo-detoure-noir.png" width="20%" alt="avatar" />
           </div>
           <div className="search-wrapper">
-            <Input label="Prénom"/>
-            <Input label="Nom"/>
-            <Input type="date" label="Date de naissance"/>
+            <Input label="Prénom" />
+            <Input label="Nom" />
+            <Input type="date" label="Date de naissance" />
             <Button buttonName="Valider" className="button-red" />
           </div>
         </div>
@@ -35,12 +35,12 @@ function UserDashboard() {
               <div className="cotisation">
                 <p>Cotisation à jour: </p>
                 <div className="cotisation-checkbox">
-                  <Input label="Oui" type={"checkbox"}/>
-                  <Input label="Non" type={"checkbox"}/>
+                  <Input label="Oui" type="checkbox" />
+                  <Input label="Non" type="checkbox" />
                 </div>
               </div>
             </div>
-            <form action="#" className='form-info-perso'>
+            <form action="#" className="form-info-perso">
               <Input label="Nom: " />
               <Input label="Prénom: " />
               <Input label="Date de naissance: " />
@@ -56,7 +56,7 @@ function UserDashboard() {
             <div className="title">
               <h3>Donnees corporations</h3>
             </div>
-            <form action="#" className='form-info-corpo'>
+            <form action="#" className="form-info-corpo">
               <Input label="Nom de province:" />
               <Input label="Lieu d'adoption" />
               <Input label="Date d'adoption" />
@@ -69,7 +69,7 @@ function UserDashboard() {
         </div>
       </DashboardBody>
     </Dashboard>
-  )
+  );
 }
 
-export default UserDashboard
+export default UserDashboard;
