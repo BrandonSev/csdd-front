@@ -1,0 +1,28 @@
+.wrapper-message {
+  background-color: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(51, 51, 51, 19%);
+}
+
+.wrapper-message .avatar-name {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper-message .avatar-name svg {
+  margin-right: 1rem;
+}
+
+.wrapper-message .datetime {
+  font-style: italic;
+}
+
+/* Média Queries - Adaptation sur écran de plus de 768px de large */
+
+@media screen and (min-width: 992px) {
+  .wrapper-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
