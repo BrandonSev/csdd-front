@@ -8,12 +8,6 @@ import DashboardMenu from '../../Dashboard/DashboardMenu';
 import DashboardHeader from '../../Dashboard/DashboardHeader';
 import DashboardBody from '../../Dashboard/DashboardBody';
 
-const options = [
-  { value: 'Choice 1', label: 'Choice 1' },
-  { value: 'Choice 2', label: 'Choice 2' },
-  { value: 'Choice 3', label: 'Choice 3' },
-];
-
 function jobOffersDashboard() {
   const formik = useFormik({
     initialValues: {
@@ -29,12 +23,13 @@ function jobOffersDashboard() {
       <DashboardHeader />
       <DashboardBody>
         <div className="evenementDashboard-container">
-          <h1 className="event-title">Les offres d&#39;embauches</h1>
-          <SelectComponant
-            options={options}
-            label="Selectionner un Job"
-            className="selectComponant"
-          />
+          <div className="select-jobOffers">
+            <h1 className="event-title">Les offres d&#39;embauches</h1>
+            <div className="jobOffers-select">
+              <p>Séléctionner un Poste</p>
+              <SelectComponant />
+            </div>
+          </div>
           <div className="events-Input">
             <h1>Ajouter une offre</h1>
             <Input
