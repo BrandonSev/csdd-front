@@ -1,27 +1,29 @@
-/* Container Swiper */
-/* .mySwiper-container {
-  /* width: 100%; */
-  /* height: 20vh; */
-/* } */
-
 /* container du slider carousel */
 .carousel-slider {
-  width:100%;
-  margin:auto;
-  height:auto;
+  width: 100%;
+  margin: auto;
+  height: auto;
 }
 
-.mySwiper-container img {
-  height:20vh;
+.container-events .mySwiper-container img {
+  height:300px;
   width: 100%;
-}  
+}
 
-  .swiper-pagination{
-  position:absolute;
+.swiper-pagination {
+  position: absolute;
 }
 
 /* Les slides du carousel */
-.swiper-slide img{
-  width:100%;
-  margin:auto;
+.swiper-slide img {
+  width: 100%;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container-events.swiper-slide img {
+    width: 100%;
+    margin: auto;
+    height: 430px;
+  }
 }
