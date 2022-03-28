@@ -39,10 +39,6 @@
   height: 11vw;
 }
 
-.css-b62m3t-container {
-  z-index: -1;
-}
-
 @media (min-width: 600px) {
   .evenementDashboard-container {
     display: grid;
