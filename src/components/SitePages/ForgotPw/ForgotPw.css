@@ -1,0 +1,138 @@
+/* Positionnement du logo */
+
+.logo {
+  position: absolute;
+  width: 30px;
+  left: 0.25rem;
+  top: 0.25rem;
+}
+
+/* Container global forgot password */
+
+.container-form-forgot-pw {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Container forgot password */
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.right .button-yellow {
+  padding: 1rem 1rem;
+}
+
+/* Stylisation bouton */
+
+.forgot-pw button {
+  margin: 0 auto 2rem;
+}
+
+.forgot-pw {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Stylisation du formulaire forgot password */
+
+.formulaire-forgot-pw {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 100vh;
+  background-color: #adadad;
+}
+
+.wrapper-forgot-pw {
+  width: 85%;
+  margin: 6vh auto 2rem;
+}
+
+.wrapper-forgot-pw h1 {
+  margin: 0 auto 4rem;
+}
+
+/* Marge sur les labels et inputs */
+
+.wrapper-forgot-pw label {
+  margin: 1rem 0;
+}
+
+.wrapper-forgot-pw input {
+  margin: 1rem auto 2rem;
+}
+
+/* Média Queries - Adaptation sur écran de plus de 768px de large */
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 60px;
+    left: 0.5rem;
+    top: 0.5rem;
+  }
+
+  .right {
+    width: 20%;
+  }
+
+  .right button {
+    padding: 1rem 2rem;
+  }
+
+  .form-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .forgot-pw button {
+    margin: 0 0 2rem 2rem;
+  }
+
+  .formulaire-forgot-pw {
+    width: 80%;
+  }
+
+  .wrapper-forgot-pw {
+    width: 74%;
+    flex-direction: row;
+  }
+
+  .wrapper-forgot-pw input {
+    width: 22.5rem;
+  }
+}
+
+/* Média Queries - Adaptation sur écran de plus de 1024px de large */
+
+@media screen and (min-width: 1024px) {
+  .logo {
+    width: 90px;
+    left: 0.75rem;
+    top: 0.75rem;
+  }
+
+  .right {
+    width: 20%;
+  }
+
+  .formulaire-forgot-pw {
+    width: 80%;
+  }
+
+  .wrapper-forgot-pw {
+    width: 71%;
+  }
+
+  .wrapper-forgot-pw input {
+    width: 32.5rem;
+  }
+}

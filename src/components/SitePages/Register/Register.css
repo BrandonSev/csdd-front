@@ -23,6 +23,10 @@
   width: 30%;
 }
 
+.right .button-yellow {
+  padding: 1rem 1rem;
+}
+
 /* Stylisation bouton */
 
 .corporate-data button {
@@ -81,6 +85,10 @@
 
   .right {
     width: 20%;
+  }
+
+  .right button {
+    padding: 1rem 2rem;
   }
 
   .formulaire-register {
