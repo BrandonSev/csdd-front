@@ -28,6 +28,12 @@ function HomePage() {
               buttonName="Afficher"
               onClick={handleClickPdf}
             />
+            <Button
+              className="button-yellow"
+              buttonName="Fermer"
+              onClick={!handleClickPdf}
+            />
+
             {displayPdf && (
               <ModalInfo onClick={() => setDisplayPdf(!displayPdf)} />
             )}

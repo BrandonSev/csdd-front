@@ -20,6 +20,10 @@
   margin: auto;
 }
 
+.carousel-slider .swiper {
+height:330px;
+}
+
 @media screen and (min-width: 768px) {
   .container-events.swiper-slide img {
     width: 100%;
