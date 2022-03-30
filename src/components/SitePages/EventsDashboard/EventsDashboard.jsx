@@ -15,7 +15,21 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 function eventsDashboard() {
   const [events, setEvents] = useState([]);
   const [selectedValue, setSelectedValue] = useState({});
+  const [selectedImage, setSelectedImage] = useState({});
 
+  /**
+   * It takes in an event object and sets the selectedImage state to the file that was selected
+   */
+  const imageChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage({
+        file: e.target.files[0],
+        image: URL.createObjectURL(e.target.files[0]),
+      });
+    }
+  };
+
+  /* It's creating a formik object that will be used to validate the form. */
   const formik = useFormik({
     initialValues: {
       event_date: selectedValue.event_date ? selectedValue.event_date : '',
@@ -78,11 +92,25 @@ function eventsDashboard() {
             </div>
             <div className="event-image-container">
               <p>séléctionner un image</p>
-              <input type="file" className="ignores-input-style" />
-              {selectedValue.filename && (
+              <input
+                type="file"
+                className="ignores-input-style"
+                accept="image/*"
+                onChange={imageChange}
+              />
+              {/* It's creating a URL for the image that is being uploaded. */}
+              {selectedValue.filename && !selectedImage.image ? (
                 <img
                   className="event_image"
                   src={`${API_URL}/images/${selectedValue.filename}`}
+                  alt=""
+                  width={150}
+                />
+              ) : (
+                <img
+                  className="event_image"
+                  /* It's creating a URL for the image that is being uploaded. */
+                  src={selectedImage.image}
                   alt=""
                   width={150}
                 />

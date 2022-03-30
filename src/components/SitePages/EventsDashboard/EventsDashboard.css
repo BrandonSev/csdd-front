@@ -13,9 +13,6 @@
   margin-top: 2vw;
 }
 
-.ignores-input-style {
-}
-
 @media (min-width: 600px) {
   .evenementDashboard-container {
     display: grid;
