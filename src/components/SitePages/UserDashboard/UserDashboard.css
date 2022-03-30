@@ -48,7 +48,12 @@
   justify-content: space-between;
 }
 
-.dashboard-user-content .info-perso .cotisation .cotisation-checkbox label input {
+.dashboard-user-content
+  .info-perso
+  .cotisation
+  .cotisation-checkbox
+  label
+  input {
   margin: 0 !important;
   margin-left: 0.5rem !important;
 }
@@ -58,6 +63,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  align-items: flex-end;
 }
 
 .dashboard-user-content .form-info-perso button {
@@ -73,6 +79,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  align-items: flex-end;
 }
 
 .dashboard-user-content .form-info-corpo button {
@@ -108,7 +115,6 @@
   .dashboard-user-search .search-wrapper button {
     max-height: inherit;
     margin-top: auto;
-    margin-bottom: 8px;
   }
 
   .dashboard-user-content .form-info-perso {
@@ -131,5 +137,11 @@
     grid-column: 3;
     max-height: inherit;
     margin-top: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .dashboard-user-search .search-wrapper button {
+    margin-bottom: 8px;
   }
 }

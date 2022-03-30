@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import "./DashboardMenu.css"
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import './DashboardMenu.css';
 
 function DashboardMenu() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <div className={`dashboard-menu ${open ? 'open' : ''}`}>
@@ -12,32 +12,38 @@ function DashboardMenu() {
       </div>
       <ul className="dashboard-menu-list">
         <li>
-          <NavLink to="">Utilisateurs</NavLink>
+          <NavLink to="/dashboard/utilisateurs">Utilisateurs</NavLink>
         </li>
         <li>
-          <NavLink to="">Evenements</NavLink>
+          <NavLink to="/dashboard/evenements">Evenements</NavLink>
         </li>
         <li>
-          <NavLink to="">Les offres d'embauches</NavLink>
+          <NavLink to="/dashboard/offre-embauche">
+            Les offres d'embauches
+          </NavLink>
         </li>
         <li>
-          <NavLink to="">Informations compagnon</NavLink>
+          <NavLink to="/dashboard/compagnon">Informations compagnon</NavLink>
         </li>
         <li>
-          <NavLink to="">Livres métiers</NavLink>
+          <NavLink to="/dashboard/metiers">Livres métiers</NavLink>
         </li>
         <li>
-          <NavLink to="">Médias</NavLink>
+          <NavLink to="/dashboard/medias">Médias</NavLink>
         </li>
       </ul>
       <div className="burger-wrapper">
-        <button onClick={() => setOpen(!open)} className={`burger ${open ? 'open' : ''}`}>
-        <span />
-        <span />
-      </button>
+        <button
+          onClick={() => setOpen(!open)}
+          className={`burger ${open ? 'open' : ''}`}
+          type="button"
+        >
+          <span />
+          <span />
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default DashboardMenu
+export default DashboardMenu;

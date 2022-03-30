@@ -1,10 +1,8 @@
 .event-title {
-  font-size: 5vw;
   text-align: center;
 }
 
 .selectComponant {
-  font-size: 4vw;
   margin-top: 3vw;
 }
 
@@ -25,10 +23,6 @@
   margin-top: 2vw;
 }
 
-.css-6j8wv5-Input {
-  height: 2vw;
-}
-
 .Events-btn {
   width: 100%;
   height: 100%;
@@ -39,8 +33,8 @@
   height: 11vw;
 }
 
-.css-b62m3t-container {
-  z-index: -1;
+.button-name {
+  color: white;
 }
 
 @media (min-width: 600px) {
@@ -48,7 +42,6 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    margin: 0 7vw;
   }
 
   .SelectComponent-container {
@@ -58,25 +51,18 @@
   }
 
   .event-title {
-    font-size: 2vw;
-    text-align: center;
+    text-align: left;
   }
 
   .selectComponant {
-    font-size: 1vw;
     margin-top: 3vw;
-  }
-
-  .css-6j8wv5-Input {
-    height: 2vw;
   }
 
   .events-Input label {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 1fr);
     margin-top: 2vw;
-    font-weight: bold;
   }
 
   .events-Input {
@@ -84,7 +70,8 @@
   }
 
   .events-Input input {
-    border-color: #ccc;
+    border-color: #fca311;
+    grid-column: span 2;
   }
 
   .eventsBtn-container {
@@ -95,8 +82,9 @@
     grid-row-gap: 1vw;
     position: relative;
     width: 20vw;
-    left: 34vw;
+    left: 55vw;
     top: 2vw;
+    margin-bottom: 2vw;
   }
 
   .Events-btn {
@@ -109,12 +97,50 @@
     height: 2vw;
   }
 
-  .css-tj5bde-Svg {
-    border: 1px solid black;
-    border-radius: 100%;
+  select {
+    width: 100%;
+    border: 2px solid #fca311;
+    height: 50px;
   }
 
-  .css-tlfecz-indicatorContainer {
-    color: hsl(0deg 0% 0%);
+  .select-evenement {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .select-jobOffers {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .events-select,
+  .jobOffers-select {
+    margin-left: 52%;
+  }
+
+  .event-image-container {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: repeat(1, 1fr);
+    margin-top: 2vw;
+  }
+
+  .event-image-container select {
+    grid-column: span 2;
+  }
+
+  #Text {
+    height: 6vw;
+    grid-column: span 2;
+    border: 2px solid #fca311;
+  }
+
+  .event-text-container {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: repeat(1, 1fr);
+    margin-top: 2vw;
   }
 }

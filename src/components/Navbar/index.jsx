@@ -37,7 +37,7 @@ const Navbar = () => {
               <NavLink to="/commission">Commission de rîtes</NavLink>
             </li>
           </ul>
-          <div className="avatar-logo" onClick={handleClick}>
+          <div className="avatar-logo" onClick={handleClick} onKeyUp={handleClick}>
             <NavLink to="/mon-compte">
               <FiUser size={20} />
             </NavLink>

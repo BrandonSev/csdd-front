@@ -1,12 +1,13 @@
-import React from 'react';
-import Select from 'react-select';
+import React, { useState } from 'react';
 
-function SelectComponant({ className, options, label }) {
+function SelectComponant() {
+  const [selection, setSelection] = useState('');
   return (
-    <div className="SelectComponent-container">
-      <h1 className={`${className}`}>{label}</h1>
-      <Select className={`${className}`} options={options} />
-    </div>
+    <>
+      <select>
+        <option value={selection}></option>
+      </select>
+    </>
   );
 }
 

@@ -24,6 +24,7 @@ function UserDashboard() {
               width={'20%'}
               alt="avatar"
             />
+
           </div>
           <div className="search-wrapper">
             <Input label="Prénom" />
@@ -41,6 +42,7 @@ function UserDashboard() {
                 <div className="cotisation-checkbox">
                   <Input label="Oui" type={'checkbox'} />
                   <Input label="Non" type={'checkbox'} />
+
                 </div>
               </div>
             </div>
