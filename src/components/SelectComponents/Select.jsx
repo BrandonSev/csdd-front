@@ -5,7 +5,7 @@ function SelectComponant() {
   return (
     <>
       <select>
-        <option value={selection}></option>
+        <option value={selection} />
       </select>
     </>
   );

@@ -20,7 +20,7 @@ import MediaDashboard from './components/SitePages/MediaDashboard';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [loggedInAdmin, setLoggedInAdmin] = useState(true);
+  const [loggedInAdmin, setLoggedInAdmin] = useState(false);
   return (
     <div className="App">
       {loggedIn && !loggedInAdmin ? (
