@@ -17,7 +17,7 @@ function SelectComponant({ data, setValue, optionValue }) {
       onChange={(e) => handleModify(e)}
     >
       <option value="" selected>
-        Séléctionner ici
+        Sélectionner ici
       </option>
       {data?.map((data) => (
         <option value={data.id} key={data.id}>

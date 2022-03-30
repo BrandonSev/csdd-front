@@ -48,11 +48,11 @@ function MediaDashboard() {
                 <input type="date" name="file" id="file" />
               </div>
               <div className="form-group">
-                <label htmlFor="file">Date de mise a jour</label>
+                <label htmlFor="file">Date de mise à jour</label>
                 <input name="file" id="file" value="22 Janvier 2022" />
               </div>
               <div>
-                <p>Roles: </p> <br />
+                <p>Rôles: </p> <br />
                 <div className="roles">
                   <div>
                     <label htmlFor="roles">Roles</label>

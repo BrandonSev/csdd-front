@@ -32,13 +32,13 @@ const Navbar = () => {
               <NavLink to="/vie-de-la-corpo">Vie de la corporation</NavLink>
             </li>
             <li>
-              <NavLink to="/memoire">Memoire</NavLink>
+              <NavLink to="/memoire">Mémoire</NavLink>
             </li>
             <li>
               <NavLink to="/formation">Formation</NavLink>
             </li>
             <li>
-              <NavLink to="/commission">Commission de rîtes</NavLink>
+              <NavLink to="/commission">Commission des rîtes</NavLink>
             </li>
           </ul>
           <div

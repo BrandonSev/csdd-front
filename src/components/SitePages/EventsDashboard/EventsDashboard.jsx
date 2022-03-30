@@ -61,9 +61,9 @@ function eventsDashboard() {
       <DashboardBody>
         <div className="evenementDashboard-container">
           <div className="select-evenement">
-            <h1 className="event-title">Evenements de la page accueil</h1>
+            <h1 className="event-title">Evènements de la page accueil</h1>
             <div className="events-select">
-              <p>Séléctionner un événements</p>
+              <p>Sélectionner un évènement</p>
               <SelectComponant
                 setValue={setSelectedValue}
                 data={events}
@@ -72,7 +72,7 @@ function eventsDashboard() {
             </div>
           </div>
           <div className="events-Input">
-            <h1>Ajouter un événements:</h1>
+            <b>Ajouter un évènement:</b>
             <Input
               label="Titre"
               type="Title"
@@ -91,7 +91,7 @@ function eventsDashboard() {
               />
             </div>
             <div className="event-image-container">
-              <p>séléctionner un image</p>
+              <p>Sélectionner une image</p>
               <input
                 type="file"
                 className="ignores-input-style"
@@ -141,7 +141,7 @@ function eventsDashboard() {
               <div className="btn-event">
                 <Button
                   className="button-red event_button"
-                  buttonName="Supprimé"
+                  buttonName="Supprimer"
                 />
               </div>
             </div>

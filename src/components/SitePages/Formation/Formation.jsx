@@ -11,14 +11,14 @@ function Formation() {
           <img
             className="formation-image"
             src="#"
-            alt="PROGRESSION DE DESSIN"
+            alt="PROGRESSION DE DESSINS"
           />
         </div>
         <div className="formation-btn-container">
           <div>
             <Button
               className="formation-btn"
-              buttonName="PROGRESSION DE DESSIN"
+              buttonName="PROGRESSION DE DESSINS"
             />
           </div>
         </div>
@@ -47,14 +47,14 @@ function Formation() {
           <img
             className="formation-image"
             src="#"
-            alt="PROGRESSION D'ATELIER"
+            alt="MINI STAGES"
           />
         </div>
         <div className="formation-btn-container">
           <div>
             <Button
               className="formation-btn"
-              buttonName="PROGRESSION D'ATELIER"
+              buttonName="MINI STAGES"
             />
           </div>
         </div>
@@ -62,24 +62,13 @@ function Formation() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="MINI-STAGE" />
-        </div>
-        <div className="formation-btn-container">
-          <div>
-            <Button className="formation-btn" buttonName="MINI-STAGE" />
-          </div>
-        </div>
-      </div>
-
-      <div className="child">
-        <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="PARCOUR DE FORMATION" />
+          <img className="formation-image" src="#" alt="PARCOURS DE FORMATION" />
         </div>
         <div className="formation-btn-container">
           <div>
             <Button
               className="formation-btn"
-              buttonName="PARCOUR DE FORMATION"
+              buttonName="PARCOURS DE FORMATION"
             />
           </div>
         </div>
@@ -87,11 +76,11 @@ function Formation() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="ARCHIVE" />
+          <img className="formation-image" src="#" alt="ARCHIVES" />
         </div>
         <div className="formation-btn-container">
           <div>
-            <Button className="formation-btn" buttonName="ARCHIVE" />
+            <Button className="formation-btn" buttonName="ARCHIVES" />
           </div>
         </div>
       </div>

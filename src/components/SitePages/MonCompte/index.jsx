@@ -20,8 +20,8 @@ const MonCompte = () => {
             />
           </div>
           <div className="user-info">
-            <p>Status: Mon status</p>
-            <p>Role: Role1</p>
+            <p>Statut: Mon statut</p>
+            <p>Rôle: Role1</p>
           </div>
           <button
             type="button"
@@ -39,11 +39,11 @@ const MonCompte = () => {
               <Input label="Nom: " />
               <Input label="Prénom: " />
               <Input label="Date de naissance: " />
-              <Input label="Addresse: " />
+              <Input label="Adresse: " />
               <Input label="Code postal: " />
               <Input label="Ville: " />
               <Input label="Email: " />
-              <Input label="Telephone: " />
+              <Input label="Téléphone: " />
               <Button className="button button-red" buttonName="Valider" />
             </form>
           </div>
