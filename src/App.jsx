@@ -17,6 +17,7 @@ import VieDeLaCorpo from './components/SitePages/VieDeLaCorpo/Corpo';
 import DashboardMessage from './components/DashboardMessage/DashboardMessage';
 import UserDashboard from './components/SitePages/UserDashboard';
 import MediaDashboard from './components/SitePages/MediaDashboard';
+import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -49,6 +50,7 @@ function App() {
           <Route path="/dashboard/utilisateurs" element={<UserDashboard />} />
           <Route path="/dashboard/medias" element={<MediaDashboard />} />
           <Route path="/dashboard/evenements" element={<EventsDashboard />} />
+          <Route path="/dashboard/metiers" element={<BookDashboard />} />
           <Route
             path="/dashboard/offre-embauche"
             element={<JobOffersDashboard />}
