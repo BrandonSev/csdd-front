@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './Select.css';
 
-function SelectComponant() {
-  const [selection, setSelection] = useState('');
+function SelectComponant({ data, setValue, optionValue }) {
+  const handleModify = (e) => {
+    setValue(
+      data.find((d) => {
+        return d.id === parseInt(e.target.value, 10);
+      })
+    );
+  };
   return (
-    <>
-      <select>
-        <option value={selection} />
-      </select>
-    </>
+
+    <select
+      name="eventsSelect"
+      id="eventsSelect"
+      onChange={(e) => handleModify(e)}
+    >
+      <option value="" selected>
+        Séléctionner ici
+      </option>
+      {data?.map((data) => (
+        <option value={data.id} key={data.id}>
+          {data[optionValue]}
+        </option>
+      ))}
+    </select>
   );
 }
 
