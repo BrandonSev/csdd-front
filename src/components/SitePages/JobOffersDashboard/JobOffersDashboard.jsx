@@ -67,13 +67,22 @@ function jobOffersDashboard() {
             <div className="eventsBtn-container">
               <div />
               <div className="btn-event">
-                <Button className="Events-btn" buttonName="Valider" />
+                <Button
+                  className="button-red event_button"
+                  buttonName="Valider"
+                />
               </div>
               <div className="btn-event">
-                <Button className="Events-btn" buttonName="Modifier" />
+                <Button
+                  className="button-red event_button"
+                  buttonName="Modifier"
+                />
               </div>
               <div className="btn-event">
-                <Button className="Events-btn" buttonName="Supprimé" />
+                <Button
+                  className="button-red event_button"
+                  buttonName="Supprimé"
+                />
               </div>
             </div>
           </div>
