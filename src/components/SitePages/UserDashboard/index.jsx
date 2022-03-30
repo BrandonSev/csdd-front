@@ -19,7 +19,12 @@ function UserDashboard() {
         </div>
         <div className="dashboard-user-search">
           <div className="user-avatar">
-            <img src="/assets/logo-detoure-noir.png" width="20%" alt="avatar" />
+            <img
+              src="/assets/logo-detoure-noir.png"
+              width={'20%'}
+              alt="avatar"
+            />
+
           </div>
           <div className="search-wrapper">
             <Input label="Prénom" />
@@ -35,8 +40,9 @@ function UserDashboard() {
               <div className="cotisation">
                 <p>Cotisation à jour: </p>
                 <div className="cotisation-checkbox">
-                  <Input label="Oui" type="checkbox" />
-                  <Input label="Non" type="checkbox" />
+                  <Input label="Oui" type={'checkbox'} />
+                  <Input label="Non" type={'checkbox'} />
+
                 </div>
               </div>
             </div>

@@ -60,7 +60,15 @@ function JobOffers() {
             </p>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="2" />
+            <h4>reference</h4>
+            <h4> city</h4>
+            <h4 className="job">poste</h4>
+            <p>
+              description Lorem ipsum dolor, sit amet consectetur adipisicing
+              elit. Dolor ut doloremque fugit ipsum cupiditate, et, dolorem
+              tempore reiciendis quae eveniet cumque optio animi officia nemo
+              veniam, omnis neque a quos.
+            </p>
           </SwiperSlide>
           <SwiperSlide>
             <h4>reference</h4>

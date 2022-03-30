@@ -1,0 +1,17 @@
+/* @media screen and (min-width:768px){
+.carousel-container-books{
+  height:350px;
+} */
+
+/* .carousel-slider-books{
+height:100%
+} */
+/* } */
+
+/* .carousel-slider-books .swiper {
+height:230px;
+} */
+
+.swiper swiper-pagination {
+  height:30px;
+}

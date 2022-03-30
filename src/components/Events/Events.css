@@ -4,15 +4,8 @@
 /* height: 20vh; */
 /* } */
 
-/* container du slider carousel */
-.carousel-slider {
-  width: 100%;
-  margin: auto;
-  height: auto;
-}
-
-.mySwiper-container img {
-  height: 20vh;
+.container-events .mySwiper-container img {
+  height:300px;
   width: 100%;
 }
 
@@ -24,4 +17,16 @@
 .swiper-slide img {
   width: 100%;
   margin: auto;
+}
+
+.carousel-slider .swiper {
+height:330px;
+}
+
+@media screen and (min-width: 768px) {
+  .container-events.swiper-slide img {
+    width: 100%;
+    margin: auto;
+    height: 430px;
+  }
 }
