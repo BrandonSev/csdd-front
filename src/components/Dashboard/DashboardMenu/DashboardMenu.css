@@ -82,6 +82,12 @@
   margin-top: 0.3rem;
 }
 
+@media screen and (min-width: 650px) {
+  .dashboard-menu {
+    width: 40%;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .dashboard-menu {
     max-width: 400px;
