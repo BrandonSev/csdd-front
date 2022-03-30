@@ -15,7 +15,11 @@ const Navbar = () => {
       <div style={{ padding: '2rem 1rem' }}>
         <div className="wrapper-navbar">
           <div className="navbar-logo">
-            <NavLink to="/home" onClick={handleClick}>
+            <NavLink
+              to="/home"
+              className={({ isActive }) => (isActive ? '' : '')}
+              onClick={handleClick}
+            >
               <img
                 src="/assets/logo-detoure-noir.png"
                 alt="logo detoure noir"
@@ -37,7 +41,11 @@ const Navbar = () => {
               <NavLink to="/commission">Commission de rîtes</NavLink>
             </li>
           </ul>
-          <div className="avatar-logo" onClick={handleClick} onKeyUp={handleClick}>
+          <div
+            className="avatar-logo"
+            onClick={handleClick}
+            onKeyUp={handleClick}
+          >
             <NavLink to="/mon-compte">
               <FiUser size={20} />
             </NavLink>

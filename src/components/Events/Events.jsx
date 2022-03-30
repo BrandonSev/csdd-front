@@ -24,7 +24,7 @@ function Events() {
   return (
     <div className="carousel-container">
       <h3>Events</h3>
-      <div className="carousel-slider">
+      <div className="carousel-slider-events">
         <Swiper
           className="mySwiper-container"
           modules={[Autoplay, Navigation, Pagination]}

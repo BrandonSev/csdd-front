@@ -1,17 +1,19 @@
-/* @media screen and (min-width:768px){
-.carousel-container-books{
-  height:350px;
-} */
+.carousel-slider-books .swiper {
+  padding-bottom: 2rem;
+}
 
-/* .carousel-slider-books{
-height:100%
-} */
-/* } */
+@media screen and (min-width: 768px) {
+  .carousel-container-books {
+    height: 350px;
+  }
 
-/* .carousel-slider-books .swiper {
-height:230px;
-} */
+   .container-books .swiper-slide img {
+    width: 100%;
+    margin: auto;
+    height: 100%;
+  }
 
-.swiper swiper-pagination {
-  height:30px;
+  .carousel-slider-books .swiper {
+    height: 300px;
+  }
 }

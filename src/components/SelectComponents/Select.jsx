@@ -10,6 +10,7 @@ function SelectComponant({ data, setValue, optionValue }) {
     );
   };
   return (
+
     <select
       name="eventsSelect"
       id="eventsSelect"

@@ -1,5 +1,4 @@
 /* bordure du site */
-
 .homePage {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -19,6 +18,18 @@
 .news {
   display: flex;
   width: 100%;
+}
+
+/* Les slides du carousel */
+.swiper-slide img {
+  width: 100%;
+  margin: auto;
+}
+
+/* Les flèches du carousel */
+.swiper-button-next,
+.swiper-button-prev {
+  color: rgb(51, 51, 51, 0.2);
 }
 
 @media screen and (min-width: 768px) {
