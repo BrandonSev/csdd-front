@@ -25,7 +25,7 @@ function ForgotPw() {
     }),
     onSubmit: (values) => {
       axios
-        .post(`${API_URL}/api/mails`, { values })
+        .post(`${API_URL}/api/mails`, { ...values })
         .then(() => {
           alert('Ok');
         })
