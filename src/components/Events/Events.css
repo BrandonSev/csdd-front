@@ -1,34 +1,44 @@
-.container-events .mySwiper-container img {
-  height:300px;
-  width: 100%;
-}
-
 .carousel-slider-events .swiper {
-padding-bottom:2rem;
+  padding-bottom: 2rem;
+  height: 330px;
 }
 
-/* définition de l'overlay-container */
-/* .swiper-overlay{
-  background: hsla(0, 0%, 0%, 0.5);
-  color:#fff;
-  width: 10rem;
-  height: 5rem;
-  z-index:1000;
-} */
+.carousel-slider-events .swiper-slide img {
+  height: 300px;
+}
 
+/* définition de l'overlay du slider */
+.overlay-events {
+  position: relative;
+  transform: translateY(-120px);
+  background: hsla(0, 0%, 0%, 0.4);
+  color: #fff;
+  padding: 0.8rem;
+  width: auto;
+  height: 6rem;
+  border-radius: 5px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+/* Média Queries - Adaptation sur écran de plus de 768px de large */
 
 @media screen and (min-width: 768px) {
-  .container-events .carousel-container{
-  height:430px;
+  .carousel-slider-events .swiper {
+    height: 410px;
+  }
+  .carousel-slider-events .swiper-slide img {
+    height: 380px;
+  }
 }
 
-  .container-events .swiper-slide img {
-    width: 100%;
-    margin: auto;
-    height: 100%;
-  }
+/* Média Queries - Adaptation sur écran de plus de 1024px de large */
 
+@media screen and (min-width: 1024) {
   .carousel-slider-events .swiper {
     height: 430px;
   }
-} 
+  .carousel-slider-events .swiper-slide img {
+    height: 400px;
+  }
+}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import moment from "moment";
 import 'swiper/swiper-bundle.css';
 import './JobOffers.css';
 
@@ -40,12 +41,12 @@ function JobOffers() {
           centeredSlides={false}
           speed={700}
           breakpoints={{
-            640: {
+            600: {
               slidesPerView: 2,
               spaceBetween: 30,
             },
-            1280: {
-              slidesPerView: 4,
+            1020: {
+              slidesPerView: 3,
               spaceBetween: 30,
             },
           }}
@@ -55,10 +56,13 @@ function JobOffers() {
               <SwiperSlide>
                 <div className="swiper-jobOffers" key={jobOffer.id}>
                   <h4>
-                    {jobOffer.reference}-{jobOffer.create_at}
+                    {jobOffer.reference} -
+                    {moment(jobOffer.created_at).format('DD-MM-yyyy')}
                   </h4>
                   <h4> {jobOffer.city}</h4>
+                  <br></br>
                   <h4 className="job">{jobOffer.poste}</h4>
+                  <br></br>
                   <p>
                     {jobOffer.description}
                     description Lorem ipsum dolor, sit amet consectetur

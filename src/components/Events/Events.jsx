@@ -49,14 +49,18 @@ function Events() {
                   <img
                     src={`${API_URL}/images/${event.filename}`}
                     alt=""
-                    className="event-filename"
+                    className="event-img"
                   />
                   <div className="overlay-events">
-                    <h3 className="overlay-events-filename">
-                      {moment(event.filename).format('yyyy-MM-DD')}
-                    </h3>
-                    <h4 className="overlay-events-date">{event.event_date}</h4>
-                    <p className="overlay-events-description">{event.description}</p>
+                    {/* <h3 className="overlay-events-filename">
+                      {event.filename}
+                    </h3> */}
+                    <h4 className="overlay-events-date">
+                      {moment(event.event_date).format('DD-MM-yyyy')}
+                    </h4>
+                    <p className="overlay-events-description">
+                      {event.description}
+                    </p>
                   </div>
                 </div>
               </SwiperSlide>

@@ -1,19 +1,56 @@
 .carousel-slider-books .swiper {
   padding-bottom: 2rem;
+  height: 300px;
 }
 
+.carousel-slider-books .swiper-slide img {
+  height: 270px;
+}
+
+/* définition de l'overlay du slider */
+.overlay-books {
+  position: relative;
+  transform: translateY(-100px);
+  background: hsla(0, 0%, 0%, 0.4);
+  color: #fff;
+  padding: 0.8rem;
+  width: auto;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: 3rem;
+  border-radius: 5px;
+}
+
+/* Média Queries - Adaptation sur écran de plus de 768px de large */
+
 @media screen and (min-width: 768px) {
-  .carousel-container-books {
-    height: 350px;
-  }
-
-   .container-books .swiper-slide img {
-    width: 100%;
-    margin: auto;
-    height: 100%;
-  }
-
   .carousel-slider-books .swiper {
     height: 300px;
+  }
+  .carousel-slider-books .swiper-slide img {
+    height: 270px;
+  }
+   .overlay-books {
+    position: relative;
+    transform: translateY(-150px);
+    background: hsla(0, 0%, 0%, 0.5);
+    color: #fff;
+    padding: 1rem;
+    margin: 1rem;
+    width: auto;
+    height: 4.5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+}
+
+/* Média Queries - Adaptation sur écran de plus de 1024px de large */
+
+@media screen and (min-width: 1024) {
+  .carousel-slider-books .swiper {
+    height: 400px;
+  }
+  .carousel-slider-books .swiper-slide img {
+    height: 370px;
   }
 }
