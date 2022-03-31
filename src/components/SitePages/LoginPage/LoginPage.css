@@ -25,7 +25,7 @@
   background-color: #adadad;
 }
 
-/* Stylisation du bouton accès */
+/* Stylisation du bouton demande d'accès */
 
 .login-register {
   height: 50px;
@@ -61,11 +61,12 @@
 
 /* Stylisation du bouton login page */
 
-.left a {
+.left .button-yellow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 90%;
   height: 50px;
-  line-height: 50px;
-  padding: 0;
 }
 
 .login-connection button {
@@ -87,7 +88,7 @@
     width: 32%;
   }
 
-  .left a {
+  .left .button-yellow {
     width: 60%;
   }
 

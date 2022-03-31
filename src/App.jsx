@@ -5,6 +5,7 @@ import HomePage from './components/SitePages/HomePage/HomePage';
 import Home from './components/SitePages/Home/Home';
 import LoginPage from './components/SitePages/LoginPage/LoginPage';
 import Register from './components/SitePages/Register/Register';
+import ForgotPw from './components/SitePages/ForgotPw/ForgotPw';
 import Formation from './components/SitePages/Formation/Formation';
 import Memoire from './components/SitePages/Memoire/Memoire';
 import CommissionDesRites from './components/SitePages/CommissionDesRites/CommissionDesRites';
@@ -20,7 +21,7 @@ import MediaDashboard from './components/SitePages/MediaDashboard';
 import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loggedInAdmin, setLoggedInAdmin] = useState(false);
   return (
     <div className="App">
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/password" element={<ForgotPw />} />
         </Routes>
       )}
       {loggedIn && loggedInAdmin && (
