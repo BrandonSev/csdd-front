@@ -15,7 +15,11 @@ const Navbar = () => {
       <div style={{ padding: '2rem 1rem' }}>
         <div className="wrapper-navbar">
           <div className="navbar-logo">
-            <NavLink to="/home" onClick={handleClick}>
+            <NavLink
+              to="/home"
+              className={({ isActive }) => (isActive ? '' : '')}
+              onClick={handleClick}
+            >
               <img
                 src="/assets/logo-detoure-noir.png"
                 alt="logo detoure noir"
@@ -28,16 +32,20 @@ const Navbar = () => {
               <NavLink to="/vie-de-la-corpo">Vie de la corporation</NavLink>
             </li>
             <li>
-              <NavLink to="/memoire">Memoire</NavLink>
+              <NavLink to="/memoire">Mémoire</NavLink>
             </li>
             <li>
               <NavLink to="/formation">Formation</NavLink>
             </li>
             <li>
-              <NavLink to="/commission">Commission de rîtes</NavLink>
+              <NavLink to="/commission">Commission des rîtes</NavLink>
             </li>
           </ul>
-          <div className="avatar-logo" onClick={handleClick} onKeyUp={handleClick}>
+          <div
+            className="avatar-logo"
+            onClick={handleClick}
+            onKeyUp={handleClick}
+          >
             <NavLink to="/mon-compte">
               <FiUser size={20} />
             </NavLink>

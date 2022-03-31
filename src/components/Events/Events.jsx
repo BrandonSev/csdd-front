@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
-import { Autoplay, Navigation, Pagination } from 'swiper';
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import moment from 'moment';
 import 'swiper/swiper-bundle.css';
 import './Events.css';
 
-const API_URL = process.env.REACT_APP_CSDD_URL;
+const API_URL = process.env.REACT_APP_BACKEND_URL;
+
+SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -24,7 +27,7 @@ function Events() {
   return (
     <div className="carousel-container">
       <h3>Events</h3>
-      <div className="carousel-slider">
+      <div className="carousel-slider-events">
         <Swiper
           className="mySwiper-container"
           modules={[Autoplay, Navigation, Pagination]}
@@ -39,28 +42,24 @@ function Events() {
           centeredSlides
           speed={500}
         >
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="2" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" alt="3" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="4" />
-          </SwiperSlide>
           {events &&
             events.map((event) => (
-              <div key={event.id}>
-                <img src={event.event_link} alt="" className="event_link" />
-                <div className="overlay">
-                  <h3 className="overlay-filename">{event.filename}</h3>
-                  <h4 className="overlay-date">{event.event_date} </h4>
-                  <p className="overlay-description">{event.description}</p>
+              <SwiperSlide>
+                <div className="swiper-overlay-events" key={event.id}>
+                  <img
+                    src={`${API_URL}/images/${event.filename}`}
+                    alt=""
+                    className="event-filename"
+                  />
+                  <div className="overlay-events">
+                    <h3 className="overlay-events-filename">
+                      {moment(event.filename).format('yyyy-MM-DD')}
+                    </h3>
+                    <h4 className="overlay-events-date">{event.event_date}</h4>
+                    <p className="overlay-events-description">{event.description}</p>
+                  </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
         </Swiper>
       </div>

@@ -2,39 +2,32 @@
   text-align: center;
 }
 
-.selectComponant {
-  margin-top: 3vw;
-}
-
 .evenementDashboard-container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(1, 1fr);
 }
 
-.SelectComponent-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-}
-
 .eventsBtn-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 1vw;
+  grid-row-gap: 1vw;
   position: relative;
-  margin-top: 2vw;
+  width: 20vw;
+  top: 2vw;
+  margin-bottom: 2vw;
 }
 
-.Events-btn {
+.event_button {
   width: 100%;
   height: 100%;
-  background: #af1616;
 }
 
-.btn-event {
-  height: 11vw;
-}
-
-.button-name {
-  color: white;
+.ignores-input-style {
+  border: none !important;
+  background-color: transparent !important;
+  grid-column: span 1 !important;
 }
 
 @media (min-width: 600px) {
@@ -44,18 +37,8 @@
     grid-template-rows: repeat(1, 1fr);
   }
 
-  .SelectComponent-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-  }
-
   .event-title {
     text-align: left;
-  }
-
-  .selectComponant {
-    margin-top: 3vw;
   }
 
   .events-Input label {
@@ -69,8 +52,13 @@
     margin-top: 5vw;
   }
 
+  .ignores-input-style {
+    border: none !important;
+    background-color: transparent !important;
+    grid-column: span 1 !important;
+  }
+
   .events-Input input {
-    border-color: #fca311;
     grid-column: span 2;
   }
 
@@ -87,37 +75,9 @@
     margin-bottom: 2vw;
   }
 
-  .Events-btn {
+  .event_button {
     width: 100%;
     height: 100%;
-    background: #af1616;
-  }
-
-  .btn-event {
-    height: 2vw;
-  }
-
-  select {
-    width: 100%;
-    border: 2px solid #fca311;
-    height: 50px;
-  }
-
-  .select-evenement {
-    display: grid;
-    grid-template-columns: repeat(2, 2fr);
-    grid-template-rows: repeat(1, 1fr);
-  }
-
-  .select-jobOffers {
-    display: grid;
-    grid-template-columns: repeat(2, 2fr);
-    grid-template-rows: repeat(1, 1fr);
-  }
-
-  .events-select,
-  .jobOffers-select {
-    margin-left: 52%;
   }
 
   .event-image-container {
@@ -125,10 +85,6 @@
     grid-template-columns: repeat(3, 2fr);
     grid-template-rows: repeat(1, 1fr);
     margin-top: 2vw;
-  }
-
-  .event-image-container select {
-    grid-column: span 2;
   }
 
   #Text {
@@ -142,5 +98,9 @@
     grid-template-columns: repeat(3, 2fr);
     grid-template-rows: repeat(1, 1fr);
     margin-top: 2vw;
+  }
+
+  .event_image {
+    margin: 0 2rem;
   }
 }

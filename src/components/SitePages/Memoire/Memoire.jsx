@@ -18,11 +18,11 @@ function Memoire() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="CONGRES GALERY" />
+          <img className="formation-image" src="#" alt="CONGRES GALERIE" />
         </div>
         <div className="formation-btn-container">
           <div>
-            <Button className="formation-btn" buttonName="CONGRES GALERY" />
+            <Button className="formation-btn" buttonName="CONGRES GALERIE" />
           </div>
         </div>
       </div>

@@ -1,0 +1,44 @@
+.selectComponant {
+  margin-top: 3vw;
+}
+
+.SelectComponent-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+@media (min-width: 600px) {
+  .SelectComponent-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .selectComponant {
+    margin-top: 3vw;
+  }
+
+  select {
+    width: 100%;
+    border: 2px solid #fca311;
+    height: 50px;
+  }
+
+  .select-evenement {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .select-jobOffers {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .events-select,
+  .jobOffers-select {
+    margin-left: 52%;
+  }
+}

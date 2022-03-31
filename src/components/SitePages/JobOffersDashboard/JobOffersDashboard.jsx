@@ -24,16 +24,16 @@ function jobOffersDashboard() {
       <DashboardBody>
         <div className="evenementDashboard-container">
           <div className="select-jobOffers">
-            <h1 className="event-title">Les offres d&#39;embauches</h1>
+            <h1 className="event-title">Offres d'embauche</h1>
             <div className="jobOffers-select">
-              <p>Séléctionner un Poste</p>
+              <p>Sélectionner un poste</p>
               <SelectComponant />
             </div>
           </div>
           <div className="events-Input">
-            <h1>Ajouter une offre</h1>
+            <b>Ajouter une offre:</b>
             <Input
-              label="Reference"
+              label="Référence"
               type="Reference"
               name="Reference"
               id="Reference"
@@ -49,7 +49,7 @@ function jobOffersDashboard() {
               value={formik.values.poste}
             />
             <Input
-              label="lieu du poste"
+              label="Lieu du poste"
               type="lieu du poste"
               name="lieu du poste"
               id="lieu du poste"
@@ -57,7 +57,7 @@ function jobOffersDashboard() {
               value={formik.values.Link}
             />
             <Input
-              label="description"
+              label="Description"
               type="description"
               name="description"
               id="description"
@@ -67,13 +67,22 @@ function jobOffersDashboard() {
             <div className="eventsBtn-container">
               <div />
               <div className="btn-event">
-                <Button className="Events-btn" buttonName="Valider" />
+                <Button
+                  className="button-red event_button"
+                  buttonName="Valider"
+                />
               </div>
               <div className="btn-event">
-                <Button className="Events-btn" buttonName="Modifier" />
+                <Button
+                  className="button-red event_button"
+                  buttonName="Modifier"
+                />
               </div>
               <div className="btn-event">
-                <Button className="Events-btn" buttonName="Supprimé" />
+                <Button
+                  className="button-red event_button"
+                  buttonName="Supprimer"
+                />
               </div>
             </div>
           </div>

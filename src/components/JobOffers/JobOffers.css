@@ -4,8 +4,7 @@
   justify-content: center;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: rgb(51, 51, 51, 0.2);
+.carousel-slider-jobOffers .swiper {
+padding-bottom:2rem;
 }
 

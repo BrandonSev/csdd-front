@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
-import { Autoplay, Navigation, Pagination } from 'swiper';
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import './JobOffers.css';
 
-const API_URL = process.env.REACT_APP_CSDD_URL;
+const API_URL = process.env.REACT_APP_BACKEND_URL;
+
+SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 function JobOffers() {
   const [jobOffers, setJobOffers] = useState([]);
@@ -48,50 +50,25 @@ function JobOffers() {
             },
           }}
         >
-          <SwiperSlide>
-            <h4>reference</h4>
-            <h4> city</h4>
-            <h4 className="job">poste</h4>
-            <p>
-              description Lorem ipsum dolor, sit amet consectetur adipisicing
-              elit. Dolor ut doloremque fugit ipsum cupiditate, et, dolorem
-              tempore reiciendis quae eveniet cumque optio animi officia nemo
-              veniam, omnis neque a quos.
-            </p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <h4>reference</h4>
-            <h4> city</h4>
-            <h4 className="job">poste</h4>
-            <p>
-              description Lorem ipsum dolor, sit amet consectetur adipisicing
-              elit. Dolor ut doloremque fugit ipsum cupiditate, et, dolorem
-              tempore reiciendis quae eveniet cumque optio animi officia nemo
-              veniam, omnis neque a quos.
-            </p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <h4>reference</h4>
-            <h4> city</h4>
-            <h4 className="job">poste</h4>
-            <p>
-              description Lorem ipsum dolor, sit amet consectetur adipisicing
-              elit. Dolor ut doloremque fugit ipsum cupiditate, et, dolorem
-              tempore reiciendis quae eveniet cumque optio animi officia nemo
-              veniam, omnis neque a quos.
-            </p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <h4>reference</h4>
-            <h4> city</h4>
-            <h4 className="job">poste</h4>
-            <p>
-              description Lorem ipsum dolor, sit amet consectetur adipisicing
-              elit. Dolor ut doloremque fugit ipsum cupiditate, et, dolorem
-              tempore reiciendis quae eveniet cumque optio animi officia nemo
-              veniam, omnis neque a quos.
-            </p>
-          </SwiperSlide>
+          {jobOffers &&
+            jobOffers.map((jobOffer) => (
+              <SwiperSlide>
+                <div className="swiper-jobOffers" key={jobOffer.id}>
+                  <h4>
+                    {jobOffer.reference}-{jobOffer.create_at}
+                  </h4>
+                  <h4> {jobOffer.city}</h4>
+                  <h4 className="job">{jobOffer.poste}</h4>
+                  <p>
+                    {jobOffer.description}
+                    description Lorem ipsum dolor, sit amet consectetur
+                    adipisicing elit. Dolor ut doloremque fugit ipsum
+                    cupiditate, et, dolorem tempore reiciendis quae eveniet
+                    cumque optio animi officia nemo veniam, omnis neque a quos.
+                  </p>
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

@@ -14,7 +14,7 @@ function UserDashboard() {
       <DashboardHeader />
       <DashboardBody>
         <div className="dashboard-user-title">
-          <h1>Utilisateurs</h1>
+          <h1>Utilisateur</h1>
           <Button className="button-yellow" buttonName="Supprimer ce compte" />
         </div>
         <div className="dashboard-user-search">
@@ -24,7 +24,6 @@ function UserDashboard() {
               width={'20%'}
               alt="avatar"
             />
-
           </div>
           <div className="search-wrapper">
             <Input label="Prénom" />
@@ -36,13 +35,12 @@ function UserDashboard() {
         <div className="dashboard-user-content">
           <div className="info-perso">
             <div className="title">
-              <h3>Donnees personelles</h3>
+              <h3>Données personnelles</h3>
               <div className="cotisation">
                 <p>Cotisation à jour: </p>
                 <div className="cotisation-checkbox">
                   <Input label="Oui" type={'checkbox'} />
                   <Input label="Non" type={'checkbox'} />
-
                 </div>
               </div>
             </div>
@@ -50,17 +48,17 @@ function UserDashboard() {
               <Input label="Nom: " />
               <Input label="Prénom: " />
               <Input label="Date de naissance: " />
-              <Input label="Addresse: " />
+              <Input label="Adresse: " />
               <Input label="Code postal: " />
               <Input label="Ville: " />
               <Input label="Email: " />
-              <Input label="Telephone: " />
+              <Input label="Téléphone: " />
               <Button buttonName="Valider" className="button-red" />
             </form>
           </div>
           <div className="info-corpo">
             <div className="title">
-              <h3>Donnees corporations</h3>
+              <h3>Données de corporation</h3>
             </div>
             <form action="#" className="form-info-corpo">
               <Input label="Nom de province:" />
