@@ -58,14 +58,14 @@ function Books() {
                     alt=""
                     className="book-filename"
                   />
-                  <div className="overlay-events">
-                    <h3 className="overlay-books-filename">{book.filename}</h3>
-                    <h4
+                  <div className="overlay-books">
+                    {/* <h5 className="overlay-books-filename">{book.filename}</h5> */}
+                    <h5
                       className="overlay-books-img_link"
                       value={book.img_link}
                     >
                       En savoir plus
-                    </h4>
+                    </h5>
                     <p className="overlay-books-link">{book.link}</p>
                   </div>
                 </div>
