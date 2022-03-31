@@ -15,19 +15,6 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 function eventsDashboard() {
   const [events, setEvents] = useState([]);
   const [selectedValue, setSelectedValue] = useState({});
-  const [selectedImage, setSelectedImage] = useState({});
-
-  /**
-   * It takes in an event object and sets the selectedImage state to the file that was selected
-   */
-  const imageChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage({
-        file: e.target.files[0],
-        image: URL.createObjectURL(e.target.files[0]),
-      });
-    }
-  };
 
   /* It's creating a formik object that will be used to validate the form. */
   const formik = useFormik({
@@ -40,6 +27,7 @@ function eventsDashboard() {
     enableReinitialize: true,
   });
 
+  /* It's fetching the data from the API and setting it to the state. */
   useEffect(() => {
     (async () => {
       await axios
@@ -75,16 +63,15 @@ function eventsDashboard() {
             <b>Ajouter un évènement:</b>
             <Input
               label="Titre"
-              type="Title"
-              name="Title"
+              type="text"
+              name="filename"
               id="Title"
-              onChange={formik.handleChange}
               value={formik.values.filename}
             />
             <div className="event-text-container">
               <p>Ajouter du texte </p>
               <textarea
-                name="Text"
+                name="description"
                 id="Text"
                 onChange={formik.handleChange}
                 value={formik.values.description}
@@ -96,30 +83,35 @@ function eventsDashboard() {
                 type="file"
                 className="ignores-input-style"
                 accept="image/*"
-                onChange={imageChange}
+                onChange={(e) => {
+                  formik.setFieldValue('filename', e.target.files[0]);
+                }}
+                name="filename"
               />
-              {/* It's creating a URL for the image that is being uploaded. */}
-              {selectedValue.filename && !selectedImage.image ? (
-                <img
-                  className="event_image"
-                  src={`${API_URL}/images/${selectedValue.filename}`}
-                  alt=""
-                  width={150}
-                />
+              {formik.values.filename !== '' ? (
+                formik.values.filename === selectedValue.filename ? (
+                  <img
+                    className="event_image"
+                    src={`${API_URL}/images/${selectedValue.filename}`}
+                    alt=""
+                    width={150}
+                  />
+                ) : (
+                  <img
+                    className="event_image"
+                    src={URL.createObjectURL(formik.values.filename)}
+                    alt=""
+                    width={150}
+                  />
+                )
               ) : (
-                <img
-                  className="event_image"
-                  /* It's creating a URL for the image that is being uploaded. */
-                  src={selectedImage.image}
-                  alt=""
-                  width={150}
-                />
+                ''
               )}
             </div>
             <Input
               label="Ajouter un lien"
-              type="AddingLink"
-              name="AddingLink"
+              type="event_link"
+              name="event_link"
               id="Title"
               onChange={formik.handleChange}
               value={formik.values.event_link}
