@@ -58,7 +58,7 @@ function bookDashboard() {
         <div className="select-evenement">
           <h1 className="event-title">Livre Métier page accueil</h1>
           <div className="events-select">
-            <p>Séléctionner un livre</p>
+            <p>Sélectionner un livre</p>
             <SelectComponant
               setValue={setSelectedValue}
               data={books}
@@ -67,8 +67,9 @@ function bookDashboard() {
           </div>
         </div>
         <div className="events-Input">
+          <b>Ajouter un livre:</b>
           <div className="event-image-container">
-            <p>séléctionner un image</p>
+            <p>Sélectionner une image</p>
             <input
               type="file"
               className="ignores-input-style"
@@ -93,6 +94,7 @@ function bookDashboard() {
               />
             )}
           </div>
+
           <Input
             label="Ajouter un lien"
             type="AddingLink"
@@ -118,7 +120,7 @@ function bookDashboard() {
             <div className="btn-event">
               <Button
                 className="button-red event_button"
-                buttonName="Supprimé"
+                buttonName="Supprimer"
               />
             </div>
           </div>

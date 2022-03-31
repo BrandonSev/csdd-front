@@ -15,15 +15,15 @@ function DashboardMenu() {
           <NavLink to="/dashboard/utilisateurs">Utilisateurs</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/evenements">Evenements</NavLink>
+          <NavLink to="/dashboard/evenements">Evènements</NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/offre-embauche">
-            Les offres d'embauches
+            Les offres d'embauche
           </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/compagnon">Informations compagnon</NavLink>
+          <NavLink to="/dashboard/compagnon">Informations compagnons</NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/metiers">Livres métiers</NavLink>
