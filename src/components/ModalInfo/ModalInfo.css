@@ -1,7 +1,22 @@
-.container-modalInfo {
+.container-info{
+ width:50%;
 }
 
-iframe info {
+.modal iframe {
   width: 100%;
   height: auto;
+  display: none;
+}
+
+.modal-img-info{
+  width:100%;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-img-info {
+    display: none;
+  }
+  .modal iframe { 
+    display: block;
+  }
 }

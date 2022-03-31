@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { BiUser } from 'react-icons/bi';
+import axios from 'axios';
 
 import './ForgotPw.css';
 
@@ -9,10 +11,27 @@ import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
 
+const API_URL = process.env.REACT_APP_BACKEND_URL;
+
 function ForgotPw() {
   const formik = useFormik({
     initialValues: {
       email: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("L'adresse email fournie n'est pas valide")
+        .required('Le champs est obligatoire'),
+    }),
+    onSubmit: (values) => {
+      axios
+        .post(`${API_URL}/api/mails`, { values })
+        .then(() => {
+          alert('Ok');
+        })
+        .catch((err) => {
+          alert(err);
+        });
     },
   });
 
@@ -26,20 +45,20 @@ function ForgotPw() {
               <BiUser /> Mot de passe oublié ?
             </h1>
             <form className="form-flex" onSubmit={formik.handleSubmit}>
-              <ul>
-                <li>
-                  <Input
-                    label="Email"
-                    type="email"
-                    name="email"
-                    id="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                  />
-                </li>
-              </ul>
+              <Input
+                label="Email"
+                type="email"
+                name="email"
+                id="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div>{formik.errors.email}</div>
+              ) : null}
               <div className="forgot-pw">
-                <Button className="button-red" buttonName="Valider" />
+                <Button className="button-red" buttonName="Valider" submit />
               </div>
             </form>
           </div>

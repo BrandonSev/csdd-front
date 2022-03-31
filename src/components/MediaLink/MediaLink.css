@@ -4,5 +4,25 @@
 }
 .image-media {
   height: 60px;
-  width: 200px;
+  width: 200px;}
+
+.container-info {
+  width: 50%;
+  margin-right: 1rem;
+}
+
+.container-medias {
+  width: 50%;
+}
+
+@media screen and (min-width: 768px){
+  .container-info {
+  width: 70%;
+  margin-right: 1rem;
+}
+
+.container-medias {
+  width: 30%;
+}
+  
 }
