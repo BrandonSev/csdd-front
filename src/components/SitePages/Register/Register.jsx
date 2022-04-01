@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { BiUser } from 'react-icons/bi';
 
@@ -231,7 +232,9 @@ function Register() {
           </div>
         </div>
         <div className="right">
-          <Button className="button-yellow" buttonName="Connexion" />
+          <NavLink to="/login" className="button-yellow">
+            Connexion
+          </NavLink>
         </div>
       </div>
     </>

@@ -9,6 +9,7 @@ import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
 
+/* Utilisation du hook `useFormik` pour créer le formulaire */
 function LoginPage() {
   const formik = useFormik({
     initialValues: {
@@ -52,7 +53,9 @@ function LoginPage() {
               <div className="login-connection">
                 <Button className="button-yellow" buttonName="Connexion" />
               </div>
-              <p>Mot de passe oublié ?</p>
+              <NavLink to="/password">
+                <p>Mot de passe oublié ?</p>
+              </NavLink>
             </form>
           </div>
         </div>

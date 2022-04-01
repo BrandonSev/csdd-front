@@ -23,17 +23,18 @@ function HomePage() {
         <div className="news">
           <div className="container-info">
             <h3>Bulletin d informations</h3>
-            <Button
-              className="button-red"
-              buttonName="Afficher"
-              onClick={handleClickPdf}
-            />
-            <Button
-              className="button-yellow"
-              buttonName="Fermer"
-              onClick={!handleClickPdf}
-            />
-
+            <div className="container-info-button">
+              <Button
+                className="button-red"
+                buttonName="Afficher"
+                onClick={handleClickPdf}
+              />
+              <Button
+                className="button-yellow"
+                buttonName="Fermer"
+                // onClick={!handleClickPdf}
+              />
+            </div>
             {displayPdf && (
               <ModalInfo onClick={() => setDisplayPdf(!displayPdf)} />
             )}

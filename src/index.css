@@ -38,6 +38,8 @@ button {
   cursor: pointer;
   background-color: transparent;
   border: 0;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Suppression du style des balises ul li par défaut */
@@ -69,7 +71,6 @@ h3 {
   border-radius: 5px;
   color: #e5e5e5;
   margin: 0;
-  border-radius: 5px;
 }
 
 .button-yellow {
