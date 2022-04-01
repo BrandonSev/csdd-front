@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+import { ToastContainer } from 'react-toastify';
 import HomePage from './components/SitePages/HomePage/HomePage';
 import Home from './components/SitePages/Home/Home';
 import LoginPage from './components/SitePages/LoginPage/LoginPage';
@@ -19,7 +20,6 @@ import DashboardMessage from './components/DashboardMessage/DashboardMessage';
 import UserDashboard from './components/SitePages/UserDashboard';
 import MediaDashboard from './components/SitePages/MediaDashboard';
 import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
