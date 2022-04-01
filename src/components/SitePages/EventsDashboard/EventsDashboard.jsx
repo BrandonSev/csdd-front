@@ -9,12 +9,14 @@ import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
 import './EventsDashboard.css';
+import moment from 'moment';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function eventsDashboard() {
   const [events, setEvents] = useState([]);
   const [selectedValue, setSelectedValue] = useState({});
+  const [isSelected, setIsSelected] = useState({});
 
   /* It's creating a formik object that will be used to validate the form. */
   const formik = useFormik({
@@ -24,6 +26,23 @@ function eventsDashboard() {
       filename: selectedValue.filename ? selectedValue.filename : '',
       event_link: selectedValue.event_link ? selectedValue.event_link : '',
     },
+    onSubmit: (values, { resetForm }) => {
+      const bodyFormData = new FormData();
+      bodyFormData.append(
+        'data',
+        JSON.stringify({
+          ...values,
+        })
+      );
+      bodyFormData.append('assets', values.filename);
+      axios
+        .post(`${API_URL}/api/events/`, bodyFormData)
+        .then((data) => {
+          resetForm;
+        })
+        .catch((err = console.error(err.message)));
+    },
+
     enableReinitialize: true,
   });
 
@@ -64,7 +83,7 @@ function eventsDashboard() {
             <Input
               label="Titre"
               type="text"
-              name="filename"
+              name="title"
               id="Title"
               value={formik.values.filename}
             />
@@ -72,7 +91,7 @@ function eventsDashboard() {
               <p>Ajouter du texte </p>
               <textarea
                 name="description"
-                id="Text"
+                id="description"
                 onChange={formik.handleChange}
                 value={formik.values.description}
               />
@@ -109,10 +128,22 @@ function eventsDashboard() {
               )}
             </div>
             <Input
+              label="Date de l'événement"
+              type="date"
+              name="event_date"
+              id="event_date"
+              onChange={formik.handleChange}
+              value={
+                formik.values.event_date
+                  ? moment(formik.values.event_date).format('YYYY-MM-DD')
+                  : formik.values.event_date
+              }
+            />
+            <Input
               label="Ajouter un lien"
               type="event_link"
               name="event_link"
-              id="Title"
+              id="event_link"
               onChange={formik.handleChange}
               value={formik.values.event_link}
             />
@@ -122,20 +153,25 @@ function eventsDashboard() {
                 <Button
                   className="button-red event_button"
                   buttonName="Valider"
+                  onClick={formik.handleSubmit}
                 />
               </div>
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Modifier"
-                />
-              </div>
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Supprimer"
-                />
-              </div>
+              {isSelected !== '' && (
+                <>
+                  <div className="btn-event">
+                    <Button
+                      className="button-red event_button"
+                      buttonName="Modifier"
+                    />
+                  </div>
+                  <div className="btn-event">
+                    <Button
+                      className="button-red event_button"
+                      buttonName="Supprimer"
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

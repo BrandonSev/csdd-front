@@ -21,7 +21,7 @@ import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [loggedInAdmin, setLoggedInAdmin] = useState(false);
+  const [loggedInAdmin, setLoggedInAdmin] = useState(true);
   return (
     <div className="App">
       {loggedIn && !loggedInAdmin ? (
