@@ -8,3 +8,24 @@
 padding-bottom:2rem;
 }
 
+/* Média Queries - Adaptation sur écran de plus de 768px de large */
+
+@media screen and (min-width: 768px) {
+  .carousel-slider-jobOffers .swiper {
+    height: 380px;
+  }
+  .carousel-slider-jobOffers .swiper-slide img {
+    height: 100%;
+  }
+}
+
+/* Média Queries - Adaptation sur écran de plus de 1024px de large */
+
+@media screen and (min-width: 1024) {
+  .carousel-slider-jobOffers .swiper {
+    min-height: 400px;
+  }
+  .carousel-slider-jobOffers .swiper-slide img {
+    min-height: 370px;
+  }
+}

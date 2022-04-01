@@ -15,6 +15,15 @@ body {
 
 /* Style des input */
 
+select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  margin-top: 0.5rem;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
 input {
   display: flex;
 }
@@ -29,6 +38,8 @@ button {
   cursor: pointer;
   background-color: transparent;
   border: 0;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Suppression du style des balises ul li par défaut */
@@ -60,7 +71,6 @@ h3 {
   border-radius: 5px;
   color: #e5e5e5;
   margin: 0;
-  border-radius: 5px;
 }
 
 .button-yellow {

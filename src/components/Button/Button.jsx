@@ -7,9 +7,7 @@ function Button({ className, buttonName, submit, onClick }) {
       type={submit ? 'submit' : 'button'}
       onClick={onClick}
     >
-      <p>
-        <span className="button-name"> {buttonName} </span>
-      </p>
+      {buttonName}
     </button>
   );
 }

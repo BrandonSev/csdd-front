@@ -1,7 +1,14 @@
 import React from 'react';
 import './Select.css';
 
-function SelectComponant({ data, setValue, optionValue }) {
+function SelectComponant({
+  data,
+  setValue,
+  optionValue,
+  defaultValue,
+  disabled,
+  label,
+}) {
   const handleModify = (e) => {
     setValue(
       data.find((d) => {
@@ -10,21 +17,29 @@ function SelectComponant({ data, setValue, optionValue }) {
     );
   };
   return (
-
-    <select
-      name="eventsSelect"
-      id="eventsSelect"
-      onChange={(e) => handleModify(e)}
-    >
-      <option value="" selected>
-        Sélectionner ici
-      </option>
-      {data?.map((data) => (
-        <option value={data.id} key={data.id}>
-          {data[optionValue]}
+    <div>
+      <label for="select">{label}</label>
+      <select
+        name="select"
+        id="select"
+        onChange={(e) => handleModify(e)}
+        defaultValue="NULL"
+        disabled={disabled}
+      >
+        <option value="default" selected disabled>
+          Sélectionner ici
         </option>
-      ))}
-    </select>
+        {data?.map((data) => (
+          <option
+            value={data.id}
+            key={data.id}
+            selected={defaultValue === data.id}
+          >
+            {data[optionValue]}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }
 
