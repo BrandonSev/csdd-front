@@ -18,12 +18,25 @@ import DashboardMessage from './components/DashboardMessage/DashboardMessage';
 import UserDashboard from './components/SitePages/UserDashboard';
 import MediaDashboard from './components/SitePages/MediaDashboard';
 import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [loggedInAdmin, setLoggedInAdmin] = useState(false);
+  const [loggedInAdmin, setLoggedInAdmin] = useState(true);
   return (
     <div className="App">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       {loggedIn && !loggedInAdmin ? (
         <>
           <Navbar />

@@ -6,8 +6,151 @@ import DashboardHeader from '../../Dashboard/DashboardHeader';
 import DashboardBody from '../../Dashboard/DashboardBody';
 import Button from '../../Button/Button';
 import Input from '../../Input/Input';
+import { useFormik } from 'formik';
+import axios from 'axios';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import SelectComponant from '../../SelectComponents/Select';
+import { useEffect } from 'react';
+import moment from 'moment';
 
 function UserDashboard() {
+  const [rooms, setRooms] = useState();
+  const [receptionPlace, setReceptionPlace] = useState();
+  const [provinces, setProvinces] = useState();
+  const [adoptionPlace, setAdoptionPlace] = useState();
+  const userSearchForm = useFormik({
+    initialValues: {
+      firstname: '',
+      lastname: '',
+      birthday: '',
+    },
+    onSubmit: async (values, { resetForm }) => {
+      await axios
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}/api/users?firstname=${values.firstname}&lastname=${values.lastname}`,
+          {
+            validateStatus: (status) => {
+              return status >= 200 && status <= 404;
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data) {
+            res.data.forEach((data) => {
+              for (const [key, value] of Object.entries(data)) {
+                userInfoForm.setFieldValue(`${key}`, value);
+              }
+            });
+          }
+          if (res.status === 200) {
+            resetForm();
+            return toast.success(
+              `Vous avez maintenant acccès au compte de ${res.data[0].firstname}`
+            );
+          }
+          if (res.status === 404) {
+            return toast.error("Aucun utilisateur n'a été trouvé");
+          }
+          if (res.status === 400) {
+            return toast.error(
+              'Le prénom et le nom sont requis pour effectuer une recherche'
+            );
+          }
+        })
+        .catch((err) => toast.error('Une erreur est survenue'));
+    },
+  });
+  const userInfoForm = useFormik({
+    initialValues: {
+      id: '',
+      firstname: '',
+      lastname: '',
+      birthday: '',
+      address: '',
+      postal_code: '',
+      city: '',
+      email: '',
+      phone: '',
+      password: '',
+      adoption_date: '',
+      picture: '',
+      cotisation_payed: '',
+      active: '',
+      status_id: '',
+      province_id: '',
+      reception_place_id: '',
+      room_id: '',
+      adoption_place_id: '',
+    },
+    onSubmit: (values, { resetForm }) => {
+      axios
+        .put(
+          `${process.env.REACT_APP_BACKEND_URL}/api/users/${values.id}`,
+          {
+            ...values,
+          },
+          {
+            validateStatus: (status) => {
+              return status >= 200 && status <= 404;
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success(res.data.message || 'Le compte a bien été modifié');
+            resetForm();
+          }
+          if (res.status === 422) {
+            toast('dsqdqsd');
+          }
+        })
+        .catch((err) =>
+          toast.error(
+            "Une erreur est survenue lors de la modification de l'utilisateur"
+          )
+        );
+    },
+  });
+  useEffect(() => {
+    (async () => {
+      await axios.all([
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/province`)
+          .then((res) => setProvinces(res.data))
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des provinces'
+            )
+          ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/adoptionPlace`)
+          .then((res) => setAdoptionPlace(res.data))
+          .catch((err) =>
+            toast.error(
+              "Une erreur est survenue lors de la récupération des lieux d'adoption"
+            )
+          ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/room`)
+          .then((res) => setRooms(res.data))
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des chambres'
+            )
+          ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/receptionPlace`)
+          .then((res) => setReceptionPlace(res.data))
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des lieux de réception'
+            )
+          ),
+      ]);
+    })();
+  }, []);
+
   return (
     <Dashboard>
       <DashboardMenu active="user" />
@@ -15,7 +158,12 @@ function UserDashboard() {
       <DashboardBody>
         <div className="dashboard-user-title">
           <h1>Utilisateur</h1>
-          <Button className="button-yellow" buttonName="Supprimer ce compte" />
+          {userInfoForm.values.firstname && (
+            <Button
+              className="button-yellow"
+              buttonName="Supprimer ce compte"
+            />
+          )}
         </div>
         <div className="dashboard-user-search">
           <div className="user-avatar">
@@ -26,10 +174,30 @@ function UserDashboard() {
             />
           </div>
           <div className="search-wrapper">
-            <Input label="Prénom" />
-            <Input label="Nom" />
-            <Input type="date" label="Date de naissance" />
-            <Button buttonName="Valider" className="button-red" />
+            <Input
+              label="Prénom"
+              name="firstname"
+              value={userSearchForm.values.firstname}
+              onChange={userSearchForm.handleChange}
+            />
+            <Input
+              label="Nom"
+              name="lastname"
+              onChange={userSearchForm.handleChange}
+              value={userSearchForm.values.lastname}
+            />
+            <Input
+              type="date"
+              label="Date de naissance"
+              name="birthday"
+              onChange={userSearchForm.handleChange}
+              value={userSearchForm.values.birthday}
+            />
+            <Button
+              buttonName="Valider"
+              className="button-red"
+              onClick={userSearchForm.handleSubmit}
+            />
           </div>
         </div>
         <div className="dashboard-user-content">
@@ -37,38 +205,170 @@ function UserDashboard() {
             <div className="title">
               <h3>Données personnelles</h3>
               <div className="cotisation">
-                <p>Cotisation à jour: </p>
-                <div className="cotisation-checkbox">
-                  <Input label="Oui" type={'checkbox'} />
-                  <Input label="Non" type={'checkbox'} />
-                </div>
+                {userInfoForm.values.firstname && (
+                  <div className="cotisation-checkbox">
+                    <label htmlFor="yes-no">Cotisation à jour: </label>
+                    <div>
+                      <Input
+                        label="Oui"
+                        name="yes-no"
+                        type={'radio'}
+                        checked={userInfoForm.values.cotisation_payed === 1}
+                        onChange={() =>
+                          userInfoForm.setFieldValue('cotisation_payed', 1)
+                        }
+                      />
+                      <Input
+                        label="Non"
+                        name="yes-no"
+                        type={'radio'}
+                        checked={userInfoForm.values.cotisation_payed === 0}
+                        onChange={() =>
+                          userInfoForm.setFieldValue('cotisation_payed', 0)
+                        }
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-            <form action="#" className="form-info-perso">
-              <Input label="Nom: " />
-              <Input label="Prénom: " />
-              <Input label="Date de naissance: " />
-              <Input label="Adresse: " />
-              <Input label="Code postal: " />
-              <Input label="Ville: " />
-              <Input label="Email: " />
-              <Input label="Téléphone: " />
-              <Button buttonName="Valider" className="button-red" />
-            </form>
+            <div className="form-info-perso">
+              <Input
+                label="Nom: "
+                name="lastname"
+                value={userInfoForm.values.lastname}
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Prénom: "
+                name="firstname"
+                value={userInfoForm.values.firstname}
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Date de naissance: "
+                name="birthday"
+                value={
+                  userInfoForm.values.birthday
+                    ? moment(userInfoForm.values.birthday).format('DD/MM/YYYY')
+                    : userInfoForm.values.birthday
+                }
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Adresse: "
+                name="address"
+                value={userInfoForm.values.address}
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Code postal: "
+                name="postal_code"
+                value={userInfoForm.values.postal_code}
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Ville: "
+                name="city"
+                value={userInfoForm.values.city}
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Email: "
+                name="email"
+                value={userInfoForm.values.email}
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Téléphone: "
+                name="phone"
+                value={userInfoForm.values.phone}
+                onChange={userInfoForm.handleChange}
+              />
+            </div>
           </div>
           <div className="info-corpo">
             <div className="title">
               <h3>Données de corporation</h3>
             </div>
-            <form action="#" className="form-info-corpo">
-              <Input label="Nom de province:" />
-              <Input label="Lieu d'adoption" />
-              <Input label="Date d'adoption" />
-              <Input label="Chambre" />
-              <Input label="Lieu de réception" />
-              <Input label="Date de réception" />
-              <Button buttonName="Valider" className="button-red" />
-            </form>
+            <div className="form-info-corpo">
+              <SelectComponant
+                data={provinces}
+                optionValue="name"
+                setValue={(value) => {
+                  if (value === undefined) {
+                    return userInfoForm.setFieldValue('province_id', 'NULL');
+                  }
+                  userInfoForm.setFieldValue('province_id', value.id);
+                }}
+                disabled={!userInfoForm.values.province_id}
+                defaultValue={userInfoForm.values.province_id}
+                label="Nom de province:"
+              />
+              <SelectComponant
+                data={adoptionPlace}
+                optionValue="name"
+                setValue={(value) => {
+                  userInfoForm.setFieldValue('adoption_place_id', value.id);
+                }}
+                disabled={!userInfoForm.values.adoption_place_id}
+                defaultValue={userInfoForm.values.adoption_place_id}
+                label="Lieu d'adoption:"
+              />
+              <Input
+                label="Date d'adoption"
+                name="adoption_date"
+                type="date"
+                disabled={!userInfoForm.values.adoption_date}
+                value={
+                  userInfoForm.values.adoption_date
+                    ? moment(userInfoForm.values.adoption_date).format(
+                        'YYYY-MM-DD'
+                      )
+                    : userInfoForm.values.adoption_date
+                }
+                onChange={userInfoForm.handleChange}
+              />
+              <SelectComponant
+                data={rooms}
+                optionValue="name"
+                setValue={(value) => {
+                  userInfoForm.setFieldValue('room_id', value.id);
+                }}
+                disabled={!userInfoForm.values.room_id}
+                defaultValue={userInfoForm.values.room_id}
+                label="Chambre:"
+              />
+              <SelectComponant
+                data={receptionPlace}
+                optionValue="name"
+                setValue={(value) => {
+                  userInfoForm.setFieldValue('reception_place_id', value.id);
+                }}
+                disabled={!userInfoForm.values.reception_place_id}
+                defaultValue={userInfoForm.values.reception_place_id}
+                label="Lieu de réception:"
+              />
+              <Input
+                label="Date de réception"
+                name="reception_date"
+                type="date"
+                disabled={userInfoForm.values.reception_date === ''}
+                value={
+                  userInfoForm.values.reception_date
+                    ? moment(userInfoForm.values.reception_date).format(
+                        'DD/MM/YYYY'
+                      )
+                    : userInfoForm.values.reception_date
+                }
+                onChange={userInfoForm.handleChange}
+              />
+              <Button
+                buttonName="Valider"
+                className="button-red"
+                onClick={userInfoForm.handleSubmit}
+              />
+            </div>
           </div>
         </div>
       </DashboardBody>
