@@ -147,38 +147,38 @@ function Register() {
                     value={formik.values.confirmPassword}
                   />
                 </li>
+                <li className="grid-li-province-name">
+                  <Input
+                    label="Nom de Province"
+                    type="text"
+                    name="province-name"
+                    id="province-name"
+                    onChange={formik.handleChange}
+                    value={formik.values.provinceName}
+                  />
+                </li>
+                <li className="grid-li-adoption-place">
+                  <Input
+                    label="Lieu d'adoption"
+                    type="text"
+                    name="adoption-place"
+                    id="adoption-place"
+                    onChange={formik.handleChange}
+                    value={formik.values.adoptionPlace}
+                  />
+                </li>
+                <li className="grid-li-adoption-date">
+                  <Input
+                    label="Date d'adoption"
+                    type="date"
+                    name="adoption-date"
+                    id="adoption-date"
+                    onChange={formik.handleChange}
+                    value={formik.values.adoptionDate}
+                  />
+                </li>
                 {show && (
                   <>
-                    <li className="grid-li-province-name">
-                      <Input
-                        label="Nom de Province"
-                        type="text"
-                        name="province-name"
-                        id="province-name"
-                        onChange={formik.handleChange}
-                        value={formik.values.provinceName}
-                      />
-                    </li>
-                    <li className="grid-li-adoption-place">
-                      <Input
-                        label="Lieu d'adoption"
-                        type="text"
-                        name="adoption-place"
-                        id="adoption-place"
-                        onChange={formik.handleChange}
-                        value={formik.values.adoptionPlace}
-                      />
-                    </li>
-                    <li className="grid-li-adoption-date">
-                      <Input
-                        label="Date d'adoption"
-                        type="date"
-                        name="adoption-date"
-                        id="adoption-date"
-                        onChange={formik.handleChange}
-                        value={formik.values.adoptionDate}
-                      />
-                    </li>
                     <li className="grid-li-room">
                       <Input
                         label="Chambre"
