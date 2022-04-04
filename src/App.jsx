@@ -21,7 +21,8 @@ import MediaDashboard from './components/SitePages/MediaDashboard';
 import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true
+    );
   const [loggedInAdmin, setLoggedInAdmin] = useState(false);
   return (
     <div className="App">

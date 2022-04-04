@@ -6,6 +6,8 @@ import Books from '../../Books/Books';
 import JobOffers from '../../JobOffers/JobOffers';
 import MediaLink from '../../MediaLink/MediaLink';
 import './HomePage.css';
+// import info from '../../assets/info.pdf';
+// import infoimg from '../../assets/infoimg.jpg';
 
 function HomePage() {
   const [displayPdf, setDisplayPdf] = useState(true);
@@ -23,20 +25,32 @@ function HomePage() {
         <div className="news">
           <div className="container-info">
             <h3>Bulletin d informations</h3>
-            <div className="container-info-button">
-              <Button
-                className="button-red"
-                buttonName="Afficher"
-                onClick={handleClickPdf}
-              />
-              <Button
-                className="button-yellow"
-                buttonName="Fermer"
-                // onClick={!handleClickPdf}
-              />
-            </div>
+            <Button
+              className="button-red"
+              buttonName="Afficher"
+              onClick={handleClickPdf}
+            />
+            {/* <div className="modal"> */}
+              {/* <iframe
+                className="iframe-info"
+                src={info}
+                type="application/pdf"
+                frameBorder="0"
+                height="100%"
+                width="100%"
+              /> */}
+              {/* <img
+                className="modal-img-info"
+                src={infoimg}
+                alt="bulletin d'information"
+              ></img> */}
+            {/* </div> */}
+
             {displayPdf && (
-              <ModalInfo onClick={() => setDisplayPdf(!displayPdf)} />
+              <ModalInfo
+                className="modal-size"
+                onClick={() => setDisplayPdf(!displayPdf)}
+              />
             )}
           </div>
           <div className="container-medias">

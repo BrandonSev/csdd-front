@@ -12,7 +12,7 @@ function ModalConfirm({ message, isOpen, handleOpen, handleValid }) {
   return (
     <div className={`modal-confirm ${isOpen ? 'open' : ''}`}>
       <div className="wrapper-modal-confirm">
-        <p className="title">Etes vous sur?</p>
+        <p className="title">Etes-vous sûr?</p>
         <p className="message">{message}</p>
         <div className="modal-confirm-button">
           <Button

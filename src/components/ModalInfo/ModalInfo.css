@@ -1,22 +1,38 @@
-.container-info{
- width:50%;
+.container-info {
+  width: 50%;
 }
 
+
+
 .modal iframe {
-  width: 100%;
-  height: auto;
   display: none;
 }
 
-.modal-img-info{
-  width:100%;
+.modal-img-info {
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .modal-img-info {
     display: none;
   }
-  .modal iframe { 
+  .modal iframe {
     display: block;
+    width: 100%;
+    height: auto;
   }
+
+  /* /* .modal .iframe-info {
+    width: 90%;
+  } */
+  .modal-displayPdf {
+    width: 90%;
+  }
+
+  /* .container-info {
+    width: 90%;
+  } */
+  /* .container-modalInfo {
+    width: 100%;
+  } */
 }

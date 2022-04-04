@@ -75,10 +75,47 @@ h3 {
 
 .w-100 {
   width: 100%;
-}
+}rem
 
 .active {
   background-color: #af1616;
+}
+
+/* style des dossiers */
+.formation-image-container {
+  border:1px solid black;
+  height:12rem;
+}
+
+.formation-image-container img{
+width:auto;
+height:12rem;
+}
+
+.formation-image img{
+width:100%;
+}
+
+.formation-container {
+  display:grid;
+  grid-gap: 2rem;
+}
+
+.formation-container .child {
+  padding: 1rem;
+}
+
+/* Style du bouton des dossiers */
+.formation-btn-container {
+  /* position: relative; */
+  transform: translateX(15px);
+  transform: translatex(15px);
+  bottom: 6rem;
+  height: fit-content;
+  padding:0.8rem;
+  width: 10rem;
+  background: hsla(0, 0%, 0%, 0.6);
+border-radius: 5px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -86,4 +123,10 @@ h3 {
     padding-left: 16px;
     padding-right: 16px;
   }
+
+  /* style des dossiers */
+.formation-image-container img{
+width:19rem;
+height:auto;
+}
 }

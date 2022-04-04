@@ -1,13 +1,16 @@
 import React from 'react';
-
 import Button from '../../Button/Button';
+import regleCorporative from '../../../assets/regleCorporative.png';
+import organigramme from '../../../assets/organigramme.png';
+import annuaire from '../../../assets/annuaire.png';
+
 
 function CommissionDesRites() {
   return (
     <div className="formation-container">
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="ANNUAIRE" />
+          <img className="formation-image" src={annuaire} alt="ANNUAIRE" />
         </div>
         <div className="formation-btn-container">
           <div>
@@ -18,7 +21,11 @@ function CommissionDesRites() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="ORGANIGRAMME" />
+          <img
+            className="formation-image"
+            src={organigramme}
+            alt="ORGANIGRAMME"
+          />
         </div>
         <div className="formation-btn-container">
           <div>
@@ -29,7 +36,11 @@ function CommissionDesRites() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="REGLES CORPORATIVE" />
+          <img
+            className="formation-image"
+            src={regleCorporative}
+            alt="REGLES CORPORATIVE"
+          />
         </div>
         <div className="formation-btn-container">
           <div>

@@ -1,6 +1,9 @@
 import React from 'react';
-
 import Button from '../../Button/Button';
+import deroulementCelebrations from '../../../assets/deroulementCelebrations.png';
+import enseignementCompagnonique from '../../../assets/enseignementCompagnonique.png';
+import cultureCompagnonique from '../../../assets/cultureCompagnonique.png';
+
 
 function CommissionDesRites() {
   return (
@@ -9,7 +12,7 @@ function CommissionDesRites() {
         <div className="formation-image-container">
           <img
             className="formation-image"
-            src="#"
+            src={deroulementCelebrations}
             alt="DEROULEMENT CELEBRATIONS"
           />
         </div>
@@ -27,7 +30,7 @@ function CommissionDesRites() {
         <div className="formation-image-container">
           <img
             className="formation-image"
-            src="#"
+            src={enseignementCompagnonique}
             alt="ENSEIGNEMENT COMPAGNONIQUE"
           />
         </div>
@@ -45,7 +48,7 @@ function CommissionDesRites() {
         <div className="formation-image-container">
           <img
             className="formation-image"
-            src="#"
+            src={cultureCompagnonique}
             alt="CULTURE COMPAGNONIQUE"
           />
         </div>

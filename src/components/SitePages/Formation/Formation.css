@@ -1,29 +1,6 @@
-.child {
-  color: white;
-  padding: 1rem;
-  width: auto;
-  height: auto;
-}
+/* 
 
-.formation-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  grid-gap: 1rem;
-}
 
-.formation-image-container {
-  border: 1px solid black;
-  height: 20vw;
-  width: 68vw;
-}
-
-.formation-btn-container {
-  position: relative;
-  left: 46vw;
-  bottom: 4vw;
-  height: 10vw;
-  width: 38vw;
-}
 
 .formation-btn {
   width: 100%;
@@ -58,4 +35,4 @@
     background: #c4c4c4;
     padding: 1vw;
   }
-}
+} */
