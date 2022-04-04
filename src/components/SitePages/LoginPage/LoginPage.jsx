@@ -8,13 +8,39 @@ import './LoginPage.css';
 import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AppContext } from '../../../context/AppContext';
 
 /* Utilisation du hook `useFormik` pour créer le formulaire */
 function LoginPage() {
+  const { setLoggedIn, setLoggedInAdmin } = useContext(AppContext);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
+    },
+    onSubmit: (values, { resetForm }) => {
+      axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, values, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          setLoggedIn(true);
+          console.log(res.data.user);
+          if (res.data.user.roles.includes('admin')) {
+            setLoggedInAdmin(true);
+            navigate('/dashboard/utilisateurs');
+          } else {
+            navigate('/home');
+          }
+          toast.success('Bravo, vous êtes maintenant connecté');
+          resetForm();
+        })
+        .catch((err) => toast.error(err.message));
     },
   });
 
@@ -33,7 +59,14 @@ function LoginPage() {
             <h1>
               <BiUser /> Espace Membre
             </h1>
-            <form onSubmit={formik.handleSubmit}>
+            <form
+              onSubmit={formik.handleSubmit}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  formik.handleSubmit();
+                }
+              }}
+            >
               <Input
                 label="Email"
                 type="email"
@@ -51,7 +84,11 @@ function LoginPage() {
                 value={formik.values.password}
               />
               <div className="login-connection">
-                <Button className="button-yellow" buttonName="Connexion" />
+                <Button
+                  className="button-yellow"
+                  buttonName="Connexion"
+                  onClick={formik.handleSubmit}
+                />
               </div>
               <NavLink to="/password">
                 <p>Mot de passe oublié ?</p>

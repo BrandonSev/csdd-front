@@ -8,17 +8,16 @@ import Button from '../../Button/Button';
 import Input from '../../Input/Input';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import { useState } from 'react';
 import { toast } from 'react-toastify';
 import SelectComponant from '../../SelectComponents/Select';
-import { useEffect } from 'react';
 import moment from 'moment';
+import { useContext } from 'react';
+import { AppContext } from '../../../context/AppContext';
 
 function UserDashboard() {
-  const [rooms, setRooms] = useState();
-  const [receptionPlace, setReceptionPlace] = useState();
-  const [provinces, setProvinces] = useState();
-  const [adoptionPlace, setAdoptionPlace] = useState();
+  const { provinces, adoptionPlace, rooms, receptionPlace } =
+    useContext(AppContext);
+
   const userSearchForm = useFormik({
     initialValues: {
       firstname: '',
@@ -36,14 +35,10 @@ function UserDashboard() {
           }
         )
         .then((res) => {
-          if (res.data) {
-            res.data.forEach((data) => {
-              for (const [key, value] of Object.entries(data)) {
-                userInfoForm.setFieldValue(`${key}`, value);
-              }
-            });
-          }
           if (res.status === 200) {
+            for (const [key, value] of Object.entries(res.data[0])) {
+              userInfoForm.setFieldValue(`${key}`, value);
+            }
             resetForm();
             return toast.success(
               `Vous avez maintenant acccès au compte de ${res.data[0].firstname}`
@@ -77,11 +72,12 @@ function UserDashboard() {
       picture: '',
       cotisation_payed: '',
       active: '',
-      status_id: '',
       province_id: '',
       reception_place_id: '',
       room_id: '',
       adoption_place_id: '',
+      reception_date: '',
+      roles: '',
     },
     onSubmit: (values, { resetForm }) => {
       axios
@@ -91,6 +87,7 @@ function UserDashboard() {
             ...values,
           },
           {
+            withCredentials: true,
             validateStatus: (status) => {
               return status >= 200 && status <= 404;
             },
@@ -112,44 +109,6 @@ function UserDashboard() {
         );
     },
   });
-  useEffect(() => {
-    (async () => {
-      await axios.all([
-        axios
-          .get(`${process.env.REACT_APP_BACKEND_URL}/api/province`)
-          .then((res) => setProvinces(res.data))
-          .catch((err) =>
-            toast.error(
-              'Une erreur est survenue lors de la récupération des provinces'
-            )
-          ),
-        axios
-          .get(`${process.env.REACT_APP_BACKEND_URL}/api/adoptionPlace`)
-          .then((res) => setAdoptionPlace(res.data))
-          .catch((err) =>
-            toast.error(
-              "Une erreur est survenue lors de la récupération des lieux d'adoption"
-            )
-          ),
-        axios
-          .get(`${process.env.REACT_APP_BACKEND_URL}/api/room`)
-          .then((res) => setRooms(res.data))
-          .catch((err) =>
-            toast.error(
-              'Une erreur est survenue lors de la récupération des chambres'
-            )
-          ),
-        axios
-          .get(`${process.env.REACT_APP_BACKEND_URL}/api/receptionPlace`)
-          .then((res) => setReceptionPlace(res.data))
-          .catch((err) =>
-            toast.error(
-              'Une erreur est survenue lors de la récupération des lieux de réception'
-            )
-          ),
-      ]);
-    })();
-  }, []);
 
   return (
     <Dashboard>
@@ -248,11 +207,8 @@ function UserDashboard() {
               <Input
                 label="Date de naissance: "
                 name="birthday"
-                value={
-                  userInfoForm.values.birthday
-                    ? moment(userInfoForm.values.birthday).format('DD/MM/YYYY')
-                    : userInfoForm.values.birthday
-                }
+                type="date"
+                value={userInfoForm.values.birthday}
                 onChange={userInfoForm.handleChange}
               />
               <Input
@@ -296,9 +252,6 @@ function UserDashboard() {
                 data={provinces}
                 optionValue="name"
                 setValue={(value) => {
-                  if (value === undefined) {
-                    return userInfoForm.setFieldValue('province_id', 'NULL');
-                  }
                   userInfoForm.setFieldValue('province_id', value.id);
                 }}
                 disabled={!userInfoForm.values.province_id}
@@ -320,13 +273,7 @@ function UserDashboard() {
                 name="adoption_date"
                 type="date"
                 disabled={!userInfoForm.values.adoption_date}
-                value={
-                  userInfoForm.values.adoption_date
-                    ? moment(userInfoForm.values.adoption_date).format(
-                        'YYYY-MM-DD'
-                      )
-                    : userInfoForm.values.adoption_date
-                }
+                value={userInfoForm.values.adoption_date}
                 onChange={userInfoForm.handleChange}
               />
               <SelectComponant
@@ -367,6 +314,7 @@ function UserDashboard() {
                 buttonName="Valider"
                 className="button-red"
                 onClick={userInfoForm.handleSubmit}
+                disabled={!userInfoForm.values.firstname}
               />
             </div>
           </div>

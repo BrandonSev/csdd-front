@@ -8,6 +8,10 @@
   transition: transform 0.4s;
 }
 
+.dashboard-menu .active {
+  background-color: #af1616;
+}
+
 .dashboard-menu.open {
   transform: translateX(0);
 }

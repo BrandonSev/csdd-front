@@ -1,9 +1,20 @@
 .dashboard-header {
   position: fixed;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   padding: 2.5rem 1rem;
   background-color: #fff;
   z-index: 9;
+}
+
+.dashboard-header div:nth-child(2) {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 992px) {
+  .dashboard-header {
+    padding-left: calc(400px + 2.5rem);
+  }
 }
