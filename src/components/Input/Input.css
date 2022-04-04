@@ -2,7 +2,12 @@ label {
   display: block;
 }
 
-input:not([type='checkbox']),
+input:disabled, select:disabled {
+  background-color: #e5e5e5 !important;
+  border: 2px solid #af1616 !important;
+}
+
+input:not([type='radio']):not([type='checkbox']),
 textarea,
 select {
   width: 100%;
@@ -11,9 +16,4 @@ select {
   border-radius: 5px;
   border: 2px solid #fca311;
   background-color: #fff;
-}
-
-input:disabled {
-  background-color: #e5e5e5;
-  border: 2px solid #af1616;
 }

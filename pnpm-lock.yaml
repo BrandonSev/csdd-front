@@ -28,6 +28,7 @@ specifiers:
   react-router-dom: ^6.2.1
   react-scripts: ^4.0.3
   react-select: ^5.2.2
+  react-toastify: ^8.2.0
   stylelint: ^13.13.1
   stylelint-config-standard: ^22.0.0
   swiper: ^8.0.7
@@ -50,6 +51,7 @@ dependencies:
   react-router-dom: 6.2.1_react-dom@17.0.2+react@17.0.2
   react-scripts: 4.0.3_react@17.0.2
   react-select: 5.2.2_08e041ced5dbc85933fef7a25e63a057
+  react-toastify: 8.2.0_react-dom@17.0.2+react@17.0.2
   swiper: 8.0.7
   web-vitals: 2.1.2
   yup: 0.32.11
@@ -3968,6 +3970,11 @@ packages:
     dependencies:
       is-regexp: 2.1.0
     dev: true
+
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /co/4.6.0:
     resolution: {integrity: sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=}
@@ -10347,6 +10354,17 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/react'
+    dev: false
+
+  /react-toastify/8.2.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-Pg2Ju7NngAamarFvLwqrFomJ57u/Ay6i6zfLurt/qPynWkAkOthu6vxfqYpJCyNhHRhR4hu7+bySSeWWJu6PAg==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      clsx: 1.1.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-transition-group/4.4.2_react-dom@17.0.2+react@17.0.2:

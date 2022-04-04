@@ -8,6 +8,10 @@
   transition: transform 0.4s;
 }
 
+.dashboard-menu .active {
+  background-color: #af1616;
+}
+
 .dashboard-menu.open {
   transform: translateX(0);
 }
@@ -88,7 +92,7 @@
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1024px) {
   .dashboard-menu {
     max-width: 400px;
     transform: translateX(0);

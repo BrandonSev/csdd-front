@@ -12,6 +12,7 @@ function Input({
   value,
   onChange,
   disabled,
+  checked,
 }) {
   return (
     <label htmlFor={name} className={labelClassName}>
@@ -26,6 +27,7 @@ function Input({
         onChange={onChange}
         disabled={disabled}
         style={{ marginTop: '0.5rem' }}
+        checked={checked}
       />
     </label>
   );

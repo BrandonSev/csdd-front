@@ -9,25 +9,14 @@ import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
 import './EventsDashboard.css';
+import moment from 'moment';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function eventsDashboard() {
   const [events, setEvents] = useState([]);
   const [selectedValue, setSelectedValue] = useState({});
-  const [selectedImage, setSelectedImage] = useState({});
-
-  /**
-   * It takes in an event object and sets the selectedImage state to the file that was selected
-   */
-  const imageChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage({
-        file: e.target.files[0],
-        image: URL.createObjectURL(e.target.files[0]),
-      });
-    }
-  };
+  const [isSelected, setIsSelected] = useState({});
 
   /* It's creating a formik object that will be used to validate the form. */
   const formik = useFormik({
@@ -37,9 +26,27 @@ function eventsDashboard() {
       filename: selectedValue.filename ? selectedValue.filename : '',
       event_link: selectedValue.event_link ? selectedValue.event_link : '',
     },
+    onSubmit: (values, { resetForm }) => {
+      const bodyFormData = new FormData();
+      bodyFormData.append(
+        'data',
+        JSON.stringify({
+          ...values,
+        })
+      );
+      bodyFormData.append('assets', values.filename);
+      axios
+        .post(`${API_URL}/api/events/`, bodyFormData)
+        .then((data) => {
+          resetForm;
+        })
+        .catch((err = console.error(err.message)));
+    },
+
     enableReinitialize: true,
   });
 
+  /* It's fetching the data from the API and setting it to the state. */
   useEffect(() => {
     (async () => {
       await axios
@@ -75,17 +82,16 @@ function eventsDashboard() {
             <b>Ajouter un évènement:</b>
             <Input
               label="Titre"
-              type="Title"
-              name="Title"
+              type="text"
+              name="title"
               id="Title"
-              onChange={formik.handleChange}
               value={formik.values.filename}
             />
             <div className="event-text-container">
               <p>Ajouter du texte </p>
               <textarea
-                name="Text"
-                id="Text"
+                name="description"
+                id="description"
                 onChange={formik.handleChange}
                 value={formik.values.description}
               />
@@ -96,31 +102,48 @@ function eventsDashboard() {
                 type="file"
                 className="ignores-input-style"
                 accept="image/*"
-                onChange={imageChange}
+                onChange={(e) => {
+                  formik.setFieldValue('filename', e.target.files[0]);
+                }}
+                name="filename"
               />
-              {/* It's creating a URL for the image that is being uploaded. */}
-              {selectedValue.filename && !selectedImage.image ? (
-                <img
-                  className="event_image"
-                  src={`${API_URL}/images/${selectedValue.filename}`}
-                  alt=""
-                  width={150}
-                />
+              {formik.values.filename !== '' ? (
+                formik.values.filename === selectedValue.filename ? (
+                  <img
+                    className="event_image"
+                    src={`${API_URL}/images/${selectedValue.filename}`}
+                    alt=""
+                    width={150}
+                  />
+                ) : (
+                  <img
+                    className="event_image"
+                    src={URL.createObjectURL(formik.values.filename)}
+                    alt=""
+                    width={150}
+                  />
+                )
               ) : (
-                <img
-                  className="event_image"
-                  /* It's creating a URL for the image that is being uploaded. */
-                  src={selectedImage.image}
-                  alt=""
-                  width={150}
-                />
+                ''
               )}
             </div>
             <Input
+              label="Date de l'événement"
+              type="date"
+              name="event_date"
+              id="event_date"
+              onChange={formik.handleChange}
+              value={
+                formik.values.event_date
+                  ? moment(formik.values.event_date).format('YYYY-MM-DD')
+                  : formik.values.event_date
+              }
+            />
+            <Input
               label="Ajouter un lien"
-              type="AddingLink"
-              name="AddingLink"
-              id="Title"
+              type="event_link"
+              name="event_link"
+              id="event_link"
               onChange={formik.handleChange}
               value={formik.values.event_link}
             />
@@ -130,20 +153,25 @@ function eventsDashboard() {
                 <Button
                   className="button-red event_button"
                   buttonName="Valider"
+                  onClick={formik.handleSubmit}
                 />
               </div>
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Modifier"
-                />
-              </div>
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Supprimer"
-                />
-              </div>
+              {isSelected !== '' && (
+                <>
+                  <div className="btn-event">
+                    <Button
+                      className="button-red event_button"
+                      buttonName="Modifier"
+                    />
+                  </div>
+                  <div className="btn-event">
+                    <Button
+                      className="button-red event_button"
+                      buttonName="Supprimer"
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
