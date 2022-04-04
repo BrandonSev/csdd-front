@@ -9,7 +9,15 @@
 }
 
 .navbar .wrapper-navbar .avatar-logo {
+  display: flex;
+  align-items: center;
   margin-right: 1rem;
+}
+
+.navbar .wrapper-navbar .avatar-logo a {
+  display: flex;
+  align-items: center;
+  gap: 0 .5rem;
 }
 
 .navbar .wrapper-navbar .navbar-logo {
@@ -72,7 +80,7 @@
   margin-top: 0.3rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 845px) {
   .navbar .navbar-logo img {
     width: 80px;
   }
@@ -87,7 +95,9 @@
   }
 
   .navbar .wrapper-navbar .avatar-logo {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
   }
 
   .navbar .wrapper-navbar .navbar-menu {

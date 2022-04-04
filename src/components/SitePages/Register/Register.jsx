@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { BiUser } from 'react-icons/bi';
@@ -8,33 +8,67 @@ import './Register.css';
 import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import SelectComponant from '../../SelectComponents/Select';
 
 function Register() {
+  const [provinces, setProvinces] = useState([]);
+  const [adoptionPlaces, setAdoptionPlaces] = useState([]);
   const formik = useFormik({
     initialValues: {
       firstname: '',
       lastname: '',
-      birthDate: '',
-      adress: '',
-      postalCode: '',
+      birthday: '',
+      address: '',
+      postal_code: '',
       city: '',
-      phoneNumber: '',
+      phone: '',
       email: '',
       password: '',
       confirmPassword: '',
-      provinceName: '',
-      adoptionPlace: '',
-      adoptionDate: '',
-      room: '',
-      receptionPlace: '',
-      receptionDate: '',
+      province_id: '',
+      adoption_place_id: '',
+      adoption_date: '',
+    },
+    onSubmit: (values, { resetForm }) => {
+      if (values.password !== values.confirmPassword) {
+        return toast.error('Les mot de passe ne correspondent pas.');
+      }
+      axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/api/users`, values)
+        .then((res) => {
+          toast.success(
+            "Votre demande à bien été enregistrer, votre compte est en cours de validation, vous serez avertis par mail lors de l'activation de votre compte"
+          );
+          resetForm();
+        })
+        .catch((err) => toast.error('Une erreur est survenue'));
     },
   });
 
-  const [show, setShow] = useState(false);
-  const handleClick = () => {
-    setShow(!show);
-  };
+  useEffect(() => {
+    (async () => {
+      axios.all([
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/province`)
+          .then((res) => setProvinces(res.data))
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des provinces'
+            )
+          ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/adoptionPlace`)
+          .then((res) => setAdoptionPlaces(res.data))
+          .catch((err) =>
+            toast.error(
+              "Une erreur est survenue lors de la récupération des lieux d'adoption"
+            )
+          ),
+      ]);
+    })();
+  }, []);
 
   return (
     <>
@@ -59,7 +93,7 @@ function Register() {
                 </li>
                 <li className="grid-li-lastname">
                   <Input
-                    label="NOM"
+                    label="Nom"
                     type="text"
                     name="lastname"
                     id="lastname"
@@ -71,30 +105,30 @@ function Register() {
                   <Input
                     label="Date de naissance"
                     type="date"
-                    name="birth-date"
+                    name="birthday"
                     id="birth-date"
                     onChange={formik.handleChange}
-                    value={formik.values.birthDate}
+                    value={formik.values.birthday}
                   />
                 </li>
                 <li className="grid-li-adress">
                   <Input
                     label="Adresse"
                     type="text"
-                    name="adress"
-                    id="adress"
+                    name="address"
+                    id="address"
                     onChange={formik.handleChange}
-                    value={formik.values.adress}
+                    value={formik.values.address}
                   />
                 </li>
                 <li className="grid-li-postal-code">
                   <Input
                     label="Code postal"
                     type="number"
-                    name="postal-code"
+                    name="postal_code"
                     id="postal-code"
                     onChange={formik.handleChange}
-                    value={formik.values.postalCode}
+                    value={formik.values.postal_code}
                   />
                 </li>
                 <li className="grid-li-city">
@@ -111,10 +145,10 @@ function Register() {
                   <Input
                     label="Numéro de téléphone"
                     type="tel"
-                    name="phone-number"
+                    name="phone"
                     id="phone-number"
                     onChange={formik.handleChange}
-                    value={formik.values.phoneNumber}
+                    value={formik.values.phone}
                   />
                 </li>
                 <li className="grid-li-email">
@@ -141,91 +175,50 @@ function Register() {
                   <Input
                     label="Confirmer mot de passe"
                     type="password"
-                    name="confirm-password"
+                    name="confirmPassword"
                     id="confirm-password"
                     onChange={formik.handleChange}
                     value={formik.values.confirmPassword}
                   />
                 </li>
-                {show && (
-                  <>
-                    <li className="grid-li-province-name">
-                      <Input
-                        label="Nom de Province"
-                        type="text"
-                        name="province-name"
-                        id="province-name"
-                        onChange={formik.handleChange}
-                        value={formik.values.provinceName}
-                      />
-                    </li>
-                    <li className="grid-li-adoption-place">
-                      <Input
-                        label="Lieu d'adoption"
-                        type="text"
-                        name="adoption-place"
-                        id="adoption-place"
-                        onChange={formik.handleChange}
-                        value={formik.values.adoptionPlace}
-                      />
-                    </li>
-                    <li className="grid-li-adoption-date">
-                      <Input
-                        label="Date d'adoption"
-                        type="date"
-                        name="adoption-date"
-                        id="adoption-date"
-                        onChange={formik.handleChange}
-                        value={formik.values.adoptionDate}
-                      />
-                    </li>
-                    <li className="grid-li-room">
-                      <Input
-                        label="Chambre"
-                        type="text"
-                        name="room"
-                        id="room"
-                        disabled="disabled"
-                        onChange={formik.handleChange}
-                        value={formik.values.room}
-                      />
-                    </li>
-                    <li className="grid-li-reception-place">
-                      <Input
-                        label="Lieu de réception"
-                        type="text"
-                        name="reception-place"
-                        id="reception-place"
-                        disabled="disabled"
-                        onChange={formik.handleChange}
-                        value={formik.values.receptionPlace}
-                      />
-                    </li>
-                    <li className="grid-li-reception-date">
-                      <Input
-                        label="Date de réception"
-                        type="date"
-                        name="reception-date"
-                        id="reception-date"
-                        disabled="disabled"
-                        onChange={formik.handleChange}
-                        value={formik.values.receptionDate}
-                      />
-                    </li>
-                  </>
-                )}
+                <li className="grid-li-province-name">
+                  <SelectComponant
+                    data={provinces}
+                    optionValue="name"
+                    setValue={(value) => {
+                      formik.setFieldValue('province_id', value.id);
+                    }}
+                    defaultValue={formik.values.province_id}
+                    label="Province:"
+                  />
+                </li>
+                <li className="grid-li-adoption-place">
+                  <SelectComponant
+                    data={adoptionPlaces}
+                    optionValue="name"
+                    setValue={(value) => {
+                      formik.setFieldValue('adoption_place_id', value.id);
+                    }}
+                    defaultValue={formik.values.adoption_place_id}
+                    label="Province:"
+                  />
+                </li>
+                <li className="grid-li-adoption-date">
+                  <Input
+                    label="Date d'adoption"
+                    type="date"
+                    name="adoption_date"
+                    id="adoption-date"
+                    onChange={formik.handleChange}
+                    value={formik.values.adoption_date}
+                  />
+                </li>
               </ul>
-              <div className="corporate-data">
-                <Button
-                  className="button-red"
-                  buttonName="Données corporation"
-                  onClick={handleClick}
-                />
-              </div>
               <div className="register">
                 <Button
                   className="button-yellow"
                   buttonName="Demander un accès"
+                  onClick={formik.handleSubmit}
                 />
               </div>
             </form>
