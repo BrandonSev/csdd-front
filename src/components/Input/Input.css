@@ -2,7 +2,7 @@ label {
   display: block;
 }
 
-input:disabled {
+input:disabled, select:disabled {
   background-color: #e5e5e5 !important;
   border: 2px solid #af1616 !important;
 }

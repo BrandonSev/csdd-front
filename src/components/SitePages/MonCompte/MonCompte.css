@@ -80,6 +80,10 @@
   background-color: #adadad;
 }
 
+.profil-page .right-block .wrapper-donnee-perso {
+  margin-top: 2rem;
+}
+
 .profil-page .right-block .donnee-perso {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -104,7 +108,7 @@
 }
 
 .profil-page .right-block .wrapper-corpo {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .profil-page .right-block .wrapper-password {
@@ -138,6 +142,10 @@
   .profil-page .right-block {
     width: 100%;
     padding: 3rem;
+  }
+
+  .profil-page .right-block .wrapper-donnee-perso {
+    margin-top: initial;
   }
 
   .profil-page .right-block .donnee-perso {

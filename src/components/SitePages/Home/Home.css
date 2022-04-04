@@ -30,7 +30,7 @@
   position: absolute;
   transform: translateX(-50%);
   text-align: center;
-  top: 400px;
+  top: 42%;
   left: 50%;
 }
 
@@ -50,7 +50,6 @@
 
 .home a {
   display: block;
-  width: 375px;
   height: 55px;
   font-weight: bold;
   z-index: 1;

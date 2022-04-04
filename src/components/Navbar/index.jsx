@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
-import { FiUser } from 'react-icons/all';
+import { FiUser, RiGitRepositoryPrivateFill } from 'react-icons/all';
+import Logout from '../Logout';
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+  const { user } = useContext(AppContext);
   const handleClick = () => {
     setOpen(false);
   };
@@ -46,9 +49,17 @@ const Navbar = () => {
             onClick={handleClick}
             onKeyUp={handleClick}
           >
+            {user?.roles?.includes('admin') && (
+              <NavLink to="/dashboard/utilisateurs">
+                <RiGitRepositoryPrivateFill size={20} />
+                <span style={{}}>Espace privé</span>
+              </NavLink>
+            )}
             <NavLink to="/mon-compte">
               <FiUser size={20} />
+              <span style={{}}>{`${user?.firstname}`}</span>
             </NavLink>
+            <Logout />
           </div>
           <button
             type="button"

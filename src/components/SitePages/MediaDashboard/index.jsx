@@ -28,7 +28,7 @@ function MediaDashboard() {
         <div className="media-dashboard">
           <div className="title">
             <h1>Médias</h1>
-            <SelectComponant className="w-100" />
+            <SelectComponant label="Sélectionner un fichier" />
           </div>
           <div className="media-dashboard-body">
             <p>
