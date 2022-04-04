@@ -10,6 +10,7 @@ import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
 import './EventsDashboard.css';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -26,6 +27,7 @@ function eventsDashboard() {
       filename: selectedValue.filename ? selectedValue.filename : '',
       event_link: selectedValue.event_link ? selectedValue.event_link : '',
     },
+    /* It's the function that will be called when the form is submitted. */
     onSubmit: (values, { resetForm }) => {
       const bodyFormData = new FormData();
       bodyFormData.append(
@@ -34,6 +36,7 @@ function eventsDashboard() {
           ...values,
         })
       );
+      /* It's sending the file to the server. */
       bodyFormData.append('assets', values.filename);
       axios
         .post(`${API_URL}/api/events/`, bodyFormData)
@@ -60,6 +63,23 @@ function eventsDashboard() {
         });
     })();
   }, []);
+
+  const handleDeleteEvent = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .delete(`${API_URL}/api/events/${selectedValue.id}`)
+      .then((response) => {
+        if (response.status === 204) {
+          toast.succes("L'évenement est supprimé ");
+        } else {
+          alert('Erreur');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <Dashboard>
@@ -168,6 +188,7 @@ function eventsDashboard() {
                     <Button
                       className="button-red event_button"
                       buttonName="Supprimer"
+                      onClick={handleDeleteEvent}
                     />
                   </div>
                 </>
