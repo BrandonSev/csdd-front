@@ -110,8 +110,8 @@ function eventsDashboard() {
       .put(`${API_URL}/api/events/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
-          formik.resetForm();
-          toast.success("L'évenement est moddifié ");
+          toast.success("L'évenement est modifié ");
+          formik.resetForm;
         } else {
           alert('Erreur');
         }
@@ -183,15 +183,17 @@ function eventsDashboard() {
                     width={150}
                   />
                 ))}
-
-              {!modify && formik.values.filename !== '' && (
-                <img
-                  className="event_image"
-                  src={URL.createObjectURL(formik.values.filename)}
-                  alt=""
-                  width={150}
-                />
-              )}
+              {!modify &&
+                (formik.values.filename.name ? (
+                  <img
+                    className="event_image"
+                    src={URL.createObjectURL(formik.values.filename)}
+                    alt=""
+                    width={150}
+                  />
+                ) : (
+                  ''
+                ))}
             </div>
             <Input
               label="Date de l'événement"
