@@ -1,7 +1,7 @@
 import React from 'react';
+import { AiOutlineCloseCircle } from 'react-icons/all';
 import Button from '../../components/Button/Button';
 import './ModalConfirm.css';
-import { AiOutlineCloseCircle } from 'react-icons/all';
 
 function ModalConfirm({ message, isOpen, handleOpen, handleValid }) {
   const handleClick = () => {
@@ -12,7 +12,7 @@ function ModalConfirm({ message, isOpen, handleOpen, handleValid }) {
   return (
     <div className={`modal-confirm ${isOpen ? 'open' : ''}`}>
       <div className="wrapper-modal-confirm">
-        <p className="title">Etes vous sur?</p>
+        <p className="title">Etes-vous sûr?</p>
         <p className="message">{message}</p>
         <div className="modal-confirm-button">
           <Button

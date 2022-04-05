@@ -1,13 +1,16 @@
 import React from 'react';
-
 import Button from '../../Button/Button';
+import innovation from '../../../assets/innovation.png';
+import congresGalerie from '../../../assets/congresGalerie.png';
+import concoursFerronerie from '../../../assets/concoursFerronerie.png';
+import concoursSoudure from '../../../assets/concoursSoudure.png';
 
 function Memoire() {
   return (
     <div className="formation-container">
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="INNOVATIONS" />
+          <img className="formation-image" src={innovation} alt="INNOVATIONS" />
         </div>
         <div className="formation-btn-container">
           <div>
@@ -18,7 +21,11 @@ function Memoire() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="CONGRES GALERIE" />
+          <img
+            className="formation-image"
+            src={congresGalerie}
+            alt="CONGRES GALERIE"
+          />
         </div>
         <div className="formation-btn-container">
           <div>
@@ -31,7 +38,7 @@ function Memoire() {
         <div className="formation-image-container">
           <img
             className="formation-image"
-            src="#"
+            src={concoursFerronerie}
             alt="CONCOURS DE FERRONERIE"
           />
         </div>
@@ -47,7 +54,11 @@ function Memoire() {
 
       <div className="child">
         <div className="formation-image-container">
-          <img className="formation-image" src="#" alt="CONCOURS DE SOUDURE" />
+          <img
+            className="formation-image"
+            src={concoursSoudure}
+            alt="CONCOURS DE SOUDURE"
+          />
         </div>
         <div className="formation-btn-container">
           <div>

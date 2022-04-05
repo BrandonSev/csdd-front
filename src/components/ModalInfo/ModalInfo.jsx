@@ -2,12 +2,13 @@
 import React from 'react';
 import info from '../../assets/info.pdf';
 import infoimg from '../../assets/infoimg.jpg';
-// import Button from '../Button/Button';
-import "./ModalInfo.css";
+import Button from '../Button/Button';
+import './ModalInfo.css';
 
-function ModalInfo() {
+function ModalInfo({ onClick }) {
   return (
     <div className="container-modalInfo">
+      <Button className="button-yellow" buttonName="Fermer" onClick={onClick} />
       <div className="modal">
         <iframe
           className="iframe-info"

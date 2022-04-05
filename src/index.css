@@ -85,10 +85,57 @@ h3 {
 .w-100 {
   width: 100%;
 }
+rem .active {
+  background-color: #af1616;
+}
+
+/* style des dossiers */
+
+.formation-container {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(autofit, minmax(12rem, 1fr));
+    grid-gap: 1rem;
+}
+
+.child {
+  background: red;
+   border-radius: 5px;
+}
+
+/* .formation-image-container img {
+  width: 100%;
+  height: 100%;
+} */
+
+/* .child .formation-image-container {
+  border: 1px solid black;
+ width:100%;
+} */
+
+/* Style du bouton des dossiers */
+.formation-btn-container {
+  /* position: relative; */
+  display:block;
+  transform: translateX(15px);
+  transform: translatex(15px);
+  bottom: 6rem;
+  height: fit-content;
+  padding: 0.8rem;
+  width: 10rem;
+  background: hsla(0, 0%, 0%, 0.6);
+  border-radius: 5px;
+}
 
 @media screen and (min-width: 1024px) {
   .container {
     padding-left: 16px;
     padding-right: 16px;
   }
+
+  /* style des dossiers */
+  /* .formation-image-container img {
+    width: 19rem;
+    height: auto;
+  } */
 }

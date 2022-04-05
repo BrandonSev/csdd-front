@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
@@ -11,19 +10,7 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-function Events() {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/api/events/`)
-      .then(({ data }) => {
-        setEvents(data);
-      })
-      // eslint-disable-next-line no-console
-      .catch((err) => console.error(err.message));
-  }, []);
-
+function Events({ events }) {
   return (
     <div className="carousel-container">
       <h3>Events</h3>

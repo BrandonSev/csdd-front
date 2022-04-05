@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
@@ -10,19 +9,7 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-function Books() {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/api/books/`)
-      .then(({ data }) => {
-        setBooks(data);
-      })
-      // eslint-disable-next-line no-console
-      .catch((err) => console.error(err.message));
-  }, []);
-
+function Books({ books }) {
   return (
     <div className="carousel-container-books">
       <h3>Books</h3>
