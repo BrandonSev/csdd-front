@@ -54,6 +54,7 @@ function eventsDashboard() {
         .post(`${API_URL}/api/events/`, bodyFormData)
         .then((data) => {
           resetForm();
+          toast.success('Evenement Ajouter');
         })
         .catch((err = console.error(err.message)));
     },
