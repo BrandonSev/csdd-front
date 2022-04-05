@@ -204,15 +204,16 @@ function eventsDashboard() {
               value={formik.values.event_link}
             />
             <div className="eventsBtn-container">
-              <div />
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Valider"
-                  onClick={formik.handleSubmit}
-                />
-              </div>
-              {isSelected !== '' && (
+              {!modify && (
+                <div className="btn-event validate-btn">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Valider"
+                    onClick={formik.handleSubmit}
+                  />
+                </div>
+              )}
+              {modify && (
                 <>
                   <div className="btn-event">
                     <Button

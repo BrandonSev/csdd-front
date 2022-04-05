@@ -30,6 +30,10 @@
   grid-column: span 1 !important;
 }
 
+.validate-btn {
+  grid-column: 2;
+}
+
 @media (min-width: 600px) {
   .evenementDashboard-container {
     display: grid;
