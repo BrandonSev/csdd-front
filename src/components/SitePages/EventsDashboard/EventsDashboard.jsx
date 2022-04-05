@@ -11,15 +11,17 @@ import Dashboard from '../../Dashboard/index';
 import './EventsDashboard.css';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { AppContext } from '../../../context/AppContext';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function eventsDashboard() {
-  const [events, setEvents] = useState([]);
   const [selectedValue, setSelectedValue] = useState({});
   const [isSelected, setIsSelected] = useState({});
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
+  const { events } = useContext(AppContext);
   /**
    * It sets the formik state to true and sets the formik values to the data passed in.
    */
@@ -61,21 +63,6 @@ function eventsDashboard() {
 
     enableReinitialize: true,
   });
-
-  /* It's fetching the data from the API and setting it to the state. */
-  useEffect(() => {
-    (async () => {
-      await axios
-        .get(`${API_URL}/api/events/`)
-        .then((response) => response.data)
-        .then((data) => {
-          setEvents(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    })();
-  }, []);
 
   const handleDeleteEvent = async (e) => {
     e.preventDefault();
