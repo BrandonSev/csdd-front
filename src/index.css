@@ -94,7 +94,6 @@ rem .active {
 .formation-container {
   margin: 2rem;
   display: grid;
-width:12rem;
   grid-template-columns: repeat(autofit, minmax(12rem, 1fr));
     grid-gap: 1rem;
 }
