@@ -282,7 +282,7 @@ function UserDashboard() {
                 setValue={(value) => {
                   userInfoForm.setFieldValue('room_id', value.id);
                 }}
-                disabled={!userInfoForm.values.room_id}
+                disabled={!userInfoForm.values.firstname}
                 defaultValue={userInfoForm.values.room_id}
                 label="Chambre:"
               />
@@ -292,7 +292,7 @@ function UserDashboard() {
                 setValue={(value) => {
                   userInfoForm.setFieldValue('reception_place_id', value.id);
                 }}
-                disabled={!userInfoForm.values.reception_place_id}
+                disabled={!userInfoForm.values.firstname}
                 defaultValue={userInfoForm.values.reception_place_id}
                 label="Lieu de réception:"
               />
@@ -301,13 +301,7 @@ function UserDashboard() {
                 name="reception_date"
                 type="date"
                 disabled={userInfoForm.values.reception_date === ''}
-                value={
-                  userInfoForm.values.reception_date
-                    ? moment(userInfoForm.values.reception_date).format(
-                        'DD/MM/YYYY'
-                      )
-                    : userInfoForm.values.reception_date
-                }
+                value={userInfoForm.values.reception_date}
                 onChange={userInfoForm.handleChange}
               />
               <Button
