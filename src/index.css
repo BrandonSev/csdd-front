@@ -84,47 +84,48 @@ h3 {
 
 .w-100 {
   width: 100%;
-}rem
-
-.active {
+}
+rem .active {
   background-color: #af1616;
 }
 
 /* style des dossiers */
-.formation-image-container {
-  border:1px solid black;
-  height:12rem;
-}
-
-.formation-image-container img{
-width:auto;
-height:12rem;
-}
-
-.formation-image img{
-width:100%;
-}
 
 .formation-container {
-  display:grid;
-  grid-gap: 2rem;
+  margin: 2rem;
+  display: grid;
+width:12rem;
+  grid-template-columns: repeat(autofit, minmax(12rem, 1fr));
+    grid-gap: 1rem;
 }
 
-.formation-container .child {
-  padding: 1rem;
+.child {
+  background: red;
+   border-radius: 5px;
 }
+
+/* .formation-image-container img {
+  width: 100%;
+  height: 100%;
+} */
+
+/* .child .formation-image-container {
+  border: 1px solid black;
+ width:100%;
+} */
 
 /* Style du bouton des dossiers */
 .formation-btn-container {
   /* position: relative; */
+  display:block;
   transform: translateX(15px);
   transform: translatex(15px);
   bottom: 6rem;
   height: fit-content;
-  padding:0.8rem;
+  padding: 0.8rem;
   width: 10rem;
   background: hsla(0, 0%, 0%, 0.6);
-border-radius: 5px;
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -134,8 +135,8 @@ border-radius: 5px;
   }
 
   /* style des dossiers */
-.formation-image-container img{
-width:19rem;
-height:auto;
-}
+  /* .formation-image-container img {
+    width: 19rem;
+    height: auto;
+  } */
 }

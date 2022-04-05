@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
-import moment from "moment";
+import moment from 'moment';
 import 'swiper/swiper-bundle.css';
 import './JobOffers.css';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL;
-
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-function JobOffers() {
-  const [jobOffers, setJobOffers] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/api/jobOffers/`)
-      .then(({ data }) => {
-        setJobOffers(data);
-      })
-      // eslint-disable-next-line no-console
-      .catch((err) => console.error(err.message));
-  }, []);
-
+function JobOffers({ jobOffers }) {
   return (
     <div className="carousel-container-jobOffers">
       <h3>Offres d embauche</h3>

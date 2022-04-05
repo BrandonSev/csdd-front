@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { toast, ToastContainer } from 'react-toastify';
@@ -22,7 +22,6 @@ import MediaDashboard from './components/SitePages/MediaDashboard';
 import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
 import 'react-toastify/dist/ReactToastify.css';
 import { AppContext } from './context/AppContext';
-import { useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
@@ -36,6 +35,9 @@ function App() {
   const [loggedInAdmin, setLoggedInAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const [events, setEvents] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [jobOffers, setJobOffers] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -98,6 +100,35 @@ function App() {
               'Une erreur est survenue lors de la récupération des lieux de réception'
             )
           ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/events/`)
+          .then(({ data }) => setEvents(data))
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des évènements'
+            )
+          ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/books/`)
+          .then(({ data }) => {
+            setBooks(data);
+          })
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des livres'
+            )
+          ),
+
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/jobOffers/`)
+          .then(({ data }) => {
+            setJobOffers(data);
+          })
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des offres d embauche'
+            )
+          ),
       ]);
     })();
   }, []);
@@ -116,6 +147,9 @@ function App() {
           adoptionPlace,
           rooms,
           receptionPlace,
+          events,
+          books,
+          jobOffers,
         }}
       >
         <ToastContainer

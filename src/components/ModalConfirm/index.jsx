@@ -1,7 +1,7 @@
 import React from 'react';
+import { AiOutlineCloseCircle } from 'react-icons/all';
 import Button from '../../components/Button/Button';
 import './ModalConfirm.css';
-import { AiOutlineCloseCircle } from 'react-icons/all';
 
 function ModalConfirm({ message, isOpen, handleOpen, handleValid }) {
   const handleClick = () => {
