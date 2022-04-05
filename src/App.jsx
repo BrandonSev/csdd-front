@@ -24,6 +24,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AppContext } from './context/AppContext';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import ResetPassword from './components/SitePages/ResetPassword';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -183,6 +184,10 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/password" element={<ForgotPw />} />
+            <Route
+              path="/password/reset-password/:id/:token"
+              element={<ResetPassword />}
+            />
           </Routes>
         )}
         {!loading && loggedInAdmin && (

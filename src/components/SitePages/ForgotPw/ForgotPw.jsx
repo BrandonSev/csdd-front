@@ -10,6 +10,7 @@ import './ForgotPw.css';
 import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
+import { toast } from 'react-toastify';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -23,14 +24,20 @@ function ForgotPw() {
         .email("L'adresse email fournie n'est pas valide")
         .required('Le champs est obligatoire'),
     }),
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       axios
-        .post(`${API_URL}/api/mails`, { ...values })
+        .post(`${API_URL}/api/auth/forgot-password`, { ...values })
         .then(() => {
-          alert('Ok');
+          toast.success(
+            'Un lien de réinitialisation vient de vous être envoyé'
+          );
+          resetForm();
         })
         .catch((err) => {
-          alert(err);
+          toast.error(
+            err.response.data.message ||
+              'Une erreur est survenue lors de la demande de réinitialisation'
+          );
         });
     },
   });
