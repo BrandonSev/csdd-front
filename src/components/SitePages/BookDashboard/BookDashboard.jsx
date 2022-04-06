@@ -32,6 +32,7 @@ function bookDashboard() {
     initialValues: {
       filename: selectedValue.filename ? selectedValue.filename : '',
       img_link: selectedValue.img_link ? selectedValue.img_link : '',
+      link: selectedValue.link ? selectedValue.link : '',
     },
 
     onSubmit: (values, { resetForm }) => {
@@ -42,6 +43,7 @@ function bookDashboard() {
           ...values,
         })
       );
+      console.log(values);
       bodyFormData.append('assets', values.filename);
       axios
         .post(`${API_URL}/api/books/`, bodyFormData)
@@ -155,12 +157,21 @@ function bookDashboard() {
           </div>
 
           <Input
-            label="Ajouter un lien"
+            label="Ajouter un lien d'image"
             type="img_link"
             name="img_link"
             id="img_link"
             onChange={formik.handleChange}
             value={formik.values.img_link}
+          />
+
+          <Input
+            label="Ajouter un lien"
+            type="link"
+            name="link"
+            id="link"
+            onChange={formik.handleChange}
+            value={formik.values.link}
           />
           <div className="eventsBtn-container">
             {!modify && (
