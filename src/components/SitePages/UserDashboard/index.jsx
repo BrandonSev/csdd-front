@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './UserDashboard.css';
+import { Formik, useFormik } from 'formik';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import moment from 'moment';
 import Dashboard from '../../Dashboard';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import DashboardHeader from '../../Dashboard/DashboardHeader';
 import DashboardBody from '../../Dashboard/DashboardBody';
 import Button from '../../Button/Button';
 import Input from '../../Input/Input';
-import { useFormik } from 'formik';
-import axios from 'axios';
-import { toast } from 'react-toastify';
 import SelectComponant from '../../SelectComponents/Select';
-import moment from 'moment';
-import { useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
 
 function UserDashboard() {
-  const { provinces, adoptionPlace, rooms, receptionPlace } =
+  const { provinces, adoptionPlace, rooms, receptionPlace, user, roles } =
     useContext(AppContext);
 
   const userSearchForm = useFormik({
@@ -126,28 +125,26 @@ function UserDashboard() {
         </div>
         <div className="dashboard-user-search">
           <div className="user-avatar">
-            <img
-              src="/assets/logo-detoure-noir.png"
-              width={'20%'}
-              alt="avatar"
-            />
+            <img src="/assets/logo-detoure-noir.png" width="20%" alt="avatar" />
           </div>
           <div className="search-wrapper">
             <Input
-              label="Prénom"
+              label="Prénom :"
               name="firstname"
+              className="firstname"
               value={userSearchForm.values.firstname}
               onChange={userSearchForm.handleChange}
             />
             <Input
-              label="Nom"
+              label="Nom :"
               name="lastname"
+              className="lastname"
               onChange={userSearchForm.handleChange}
               value={userSearchForm.values.lastname}
             />
             <Input
+              label="Date de naissance :"
               type="date"
-              label="Date de naissance"
               name="birthday"
               onChange={userSearchForm.handleChange}
               value={userSearchForm.values.birthday}
@@ -166,12 +163,12 @@ function UserDashboard() {
               <div className="cotisation">
                 {userInfoForm.values.firstname && (
                   <div className="cotisation-checkbox">
-                    <label htmlFor="yes-no">Cotisation à jour: </label>
+                    <label htmlFor="yes-no">Cotisation à jour :</label>
                     <div>
                       <Input
                         label="Oui"
                         name="yes-no"
-                        type={'radio'}
+                        type="radio"
                         checked={userInfoForm.values.cotisation_payed === 1}
                         onChange={() =>
                           userInfoForm.setFieldValue('cotisation_payed', 1)
@@ -180,7 +177,7 @@ function UserDashboard() {
                       <Input
                         label="Non"
                         name="yes-no"
-                        type={'radio'}
+                        type="radio"
                         checked={userInfoForm.values.cotisation_payed === 0}
                         onChange={() =>
                           userInfoForm.setFieldValue('cotisation_payed', 0)
@@ -193,50 +190,54 @@ function UserDashboard() {
             </div>
             <div className="form-info-perso">
               <Input
-                label="Nom: "
-                name="lastname"
-                value={userInfoForm.values.lastname}
-                onChange={userInfoForm.handleChange}
-              />
-              <Input
-                label="Prénom: "
+                label="Prénom : "
                 name="firstname"
+                className="firstname"
                 value={userInfoForm.values.firstname}
                 onChange={userInfoForm.handleChange}
               />
               <Input
-                label="Date de naissance: "
+                label="Nom : "
+                name="lastname"
+                className="lastname"
+                value={userInfoForm.values.lastname}
+                onChange={userInfoForm.handleChange}
+              />
+              <Input
+                label="Date de naissance : "
                 name="birthday"
                 type="date"
                 value={userInfoForm.values.birthday}
                 onChange={userInfoForm.handleChange}
               />
               <Input
-                label="Adresse: "
+                label="Adresse : "
                 name="address"
+                className="address"
                 value={userInfoForm.values.address}
                 onChange={userInfoForm.handleChange}
               />
               <Input
-                label="Code postal: "
+                label="Code postal : "
                 name="postal_code"
                 value={userInfoForm.values.postal_code}
                 onChange={userInfoForm.handleChange}
               />
               <Input
-                label="Ville: "
+                label="Ville : "
                 name="city"
+                className="city"
                 value={userInfoForm.values.city}
                 onChange={userInfoForm.handleChange}
               />
               <Input
-                label="Email: "
+                label="Email : "
                 name="email"
                 value={userInfoForm.values.email}
                 onChange={userInfoForm.handleChange}
               />
               <Input
-                label="Téléphone: "
+                label="Téléphone : "
                 name="phone"
                 value={userInfoForm.values.phone}
                 onChange={userInfoForm.handleChange}
@@ -254,9 +255,9 @@ function UserDashboard() {
                 setValue={(value) => {
                   userInfoForm.setFieldValue('province_id', value.id);
                 }}
-                disabled={!userInfoForm.values.province_id}
+                disabled={!userInfoForm.values.firstname}
                 defaultValue={userInfoForm.values.province_id}
-                label="Nom de province:"
+                label="Nom de province :"
               />
               <SelectComponant
                 data={adoptionPlace}
@@ -264,15 +265,15 @@ function UserDashboard() {
                 setValue={(value) => {
                   userInfoForm.setFieldValue('adoption_place_id', value.id);
                 }}
-                disabled={!userInfoForm.values.adoption_place_id}
+                disabled={!userInfoForm.values.firstname}
                 defaultValue={userInfoForm.values.adoption_place_id}
-                label="Lieu d'adoption:"
+                label="Lieu d'adoption :"
               />
               <Input
-                label="Date d'adoption"
+                label="Date d'adoption :"
                 name="adoption_date"
                 type="date"
-                disabled={!userInfoForm.values.adoption_date}
+                disabled={!userInfoForm.values.firstname}
                 value={userInfoForm.values.adoption_date}
                 onChange={userInfoForm.handleChange}
               />
@@ -284,7 +285,7 @@ function UserDashboard() {
                 }}
                 disabled={!userInfoForm.values.firstname}
                 defaultValue={userInfoForm.values.room_id}
-                label="Chambre:"
+                label="Chambre :"
               />
               <SelectComponant
                 data={receptionPlace}
@@ -294,16 +295,37 @@ function UserDashboard() {
                 }}
                 disabled={!userInfoForm.values.firstname}
                 defaultValue={userInfoForm.values.reception_place_id}
-                label="Lieu de réception:"
+                label="Lieu de réception :"
               />
               <Input
-                label="Date de réception"
+                label="Date de réception :"
                 name="reception_date"
                 type="date"
-                disabled={userInfoForm.values.reception_date === ''}
+                disabled={!userInfoForm.values.firstname}
                 value={userInfoForm.values.reception_date}
                 onChange={userInfoForm.handleChange}
               />
+              <div>
+                <p>Rôles: </p> <br />
+                <div className="roles">
+                  {roles?.map((role) => (
+                    <div>
+                      <label htmlFor="roles">{role.name}</label>
+                      <input
+                        type="checkbox"
+                        name="roles"
+                        id="roles"
+                        checked={
+                          !!userInfoForm.values.roles.includes(role.name)
+                        }
+                        onChange={() => {
+                          userInfoForm.setFieldValue;
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
               <Button
                 buttonName="Valider"
                 className="button-red"

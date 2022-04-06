@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './MonCompte.css';
-import Input from '../../Input/Input';
-import Button from '../../Button/Button';
-import { useContext } from 'react';
-import { AppContext } from '../../../context/AppContext';
 import { useFormik } from 'formik';
 import moment from 'moment';
-import SelectComponant from '../../SelectComponents/Select';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import SelectComponant from '../../SelectComponents/Select';
+import Button from '../../Button/Button';
+import Input from '../../Input/Input';
+import { AppContext } from '../../../context/AppContext';
 
 const MonCompte = () => {
   const { provinces, adoptionPlace, rooms, receptionPlace, user, setUser } =
@@ -142,21 +141,23 @@ const MonCompte = () => {
             <h3>Données personnelles</h3>
             <div className="donnee-perso">
               <Input
-                label="Nom: "
-                name="lastname"
-                value={formik.values.lastname}
-                onChange={formik.handleChange}
-                disabled
-              />
-              <Input
-                label="Prénom: "
+                label="Prénom : "
                 name="firstname"
+                className="firstname"
                 value={formik.values.firstname}
                 onChange={formik.handleChange}
                 disabled
               />
               <Input
-                label="Date de naissance: "
+                label="Nom : "
+                name="lastname"
+                className="lastname"
+                value={formik.values.lastname}
+                onChange={formik.handleChange}
+                disabled
+              />
+              <Input
+                label="Date de naissance : "
                 name="birthday"
                 value={formik.values.birthday}
                 type="date"
@@ -164,31 +165,33 @@ const MonCompte = () => {
                 disabled
               />
               <Input
-                label="Adresse: "
+                label="Adresse : "
                 name="address"
+                className="address"
                 value={formik.values.address}
                 onChange={formik.handleChange}
               />
               <Input
-                label="Code postal: "
+                label="Code postal : "
                 name="postal_code"
                 value={formik.values.postal_code}
                 onChange={formik.handleChange}
               />
               <Input
-                label="Ville: "
+                label="Ville : "
                 name="city"
+                className="city"
                 value={formik.values.city}
                 onChange={formik.handleChange}
               />
               <Input
-                label="Email: "
+                label="Email : "
                 name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
               />
               <Input
-                label="Téléphone: "
+                label="Téléphone : "
                 name="phone"
                 value={formik.values.phone}
                 onChange={formik.handleChange}
@@ -206,7 +209,7 @@ const MonCompte = () => {
                 }}
                 disabled={!formik.values.province_id}
                 defaultValue={formik.values.province_id}
-                label="Nom de province:"
+                label="Nom de province :"
               />
               <SelectComponant
                 data={adoptionPlace}
@@ -216,10 +219,10 @@ const MonCompte = () => {
                 }}
                 disabled={!formik.values.adoption_place_id}
                 defaultValue={formik.values.adoption_place_id}
-                label="Lieu d'adoption:"
+                label="Lieu d'adoption :"
               />
               <Input
-                label="Date d'adoption"
+                label="Date d'adoption :"
                 name="adoption_date"
                 type="date"
                 disabled={!formik.values.adoption_date}
@@ -234,7 +237,7 @@ const MonCompte = () => {
                 }}
                 disabled
                 defaultValue={formik.values.room_id}
-                label="Chambre:"
+                label="Chambre :"
               />
               <SelectComponant
                 data={receptionPlace}
@@ -244,10 +247,10 @@ const MonCompte = () => {
                 }}
                 disabled
                 defaultValue={formik.values.reception_place_id}
-                label="Lieu de réception:"
+                label="Lieu de réception :"
               />
               <Input
-                label="Date de réception"
+                label="Date de réception :"
                 name="reception_date"
                 type="date"
                 disabled
@@ -265,14 +268,14 @@ const MonCompte = () => {
             <h3>Mot de passe</h3>
             <form className="password">
               <Input
-                label="Mot de passe: "
+                label="Mot de passe : "
                 type="password"
                 name="password"
                 value={passwordForm.values.password}
                 onChange={passwordForm.handleChange}
               />
               <Input
-                label="Confirmer: "
+                label="Confirmer : "
                 type="password"
                 name="confirmPassword"
                 value={passwordForm.values.confirmPassword}

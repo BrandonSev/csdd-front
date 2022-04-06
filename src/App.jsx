@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import { toast, ToastContainer } from 'react-toastify';
+import axios from 'axios';
 import HomePage from './components/SitePages/HomePage/HomePage';
 import Home from './components/SitePages/Home/Home';
 import LoginPage from './components/SitePages/LoginPage/LoginPage';
@@ -22,8 +23,6 @@ import MediaDashboard from './components/SitePages/MediaDashboard';
 import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
 import 'react-toastify/dist/ReactToastify.css';
 import { AppContext } from './context/AppContext';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
 import ResetPassword from './components/SitePages/ResetPassword';
 
 function App() {
@@ -39,6 +38,7 @@ function App() {
   const [events, setEvents] = useState([]);
   const [books, setBooks] = useState([]);
   const [jobOffers, setJobOffers] = useState([]);
+  const [roles, setRoles] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -72,6 +72,14 @@ function App() {
         axios
           .get(`${process.env.REACT_APP_BACKEND_URL}/api/province`)
           .then((res) => setProvinces(res.data))
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récupération des provinces'
+            )
+          ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/roles`)
+          .then((res) => setRoles(res.data))
           .catch((err) =>
             toast.error(
               'Une erreur est survenue lors de la récupération des provinces'
@@ -151,6 +159,7 @@ function App() {
           events,
           books,
           jobOffers,
+          roles,
         }}
       >
         <ToastContainer
