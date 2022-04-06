@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import moment from 'moment';
+import { AppContext } from '../../context/AppContext';
 import 'swiper/swiper-bundle.css';
 import './JobOffers.css';
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-function JobOffers({ jobOffers }) {
+function JobOffers() {
+  const { jobOffers } = useContext(AppContext);
+
   return (
     <div className="carousel-container-jobOffers">
       <h3>Offres d embauche</h3>

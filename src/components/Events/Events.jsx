@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import moment from 'moment';
+import { AppContext } from '../../context/AppContext';
 import 'swiper/swiper-bundle.css';
 import './Events.css';
 
@@ -10,7 +11,9 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-function Events({ events }) {
+function Events() {
+  const { events } = useContext(AppContext);
+
   return (
     <div className="carousel-container">
       <h3>Events</h3>

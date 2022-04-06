@@ -94,38 +94,49 @@ rem .active {
 .formation-container {
   margin: 2rem;
   display: grid;
-  grid-template-columns: repeat(autofit, minmax(12rem, 1fr));
-    grid-gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
 }
 
 .child {
-  background: red;
-   border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin:auto;
+  height: 301px;
+  padding:1rem;
+  display: flex;  
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* .formation-image-container img {
-  width: 100%;
-  height: 100%;
-} */
-
-/* .child .formation-image-container {
-  border: 1px solid black;
- width:100%;
-} */
+.formation-image-container img {
+  width: 200px;
+}
 
 /* Style du bouton des dossiers */
 .formation-btn-container {
-  /* position: relative; */
-  display:block;
-  transform: translateX(15px);
-  transform: translatex(15px);
+  display: block;
   bottom: 6rem;
-  height: fit-content;
   padding: 0.8rem;
-  width: 10rem;
-  background: hsla(0, 0%, 0%, 0.6);
+  width: 12rem;
+  background: hsla(0, 0%, 0%, 0.4);
   border-radius: 5px;
+  margin:1rem;
 }
+
+.formation-btn{
+width:100%;
+}
+
+@media screen and (min-width: 620px) {
+.formation-container {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+}
+
 
 @media screen and (min-width: 1024px) {
   .container {
@@ -134,8 +145,15 @@ rem .active {
   }
 
   /* style des dossiers */
-  /* .formation-image-container img {
-    width: 19rem;
-    height: auto;
-  } */
+.formation-container {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+}
+
+.child{
+    height: 301px;
+    width:200px
+}
 }
