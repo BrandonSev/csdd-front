@@ -5,11 +5,11 @@ import { BiUser } from 'react-icons/bi';
 
 import './Register.css';
 
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
-import axios from 'axios';
-import { toast } from 'react-toastify';
 import SelectComponant from '../../SelectComponents/Select';
 
 function Register() {
@@ -83,9 +83,10 @@ function Register() {
               <ul className="grid-form-register">
                 <li className="grid-li-firstname">
                   <Input
-                    label="Prénom"
+                    label="Prénom :"
                     type="text"
                     name="firstname"
+                    className="firstname"
                     id="firstname"
                     onChange={formik.handleChange}
                     value={formik.values.firstname}
@@ -93,9 +94,10 @@ function Register() {
                 </li>
                 <li className="grid-li-lastname">
                   <Input
-                    label="Nom"
+                    label="Nom :"
                     type="text"
                     name="lastname"
+                    className="lastname"
                     id="lastname"
                     onChange={formik.handleChange}
                     value={formik.values.lastname}
@@ -103,7 +105,7 @@ function Register() {
                 </li>
                 <li className="grid-li-birth-date">
                   <Input
-                    label="Date de naissance"
+                    label="Date de naissance :"
                     type="date"
                     name="birthday"
                     id="birth-date"
@@ -113,9 +115,10 @@ function Register() {
                 </li>
                 <li className="grid-li-adress">
                   <Input
-                    label="Adresse"
+                    label="Adresse :"
                     type="text"
                     name="address"
+                    className="address"
                     id="address"
                     onChange={formik.handleChange}
                     value={formik.values.address}
@@ -123,7 +126,7 @@ function Register() {
                 </li>
                 <li className="grid-li-postal-code">
                   <Input
-                    label="Code postal"
+                    label="Code postal :"
                     type="number"
                     name="postal_code"
                     id="postal-code"
@@ -133,9 +136,10 @@ function Register() {
                 </li>
                 <li className="grid-li-city">
                   <Input
-                    label="Ville"
+                    label="Ville :"
                     type="text"
                     name="city"
+                    className="city"
                     id="city"
                     onChange={formik.handleChange}
                     value={formik.values.city}
@@ -143,7 +147,7 @@ function Register() {
                 </li>
                 <li className="grid-li-phone-number">
                   <Input
-                    label="Numéro de téléphone"
+                    label="Numéro de téléphone :"
                     type="tel"
                     name="phone"
                     id="phone-number"
@@ -153,7 +157,7 @@ function Register() {
                 </li>
                 <li className="grid-li-email">
                   <Input
-                    label="Email"
+                    label="Email :"
                     type="email"
                     name="email"
                     id="email"
@@ -163,7 +167,7 @@ function Register() {
                 </li>
                 <li className="grid-li-password">
                   <Input
-                    label="Mot de passe"
+                    label="Mot de passe :"
                     type="password"
                     name="password"
                     id="password"
@@ -173,7 +177,7 @@ function Register() {
                 </li>
                 <li className="grid-li-confirm-password">
                   <Input
-                    label="Confirmer mot de passe"
+                    label="Confirmer mot de passe :"
                     type="password"
                     name="confirmPassword"
                     id="confirm-password"
@@ -189,7 +193,7 @@ function Register() {
                       formik.setFieldValue('province_id', value.id);
                     }}
                     defaultValue={formik.values.province_id}
-                    label="Province:"
+                    label="Nom de Province :"
                   />
                 </li>
                 <li className="grid-li-adoption-place">
@@ -200,12 +204,12 @@ function Register() {
                       formik.setFieldValue('adoption_place_id', value.id);
                     }}
                     defaultValue={formik.values.adoption_place_id}
-                    label="Province:"
+                    label="Lieu d'adoption :"
                   />
                 </li>
                 <li className="grid-li-adoption-date">
                   <Input
-                    label="Date d'adoption"
+                    label="Date d'adoption :"
                     type="date"
                     name="adoption_date"
                     id="adoption-date"

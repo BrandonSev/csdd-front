@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0 1rem
+  gap: 0 1rem;
 }
 
 .dashboard-user-content .info-perso .cotisation .cotisation-checkbox {
@@ -43,7 +43,7 @@
   align-items: flex-start;
   justify-content: flex-end;
   flex-wrap: wrap;
-  gap: 0 .5rem;
+  gap: 0 0.5rem;
 }
 
 .dashboard-user-content .info-perso .cotisation .cotisation-checkbox label {
@@ -98,7 +98,7 @@
   }
 
   .dashboard-user-content .info-perso .cotisation .cotisation-checkbox {
-    margin-top: 0rem;
+    margin-top: 0;
   }
 
   .dashboard-user-search .user-avatar {
