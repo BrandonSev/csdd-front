@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import { AppContext } from '../../context/AppContext';
 import 'swiper/swiper-bundle.css';
 import './Books.css';
 
@@ -9,7 +10,9 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-function Books({ books }) {
+function Books() {
+  const { books } = useContext(AppContext);
+
   return (
     <div className="carousel-container-books">
       <h3>Books</h3>
@@ -46,7 +49,6 @@ function Books({ books }) {
                     className="book-filename"
                   />
                   <div className="overlay-books">
-                    {/* <h5 className="overlay-books-filename">{book.filename}</h5> */}
                     <h5
                       className="overlay-books-img_link"
                       value={book.img_link}
