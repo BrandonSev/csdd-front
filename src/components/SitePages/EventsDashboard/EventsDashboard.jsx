@@ -137,6 +137,7 @@ function eventsDashboard() {
             <div className="event-text-container">
               <p>Ajouter du texte </p>
               <textarea
+                className="event-description"
                 name="description"
                 id="description"
                 onChange={formik.handleChange}
