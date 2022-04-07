@@ -118,7 +118,8 @@ function App() {
           ),
         axios
           .get(`${process.env.REACT_APP_BACKEND_URL}/api/books/`)
-          .then(({ data }) => {
+          .then((response) => response.data)
+          .then((data) => {
             setBooks(data);
           })
           .catch((err) =>
@@ -126,7 +127,6 @@ function App() {
               'Une erreur est survenue lors de la récupération des livres'
             )
           ),
-
         axios
           .get(`${process.env.REACT_APP_BACKEND_URL}/api/jobOffers/`)
           .then(({ data }) => {
