@@ -5,6 +5,7 @@
 
 .carousel-slider-books .swiper-slide img {
   height: 270px;
+  object-fit: contain;
 }
 
 /* définition de l'overlay du slider */

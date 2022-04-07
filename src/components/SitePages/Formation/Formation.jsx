@@ -9,7 +9,7 @@ import miniStage from '../../../assets/miniStage.png';
 
 function Formation() {
   return (
-    <div className="formation-container">
+    <div className="container formation-container">
       <div className="child">
         <div className="formation-image-container">
           <img

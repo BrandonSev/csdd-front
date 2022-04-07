@@ -2,7 +2,16 @@
   width: 50%;
 }
 
-
+.container-modal{
+  position:absolute;
+}
+.container-modalInfo{
+  margin :auto;
+  width:70%; 
+  position:fixed;
+  z-index: 100;
+  top:1rem;
+}
 
 .modal iframe {
   display: none;
@@ -19,20 +28,12 @@
   .modal iframe {
     display: block;
     width: 100%;
-    height: auto;
+    height: 90vh;
+    z-index:101;
   }
 
-  /* /* .modal .iframe-info {
-    width: 90%;
-  } */
   .modal-displayPdf {
     width: 90%;
   }
 
-  /* .container-info {
-    width: 90%;
-  } */
-  /* .container-modalInfo {
-    width: 100%;
-  } */
 }

@@ -7,7 +7,7 @@ import annuaire from '../../../assets/annuaire.png';
 
 function CommissionDesRites() {
   return (
-    <div className="formation-container">
+    <div className="container formation-container">
       <div className="child">
         <div className="formation-image-container">
           <img className="formation-image" src={annuaire} alt="ANNUAIRE" />
