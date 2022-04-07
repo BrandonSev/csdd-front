@@ -372,7 +372,7 @@ function UserDashboard() {
               />
             </div>
             <div className="form-roles">
-              <h3>Niveau d'accés: </h3>
+              <h3>Niveau d'accès: </h3>
               <div className="roles">
                 {roles?.map((role) => (
                   <div>

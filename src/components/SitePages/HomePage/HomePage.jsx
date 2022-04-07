@@ -6,15 +6,22 @@ import Books from '../../Books/Books';
 import JobOffers from '../../JobOffers/JobOffers';
 import MediaLink from '../../MediaLink/MediaLink';
 import './HomePage.css';
-// import info from '../../assets/info.pdf';
+import info from '../../../assets/info.pdf';
 // import infoimg from '../../assets/infoimg.jpg';
 
 function HomePage() {
-  const [displayPdf, setDisplayPdf] = useState(true);
-
-  const handleClickPdf = () => {
-    setDisplayPdf(true);
+  const [displayPdf, setDisplayPdf] = useState('start');
+  triggerDisplayPdfBigState = () => {
+    setDisplayPdf('displayPdfBig');
   };
+
+  const DisplayPdfButton = (props) => {
+    return <button onClick={props.displayPdfBig}>Add pdf</button>;
+  };
+
+  // const handleClickPdf = () => {
+  //   setDisplayPdf(true);
+  // };
 
   return (
     <div className="container homePage">
@@ -25,33 +32,33 @@ function HomePage() {
         <div className="news">
           <div className="container-info">
             <h3>Bulletin d informations</h3>
-            <Button
-              className="button-red"
-              buttonName="Afficher"
-              onClick={handleClickPdf}
-            />
-            {/* <div className="modal"> */}
-              {/* <iframe
-                className="iframe-info"
-                src={info}
-                type="application/pdf"
-                frameBorder="0"
-                height="100%"
-                width="100%"
-              /> */}
-              {/* <img
+            {displayPdf === 'displayPdfBig' && (
+              <DisplayPdfButton
+                displayPdfBig={this.triggerDisplayPdfBigState}
+              />
+            )}
+{/* 
+            <iframe
+              className="iframe-info"
+              src={info}
+              type="application/pdf"
+              frameBorder="0"
+              height="100%"
+              width="100%"
+            /> */}
+            {/* <img
                 className="modal-img-info"
                 src={infoimg}
                 alt="bulletin d'information"
               ></img> */}
             {/* </div> */}
-
+            {/* 
             {displayPdf && (
               <ModalInfo
                 className="modal-size"
                 onClick={() => setDisplayPdf(!displayPdf)}
               />
-            )}
+            )} */}
           </div>
           <div className="container-medias">
             <MediaLink />
