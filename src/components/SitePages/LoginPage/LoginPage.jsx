@@ -30,8 +30,7 @@ function LoginPage() {
         })
         .then((res) => {
           setLoggedIn(true);
-          console.log(res.data.user);
-          if (res.data.user.roles.includes('admin')) {
+          if (res.data.user?.roles?.includes('admin')) {
             setLoggedInAdmin(true);
             navigate('/dashboard/utilisateurs');
           } else {
@@ -40,7 +39,12 @@ function LoginPage() {
           toast.success('Bravo, vous êtes maintenant connecté');
           resetForm();
         })
-        .catch((err) => toast.error(err.message));
+        .catch((err) =>
+          toast.error(
+            err.response.data.message ||
+              'Une erreur est survenue lors de la connexion'
+          )
+        );
     },
   });
 

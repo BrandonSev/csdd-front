@@ -53,8 +53,7 @@ function App() {
           if (res.status === 200) {
             setUser(res.data.user);
             setLoggedIn(true);
-            console.log(res.data.user);
-            if (res.data.user?.roles.includes('admin')) {
+            if (res.data.user?.roles?.includes('admin')) {
               setLoggedInAdmin(true);
             }
           }

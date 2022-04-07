@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './UserDashboard.css';
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import moment from 'moment';
 import Dashboard from '../../Dashboard';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import DashboardHeader from '../../Dashboard/DashboardHeader';
@@ -12,10 +11,13 @@ import Button from '../../Button/Button';
 import Input from '../../Input/Input';
 import SelectComponant from '../../SelectComponents/Select';
 import { AppContext } from '../../../context/AppContext';
+import ModalConfirm from '../../ModalConfirm';
+import { FaUserAlt } from 'react-icons/fa';
 
 function UserDashboard() {
-  const { provinces, adoptionPlace, rooms, receptionPlace, user, roles } =
+  const { provinces, adoptionPlace, rooms, receptionPlace, roles } =
     useContext(AppContext);
+  const [open, setOpen] = useState(false);
 
   const userSearchForm = useFormik({
     initialValues: {
@@ -37,6 +39,17 @@ function UserDashboard() {
           if (res.status === 200) {
             for (const [key, value] of Object.entries(res.data[0])) {
               userInfoForm.setFieldValue(`${key}`, value);
+            }
+            if (res.data[0].roles) {
+              let array = [];
+              res.data[0].roles.split(',').map((res) => {
+                return roles.map((role) => {
+                  if (res === role.name) {
+                    array.push(role.id);
+                  }
+                });
+              });
+              userInfoForm.setFieldValue('rolesId', array);
             }
             resetForm();
             return toast.success(
@@ -66,7 +79,6 @@ function UserDashboard() {
       city: '',
       email: '',
       phone: '',
-      password: '',
       adoption_date: '',
       picture: '',
       cotisation_payed: '',
@@ -77,6 +89,7 @@ function UserDashboard() {
       adoption_place_id: '',
       reception_date: '',
       roles: '',
+      rolesId: [],
     },
     onSubmit: (values, { resetForm }) => {
       axios
@@ -84,6 +97,7 @@ function UserDashboard() {
           `${process.env.REACT_APP_BACKEND_URL}/api/users/${values.id}`,
           {
             ...values,
+            roles: values.rolesId,
           },
           {
             withCredentials: true,
@@ -109,23 +123,51 @@ function UserDashboard() {
     },
   });
 
+  const handleDelete = async () => {
+    await axios
+      .delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/${userInfoForm.values.id}`
+      )
+      .then((res) => {
+        if (res.status === 204) {
+          userInfoForm.resetForm();
+          toast.success('Le compte a bien été supprimé');
+        }
+      })
+      .catch((err) => {
+        toast.error(
+          err.response.data.message ||
+            'Une erreur est survenue lors de la suppression du compte'
+        );
+      });
+  };
+
   return (
     <Dashboard>
       <DashboardMenu active="user" />
       <DashboardHeader />
       <DashboardBody>
+        <ModalConfirm
+          message={'Etes vous sur de vouloir supprimer cet utilisateur?'}
+          handleOpen={setOpen}
+          isOpen={open}
+          handleValid={handleDelete}
+        />
         <div className="dashboard-user-title">
           <h1>Utilisateur</h1>
-          {userInfoForm.values.firstname && (
-            <Button
-              className="button-yellow"
-              buttonName="Supprimer ce compte"
-            />
-          )}
+          <div>
+            {userInfoForm.values.firstname && (
+              <Button
+                className="button-yellow"
+                buttonName="Supprimer ce compte"
+                onClick={() => setOpen(true)}
+              />
+            )}
+          </div>
         </div>
         <div className="dashboard-user-search">
           <div className="user-avatar">
-            <img src="/assets/logo-detoure-noir.png" width="20%" alt="avatar" />
+            <FaUserAlt size="20%" />
           </div>
           <div className="search-wrapper">
             <Input
@@ -183,6 +225,29 @@ function UserDashboard() {
                           userInfoForm.setFieldValue('cotisation_payed', 0)
                         }
                       />
+                    </div>
+                    <div className="active-account">
+                      <label htmlFor="yes-no-active">Compte actif :</label>
+                      <div>
+                        <Input
+                          label="Oui"
+                          name="yes-no-active"
+                          type="radio"
+                          checked={userInfoForm.values.active === 1}
+                          onChange={() =>
+                            userInfoForm.setFieldValue('active', 1)
+                          }
+                        />
+                        <Input
+                          label="Non"
+                          name="yes-no-active"
+                          type="radio"
+                          checked={userInfoForm.values.active === 0}
+                          onChange={() =>
+                            userInfoForm.setFieldValue('active', 0)
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
@@ -305,35 +370,43 @@ function UserDashboard() {
                 value={userInfoForm.values.reception_date}
                 onChange={userInfoForm.handleChange}
               />
-              <div>
-                <p>Rôles: </p> <br />
-                <div className="roles">
-                  {roles?.map((role) => (
-                    <div>
-                      <label htmlFor="roles">{role.name}</label>
-                      <input
-                        type="checkbox"
-                        name="roles"
-                        id="roles"
-                        checked={
-                          !!userInfoForm.values.roles.includes(role.name)
+            </div>
+            <div className="form-roles">
+              <h3>Niveau d'accés: </h3>
+              <div className="roles">
+                {roles?.map((role) => (
+                  <div>
+                    <label htmlFor="roles">{role.name}</label>
+                    <input
+                      type="checkbox"
+                      name="roles"
+                      id="roles"
+                      checked={!!userInfoForm.values.rolesId.includes(role.id)}
+                      onChange={(e) => {
+                        if (userInfoForm.values.rolesId.includes(role.id)) {
+                          const value = userInfoForm.values.rolesId.filter(
+                            (r) => r !== role.id
+                          );
+                          userInfoForm.setFieldValue('rolesId', value);
+                        } else {
+                          userInfoForm.setFieldValue('rolesId', [
+                            ...userInfoForm.values.rolesId,
+                            role.id,
+                          ]);
                         }
-                        onChange={() => {
-                          userInfoForm.setFieldValue;
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
-              <Button
-                buttonName="Valider"
-                className="button-red"
-                onClick={userInfoForm.handleSubmit}
-                disabled={!userInfoForm.values.firstname}
-              />
             </div>
           </div>
+          <Button
+            buttonName="Valider"
+            className="button-red"
+            onClick={userInfoForm.handleSubmit}
+            disabled={!userInfoForm.values.firstname}
+          />
         </div>
       </DashboardBody>
     </Dashboard>
