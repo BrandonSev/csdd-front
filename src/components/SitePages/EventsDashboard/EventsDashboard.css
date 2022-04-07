@@ -34,6 +34,16 @@
   grid-column: 2;
 }
 
+.event-description {
+  grid-column: span 2;
+}
+
+.select-evenement,
+.events-Input,
+.select-jobOffers {
+  margin: 1em;
+}
+
 @media (min-width: 600px) {
   .evenementDashboard-container {
     display: grid;
