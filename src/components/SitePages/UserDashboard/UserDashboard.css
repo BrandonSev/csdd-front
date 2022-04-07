@@ -11,6 +11,7 @@
 .dashboard-user-search .user-avatar {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 3rem 0;
   background-color: #c4c4c4;
 }
@@ -46,6 +47,12 @@
   gap: 0 0.5rem;
 }
 
+.dashboard-user-content .info-perso .cotisation .cotisation-checkbox .active-account {
+  display: flex;
+  align-items: flex-start;
+  gap: 0 0.5rem;
+}
+
 .dashboard-user-content .info-perso .cotisation .cotisation-checkbox label {
   display: flex;
   align-items: center;
@@ -70,8 +77,9 @@
   align-items: flex-end;
 }
 
-.dashboard-user-content .form-info-perso button {
-  grid-column: 2;
+.dashboard-user-content button {
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .dashboard-user-content .info-corpo {
@@ -84,6 +92,32 @@
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
   align-items: flex-end;
+}
+
+.dashboard-user-content .form-roles {
+  margin-top: 3rem;
+}
+
+.dashboard-user-content .form-roles .roles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.dashboard-user-content .form-roles .roles>*:not(:last-child) {
+  margin-right: 1rem;
+  text-transform: capitalize;
+}
+
+.dashboard-user-content .form-roles .roles input {
+  margin-right: 1rem;
+}
+
+.dashboard-user-content .form-roles .roles div {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -105,16 +139,23 @@
     width: 50%;
   }
 
+  .dashboard-user-search .user-avatar :nth-child(1) {
+    height: 50%;
+    width: 50%;
+  }
+
   .dashboard-user-search .search-wrapper {
     display: grid;
+    align-content: center;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 91px);
+    align-items: center;
     gap: 1rem;
     width: 100%;
   }
 
   .dashboard-user-search .search-wrapper button {
-    max-height: inherit;
-    margin-top: auto;
+    margin-top: 1.5rem;
   }
 
   .dashboard-user-content .form-info-perso {
@@ -133,15 +174,14 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .dashboard-user-content .form-info-corpo button {
-    grid-column: 3;
-    max-height: inherit;
-    margin-top: auto;
+  .dashboard-user-content button {
+    display: block;
+    width: inherit;
+    margin-left: auto;
+    margin-top: 2rem;
   }
-}
-
-@media screen and (min-width: 1920px) {
-  .dashboard-user-search .search-wrapper button {
-    margin-bottom: 8px;
+  
+  .dashboard-user-content .form-roles .roles {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

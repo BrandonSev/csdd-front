@@ -43,7 +43,9 @@ function Register() {
           );
           resetForm();
         })
-        .catch((err) => toast.error('Une erreur est survenue'));
+        .catch((err) =>
+          toast.error(err.response.data.message || 'Une erreur est survenue')
+        );
     },
   });
 
