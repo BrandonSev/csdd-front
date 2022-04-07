@@ -18,7 +18,6 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function eventsDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
-  const [isSelected, setIsSelected] = useState({});
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
   const { events } = useContext(AppContext);
@@ -127,7 +126,7 @@ function eventsDashboard() {
             </div>
           </div>
           <div className="events-Input">
-            <b>Ajouter un évènement:</b>
+            <h2>Ajouter un évènement:</h2>
             <Input
               label="Titre"
               type="text"
@@ -204,15 +203,16 @@ function eventsDashboard() {
               value={formik.values.event_link}
             />
             <div className="eventsBtn-container">
-              <div />
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Valider"
-                  onClick={formik.handleSubmit}
-                />
-              </div>
-              {isSelected !== '' && (
+              {!modify && (
+                <div className="btn-event validate-btn">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Valider"
+                    onClick={formik.handleSubmit}
+                  />
+                </div>
+              )}
+              {modify && (
                 <>
                   <div className="btn-event">
                     <Button
