@@ -13,27 +13,46 @@ const Footer = () => {
       <ul className="footer-logo">
         <li>
           <a href="#">
-            <FaInstagram size={40} />
+            <FaInstagram size={40} title="Instagram de la corporation (CSDD)" />
           </a>
         </li>
         <li>
           <a href="#">
-            <FaTwitter size={40} />
+            <FaFacebook
+              size={40}
+              title="Facebook de l'Echo de l'Enclume (CSDD)"
+            />
+          </a>
+        </li>
+        <li>
+          <img
+            src="/assets/logo-compagnons.png"
+            width={40}
+            title="Site de l'association des Compagnons (AOCDTF)"
+          />
+        </li>
+        <li>
+          <img
+            src="/assets/Logo-Les-Compagnons-du-Devoir-et-du-Tour-de-France.png"
+            width={40}
+            title="Site de la Ruche (AOCDTF)"
+          />
+        </li>
+        <li>
+          <img
+            src="/assets/logo_dumetier.svg"
+            width={40}
+            title="Du métier (AOCDTF)"
+          />
+        </li>
+        <li>
+          <a href="#">
+            <FaTwitter size={40} title="Twitter des Compagnons (AOCDTF)" />
           </a>
         </li>
         <li>
           <a href="#">
-            <FaFacebook size={40} />
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <FaWhatsapp size={40} />
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <FaInstagram size={40} />
+            <FaInstagram size={40} title="Instagram des Compagnons (AOCDTF)" />
           </a>
         </li>
       </ul>
