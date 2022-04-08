@@ -13,6 +13,7 @@ import SelectComponant from '../../SelectComponents/Select';
 import { AppContext } from '../../../context/AppContext';
 import ModalConfirm from '../../ModalConfirm';
 import { FaUserAlt } from 'react-icons/fa';
+import moment from 'moment';
 
 function UserDashboard() {
   const { provinces, adoptionPlace, rooms, receptionPlace, roles } =
@@ -28,7 +29,7 @@ function UserDashboard() {
     onSubmit: async (values, { resetForm }) => {
       await axios
         .get(
-          `${process.env.REACT_APP_BACKEND_URL}/api/users?firstname=${values.firstname}&lastname=${values.lastname}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/users?firstname=${values.firstname}&lastname=${values.lastname}&birthday=${values.birthday}`,
           {
             validateStatus: (status) => {
               return status >= 200 && status <= 404;
@@ -37,8 +38,19 @@ function UserDashboard() {
         )
         .then((res) => {
           if (res.status === 200) {
+            if (res.data.length > 1) {
+              return toast.error(
+                'Plusieurs compte ont été trouvés, veuillez affiner votre rechercher en renseignant la date de naissance'
+              );
+            }
             for (const [key, value] of Object.entries(res.data[0])) {
-              userInfoForm.setFieldValue(`${key}`, value);
+              const listDate = ['adoption_date', 'reception_date', 'birthday'];
+              userInfoForm.setFieldValue(
+                `${key}`,
+                listDate.includes(`${key}`)
+                  ? moment(value).format('YYYY-MM-DD')
+                  : value
+              );
             }
             if (res.data[0].roles) {
               let array = [];
@@ -144,7 +156,7 @@ function UserDashboard() {
 
   return (
     <Dashboard>
-      <DashboardMenu active="user" />
+      <DashboardMenu />
       <DashboardHeader />
       <DashboardBody>
         <ModalConfirm
