@@ -35,7 +35,7 @@
 }
 
 .home .content > *:not(:last-child) {
-  margin-bottom: 8rem;
+  margin-bottom: 4rem;
 }
 
 .home h1 {
@@ -63,6 +63,10 @@
   .home {
     height: 100vh;
   }
+
+  .home .content > *:not(:last-child) {
+    margin-bottom: 8rem;
+  }
 }
 
 /* Média Queries - Adaptation sur écran de plus de 1024px de large */
@@ -70,5 +74,9 @@
 @media screen and (min-width: 1024px) {
   .home {
     height: 100vh;
+  }
+
+  .home .content > *:not(:last-child) {
+    margin-bottom: 10rem;
   }
 }

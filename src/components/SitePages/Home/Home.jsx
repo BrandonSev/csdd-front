@@ -16,7 +16,7 @@ function Home() {
       </div>
       <div className="content">
         <h1>CSDD</h1>
-        <h2>Compagnons Serrurier Du Devoir</h2>
+        <h2>Compagnons Serruriers Du Devoir</h2>
         <NavLink to="/Login" className="button-yellow" type="button">
           Entrer
         </NavLink>
