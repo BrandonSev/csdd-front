@@ -4,8 +4,8 @@ import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import moment from 'moment';
 import { AppContext } from '../../context/AppContext';
-import 'swiper/swiper-bundle.css';
 import './Events.css';
+import 'swiper/swiper-bundle.css';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -47,7 +47,7 @@ function Events() {
                       {event.filename}
                     </h3> */}
                     {event.event_link ? (
-                      <a href={event.event_link}>
+                      <a href={event.event_link} target="_blank">
                         <h2>{event.title}</h2>
                       </a>
                     ) : (

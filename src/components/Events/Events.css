@@ -28,8 +28,14 @@
   .carousel-slider-events .swiper {
     height: 410px;
   }
+
   .carousel-slider-events .swiper-slide img {
     height: 380px;
+  }
+
+  ._2zfr {
+    width: 100% !important;
+    height: auto;
   }
 }
 
@@ -39,6 +45,7 @@
   .carousel-slider-events .swiper {
     height: 430px;
   }
+
   .carousel-slider-events .swiper-slide img {
     height: 400px;
   }
