@@ -22,10 +22,7 @@ function DashboardMenu() {
             Les offres d'embauche
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/dashboard/compagnon">Informations compagnons</NavLink>
-        </li>
-        <li>
+            <li>
           <NavLink to="/dashboard/metiers">Livres métiers</NavLink>
         </li>
         <li>

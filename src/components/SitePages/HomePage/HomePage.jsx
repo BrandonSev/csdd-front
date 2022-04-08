@@ -11,17 +11,17 @@ import info from '../../../assets/info.pdf';
 
 function HomePage() {
   const [displayPdf, setDisplayPdf] = useState('start');
-  triggerDisplayPdfBigState = () => {
-    setDisplayPdf('displayPdfBig');
-  };
-
-  const DisplayPdfButton = (props) => {
-    return <button onClick={props.displayPdfBig}>Add pdf</button>;
-  };
-
-  // const handleClickPdf = () => {
-  //   setDisplayPdf(true);
+  // triggerDisplayPdfBigState = () => {
+  //   setDisplayPdf('displayPdfBig');
   // };
+
+  // const DisplayPdfButton = (props) => {
+  //   return <button onClick={props.displayPdfBig}>Add pdf</button>;
+  // };
+
+  const handleClickPdf = () => {
+    setDisplayPdf(true);
+  };
 
   return (
     <div className="container homePage">
@@ -32,11 +32,11 @@ function HomePage() {
         <div className="news">
           <div className="container-info">
             <h3>Bulletin d informations</h3>
-            {displayPdf === 'displayPdfBig' && (
+            {/* {displayPdf === 'displayPdfBig' && (
               <DisplayPdfButton
                 displayPdfBig={this.triggerDisplayPdfBigState}
               />
-            )}
+            )} */}
 {/* 
             <iframe
               className="iframe-info"

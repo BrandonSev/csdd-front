@@ -2,7 +2,6 @@ import React from 'react';
 import './MediaLink.css';
 import info from '../../assets/info.pdf';
 
-
 function MediaLink() {
   return (
     <div>
