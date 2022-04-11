@@ -18,13 +18,17 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 function MediaDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
+
   const [filename, setFilename] = useState('');
+
   const { assets } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
     setModify(true);
     setFilename(data.filename);
+    setTitle(data.filename);
+
     for (const [key, value] of Object.entries(data)) {
       formik.setFieldValue(`${key}`, value);
     }
@@ -36,6 +40,7 @@ function MediaDashboard() {
       type: selectedValue.type ? selectedValue.type : '',
       file_date: selectedValue.file_date ? selectedValue.file_date : '',
       created_at: selectedValue.created_at ? selectedValue.created_at : '',
+      title: selectedValue.title ? selectedValue.title : '',
     },
 
     onSubmit: (values, { resetForm }) => {
@@ -91,6 +96,7 @@ function MediaDashboard() {
       .then((response) => {
         if (response.status === 200) {
           toast.success('Le fichier a bien été modifié ');
+
           formik.resetForm;
         } else {
           alert('Erreur');
@@ -117,7 +123,7 @@ function MediaDashboard() {
           <SelectComponant
             setValue={(data) => pushSelectedInFormik(data)}
             data={assets}
-            optionValue="filename"
+            optionValue="title"
           />
           <div className="media-dashboard-body">
             <p>
@@ -125,12 +131,36 @@ function MediaDashboard() {
             </p>
             <form className="form-media">
               <div className="form-group">
-                <label htmlFor="file">Sélectionner un fichier</label>
+                <label htmlFor="file_Title">Nom du Fichier</label>
                 <input
                   type="text"
-                  name="file"
-                  id="file"
-                  value={formik.values.filename}
+                  name="title"
+                  id="title"
+                  onChange={formik.handleChange}
+                  value={formik.values.title}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="file">Sélectionner un fichier</label>
+                <input
+
+                  type="file"
+                  className="ignores-input-style"
+                  onChange={(e) => {
+                    formik.setFieldValue('filename', e.target.files[0]);
+                  }}
+                  name="filename"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="file">Type du fichier</label>
+                <input
+                  type="text"
+                  name="type"
+                  id="type"
+                  onChange={formik.handleChange}
+                  value={formik.values.type}
+
                 />
               </div>
               <div className="form-group">
@@ -141,8 +171,10 @@ function MediaDashboard() {
                 <label htmlFor="file">Date du fichier</label>
                 <input
                   type="date"
-                  name="file"
-                  id="file"
+
+                  name="file_date"
+                  id="file_date"
+
                   onChange={formik.handleChange}
                   value={
                     formik.values.file_date
@@ -161,6 +193,8 @@ function MediaDashboard() {
                       ? moment(formik.values.created_at).format('DD-MM-YYYY')
                       : formik.values.created_at
                   }
+                  
+
                 />
               </div>
               <div>
@@ -210,7 +244,13 @@ function MediaDashboard() {
               </div>
               {!modify && (
                 <div className="form-group">
-                  <Button className="button-red" buttonName="Valider" />
+
+                  <Button
+                    className="button-red"
+                    buttonName="Valider"
+                    onClick={formik.handleSubmit}
+                  />
+
                 </div>
               )}
               <div className="button-action">

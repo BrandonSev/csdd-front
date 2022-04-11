@@ -88,6 +88,7 @@ function jobOffersDashboard() {
       <DashboardBody>
         <ModalConfirm
           message={'Etes vous sur de vouloir supprimer cette offre?'}
+
           handleOpen={setOpen}
           isOpen={open}
           handleValid={handleDeleteJobs}
