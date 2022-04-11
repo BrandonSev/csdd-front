@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import moment from 'moment';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -9,25 +11,21 @@ import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
 import './EventsDashboard.css';
-import moment from 'moment';
-import { toast } from 'react-toastify';
-import { useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function eventsDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
-  const [isSelected, setIsSelected] = useState({});
   const [modify, setModify] = useState(false);
-  const [filename, setFilename] = useState('');
+  const [title, settitle] = useState('');
   const { events } = useContext(AppContext);
   /**
    * It sets the formik state to true and sets the formik values to the data passed in.
    */
   const pushSelectedInFormik = (data) => {
     setModify(true);
-    setFilename(data.filename);
+    settitle(data.title);
     for (const [key, value] of Object.entries(data)) {
       formik.setFieldValue(`${key}`, value);
     }
@@ -37,6 +35,7 @@ function eventsDashboard() {
   const formik = useFormik({
     initialValues: {
       event_date: selectedValue.event_date ? selectedValue.event_date : '',
+      title: selectedValue.event_date ? selectedValue.title : '',
       description: selectedValue.description ? selectedValue.description : '',
       filename: selectedValue.filename ? selectedValue.filename : '',
       event_link: selectedValue.event_link ? selectedValue.event_link : '',
@@ -56,7 +55,7 @@ function eventsDashboard() {
         .post(`${API_URL}/api/events/`, bodyFormData)
         .then((data) => {
           resetForm();
-          toast.success('Evenement Ajouter');
+          toast.success("L'évènement a bien été ajouté");
         })
         .catch((err = console.error(err.message)));
     },
@@ -71,7 +70,7 @@ function eventsDashboard() {
       .delete(`${API_URL}/api/events/${formik.values.id}`)
       .then((response) => {
         if (response.status === 204) {
-          toast.success("L'évenement est supprimé ");
+          toast.success("L'évènement a bien été supprimé ");
         } else {
           alert('Erreur');
         }
@@ -98,7 +97,7 @@ function eventsDashboard() {
       .put(`${API_URL}/api/events/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
-          toast.success("L'évenement est modifié ");
+          toast.success("L'évènement a bien été modifié ");
           formik.resetForm;
         } else {
           alert('Erreur');
@@ -122,22 +121,24 @@ function eventsDashboard() {
               <SelectComponant
                 setValue={(data) => pushSelectedInFormik(data)}
                 data={events}
-                optionValue="filename"
+                optionValue="title"
               />
             </div>
           </div>
           <div className="events-Input">
-            <b>Ajouter un évènement:</b>
+            <h2>Ajouter un évènement:</h2>
             <Input
               label="Titre"
               type="text"
               name="title"
-              id="Title"
-              value={formik.values.filename}
+              id="title"
+              onChange={formik.handleChange}
+              value={formik.values.title}
             />
             <div className="event-text-container">
               <p>Ajouter du texte </p>
               <textarea
+                className="event-description"
                 name="description"
                 id="description"
                 onChange={formik.handleChange}
@@ -156,7 +157,7 @@ function eventsDashboard() {
                 name="filename"
               />
               {modify &&
-                (formik.values.filename === filename ? (
+                (formik.values.title === title ? (
                   <img
                     className="event_image"
                     src={`${API_URL}/images/${formik.values.filename}`}
@@ -184,7 +185,7 @@ function eventsDashboard() {
                 ))}
             </div>
             <Input
-              label="Date de l'événement"
+              label="Date de l'évènement"
               type="date"
               name="event_date"
               id="event_date"
@@ -204,15 +205,16 @@ function eventsDashboard() {
               value={formik.values.event_link}
             />
             <div className="eventsBtn-container">
-              <div />
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Valider"
-                  onClick={formik.handleSubmit}
-                />
-              </div>
-              {isSelected !== '' && (
+              {!modify && (
+                <div className="btn-event validate-btn">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Valider"
+                    onClick={formik.handleSubmit}
+                  />
+                </div>
+              )}
+              {modify && (
                 <>
                   <div className="btn-event">
                     <Button

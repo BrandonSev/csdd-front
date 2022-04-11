@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -8,13 +9,25 @@ import DashboardBody from '../../Dashboard/DashboardBody/index';
 import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
+import { AppContext } from '../../../context/AppContext';
+import ModalConfirm from '../../ModalConfirm';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function jobOffersDashboard() {
-  const [jobOffers, setJobOffers] = useState([]);
   const [selectedValue, setSelectedValue] = useState({});
-  const [isSelected, setIsSelected] = useState({});
+  const [modify, setModify] = useState(false);
+  const [poste, setPoste] = useState('');
+  const { jobOffers } = useContext(AppContext);
+    const [open, setOpen] = useState(false);
+
+  const pushSelectedInFormik = (data) => {
+    setModify(true);
+    setPoste(data.poste);
+    for (const [key, value] of Object.entries(data)) {
+      formik.setFieldValue(`${key}`, value);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -24,52 +37,71 @@ function jobOffersDashboard() {
       description: selectedValue.description ? selectedValue.description : '',
     },
     onSubmit: (values, { resetForm }) => {
-      const bodyFormData = new FormData();
-      bodyFormData.append(
-        'data',
-        JSON.stringify({
-          ...values,
-        })
-      );
-      bodyFormData.append('assets', values.poste);
       axios
-        .post(`${API_URL}/api/jobOffers/`, bodyFormData)
+        .post(`${API_URL}/api/jobOffers/`, values)
         .then((data) => {
-          resetForm;
+          resetForm();
+          toast.success("L'offre a bien été ajoutée");
         })
         .catch((err = console.error(err.message)));
     },
     enableReinitialize: true,
   });
 
-  useEffect(() => {
-    (async () => {
-      await axios
-        .get(`${API_URL}/api/jobOffers/`)
-        .then((response) => response.data)
-        .then((data) => {
-          setJobOffers(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    })();
-  }, []);
+  const handleDeleteJobs = async () => {
+    await axios
+      .delete(`${API_URL}/api/jobOffers/${formik.values.id}`)
+
+      .then((response) => {
+        if (response.status === 204) {
+          formik.resetForm();
+          toast.success("L'offre a bien été supprimée ");
+        }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
+
+  const handlemodifyJobs = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .put(`${API_URL}/api/jobOffers/${formik.values.id}`, formik.values)
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success("L'offre a bien été modifiée ");
+          formik.resetForm;
+        } else {
+          alert('Erreur');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <Dashboard>
       <DashboardMenu />
       <DashboardHeader />
       <DashboardBody>
+        <ModalConfirm
+          message={'Etes vous sur de vouloir supprimer cette offre?'}
+
+          handleOpen={setOpen}
+          isOpen={open}
+          handleValid={handleDeleteJobs}
+        />
         <div className="evenementDashboard-container">
           <div className="select-jobOffers">
             <h1 className="event-title">Offres d'embauche</h1>
             <div className="jobOffers-select">
               <p>Sélectionner un poste</p>
               <SelectComponant
-                setValue={setSelectedValue}
+                setValue={(data) => pushSelectedInFormik(data)}
                 data={jobOffers}
-                optionValue="reference"
+                optionValue="poste"
               />
             </div>
           </div>
@@ -78,15 +110,16 @@ function jobOffersDashboard() {
             <Input
               label="Référence"
               type="text"
-              name="Reference"
-              id="Reference"
+              name="reference"
+              id="reference"
+              onChange={formik.handleChange}
               value={formik.values.reference}
             />
             <Input
               label="Poste"
               type="text"
-              name="Poste"
-              id="Poste"
+              name="poste"
+              id="poste"
               onChange={formik.handleChange}
               value={formik.values.poste}
             />
@@ -107,26 +140,29 @@ function jobOffersDashboard() {
               value={formik.values.description}
             />
             <div className="eventsBtn-container">
-              <div />
-              <div className="btn-event">
-                <Button
-                  className="button-red event_button"
-                  buttonName="Valider"
-                  onClick={formik.handleSubmit}
-                />
-              </div>
-              {isSelected !== '' && (
+              {!modify && (
+                <div className="btn-event validate-btn">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Valider"
+                    onClick={formik.handleSubmit}
+                  />
+                </div>
+              )}
+              {modify && (
                 <>
                   <div className="btn-event">
                     <Button
                       className="button-red event_button"
                       buttonName="Modifier"
+                      onClick={handlemodifyJobs}
                     />
                   </div>
                   <div className="btn-event">
                     <Button
                       className="button-red event_button"
                       buttonName="Supprimer"
+                      onClick={() => setOpen(true)}
                     />
                   </div>
                 </>

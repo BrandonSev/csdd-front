@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
 import { useFormik } from 'formik';
 import { BiUser } from 'react-icons/bi';
-
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { AppContext } from '../../../context/AppContext';
 import './LoginPage.css';
-
 import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { AppContext } from '../../../context/AppContext';
 
 /* Utilisation du hook `useFormik` pour créer le formulaire */
 function LoginPage() {
@@ -30,8 +26,7 @@ function LoginPage() {
         })
         .then((res) => {
           setLoggedIn(true);
-          console.log(res.data.user);
-          if (res.data.user.roles.includes('admin')) {
+          if (res.data.user?.roles?.includes('admin')) {
             setLoggedInAdmin(true);
             navigate('/dashboard/utilisateurs');
           } else {
@@ -40,7 +35,12 @@ function LoginPage() {
           toast.success('Bravo, vous êtes maintenant connecté');
           resetForm();
         })
-        .catch((err) => toast.error(err.message));
+        .catch((err) =>
+          toast.error(
+            err.response.data.message ||
+              'Une erreur est survenue lors de la connexion'
+          )
+        );
     },
   });
 

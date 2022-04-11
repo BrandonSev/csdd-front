@@ -15,6 +15,10 @@
   grid-row: 1;
 }
 
+.container-info{
+  position: relative;
+}
+
 .container-info-button{
   display:flex;
   flex-direction:row;

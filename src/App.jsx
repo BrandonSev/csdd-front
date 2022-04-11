@@ -39,6 +39,7 @@ function App() {
   const [books, setBooks] = useState([]);
   const [jobOffers, setJobOffers] = useState([]);
   const [roles, setRoles] = useState([]);
+  const [assets, setAssets] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -53,8 +54,7 @@ function App() {
           if (res.status === 200) {
             setUser(res.data.user);
             setLoggedIn(true);
-            console.log(res.data.user);
-            if (res.data.user?.roles.includes('admin')) {
+            if (res.data.user?.roles?.includes('admin')) {
               setLoggedInAdmin(true);
             }
           }
@@ -119,7 +119,8 @@ function App() {
           ),
         axios
           .get(`${process.env.REACT_APP_BACKEND_URL}/api/books/`)
-          .then(({ data }) => {
+          .then((response) => response.data)
+          .then((data) => {
             setBooks(data);
           })
           .catch((err) =>
@@ -127,7 +128,6 @@ function App() {
               'Une erreur est survenue lors de la récupération des livres'
             )
           ),
-
         axios
           .get(`${process.env.REACT_APP_BACKEND_URL}/api/jobOffers/`)
           .then(({ data }) => {
@@ -137,6 +137,14 @@ function App() {
             toast.error(
               'Une erreur est survenue lors de la récupération des offres d embauche'
             )
+          ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/assets/`)
+          .then(({ data }) => {
+            setAssets(data);
+          })
+          .catch((err) =>
+            toast.error('Une erreur est survenue lors des assest')
           ),
       ]);
     })();
@@ -160,6 +168,7 @@ function App() {
           books,
           jobOffers,
           roles,
+          assets,
         }}
       >
         <ToastContainer

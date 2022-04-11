@@ -92,14 +92,15 @@ rem .active {
 
 /* style des dossiers */
 
-.formation-container {
-  margin: 2rem;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 1rem;
+.container .formation-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .child {
+  align-items: center;
   border-radius: 5px;
   border: 1px solid black;
   margin: auto;
@@ -108,6 +109,7 @@ rem .active {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 90%;
 }
 
 .formation-image-container img {

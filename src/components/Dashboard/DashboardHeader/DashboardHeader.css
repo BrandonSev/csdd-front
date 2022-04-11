@@ -8,13 +8,20 @@
   z-index: 9;
 }
 
-.dashboard-header div:nth-child(2) {
+.dashboard-header div {
   display: flex;
   align-items: center;
+}
+
+.dashboard-header >:first-child {
+  margin-left: 3rem;
 }
 
 @media screen and (min-width: 992px) {
   .dashboard-header {
     padding-left: calc(400px + 2.5rem);
+  }
+  .dashboard-header>:first-child {
+    margin-left: 0;
   }
 }
