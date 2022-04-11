@@ -51,7 +51,7 @@ function Events() {
                         <h2>{event.title}</h2>
                       </a>
                     ) : (
-                      ''
+                      <h2>{event.title}</h2>
                     )}
                     <h4 className="overlay-events-date">
                       {moment(event.event_date).format('DD-MM-yyyy')}
