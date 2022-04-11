@@ -19,14 +19,14 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 function eventsDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
-  const [filename, setFilename] = useState('');
+  const [title, settitle] = useState('');
   const { events } = useContext(AppContext);
   /**
    * It sets the formik state to true and sets the formik values to the data passed in.
    */
   const pushSelectedInFormik = (data) => {
     setModify(true);
-    setFilename(data.filename);
+    settitle(data.title);
     for (const [key, value] of Object.entries(data)) {
       formik.setFieldValue(`${key}`, value);
     }
@@ -36,6 +36,7 @@ function eventsDashboard() {
   const formik = useFormik({
     initialValues: {
       event_date: selectedValue.event_date ? selectedValue.event_date : '',
+      title: selectedValue.event_date ? selectedValue.title : '',
       description: selectedValue.description ? selectedValue.description : '',
       filename: selectedValue.filename ? selectedValue.filename : '',
       event_link: selectedValue.event_link ? selectedValue.event_link : '',
@@ -121,7 +122,7 @@ function eventsDashboard() {
               <SelectComponant
                 setValue={(data) => pushSelectedInFormik(data)}
                 data={events}
-                optionValue="filename"
+                optionValue="title"
               />
             </div>
           </div>
@@ -131,8 +132,9 @@ function eventsDashboard() {
               label="Titre"
               type="text"
               name="title"
-              id="Title"
-              value={formik.values.filename}
+              id="title"
+              onChange={formik.handleChange}
+              value={formik.values.title}
             />
             <div className="event-text-container">
               <p>Ajouter du texte </p>
@@ -156,7 +158,7 @@ function eventsDashboard() {
                 name="filename"
               />
               {modify &&
-                (formik.values.filename === filename ? (
+                (formik.values.title === title ? (
                   <img
                     className="event_image"
                     src={`${API_URL}/images/${formik.values.filename}`}

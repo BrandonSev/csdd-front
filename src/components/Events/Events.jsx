@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import moment from 'moment';
 import { AppContext } from '../../context/AppContext';
-import 'swiper/swiper-bundle.css';
 import './Events.css';
+import 'swiper/swiper-bundle.css';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -31,6 +31,7 @@ function Events() {
           autoplay
           centeredSlides
           speed={500}
+          z
         >
           {events &&
             events.map((event) => (
@@ -45,6 +46,13 @@ function Events() {
                     {/* <h3 className="overlay-events-filename">
                       {event.filename}
                     </h3> */}
+                    {event.event_link ? (
+                      <a href={event.event_link} target="_blank">
+                        <h2>{event.title}</h2>
+                      </a>
+                    ) : (
+                      ''
+                    )}
                     <h4 className="overlay-events-date">
                       {moment(event.event_date).format('DD-MM-yyyy')}
                     </h4>
