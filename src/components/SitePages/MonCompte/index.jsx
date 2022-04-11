@@ -75,7 +75,7 @@ const MonCompte = () => {
     onSubmit: (values, { resetForm }) => {
       if (values.password !== values.confirmPassword) {
         return toast.error(
-          'Les mot de passe ne correspondent pas, veuillez réesayer'
+          'Les mots de passe ne correspondent pas, veuillez réesayer'
         );
       }
       axios
@@ -97,7 +97,7 @@ const MonCompte = () => {
             setUser(res.data.user);
           }
           if (res.status === 422) {
-            toast(
+            toast.error(
               "Une erreur est survenue lors de la modification de l'utilisateur"
             );
           }

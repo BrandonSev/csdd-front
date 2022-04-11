@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import moment from 'moment';
 import Button from '../../Button/Button';
 import Dashboard from '../../Dashboard';
 import DashboardBody from '../../Dashboard/DashboardBody';
@@ -10,7 +11,6 @@ import DashboardMenu from '../../Dashboard/DashboardMenu';
 import ModalConfirm from '../../ModalConfirm';
 import SelectComponant from '../../SelectComponents/Select';
 import './MediaDashboard.css';
-import moment from 'moment';
 import { AppContext } from '../../../context/AppContext';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -52,7 +52,7 @@ function MediaDashboard() {
         .post(`${API_URL}/api/assets/`, bodyFormData)
         .then((data) => {
           resetForm();
-          toast.success('Le fichier a été ajouté');
+          toast.success('Le fichier a bien été ajouté');
         })
         .catch((err = console.error(err.message)));
     },
@@ -90,7 +90,7 @@ function MediaDashboard() {
       .put(`${API_URL}/api/assets/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
-          toast.success('Le fichier a été modifié ');
+          toast.success('Le fichier a bien été modifié ');
           formik.resetForm;
         } else {
           alert('Erreur');

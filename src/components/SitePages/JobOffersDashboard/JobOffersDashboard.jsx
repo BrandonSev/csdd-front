@@ -41,7 +41,7 @@ function jobOffersDashboard() {
         .post(`${API_URL}/api/jobOffers/`, values)
         .then((data) => {
           resetForm();
-          toast.success("L'offre est ajouté");
+          toast.success("L'offre a bien été ajoutée");
         })
         .catch((err = console.error(err.message)));
     },
@@ -70,7 +70,7 @@ function jobOffersDashboard() {
       .put(`${API_URL}/api/jobOffers/${formik.values.id}`, formik.values)
       .then((response) => {
         if (response.status === 200) {
-          toast.success("L'offre est modifié ");
+          toast.success("L'offre a bien été modifiée ");
           formik.resetForm;
         } else {
           alert('Erreur');
@@ -87,7 +87,7 @@ function jobOffersDashboard() {
       <DashboardHeader />
       <DashboardBody>
         <ModalConfirm
-          message={'Etes vous sur de vouloir supprimer cet job?'}
+          message={'Etes vous sur de vouloir supprimer cette offre?'}
           handleOpen={setOpen}
           isOpen={open}
           handleValid={handleDeleteJobs}
