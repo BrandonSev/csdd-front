@@ -3,6 +3,8 @@ import './UserDashboard.css';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { FaUserAlt } from 'react-icons/fa';
+import moment from 'moment';
 import Dashboard from '../../Dashboard';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import DashboardHeader from '../../Dashboard/DashboardHeader';
@@ -12,8 +14,6 @@ import Input from '../../Input/Input';
 import SelectComponant from '../../SelectComponents/Select';
 import { AppContext } from '../../../context/AppContext';
 import ModalConfirm from '../../ModalConfirm';
-import { FaUserAlt } from 'react-icons/fa';
-import moment from 'moment';
 
 function UserDashboard() {
   const { provinces, adoptionPlace, rooms, receptionPlace, roles } =
@@ -40,7 +40,7 @@ function UserDashboard() {
           if (res.status === 200) {
             if (res.data.length > 1) {
               return toast.error(
-                'Plusieurs compte ont été trouvés, veuillez affiner votre rechercher en renseignant la date de naissance'
+                'Plusieurs comptes ont été trouvés, veuillez affiner votre rechercher en renseignant la date de naissance'
               );
             }
             for (const [key, value] of Object.entries(res.data[0])) {
@@ -123,12 +123,9 @@ function UserDashboard() {
             toast.success(res.data.message || 'Le compte a bien été modifié');
             resetForm();
           }
-          if (res.status === 422) {
-            toast('dsqdqsd');
-          }
         })
         .catch((err) =>
-          toast.error(
+          toast.error(err.response.data.message || 
             "Une erreur est survenue lors de la modification de l'utilisateur"
           )
         );
@@ -160,7 +157,7 @@ function UserDashboard() {
       <DashboardHeader />
       <DashboardBody>
         <ModalConfirm
-          message={'Etes vous sur de vouloir supprimer cet utilisateur?'}
+          message={'Etes-vous sur de vouloir supprimer cet utilisateur?'}
           handleOpen={setOpen}
           isOpen={open}
           handleValid={handleDelete}

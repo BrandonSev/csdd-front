@@ -4,13 +4,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { BiUser } from 'react-icons/bi';
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 import './ForgotPw.css';
-
 import Logo from '../../Logo/Logo';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
-import { toast } from 'react-toastify';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 

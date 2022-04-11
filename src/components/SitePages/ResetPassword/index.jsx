@@ -1,10 +1,8 @@
 import axios from 'axios';
+import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import React from 'react';
 import { BiUser } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '../../Button/Button';
 import Input from '../../Input/Input';
@@ -38,6 +36,7 @@ function ResetPassword() {
         });
     },
   });
+  
   return (
     <>
       <Logo />

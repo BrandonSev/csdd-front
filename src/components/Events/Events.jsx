@@ -43,10 +43,7 @@ function Events() {
                     className="event-img"
                   />
                   <div className="overlay-events">
-                    {/* <h3 className="overlay-events-filename">
-                      {event.filename}
-                    </h3> */}
-                    {event.event_link ? (
+                      {event.event_link ? (
                       <a href={event.event_link} target="_blank">
                         <h2>{event.title}</h2>
                       </a>
