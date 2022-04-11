@@ -39,6 +39,7 @@ function App() {
   const [books, setBooks] = useState([]);
   const [jobOffers, setJobOffers] = useState([]);
   const [roles, setRoles] = useState([]);
+  const [assets, setAssets] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -137,6 +138,14 @@ function App() {
               'Une erreur est survenue lors de la récupération des offres d embauche'
             )
           ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/assets/`)
+          .then(({ data }) => {
+            setAssets(data);
+          })
+          .catch((err) =>
+            toast.error('Une erreur est survenue lors des assest')
+          ),
       ]);
     })();
   }, []);
@@ -159,6 +168,7 @@ function App() {
           books,
           jobOffers,
           roles,
+          assets,
         }}
       >
         <ToastContainer
