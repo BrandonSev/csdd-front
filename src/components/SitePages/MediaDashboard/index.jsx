@@ -10,6 +10,8 @@ import DashboardMenu from '../../Dashboard/DashboardMenu';
 import ModalConfirm from '../../ModalConfirm';
 import SelectComponant from '../../SelectComponents/Select';
 import './MediaDashboard.css';
+import moment from 'moment';
+import { AppContext } from '../../../context/AppContext';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -32,6 +34,8 @@ function MediaDashboard() {
     initialValues: {
       filename: selectedValue.filename ? selectedValue.filename : '',
       type: selectedValue.type ? selectedValue.type : '',
+      file_date: selectedValue.file_date ? selectedValue.file_date : '',
+      created_at: selectedValue.created_at ? selectedValue.created_at : '',
     },
 
     onSubmit: (values, { resetForm }) => {
@@ -71,7 +75,7 @@ function MediaDashboard() {
   };
 
   const handleModifyMedia = async (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
     const bodyFormData = new FormData();
     bodyFormData.append(
@@ -122,7 +126,12 @@ function MediaDashboard() {
             <form className="form-media">
               <div className="form-group">
                 <label htmlFor="file">Sélectionner un fichier</label>
-                <input type="text" name="file" id="file" />
+                <input
+                  type="text"
+                  name="file"
+                  id="file"
+                  value={formik.values.filename}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="file">Localisation du fichier</label>
@@ -130,11 +139,29 @@ function MediaDashboard() {
               </div>
               <div className="form-group">
                 <label htmlFor="file">Date du fichier</label>
-                <input type="date" name="file" id="file" />
+                <input
+                  type="date"
+                  name="file"
+                  id="file"
+                  onChange={formik.handleChange}
+                  value={
+                    formik.values.file_date
+                      ? moment(formik.values.file_date).format('YYYY-MM-DD')
+                      : formik.values.file_date
+                  }
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="file">Date de mise à jour</label>
-                <input name="file" id="file" value="22 Janvier 2022" />
+                <input
+                  name="file"
+                  id="file"
+                  value={
+                    formik.values.created_at
+                      ? moment(formik.values.created_at).format('DD-MM-YYYY')
+                      : formik.values.created_at
+                  }
+                />
               </div>
               <div>
                 <p>Rôles: </p> <br />
@@ -181,16 +208,26 @@ function MediaDashboard() {
                   </div>
                 </div>
               </div>
-              <div className="form-group">
-                <Button className="button-red" buttonName="Valider" />
-              </div>
+              {!modify && (
+                <div className="form-group">
+                  <Button className="button-red" buttonName="Valider" />
+                </div>
+              )}
               <div className="button-action">
-                <Button className="button-red" buttonName="Modifier" />
-                <Button
-                  className="button-red"
-                  buttonName="Supprimer"
-                  onClick={() => setOpen(true)}
-                />
+                {modify && (
+                  <>
+                    <Button
+                      className="button-red"
+                      buttonName="Modifier"
+                      onClick={handleModifyMedia}
+                    />
+                    <Button
+                      className="button-red"
+                      buttonName="Supprimer"
+                      onClick={() => setOpen(true)}
+                    />
+                  </>
+                )}
               </div>
             </form>
           </div>
