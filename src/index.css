@@ -85,6 +85,7 @@ h3 {
 .w-100 {
   width: 100%;
 }
+
 rem .active {
   background-color: #af1616;
 }
@@ -101,10 +102,10 @@ rem .active {
 .child {
   border-radius: 5px;
   border: 1px solid black;
-  margin:auto;
+  margin: auto;
   height: 301px;
-  padding:1rem;
-  display: flex;  
+  padding: 1rem;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -114,6 +115,7 @@ rem .active {
 }
 
 /* Style du bouton des dossiers */
+
 .formation-btn-container {
   display: block;
   bottom: 6rem;
@@ -121,22 +123,21 @@ rem .active {
   width: 12rem;
   background: hsla(0, 0%, 0%, 0.4);
   border-radius: 5px;
-  margin:1rem;
+  margin: 1rem;
 }
 
-.formation-btn{
-width:100%;
+.formation-btn {
+  width: 100%;
 }
 
 @media screen and (min-width: 620px) {
-.formation-container {
-  margin: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  .formation-container {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
 }
-}
-
 
 @media screen and (min-width: 1024px) {
   .container {
@@ -145,15 +146,37 @@ width:100%;
   }
 
   /* style des dossiers */
-.formation-container {
-  margin: 2rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1rem;
+
+  .formation-container {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+  }
+
+  .child {
+    height: 301px;
+    width: 200px;
+  }
 }
 
-.child{
-    height: 301px;
-    width:200px
+/* Stylisation des champs input création de compte */
+
+.firstname,
+#firstname,
+.address,
+#address {
+  text-transform: capitalize;
 }
+
+.lastname,
+#lastname,
+.city,
+#city {
+  text-transform: uppercase;
+}
+
+.email,
+#email {
+  text-transform: lowercase;
 }
