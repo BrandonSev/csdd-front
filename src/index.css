@@ -93,21 +93,21 @@ rem .active {
 
 .container .formation-container {
   margin-top: 2rem;
-  display:flex;
+  display: flex;
   flex-direction: row;
-    flex-wrap:wrap;
+  flex-wrap: wrap;
 }
 
 .child {
   align-items: center;
   border-radius: 5px;
   border: 1px solid black;
-  margin:1rem;
-  padding:1rem;
-  display: flex;  
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width:90%;
+  width: 90%;
 }
 
 .formation-image-container img {
@@ -124,19 +124,19 @@ rem .active {
   border-radius: 5px;
 }
 
-.formation-btn{
-width:100%;
+.formation-btn {
+  width: 100%;
 }
 
 @media screen and (min-width: 620px) {
-.formation-container {
-  margin: 2rem;
-  display:flex;
-  flex-direction: row;
-}
-.child{
+  .formation-container {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+  }
+  .child {
     height: 100%;
-}
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -146,18 +146,17 @@ width:100%;
   }
 
   /* style des dossiers */
-.formation-container {
-  margin: 2rem;
-    display:flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  margin:auto;
-}
+  .formation-container {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin: auto;
+  }
 
-.child{
+  .child {
     height: 301px;
-    width:auto;
-}
-
+    width: auto;
+  }
 }

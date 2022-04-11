@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -8,9 +9,8 @@ import DashboardBody from '../../Dashboard/DashboardBody/index';
 import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
-import { toast } from 'react-toastify';
-import { useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
+import ModalConfirm from '../../ModalConfirm';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -19,6 +19,7 @@ function bookDashboard() {
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
   const { books } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
     setModify(true);
@@ -49,29 +50,28 @@ function bookDashboard() {
         .post(`${API_URL}/api/books/`, bodyFormData)
         .then((data) => {
           resetForm();
-          toast.success('Livre Ajouter');
+          toast.success('Le livre a été ajouté');
         })
         .catch((err = console.error(err.message)));
     },
     enableReinitialize: true,
   });
-  const handleDeleteBooks = async (e) => {
-    e.preventDefault();
 
+  const handleDeleteBooks = async () => {
     await axios
       .delete(`${API_URL}/api/books/${formik.values.id}`)
+
       .then((response) => {
         if (response.status === 204) {
-          toast.success("L'évenement est supprimé ");
-        } else {
-          alert('Erreur');
+          toast.success('Le livre a bien été supprimé ');
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.message);
       });
   };
-  const handlemodifyBooks = async (e) => {
+
+  const handleModifyBooks = async (e) => {
     e.preventDefault();
 
     const bodyFormData = new FormData();
@@ -87,7 +87,7 @@ function bookDashboard() {
       .put(`${API_URL}/api/books/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
-          toast.success("L'évenement est modifié ");
+          toast.success("L'évenement a été modifié ");
           formik.resetForm;
         } else {
           alert('Erreur');
@@ -103,8 +103,14 @@ function bookDashboard() {
       <DashboardMenu />
       <DashboardHeader />
       <DashboardBody>
+        <ModalConfirm
+          message={'Etes vous sûr de vouloir supprimer ce livre?'}
+          handleOpen={setOpen}
+          isOpen={open}
+          handleValid={handleDeleteBooks}
+        />
         <div className="select-evenement">
-          <h1 className="event-title">Livre Métier page accueil</h1>
+          <h1 className="event-title">Livres Métier</h1>
           <div className="events-select">
             <p>Sélectionner un livre</p>
             <SelectComponant
@@ -189,14 +195,14 @@ function bookDashboard() {
                   <Button
                     className="button-red event_button"
                     buttonName="Modifier"
-                    onClick={handlemodifyBooks}
+                    onClick={handleModifyBooks}
                   />
                 </div>
                 <div className="btn-event">
                   <Button
                     className="button-red event_button"
                     buttonName="Supprimer"
-                    onClick={handleDeleteBooks}
+                    onClick={() => setOpen(true)}
                   />
                 </div>
               </>

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -8,9 +9,8 @@ import DashboardBody from '../../Dashboard/DashboardBody/index';
 import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
-import { toast } from 'react-toastify';
-import { useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
+import ModalConfirm from '../../ModalConfirm';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -19,6 +19,7 @@ function jobOffersDashboard() {
   const [modify, setModify] = useState(false);
   const [poste, setPoste] = useState('');
   const { jobOffers } = useContext(AppContext);
+    const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
     setModify(true);
@@ -47,22 +48,21 @@ function jobOffersDashboard() {
     enableReinitialize: true,
   });
 
-  const handleDeleteJobs = async (e) => {
-    e.preventDefault();
-
+  const handleDeleteJobs = async () => {
     await axios
       .delete(`${API_URL}/api/jobOffers/${formik.values.id}`)
+
       .then((response) => {
         if (response.status === 204) {
-          toast.success("L'offre est supprimé ");
-        } else {
-          alert('Erreur');
+          formik.resetForm();
+          toast.success("L'offre a bien été supprimée ");
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.message);
       });
   };
+
   const handlemodifyJobs = async (e) => {
     e.preventDefault();
 
@@ -86,6 +86,12 @@ function jobOffersDashboard() {
       <DashboardMenu />
       <DashboardHeader />
       <DashboardBody>
+        <ModalConfirm
+          message={'Etes vous sur de vouloir supprimer cet job?'}
+          handleOpen={setOpen}
+          isOpen={open}
+          handleValid={handleDeleteJobs}
+        />
         <div className="evenementDashboard-container">
           <div className="select-jobOffers">
             <h1 className="event-title">Offres d'embauche</h1>
@@ -155,7 +161,7 @@ function jobOffersDashboard() {
                     <Button
                       className="button-red event_button"
                       buttonName="Supprimer"
-                      onClick={handleDeleteJobs}
+                      onClick={() => setOpen(true)}
                     />
                   </div>
                 </>
