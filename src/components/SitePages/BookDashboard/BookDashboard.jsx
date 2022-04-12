@@ -15,10 +15,9 @@ import ModalConfirm from '../../ModalConfirm';
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function bookDashboard() {
-  const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
-  const { books } = useContext(AppContext);
+  const { books, setBooks } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
@@ -31,9 +30,10 @@ function bookDashboard() {
 
   const formik = useFormik({
     initialValues: {
-      filename: selectedValue.filename ? selectedValue.filename : '',
-      img_link: selectedValue.img_link ? selectedValue.img_link : '',
-      link: selectedValue.link ? selectedValue.link : '',
+      filename: '',
+      img_link: '',
+      link: '',
+      title: '',
     },
 
     onSubmit: (values, { resetForm }) => {
@@ -44,7 +44,6 @@ function bookDashboard() {
           ...values,
         })
       );
-      console.log(values);
       bodyFormData.append('assets', values.filename);
       axios
         .post(`${API_URL}/api/books/`, bodyFormData)
@@ -63,6 +62,7 @@ function bookDashboard() {
 
       .then((response) => {
         if (response.status === 204) {
+          formik.resetForm();
           toast.success('Le livre a bien été supprimé ');
         }
       })
@@ -87,8 +87,14 @@ function bookDashboard() {
       .put(`${API_URL}/api/books/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
+          const replaceBookChange = books.map((book) => {
+            const item = [response.data].find(({ id }) => id === book.id);
+            return item ? item : book;
+          });
+          setBooks(replaceBookChange);
+          setModify(false);
           toast.success("L'évenement a été modifié ");
-          formik.resetForm;
+          formik.resetForm();
         } else {
           alert('Erreur');
         }
@@ -117,11 +123,20 @@ function bookDashboard() {
               setValue={(data) => pushSelectedInFormik(data)}
               data={books}
               optionValue="filename"
+              defaultValue={formik.values.id}
             />
           </div>
         </div>
         <div className="events-Input">
           <b>Ajouter un livre</b>
+          <Input
+            label="Titre du livre"
+            type="title"
+            name="title"
+            id="title"
+            onChange={formik.handleChange}
+            value={formik.values.title}
+          />
           <div className="event-image-container">
             <p>Sélectionner une image</p>
             <input

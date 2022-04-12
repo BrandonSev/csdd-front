@@ -26,7 +26,7 @@ function SelectComponant({
         defaultValue="NULL"
         disabled={disabled}
       >
-        <option value="default" selected disabled>
+        <option value="default" selected>
           Sélectionner ici
         </option>
         {data?.map((data) => (
