@@ -15,14 +15,14 @@
   grid-row: 1;
 }
 
-.container-info{
+.container-info {
   position: relative;
   height:150px;
 }
 
-.container-info-button{
-  display:flex;
-  flex-direction:row;
+.container-info-button {
+  display: flex;
+  flex-direction: row;
 }
 
 .news {
@@ -48,7 +48,7 @@
   .container-homePage {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 430px 250px 300px 450px;
+    grid-template-rows: 430px 333px 300px 450px;
     gap: 2rem 1rem;
   }
 }
@@ -67,5 +67,3 @@
 height:100%;
   }
 }
-
-

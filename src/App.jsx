@@ -166,6 +166,7 @@ function App() {
           receptionPlace,
           events,
           books,
+          setBooks,
           jobOffers,
           roles,
           assets,
