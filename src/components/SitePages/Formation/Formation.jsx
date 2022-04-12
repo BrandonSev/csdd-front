@@ -1,5 +1,4 @@
 import React from 'react';
-import './Formation.css';
 import Button from '../../Button/Button';
 import progressionDessin from '../../../assets/progressionDessin.gif';
 import progressionAtelier from '../../../assets/progressionAtelier.png';
