@@ -47,7 +47,8 @@ function bookDashboard() {
       bodyFormData.append('assets', values.filename);
       axios
         .post(`${API_URL}/api/books/`, bodyFormData)
-        .then((data) => {
+        .then((res) => {
+          setBooks([...books, res.data]);
           resetForm();
           toast.success('Le livre a été ajouté');
         })
@@ -62,12 +63,17 @@ function bookDashboard() {
 
       .then((response) => {
         if (response.status === 204) {
+          setBooks(books.filter((book) => book.id !== formik.values.id));
+          setModify(false);
           formik.resetForm();
           toast.success('Le livre a bien été supprimé ');
         }
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error(
+          err.response.data.message ||
+            'Une erreur est survenue lors de la suppression du livre'
+        );
       });
   };
 
