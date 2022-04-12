@@ -165,9 +165,11 @@ function App() {
           rooms,
           receptionPlace,
           events,
+          setEvents,
           books,
           setBooks,
           jobOffers,
+          setJobOffers,
           roles,
           assets,
         }}
