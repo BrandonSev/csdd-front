@@ -6,10 +6,6 @@ import moment from 'moment';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
-import DashboardBody from '../../Dashboard/DashboardBody/index';
-import DashboardHeader from '../../Dashboard/DashboardHeader/index';
-import DashboardMenu from '../../Dashboard/DashboardMenu';
-import Dashboard from '../../Dashboard/index';
 import './EventsDashboard.css';
 import { AppContext } from '../../../context/AppContext';
 
@@ -113,134 +109,130 @@ function eventsDashboard() {
   };
 
   return (
-    <Dashboard>
-      <DashboardMenu />
-      <DashboardHeader />
-      <DashboardBody>
-        <div className="evenementDashboard-container">
-          <div className="select-evenement">
-            <h1 className="event-title">Evènements de la page accueil</h1>
-            <div className="events-select">
-              <p>Sélectionner un évènement</p>
-              <SelectComponant
-                setValue={(data) => pushSelectedInFormik(data)}
-                data={events}
-                optionValue="title"
-              />
-            </div>
-          </div>
-          <div className="events-Input">
-            <h2>Ajouter un évènement:</h2>
-            <Input
-              label="Titre"
-              type="text"
-              name="title"
-              id="title"
-              onChange={formik.handleChange}
-              value={formik.values.title}
+    <>
+      <div className="evenementDashboard-container">
+        <div className="select-evenement">
+          <h1 className="event-title">Evènements de la page accueil</h1>
+          <div className="events-select">
+            <p>Sélectionner un évènement</p>
+            <SelectComponant
+              setValue={(data) => pushSelectedInFormik(data)}
+              data={events}
+              optionValue="title"
             />
-            <div className="event-text-container">
-              <p>Ajouter du texte </p>
-              <textarea
-                className="event-description"
-                name="description"
-                id="description"
-                onChange={formik.handleChange}
-                value={formik.values.description}
-              />
-            </div>
-            <div className="event-image-container">
-              <p>Sélectionner une image</p>
-              <input
-                type="file"
-                className="ignores-input-style"
-                accept="image/*"
-                onChange={(e) => {
-                  formik.setFieldValue('filename', e.target.files[0]);
-                }}
-                name="filename"
-              />
-              {modify &&
-                (formik.values.title === title ? (
-                  <img
-                    className="event_image"
-                    src={`${API_URL}/images/${formik.values.filename}`}
-                    alt=""
-                    width={150}
-                  />
-                ) : (
-                  <img
-                    className="event_image"
-                    src={URL.createObjectURL(formik.values.filename)}
-                    alt=""
-                    width={150}
-                  />
-                ))}
-              {!modify &&
-                (formik.values.filename.name ? (
-                  <img
-                    className="event_image"
-                    src={URL.createObjectURL(formik.values.filename)}
-                    alt=""
-                    width={150}
-                  />
-                ) : (
-                  ''
-                ))}
-            </div>
-            <Input
-              label="Date de l'évènement"
-              type="date"
-              name="event_date"
-              id="event_date"
-              onChange={formik.handleChange}
-              value={
-                formik.values.event_date
-                  ? moment(formik.values.event_date).format('YYYY-MM-DD')
-                  : formik.values.event_date
-              }
-            />
-            <Input
-              label="Ajouter un lien"
-              type="event_link"
-              name="event_link"
-              id="event_link"
-              onChange={formik.handleChange}
-              value={formik.values.event_link}
-            />
-            <div className="eventsBtn-container">
-              {!modify && (
-                <div className="btn-event validate-btn">
-                  <Button
-                    className="button-red event_button"
-                    buttonName="Valider"
-                    onClick={formik.handleSubmit}
-                  />
-                </div>
-              )}
-              {modify && (
-                <>
-                  <div className="btn-event">
-                    <Button
-                      className="button-red event_button"
-                      buttonName="Modifier"
-                      onClick={handlemodifyEvent}
-                    />
-                  </div>
-                  <div className="btn-event">
-                    <Button
-                      className="button-red event_button"
-                      buttonName="Supprimer"
-                      onClick={handleDeleteEvent}
-                    />
-                  </div>
-                </>
-              )}
-            </div>
           </div>
         </div>
-      </DashboardBody>
-    </Dashboard>
+        <div className="events-Input">
+          <h2>Ajouter un évènement:</h2>
+          <Input
+            label="Titre"
+            type="text"
+            name="title"
+            id="title"
+            onChange={formik.handleChange}
+            value={formik.values.title}
+          />
+          <div className="event-text-container">
+            <p>Ajouter du texte </p>
+            <textarea
+              className="event-description"
+              name="description"
+              id="description"
+              onChange={formik.handleChange}
+              value={formik.values.description}
+            />
+          </div>
+          <div className="event-image-container">
+            <p>Sélectionner une image</p>
+            <input
+              type="file"
+              className="ignores-input-style"
+              accept="image/*"
+              onChange={(e) => {
+                formik.setFieldValue('filename', e.target.files[0]);
+              }}
+              name="filename"
+            />
+            {modify &&
+              (formik.values.title === title ? (
+                <img
+                  className="event_image"
+                  src={`${API_URL}/images/${formik.values.filename}`}
+                  alt=""
+                  width={150}
+                />
+              ) : (
+                <img
+                  className="event_image"
+                  src={URL.createObjectURL(formik.values.filename)}
+                  alt=""
+                  width={150}
+                />
+              ))}
+            {!modify &&
+              (formik.values.filename.name ? (
+                <img
+                  className="event_image"
+                  src={URL.createObjectURL(formik.values.filename)}
+                  alt=""
+                  width={150}
+                />
+              ) : (
+                ''
+              ))}
+          </div>
+          <Input
+            label="Date de l'évènement"
+            type="date"
+            name="event_date"
+            id="event_date"
+            onChange={formik.handleChange}
+            value={
+              formik.values.event_date
+                ? moment(formik.values.event_date).format('YYYY-MM-DD')
+                : formik.values.event_date
+            }
+          />
+          <Input
+            label="Ajouter un lien"
+            type="event_link"
+            name="event_link"
+            id="event_link"
+            onChange={formik.handleChange}
+            value={formik.values.event_link}
+          />
+          <div className="eventsBtn-container">
+            {!modify && (
+              <div className="btn-event validate-btn">
+                <Button
+                  className="button-red event_button"
+                  buttonName="Valider"
+                  onClick={formik.handleSubmit}
+                />
+              </div>
+            )}
+            {modify && (
+              <>
+                <div className="btn-event">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Modifier"
+                    onClick={handlemodifyEvent}
+                  />
+                </div>
+                <div className="btn-event">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Supprimer"
+                    onClick={handleDeleteEvent}
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
