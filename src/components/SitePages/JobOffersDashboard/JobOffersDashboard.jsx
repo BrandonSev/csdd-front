@@ -18,8 +18,8 @@ function jobOffersDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
   const [poste, setPoste] = useState('');
-  const { jobOffers } = useContext(AppContext);
-    const [open, setOpen] = useState(false);
+  const { jobOffers, setJobOffers } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
     setModify(true);
@@ -39,7 +39,8 @@ function jobOffersDashboard() {
     onSubmit: (values, { resetForm }) => {
       axios
         .post(`${API_URL}/api/jobOffers/`, values)
-        .then((data) => {
+        .then((res) => {
+          setJobOffers([...jobOffers, res.data]);
           resetForm();
           toast.success("L'offre a bien été ajoutée");
         })
@@ -54,6 +55,10 @@ function jobOffersDashboard() {
 
       .then((response) => {
         if (response.status === 204) {
+          setJobOffers(
+            jobOffers.filter((jobOffer) => jobOffer.id !== formik.values.id)
+          );
+          setModify(false);
           formik.resetForm();
           toast.success("L'offre a bien été supprimée ");
         }
@@ -70,8 +75,9 @@ function jobOffersDashboard() {
       .put(`${API_URL}/api/jobOffers/${formik.values.id}`, formik.values)
       .then((response) => {
         if (response.status === 200) {
+          setModify(false);
           toast.success("L'offre a bien été modifiée ");
-          formik.resetForm;
+          formik.resetForm();
         } else {
           alert('Erreur');
         }
@@ -88,7 +94,6 @@ function jobOffersDashboard() {
       <DashboardBody>
         <ModalConfirm
           message={'Etes vous sur de vouloir supprimer cette offre?'}
-
           handleOpen={setOpen}
           isOpen={open}
           handleValid={handleDeleteJobs}
@@ -102,6 +107,7 @@ function jobOffersDashboard() {
                 setValue={(data) => pushSelectedInFormik(data)}
                 data={jobOffers}
                 optionValue="poste"
+                defaultValue={formik.values.id}
               />
             </div>
           </div>

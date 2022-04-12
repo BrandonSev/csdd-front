@@ -128,7 +128,7 @@ function bookDashboard() {
             <SelectComponant
               setValue={(data) => pushSelectedInFormik(data)}
               data={books}
-              optionValue="filename"
+              optionValue="title"
               defaultValue={formik.values.id}
             />
           </div>
