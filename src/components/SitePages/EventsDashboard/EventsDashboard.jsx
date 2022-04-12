@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import moment from 'moment';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -9,9 +11,6 @@ import DashboardHeader from '../../Dashboard/DashboardHeader/index';
 import DashboardMenu from '../../Dashboard/DashboardMenu';
 import Dashboard from '../../Dashboard/index';
 import './EventsDashboard.css';
-import moment from 'moment';
-import { toast } from 'react-toastify';
-import { useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -56,7 +55,7 @@ function eventsDashboard() {
         .post(`${API_URL}/api/events/`, bodyFormData)
         .then((data) => {
           resetForm();
-          toast.success('Evenement Ajouter');
+          toast.success("L'évènement a bien été ajouté");
         })
         .catch((err = console.error(err.message)));
     },
@@ -71,7 +70,7 @@ function eventsDashboard() {
       .delete(`${API_URL}/api/events/${formik.values.id}`)
       .then((response) => {
         if (response.status === 204) {
-          toast.success("L'évenement est supprimé ");
+          toast.success("L'évènement a bien été supprimé ");
         } else {
           alert('Erreur');
         }
@@ -98,7 +97,7 @@ function eventsDashboard() {
       .put(`${API_URL}/api/events/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
-          toast.success("L'évenement est modifié ");
+          toast.success("L'évènement a bien été modifié ");
           formik.resetForm;
         } else {
           alert('Erreur');
@@ -186,7 +185,7 @@ function eventsDashboard() {
                 ))}
             </div>
             <Input
-              label="Date de l'événement"
+              label="Date de l'évènement"
               type="date"
               name="event_date"
               id="event_date"

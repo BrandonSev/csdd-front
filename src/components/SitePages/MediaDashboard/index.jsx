@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import moment from 'moment';
 import Button from '../../Button/Button';
 import Dashboard from '../../Dashboard';
 import DashboardBody from '../../Dashboard/DashboardBody';
@@ -10,7 +11,6 @@ import DashboardMenu from '../../Dashboard/DashboardMenu';
 import ModalConfirm from '../../ModalConfirm';
 import SelectComponant from '../../SelectComponents/Select';
 import './MediaDashboard.css';
-import moment from 'moment';
 import { AppContext } from '../../../context/AppContext';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -18,13 +18,17 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 function MediaDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
-  const [filename, setfilename] = useState('');
+
+  const [filename, setFilename] = useState('');
+
   const { assets } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
     setModify(true);
+    setFilename(data.filename);
     setTitle(data.filename);
+
     for (const [key, value] of Object.entries(data)) {
       formik.setFieldValue(`${key}`, value);
     }
@@ -35,6 +39,7 @@ function MediaDashboard() {
       filename: selectedValue.filename ? selectedValue.filename : '',
       type: selectedValue.type ? selectedValue.type : '',
       file_date: selectedValue.file_date ? selectedValue.file_date : '',
+      created_at: selectedValue.created_at ? selectedValue.created_at : '',
       title: selectedValue.title ? selectedValue.title : '',
     },
 
@@ -52,7 +57,7 @@ function MediaDashboard() {
         .post(`${API_URL}/api/assets/`, bodyFormData)
         .then((data) => {
           resetForm();
-          toast.success('Le fichier a été ajouté');
+          toast.success('Le fichier a bien été ajouté');
         })
         .catch((err = console.error(err.message)));
     },
@@ -90,7 +95,8 @@ function MediaDashboard() {
       .put(`${API_URL}/api/assets/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
-          toast.success('Le fichier a été modifié ');
+          toast.success('Le fichier a bien été modifié ');
+
           formik.resetForm;
         } else {
           alert('Erreur');
@@ -137,6 +143,7 @@ function MediaDashboard() {
               <div className="form-group">
                 <label htmlFor="file">Sélectionner un fichier</label>
                 <input
+
                   type="file"
                   className="ignores-input-style"
                   onChange={(e) => {
@@ -153,6 +160,7 @@ function MediaDashboard() {
                   id="type"
                   onChange={formik.handleChange}
                   value={formik.values.type}
+
                 />
               </div>
               <div className="form-group">
@@ -163,8 +171,10 @@ function MediaDashboard() {
                 <label htmlFor="file">Date du fichier</label>
                 <input
                   type="date"
+
                   name="file_date"
                   id="file_date"
+
                   onChange={formik.handleChange}
                   value={
                     formik.values.file_date
@@ -183,7 +193,8 @@ function MediaDashboard() {
                       ? moment(formik.values.created_at).format('DD-MM-YYYY')
                       : formik.values.created_at
                   }
-                  a
+                  
+
                 />
               </div>
               <div>
@@ -233,11 +244,13 @@ function MediaDashboard() {
               </div>
               {!modify && (
                 <div className="form-group">
+
                   <Button
                     className="button-red"
                     buttonName="Valider"
                     onClick={formik.handleSubmit}
                   />
+
                 </div>
               )}
               <div className="button-action">

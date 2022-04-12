@@ -108,7 +108,8 @@ rem .active {
   align-items: center;
   border-radius: 5px;
   border: 1px solid black;
-  margin: 1rem;
+  margin: auto;
+  height: 301px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -121,6 +122,7 @@ rem .active {
 }
 
 /* Style du bouton des dossiers */
+
 .formation-btn-container {
   display: block;
   bottom: 6rem;
@@ -128,6 +130,7 @@ rem .active {
   width: 12rem;
   background: hsla(0, 0%, 0%, 0.4);
   border-radius: 5px;
+  margin: 1rem;
 }
 
 .formation-btn {
@@ -143,6 +146,9 @@ rem .active {
 
   .child {
     height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
   }
 
   .TitleForMobile {
@@ -157,6 +163,7 @@ rem .active {
   }
 
   /* style des dossiers */
+
   .formation-container {
     margin: 2rem;
     display: flex;
@@ -165,10 +172,35 @@ rem .active {
     width: 100%;
 
     /* margin: auto; */
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
   }
 
   .child {
     height: 301px;
-    width: auto;
+    width: 200px;
   }
+}
+
+/* Stylisation des champs input création de compte */
+
+.firstname,
+#firstname,
+.address,
+#address {
+  text-transform: capitalize;
+}
+
+.lastname,
+#lastname,
+.city,
+#city {
+  text-transform: uppercase;
+}
+
+.email,
+#email {
+  text-transform: lowercase;
 }
