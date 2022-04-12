@@ -12,6 +12,9 @@ function DashboardMenu() {
       </div>
       <ul className="dashboard-menu-list">
         <li>
+          <NavLink to="/dashboard/message">Messages</NavLink>
+        </li>
+        <li>
           <NavLink to="/dashboard/utilisateurs">Utilisateurs</NavLink>
         </li>
         <li>
@@ -22,7 +25,7 @@ function DashboardMenu() {
             Les offres d'embauche
           </NavLink>
         </li>
-            <li>
+        <li>
           <NavLink to="/dashboard/metiers">Livres métiers</NavLink>
         </li>
         <li>
