@@ -16,7 +16,7 @@ function Events() {
 
   return (
     <div className="carousel-container">
-      <h3>Events</h3>
+      <h3>Evenements</h3>
       <div className="carousel-slider-events">
         <Swiper
           className="mySwiper-container"
@@ -43,7 +43,7 @@ function Events() {
                     className="event-img"
                   />
                   <div className="overlay-events">
-                      {event.event_link ? (
+                    {event.event_link ? (
                       <a href={event.event_link} target="_blank">
                         <h2>{event.title}</h2>
                       </a>

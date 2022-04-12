@@ -14,7 +14,7 @@ function JobOffers() {
 
   return (
     <div className="carousel-container-jobOffers">
-      <h3>Offres d embauche</h3>
+      <h3>Offres d'embauche</h3>
       <div className="carousel-slider-jobOffers">
         <Swiper
           className="mySwiper-container"
