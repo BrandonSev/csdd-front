@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Swiper } from 'swiper/react/swiper';
 import { SwiperSlide } from 'swiper/react/swiper-slide';
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
@@ -48,9 +48,9 @@ function JobOffers() {
                     {moment(jobOffer.created_at).format('DD-MM-yyyy')}
                   </h4>
                   <h4> {jobOffer.city}</h4>
-                  <br></br>
+                  <br />
                   <h4 className="job">{jobOffer.poste}</h4>
-                  <br></br>
+                  <br />
                   <p>
                     {jobOffer.description}
                     description Lorem ipsum dolor, sit amet consectetur

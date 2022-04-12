@@ -32,12 +32,9 @@ function DashboardMessage() {
           Liste des messages <BiEnvelope size={40} />
         </h1>
         <div className="dashboard-message">
-          {message}
-          <MessageList />
-          <MessageList />
-          <MessageList />
-          <MessageList />
-          <MessageList />
+          {message?.map((message) => (
+            <MessageList {...message} />
+          ))}
         </div>
       </DashboardBody>
     </Dashboard>
