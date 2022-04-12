@@ -137,6 +137,27 @@ rem .active {
   width: 100%;
 }
 
+/* Stylisation des champs input création de compte */
+
+.firstname,
+#firstname,
+.address,
+#address {
+  text-transform: capitalize;
+}
+
+.lastname,
+#lastname,
+.city,
+#city {
+  text-transform: uppercase;
+}
+
+.email,
+#email {
+  text-transform: lowercase;
+}
+
 @media screen and (min-width: 620px) {
   .formation-container {
     margin: 2rem;
@@ -182,25 +203,4 @@ rem .active {
     height: 301px;
     width: 200px;
   }
-}
-
-/* Stylisation des champs input création de compte */
-
-.firstname,
-#firstname,
-.address,
-#address {
-  text-transform: capitalize;
-}
-
-.lastname,
-#lastname,
-.city,
-#city {
-  text-transform: uppercase;
-}
-
-.email,
-#email {
-  text-transform: lowercase;
 }
