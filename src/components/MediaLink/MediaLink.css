@@ -1,11 +1,12 @@
 .media-container {
   display: block;
   justify-content: center;
+  height: 5rem;
 }
 
 .image-media {
   height: 60px;
-  width: 200px;
+  width: 100%;
 }
 
 .container-info {
@@ -15,6 +16,14 @@
 
 .container-medias {
   width: 50%;
+}
+
+#twitter-widget-0 iframe{
+  min-height:100%;
+}
+
+.timeline-Widget{
+  min-height: 100%;
 }
 
 @media screen and (min-width: 768px) {

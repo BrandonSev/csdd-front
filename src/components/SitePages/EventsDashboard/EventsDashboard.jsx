@@ -15,7 +15,7 @@ function eventsDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
   const [title, settitle] = useState('');
-  const { events } = useContext(AppContext);
+  const { events, setEvents } = useContext(AppContext);
   /**
    * It sets the formik state to true and sets the formik values to the data passed in.
    */
@@ -49,7 +49,8 @@ function eventsDashboard() {
       bodyFormData.append('assets', values.filename);
       axios
         .post(`${API_URL}/api/events/`, bodyFormData)
-        .then((data) => {
+        .then((res) => {
+          setEvents([...events, res.data]);
           resetForm();
           toast.success("L'évènement a bien été ajouté");
         })
@@ -66,6 +67,9 @@ function eventsDashboard() {
       .delete(`${API_URL}/api/events/${formik.values.id}`)
       .then((response) => {
         if (response.status === 204) {
+          setEvents(events.filter((event) => event.id !== formik.values.id));
+          setModify(false);
+          formik.resetForm();
           toast.success("L'évènement a bien été supprimé ");
         } else {
           alert('Erreur');
@@ -94,7 +98,7 @@ function eventsDashboard() {
       .then((response) => {
         if (response.status === 200) {
           toast.success("L'évènement a bien été modifié ");
-          formik.resetForm;
+          formik.resetForm();
         } else {
           alert('Erreur');
         }
