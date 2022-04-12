@@ -280,6 +280,7 @@ function UserDashboard() {
               <Input
                 label="Date de naissance : "
                 name="birthday"
+                className="birthday"
                 type="date"
                 value={userInfoForm.values.birthday}
                 onChange={userInfoForm.handleChange}
@@ -294,6 +295,7 @@ function UserDashboard() {
               <Input
                 label="Code postal : "
                 name="postal_code"
+                className="postal_code"
                 value={userInfoForm.values.postal_code}
                 onChange={userInfoForm.handleChange}
               />
@@ -307,12 +309,14 @@ function UserDashboard() {
               <Input
                 label="Email : "
                 name="email"
+                className="email"
                 value={userInfoForm.values.email}
                 onChange={userInfoForm.handleChange}
               />
               <Input
                 label="Téléphone : "
                 name="phone"
+                className="phone"
                 value={userInfoForm.values.phone}
                 onChange={userInfoForm.handleChange}
               />
@@ -346,6 +350,7 @@ function UserDashboard() {
               <Input
                 label="Date d'adoption :"
                 name="adoption_date"
+                className="adoption_date"
                 type="date"
                 disabled={!userInfoForm.values.firstname}
                 value={userInfoForm.values.adoption_date}
@@ -374,6 +379,7 @@ function UserDashboard() {
               <Input
                 label="Date de réception :"
                 name="reception_date"
+                className="reception_date"
                 type="date"
                 disabled={!userInfoForm.values.firstname}
                 value={userInfoForm.values.reception_date}
