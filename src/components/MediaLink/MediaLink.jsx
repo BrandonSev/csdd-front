@@ -30,7 +30,7 @@ function MediaLink() {
               <a
                 class="twitter-timeline"
                 data-width="400"
-                data-height="200"
+                data-height="100"
                 data-theme="light"
                 href="https://twitter.com/les_compagnons?ref_src=twsrc%5Etfw"
               >
