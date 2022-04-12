@@ -15,11 +15,8 @@ function MediaLink() {
       <div className="media-container">
         <div className="iframeMedias">
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FEcho-de-lEnclume-1712717015659831&tabs=timeline&width=400&height=90&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-            width="400"
-            height="90"
-            style={{ border: 'none', overflow: 'hidden', width: '100%' }}
-            scrolling="no"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FEcho-de-lEnclume-1712717015659831"
+            width="100%"
             frameborder="0"
             allowfullscreen="true"
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"

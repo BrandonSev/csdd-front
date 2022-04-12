@@ -215,7 +215,7 @@ function App() {
             />
           </Routes>
         )}
-        {!loading && loggedInAdmin && (
+        {!loading && loggedInAdmin && location.pathname.includes('/dashboard') && (
           <Dashboard>
             <DashboardHeader />
             <DashboardMenu />

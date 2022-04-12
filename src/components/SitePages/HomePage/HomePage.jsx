@@ -24,7 +24,7 @@ function HomePage() {
         </div>
         <div className="news">
           <div className="container-info">
-            <h3>Bulletin d informations</h3>
+            <h3>Bulletin d'informations</h3>
             <Button
               className="button-red"
               buttonName="Afficher"
@@ -36,7 +36,7 @@ function HomePage() {
               src={info}
               type="application/pdf"
               frameBorder="0"
-              height="100%"
+              height="300"
               width="100%"
             />
             <img
