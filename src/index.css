@@ -54,6 +54,11 @@ a {
   cursor: pointer;
 }
 
+.TitleForMobile {
+  text-align: center;
+  margin: 1em;
+}
+
 h3 {
   padding-bottom: 1rem;
 }
@@ -135,9 +140,19 @@ rem .active {
 @media screen and (min-width: 620px) {
   .formation-container {
     margin: 2rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .child {
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
+  }
+
+  .TitleForMobile {
+    display: none;
   }
 }
 
@@ -151,6 +166,13 @@ rem .active {
 
   .formation-container {
     margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+
+    /* margin: auto; */
+
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 1rem;

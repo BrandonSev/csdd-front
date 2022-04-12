@@ -7,6 +7,7 @@ import cultureCompagnonique from '../../../assets/cultureCompagnonique.png';
 function CommissionDesRites() {
   return (
     <div className="container">
+      <h1 className="TitleForMobile">CommissionDesRites</h1>
       <div className="formation-container">
         <div className="child">
           <div className="formation-image-container">

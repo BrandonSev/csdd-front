@@ -10,6 +10,7 @@ import miniStage from '../../../assets/miniStage.png';
 function Formation() {
   return (
     <div className="container formation-container">
+      <h1 className="TitleForMobile">Formation</h1>
       <div className="child">
         <div className="formation-image-container">
           <img
@@ -19,10 +20,10 @@ function Formation() {
           />
         </div>
         <div className="formation-btn-container">
-            <Button
-              className="formation-btn"
-              buttonName="PROGRESSION DE DESSINS"
-            />
+          <Button
+            className="formation-btn"
+            buttonName="PROGRESSION DE DESSINS"
+          />
         </div>
       </div>
 
