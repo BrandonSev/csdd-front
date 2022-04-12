@@ -97,6 +97,7 @@ function eventsDashboard() {
       .put(`${API_URL}/api/events/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
+          setModify(false);
           toast.success("L'évènement a bien été modifié ");
           formik.resetForm();
         } else {
