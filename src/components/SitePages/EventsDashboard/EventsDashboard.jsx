@@ -120,6 +120,7 @@ function eventsDashboard() {
               setValue={(data) => pushSelectedInFormik(data)}
               data={events}
               optionValue="title"
+              defaultValue={formik.values.id}
             />
           </div>
         </div>
