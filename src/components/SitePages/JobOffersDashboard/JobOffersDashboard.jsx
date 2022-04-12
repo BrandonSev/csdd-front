@@ -100,6 +100,7 @@ function jobOffersDashboard() {
               setValue={(data) => pushSelectedInFormik(data)}
               data={jobOffers}
               optionValue="poste"
+              defaultValue={formik.values.id}
             />
           </div>
         </div>
