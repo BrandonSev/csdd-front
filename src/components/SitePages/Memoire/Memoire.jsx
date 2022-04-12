@@ -8,6 +8,7 @@ import concoursSoudure from '../../../assets/concoursSoudure.png';
 function Memoire() {
   return (
     <div className="container formation-container">
+      <h1 className="TitleForMobile">Mémoire</h1>
       <div className="child">
         <div className="formation-image-container">
           <img className="formation-image" src={innovation} alt="INNOVATIONS" />

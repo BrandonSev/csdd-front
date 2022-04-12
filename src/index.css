@@ -54,6 +54,11 @@ a {
   cursor: pointer;
 }
 
+.TitleForMobile {
+  text-align: center;
+  margin: 1em;
+}
+
 h3 {
   padding-bottom: 1rem;
 }
@@ -85,6 +90,7 @@ h3 {
 .w-100 {
   width: 100%;
 }
+
 rem .active {
   background-color: #af1616;
 }
@@ -134,8 +140,13 @@ rem .active {
     display: flex;
     flex-direction: row;
   }
+
   .child {
     height: 100%;
+  }
+
+  .TitleForMobile {
+    display: none;
   }
 }
 
@@ -152,7 +163,8 @@ rem .active {
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    margin: auto;
+
+    /* margin: auto; */
   }
 
   .child {

@@ -10,6 +10,7 @@
 
 .dashboard-menu .active {
   background-color: #af1616;
+  color: white;
 }
 
 .dashboard-menu.open {

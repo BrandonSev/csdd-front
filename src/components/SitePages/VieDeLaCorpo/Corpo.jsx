@@ -5,9 +5,10 @@ import organigramme from '../../../assets/organigramme.png';
 import annuaire from '../../../assets/annuaire.png';
 import reunionsNationales from '../../../assets/reunionsNationales.png';
 
-function CommissionDesRites() {
+function VieDeLaCorpo() {
   return (
     <div className="container formation-container">
+      <h1 className="TitleForMobile">Vie de la Corpo</h1>
       <div className="child">
         <div className="formation-image-container">
           <img className="formation-image" src={annuaire} alt="ANNUAIRE" />
@@ -73,4 +74,4 @@ function CommissionDesRites() {
   );
 }
 
-export default CommissionDesRites;
+export default VieDeLaCorpo;
