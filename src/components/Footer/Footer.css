@@ -1,7 +1,8 @@
 .footer .footer-logo {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 2rem 3rem;
+  /* gap: 1rem 1rem; */
   padding: 2rem 0;
 }
