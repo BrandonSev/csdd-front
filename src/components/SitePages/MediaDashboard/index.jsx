@@ -14,17 +14,24 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 function MediaDashboard() {
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
-  const { assets } = useContext(AppContext);
-  const { roles } = useContext(AppContext);
-  const { categories } = useContext(AppContext);
+  const { assets, roles, categories } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
-    setModify(true);
     setFilename(data.filename);
-    setTitle(data.filename);
-
+    console.log(data);
     for (const [key, value] of Object.entries(data)) {
+      if (data.roles) {
+        const array = [];
+        data.roles.split(',').map((role) => {
+          return roles.map((roles) => {
+            if (roles.name === role) {
+              array.push(roles.id);
+            }
+          });
+        });
+        formik.setFieldValue('roleId', array);
+      }
       formik.setFieldValue(`${key}`, value);
     }
   };
@@ -36,6 +43,8 @@ function MediaDashboard() {
       file_date: '',
       created_at: '',
       title: '',
+      categoryId: [],
+      roleId: [],
     },
 
     onSubmit: (values, { resetForm }) => {
@@ -43,7 +52,7 @@ function MediaDashboard() {
       bodyFormData.append(
         'data',
         JSON.stringify({
-          ...values,
+          ...formik.values,
         })
       );
       console.log(values);
@@ -90,6 +99,7 @@ function MediaDashboard() {
       .put(`${API_URL}/api/assets/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
+          setModify(true);
           toast.success('Le fichier a bien été modifié ');
 
           formik.resetForm;
@@ -102,6 +112,21 @@ function MediaDashboard() {
       });
   };
 
+  const handleSelect = (e) => {
+    const { checked, name, value } = e.target;
+    console.log(checked);
+    if (checked) {
+      formik.setFieldValue('roleId', [
+        ...formik.values.roleId,
+        parseInt(value, 10),
+      ]);
+    } else {
+      formik.setFieldValue(
+        'roleId',
+        formik.values.roleId.filter((v) => v !== parseInt(value, 10))
+      );
+    }
+  };
   return (
     <>
       <ModalConfirm
@@ -183,16 +208,27 @@ function MediaDashboard() {
               <div className="roles">
                 {roles?.map((role) => (
                   <div>
-                    <label htmlFor="roles">{role.name}</label>
-                    <input type="checkbox" name="roles" id="roles" />
+                    <label htmlFor={role.name}>{role.name}</label>
+                    <input
+                      type="checkbox"
+                      checked={formik.values.roleId.includes(role.id)}
+                      name={role.name}
+                      id={role.name}
+                      value={role.id}
+                      onChange={handleSelect}
+                    />
                   </div>
                 ))}
               </div>
               <div className="events-select">
                 <SelectComponant
+                  setValue={(data) => {
+                    formik.setFieldValue('categoryId', [data.id]);
+                  }}
                   data={categories}
                   optionValue="name"
                   label="Selectionner une categorie"
+                  defaultValue={formik.values.id}
                 />
               </div>
             </div>
