@@ -28,6 +28,7 @@ import Dashboard from './components/Dashboard';
 import DashboardHeader from './components/Dashboard/DashboardHeader';
 import DashboardMenu from './components/Dashboard/DashboardMenu';
 import DashboardBody from './components/Dashboard/DashboardBody';
+import { Navigate } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -199,6 +200,14 @@ function App() {
               <Route path="/commission" element={<CommissionDesRites />} />
               <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
               <Route path="/mon-compte" element={<MonCompte />} />
+              <Route
+                path="*"
+                element={
+                  !location.pathname.includes('/dashboard') && (
+                    <Navigate to={'/home'} />
+                  )
+                }
+              />
             </Routes>
             {!location.pathname.includes('/dashboard') && <Footer />}
           </div>
@@ -213,6 +222,7 @@ function App() {
               path="/password/reset-password/:id/:token"
               element={<ResetPassword />}
             />
+            <Route path="*" element={<Navigate to={'/login'} />} />
           </Routes>
         )}
         {!loading && loggedInAdmin && location.pathname.includes('/dashboard') && (
@@ -238,6 +248,10 @@ function App() {
                 <Route
                   path="/dashboard/offre-embauche"
                   element={<JobOffersDashboard />}
+                />
+                <Route
+                  path="*"
+                  element={<Navigate to={'/dashboard/message'} />}
                 />
               </Routes>
             </DashboardBody>

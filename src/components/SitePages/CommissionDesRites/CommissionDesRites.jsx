@@ -63,7 +63,7 @@ function CommissionDesRites() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
