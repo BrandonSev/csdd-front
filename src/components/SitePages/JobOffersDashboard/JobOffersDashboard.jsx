@@ -5,10 +5,6 @@ import { toast } from 'react-toastify';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
-import DashboardBody from '../../Dashboard/DashboardBody/index';
-import DashboardHeader from '../../Dashboard/DashboardHeader/index';
-import DashboardMenu from '../../Dashboard/DashboardMenu';
-import Dashboard from '../../Dashboard/index';
 import { AppContext } from '../../../context/AppContext';
 import ModalConfirm from '../../ModalConfirm';
 
@@ -18,8 +14,8 @@ function jobOffersDashboard() {
   const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
   const [poste, setPoste] = useState('');
-  const { jobOffers } = useContext(AppContext);
-    const [open, setOpen] = useState(false);
+  const { jobOffers, setJobOffers } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
     setModify(true);
@@ -39,7 +35,8 @@ function jobOffersDashboard() {
     onSubmit: (values, { resetForm }) => {
       axios
         .post(`${API_URL}/api/jobOffers/`, values)
-        .then((data) => {
+        .then((res) => {
+          setJobOffers([...jobOffers, res.data]);
           resetForm();
           toast.success("L'offre a bien été ajoutée");
         })
@@ -54,6 +51,10 @@ function jobOffersDashboard() {
 
       .then((response) => {
         if (response.status === 204) {
+          setJobOffers(
+            jobOffers.filter((jobOffer) => jobOffer.id !== formik.values.id)
+          );
+          setModify(false);
           formik.resetForm();
           toast.success("L'offre a bien été supprimée ");
         }
@@ -70,8 +71,9 @@ function jobOffersDashboard() {
       .put(`${API_URL}/api/jobOffers/${formik.values.id}`, formik.values)
       .then((response) => {
         if (response.status === 200) {
+          setModify(false);
           toast.success("L'offre a bien été modifiée ");
-          formik.resetForm;
+          formik.resetForm();
         } else {
           alert('Erreur');
         }
@@ -82,96 +84,92 @@ function jobOffersDashboard() {
   };
 
   return (
-    <Dashboard>
-      <DashboardMenu />
-      <DashboardHeader />
-      <DashboardBody>
-        <ModalConfirm
-          message={'Etes vous sur de vouloir supprimer cette offre?'}
-
-          handleOpen={setOpen}
-          isOpen={open}
-          handleValid={handleDeleteJobs}
-        />
-        <div className="evenementDashboard-container">
-          <div className="select-jobOffers">
-            <h1 className="event-title">Offres d'embauche</h1>
-            <div className="jobOffers-select">
-              <p>Sélectionner un poste</p>
-              <SelectComponant
-                setValue={(data) => pushSelectedInFormik(data)}
-                data={jobOffers}
-                optionValue="poste"
-              />
-            </div>
-          </div>
-          <div className="events-Input">
-            <b>Ajouter une offre:</b>
-            <Input
-              label="Référence"
-              type="text"
-              name="reference"
-              id="reference"
-              onChange={formik.handleChange}
-              value={formik.values.reference}
+    <>
+      <ModalConfirm
+        message={'Etes vous sur de vouloir supprimer cette offre?'}
+        handleOpen={setOpen}
+        isOpen={open}
+        handleValid={handleDeleteJobs}
+      />
+      <div className="evenementDashboard-container">
+        <div className="select-jobOffers">
+          <h1 className="event-title">Offres d'embauche</h1>
+          <div className="jobOffers-select">
+            <p>Sélectionner un poste</p>
+            <SelectComponant
+              setValue={(data) => pushSelectedInFormik(data)}
+              data={jobOffers}
+              optionValue="poste"
+              defaultValue={formik.values.id}
             />
-            <Input
-              label="Poste"
-              type="text"
-              name="poste"
-              id="poste"
-              onChange={formik.handleChange}
-              value={formik.values.poste}
-            />
-            <Input
-              label="Lieu du poste"
-              type="text"
-              name="city"
-              id="city"
-              onChange={formik.handleChange}
-              value={formik.values.city}
-            />
-            <Input
-              label="Description"
-              type="description"
-              name="description"
-              id="description"
-              onChange={formik.handleChange}
-              value={formik.values.description}
-            />
-            <div className="eventsBtn-container">
-              {!modify && (
-                <div className="btn-event validate-btn">
-                  <Button
-                    className="button-red event_button"
-                    buttonName="Valider"
-                    onClick={formik.handleSubmit}
-                  />
-                </div>
-              )}
-              {modify && (
-                <>
-                  <div className="btn-event">
-                    <Button
-                      className="button-red event_button"
-                      buttonName="Modifier"
-                      onClick={handlemodifyJobs}
-                    />
-                  </div>
-                  <div className="btn-event">
-                    <Button
-                      className="button-red event_button"
-                      buttonName="Supprimer"
-                      onClick={() => setOpen(true)}
-                    />
-                  </div>
-                </>
-              )}
-            </div>
           </div>
         </div>
-      </DashboardBody>
-    </Dashboard>
+        <div className="events-Input">
+          <b>Ajouter une offre:</b>
+          <Input
+            label="Référence"
+            type="text"
+            name="reference"
+            id="reference"
+            onChange={formik.handleChange}
+            value={formik.values.reference}
+          />
+          <Input
+            label="Poste"
+            type="text"
+            name="poste"
+            id="poste"
+            onChange={formik.handleChange}
+            value={formik.values.poste}
+          />
+          <Input
+            label="Lieu du poste"
+            type="text"
+            name="city"
+            id="city"
+            onChange={formik.handleChange}
+            value={formik.values.city}
+          />
+          <Input
+            label="Description"
+            type="description"
+            name="description"
+            id="description"
+            onChange={formik.handleChange}
+            value={formik.values.description}
+          />
+          <div className="eventsBtn-container">
+            {!modify && (
+              <div className="btn-event validate-btn">
+                <Button
+                  className="button-red event_button"
+                  buttonName="Valider"
+                  onClick={formik.handleSubmit}
+                />
+              </div>
+            )}
+            {modify && (
+              <>
+                <div className="btn-event">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Modifier"
+                    onClick={handlemodifyJobs}
+                  />
+                </div>
+                <div className="btn-event">
+                  <Button
+                    className="button-red event_button"
+                    buttonName="Supprimer"
+                    onClick={() => setOpen(true)}
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

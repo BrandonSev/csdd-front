@@ -24,6 +24,10 @@ import BookDashboard from './components/SitePages/BookDashboard/BookDashboard';
 import 'react-toastify/dist/ReactToastify.css';
 import { AppContext } from './context/AppContext';
 import ResetPassword from './components/SitePages/ResetPassword';
+import Dashboard from './components/Dashboard';
+import DashboardHeader from './components/Dashboard/DashboardHeader';
+import DashboardMenu from './components/Dashboard/DashboardMenu';
+import DashboardBody from './components/Dashboard/DashboardBody';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -165,9 +169,11 @@ function App() {
           rooms,
           receptionPlace,
           events,
+          setEvents,
           books,
           setBooks,
           jobOffers,
+          setJobOffers,
           roles,
           assets,
         }}
@@ -209,26 +215,33 @@ function App() {
             />
           </Routes>
         )}
-        {!loading && loggedInAdmin && (
-          <div>
-            <Routes>
-              <Route path="/dashboard/message" element={<DashboardMessage />} />
-              <Route
-                path="/dashboard/utilisateurs"
-                element={<UserDashboard />}
-              />
-              <Route path="/dashboard/medias" element={<MediaDashboard />} />
-              <Route
-                path="/dashboard/evenements"
-                element={<EventsDashboard />}
-              />
-              <Route path="/dashboard/metiers" element={<BookDashboard />} />
-              <Route
-                path="/dashboard/offre-embauche"
-                element={<JobOffersDashboard />}
-              />
-            </Routes>
-          </div>
+        {!loading && loggedInAdmin && location.pathname.includes('/dashboard') && (
+          <Dashboard>
+            <DashboardHeader />
+            <DashboardMenu />
+            <DashboardBody>
+              <Routes>
+                <Route
+                  path="/dashboard/message"
+                  element={<DashboardMessage />}
+                />
+                <Route
+                  path="/dashboard/utilisateurs"
+                  element={<UserDashboard />}
+                />
+                <Route path="/dashboard/medias" element={<MediaDashboard />} />
+                <Route
+                  path="/dashboard/evenements"
+                  element={<EventsDashboard />}
+                />
+                <Route path="/dashboard/metiers" element={<BookDashboard />} />
+                <Route
+                  path="/dashboard/offre-embauche"
+                  element={<JobOffersDashboard />}
+                />
+              </Routes>
+            </DashboardBody>
+          </Dashboard>
         )}
       </AppContext.Provider>
     </div>

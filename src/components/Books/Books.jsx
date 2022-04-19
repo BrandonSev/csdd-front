@@ -15,7 +15,7 @@ function Books() {
 
   return (
     <div className="carousel-container-books">
-      <h3>Books</h3>
+      <h3>Livres</h3>
       <div className="carousel-slider-books">
         <Swiper
           className="mySwiper-container"
@@ -49,13 +49,14 @@ function Books() {
                     className="book-filename"
                   />
                   <div className="overlay-books">
-                    <h5
+                    <a
+                      href={book.link}
+                      target={'_blank'}
+                      rel="noreferrer noopener"
                       className="overlay-books-img_link"
-                      value={book.img_link}
                     >
                       En savoir plus
-                    </h5>
-                    <p className="overlay-books-link">{book.link}</p>
+                    </a>
                   </div>
                 </div>
               </SwiperSlide>
