@@ -91,11 +91,14 @@ h3 {
   width: 100%;
 }
 
-rem .active {
-  background-color: #af1616;
-}
-
 /* style des dossiers */
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem 0;
+}
 
 .container .formation-container {
   margin-top: 2rem;
@@ -119,6 +122,8 @@ rem .active {
 
 .formation-image-container img {
   width: 200px;
+  height: 200px;
+  object-fit: contain ;
 }
 
 /* Style du bouton des dossiers */
@@ -130,10 +135,12 @@ rem .active {
   width: 12rem;
   background: hsla(0, 0%, 0%, 0.4);
   border-radius: 5px;
+  width: 100%;
 }
 
 .formation-btn {
   width: 100%;
+  color: #FFF;
 }
 
 /* Stylisation des champs input création de compte */
@@ -158,7 +165,7 @@ rem .active {
 }
 
 @media screen and (min-width: 620px) {
-  .formation-container {
+  /* .formation-container {
     margin: 2rem;
     display: flex;
     flex-direction: row;
@@ -167,21 +174,30 @@ rem .active {
   .child {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
-  }
+  } */
 
   .TitleForMobile {
     display: none;
   }
 }
-
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media screen and (min-width: 1024px) {
   .container {
     padding-left: 16px;
     padding-right: 16px;
   }
-
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-container.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
   /* style des dossiers */
-
+/* 
   .formation-container {
     display: flex;
     flex-direction: row;
@@ -200,7 +216,7 @@ rem .active {
   .child {
     height: 301px;
     width: 200px;
-  }
+  } */
 }
 
 @media screen and (min-width: 768px) and (min-height: 895px) {
