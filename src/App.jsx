@@ -28,6 +28,7 @@ import Dashboard from './components/Dashboard';
 import DashboardHeader from './components/Dashboard/DashboardHeader';
 import DashboardMenu from './components/Dashboard/DashboardMenu';
 import DashboardBody from './components/Dashboard/DashboardBody';
+import { useContext } from 'react';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,6 +45,7 @@ function App() {
   const [jobOffers, setJobOffers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [assets, setAssets] = useState([]);
+  const [categories, setcategories] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -150,6 +152,16 @@ function App() {
           .catch((err) =>
             toast.error('Une erreur est survenue lors des assest')
           ),
+        axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/api/categories/`)
+          .then(({ data }) => {
+            setcategories(data);
+          })
+          .catch((err) =>
+            toast.error(
+              'Une erreur est survenue lors de la récuperation des category'
+            )
+          ),
       ]);
     })();
   }, []);
@@ -176,6 +188,7 @@ function App() {
           setJobOffers,
           roles,
           assets,
+          categories,
         }}
       >
         <ToastContainer

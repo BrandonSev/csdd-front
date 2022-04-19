@@ -12,12 +12,11 @@ import { AppContext } from '../../../context/AppContext';
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function MediaDashboard() {
-  const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
-
   const [filename, setFilename] = useState('');
-
   const { assets } = useContext(AppContext);
+  const { roles } = useContext(AppContext);
+  const { categories } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
@@ -32,11 +31,11 @@ function MediaDashboard() {
 
   const formik = useFormik({
     initialValues: {
-      filename: selectedValue.filename ? selectedValue.filename : '',
-      type: selectedValue.type ? selectedValue.type : '',
-      file_date: selectedValue.file_date ? selectedValue.file_date : '',
-      created_at: selectedValue.created_at ? selectedValue.created_at : '',
-      title: selectedValue.title ? selectedValue.title : '',
+      filename: '',
+      type: '',
+      file_date: '',
+      created_at: '',
+      title: '',
     },
 
     onSubmit: (values, { resetForm }) => {
@@ -149,16 +148,6 @@ function MediaDashboard() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="file">Type du fichier</label>
-              <input
-                type="text"
-                name="type"
-                id="type"
-                onChange={formik.handleChange}
-                value={formik.values.type}
-              />
-            </div>
-            <div className="form-group">
               <label htmlFor="file">Localisation du fichier</label>
               <input type="text" name="file" id="file" />
             </div>
@@ -188,49 +177,23 @@ function MediaDashboard() {
                 }
               />
             </div>
-            <div>
+            <div className="select-evenement">
               <p>Rôles: </p> <br />
+              <br />
               <div className="roles">
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
-                <div>
-                  <label htmlFor="roles">Roles</label>
-                  <input type="checkbox" name="roles" id="roles" />
-                </div>
+                {roles?.map((role) => (
+                  <div>
+                    <label htmlFor="roles">{role.name}</label>
+                    <input type="checkbox" name="roles" id="roles" />
+                  </div>
+                ))}
+              </div>
+              <div className="events-select">
+                <SelectComponant
+                  data={categories}
+                  optionValue="name"
+                  label="Selectionner une categorie"
+                />
               </div>
             </div>
             {!modify && (
