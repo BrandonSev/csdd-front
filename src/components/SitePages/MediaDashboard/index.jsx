@@ -112,12 +112,16 @@ function MediaDashboard() {
         handleValid={handleDeleteMedia}
       />
       <div className="media-dashboard">
-        <h1 className="media-title">Médias</h1>
-        <SelectComponant
-          setValue={(data) => pushSelectedInFormik(data)}
-          data={assets}
-          optionValue="title"
-        />
+        <div className="select-evenement">
+          <h1 className="media-title">Médias</h1>
+          <div className="events-select">
+            <SelectComponant
+              setValue={(data) => pushSelectedInFormik(data)}
+              data={assets}
+              optionValue="title"
+            />
+          </div>
+        </div>
         <div className="media-dashboard-body">
           <p>
             <b>Ajouter un média</b>

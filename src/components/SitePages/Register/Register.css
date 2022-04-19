@@ -65,7 +65,7 @@
   margin: 0 auto 4vh;
 }
 
-/* Marge sur les labels et inputs */
+/* Marge sur les inputs */
 
 .grid-form-register label {
   margin: 1rem 0;
@@ -224,5 +224,9 @@
   .grid-li-reception-date {
     grid-row: 6;
     grid-column: 3;
+  }
+
+  .register button {
+    margin: 2rem auto 0;
   }
 }

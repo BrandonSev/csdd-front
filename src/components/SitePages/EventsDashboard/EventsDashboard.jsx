@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import moment from 'moment';
+import ModalConfirm from '../../ModalConfirm';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -12,16 +13,16 @@ import { AppContext } from '../../../context/AppContext';
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function eventsDashboard() {
-  const [selectedValue, setSelectedValue] = useState({});
   const [modify, setModify] = useState(false);
-  const [title, settitle] = useState('');
+  const [filename, setFilename] = useState('');
   const { events, setEvents } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
   /**
    * It sets the formik state to true and sets the formik values to the data passed in.
    */
   const pushSelectedInFormik = (data) => {
     setModify(true);
-    settitle(data.title);
+    setFilename(data.filename);
     for (const [key, value] of Object.entries(data)) {
       formik.setFieldValue(`${key}`, value);
     }
@@ -30,11 +31,11 @@ function eventsDashboard() {
   /* It's creating a formik object that will be used to validate the form. */
   const formik = useFormik({
     initialValues: {
-      event_date: selectedValue.event_date ? selectedValue.event_date : '',
-      title: selectedValue.event_date ? selectedValue.title : '',
-      description: selectedValue.description ? selectedValue.description : '',
-      filename: selectedValue.filename ? selectedValue.filename : '',
-      event_link: selectedValue.event_link ? selectedValue.event_link : '',
+      event_date: '',
+      title: '',
+      description: '',
+      filename: '',
+      event_link: '',
     },
     /* It's the function that will be called when the form is submitted. */
     onSubmit: (values, { resetForm }) => {
@@ -60,9 +61,7 @@ function eventsDashboard() {
     enableReinitialize: true,
   });
 
-  const handleDeleteEvent = async (e) => {
-    e.preventDefault();
-
+  const handleDeleteEvent = async () => {
     await axios
       .delete(`${API_URL}/api/events/${formik.values.id}`)
       .then((response) => {
@@ -71,8 +70,6 @@ function eventsDashboard() {
           setModify(false);
           formik.resetForm();
           toast.success("L'évènement a bien été supprimé ");
-        } else {
-          alert('Erreur');
         }
       })
       .catch((err) => {
@@ -97,6 +94,11 @@ function eventsDashboard() {
       .put(`${API_URL}/api/events/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
+          const replaceEventChange = events.map((event) => {
+            const item = [response.data].find(({ id }) => id === event.id);
+            return item ? item : event;
+          });
+          setEvents(replaceEventChange);
           setModify(false);
           toast.success("L'évènement a bien été modifié ");
           formik.resetForm();
@@ -111,6 +113,13 @@ function eventsDashboard() {
 
   return (
     <>
+      <ModalConfirm
+        message={'Etes vous sûr de vouloir supprimer cet évènement?'}
+        handleOpen={setOpen}
+        isOpen={open}
+        handleValid={handleDeleteEvent}
+      />
+
       <div className="evenementDashboard-container">
         <div className="select-evenement">
           <h1 className="event-title">Evènements de la page accueil</h1>
@@ -156,7 +165,7 @@ function eventsDashboard() {
               name="filename"
             />
             {modify &&
-              (formik.values.title === title ? (
+              (formik.values.filename === filename ? (
                 <img
                   className="event_image"
                   src={`${API_URL}/images/${formik.values.filename}`}
@@ -226,7 +235,7 @@ function eventsDashboard() {
                   <Button
                     className="button-red event_button"
                     buttonName="Supprimer"
-                    onClick={handleDeleteEvent}
+                    onClick={() => setOpen(true)}
                   />
                 </div>
               </>
