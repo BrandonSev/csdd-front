@@ -65,8 +65,13 @@
 
 @media screen and (min-width: 768px) {
   .media-dashboard .media-dashboard-body .form-media .form-group {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
+
+  .media-dashboard .media-dashboard-body .form-media .form-group input {
+    grid-column: span 2;
+  }
+
   .media-dashboard .media-dashboard-body .form-media .roles {
     grid-template-columns: repeat(2, 300px);
   }
