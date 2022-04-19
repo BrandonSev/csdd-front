@@ -88,6 +88,7 @@ function bookDashboard() {
     await axios
       .put(`${API_URL}/api/books/${formik.values.id}`, bodyFormData)
       .then((response) => {
+        /* Replacing the book that has been modified with the new one. */
         if (response.status === 200) {
           const replaceBookChange = books.map((book) => {
             const item = [response.data].find(({ id }) => id === book.id);
@@ -95,7 +96,7 @@ function bookDashboard() {
           });
           setBooks(replaceBookChange);
           setModify(false);
-          toast.success("L'évenement a été modifié ");
+          toast.success('Le livre a été modifié ');
           formik.resetForm();
         } else {
           alert('Erreur');
