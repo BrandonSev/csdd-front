@@ -5,6 +5,7 @@
 .container-modal{
   position:absolute;
 }
+
 .container-modalInfo{
   margin :auto;
   width:70%; 
@@ -13,9 +14,9 @@
   top:1rem;
 }
 
-.modal iframe {
+/* .modal .iframe-info iframe {
   display: none;
-}
+} */
 
 .modal-img-info {
   width: 100%;
