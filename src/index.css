@@ -219,4 +219,13 @@ h3 {
   } */
 }
 
+@media screen and (min-width: 768px) and (min-height: 895px) {
+  /* Mise en forme du Footer en bas de page lorsque le contenu n'est pas suffisant */
 
+  .grid-container ~ footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
