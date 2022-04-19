@@ -96,7 +96,7 @@ function bookDashboard() {
           });
           setBooks(replaceBookChange);
           setModify(false);
-          toast.success('Le livre a été modifié ');
+          toast.success('Le livre a bien été modifié ');
           formik.resetForm();
         } else {
           alert('Erreur');
