@@ -8,6 +8,7 @@ import Input from '../../Input/Input';
 import Button from '../../Button/Button';
 import './EventsDashboard.css';
 import { AppContext } from '../../../context/AppContext';
+import ModalConfirm from '../../ModalConfirm';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -111,6 +112,13 @@ function eventsDashboard() {
 
   return (
     <>
+      <ModalConfirm
+        message={'Etes vous sûr de vouloir supprimer cet évènement?'}
+        handleOpen={setOpen}
+        isOpen={open}
+        handleValid={handleDeleteEvent}
+      />
+
       <div className="evenementDashboard-container">
         <div className="select-evenement">
           <h1 className="event-title">Evènements de la page accueil</h1>
