@@ -7,9 +7,9 @@ import reunionsNationales from '../../../assets/reunionsNationales.png';
 
 function VieDeLaCorpo() {
   return (
-    <div className="">
+    <>
       <h1 className="TitleForMobile">Vie de la Corpo</h1>
-      <div className="container formation-container">
+      <div className="container grid-container">
         <div className="child">
           <div className="formation-image-container">
             <img className="formation-image" src={annuaire} alt="ANNUAIRE" />
@@ -72,7 +72,7 @@ function VieDeLaCorpo() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -89,7 +89,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/comission" onClick={handleClick}>
+            <NavLink to="/commission" onClick={handleClick}>
               Commission de rîtes
             </NavLink>
           </li>

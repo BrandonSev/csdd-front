@@ -42,6 +42,7 @@
 .register button {
   width: 100%;
   height: 50px;
+  margin-top: 1rem;
 }
 
 /* Stylisation du formulaire register */
@@ -68,6 +69,15 @@
 
 .grid-form-register label {
   margin: 1rem 0;
+}
+
+.grid-li-province-name div , .grid-li-adoption-place div { 
+  margin: 1rem 0;
+}
+
+.grid-li-province-name label,
+.grid-li-adoption-place label {
+  margin: 0;
 }
 
 .grid-form-register input {
