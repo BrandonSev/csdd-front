@@ -9,7 +9,7 @@
 
 /* Container global register / login page */
 
-.container-form-register {
+.container-form-login {
   display: flex;
   justify-content: space-between;
 }
@@ -49,13 +49,17 @@
   width: 60%;
 }
 
+.wrapper-connect-login-page h1 {
+  margin: 0 0 1rem 0;
+}
+
 /* Marge sur les labels et inputs */
 
-.container-form-register label {
+.container-form-login label {
   margin: 1rem 0;
 }
 
-.container-form-register input {
+.container-form-login input {
   margin: 1vh auto 2vh;
 }
 

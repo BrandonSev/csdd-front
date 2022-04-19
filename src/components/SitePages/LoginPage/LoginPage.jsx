@@ -48,7 +48,7 @@ function LoginPage() {
   return (
     <>
       <Logo />
-      <div className="container-form-register">
+      <div className="container-form-login">
         <div className="left">
           <NavLink to="/Register" className="button-yellow" type="button">
             Demander un accès
