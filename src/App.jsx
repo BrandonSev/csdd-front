@@ -191,26 +191,39 @@ function App() {
           pauseOnHover
         />
         {!loading && loggedIn && (
-          <div>
+          <>
             {!location.pathname.includes('/dashboard') && <Navbar />}
-            <Routes>
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/formation" element={<Formation />} />
-              <Route path="/memoire" element={<Memoire />} />
-              <Route path="/commission" element={<CommissionDesRites />} />
-              <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
-              <Route path="/mon-compte" element={<MonCompte />} />
-              <Route
-                path="*"
-                element={
-                  !location.pathname.includes('/dashboard') && (
-                    <Navigate to={'/home'} />
-                  )
-                }
-              />
-            </Routes>
-            {!location.pathname.includes('/dashboard') && <Footer />}
-          </div>
+            <div
+              style={{
+                minHeight: `${'calc(100vh - 155px)'}`,
+                display: `${
+                  !location.pathname.includes('/dashboard') ? 'flex' : 'none  '
+                }`,
+                flexDirection: 'column',
+              }}
+              className="container"
+            >
+              <div style={{ flex: '1' }}>
+                <Routes>
+                  <Route path="/home" element={<HomePage />} />
+                  <Route path="/formation" element={<Formation />} />
+                  <Route path="/memoire" element={<Memoire />} />
+                  <Route path="/commission" element={<CommissionDesRites />} />
+                  <Route path="/vie-de-la-corpo" element={<VieDeLaCorpo />} />
+                  <Route path="/mon-compte" element={<MonCompte />} />
+                  <Route
+                    path="*"
+                    element={
+                      !location.pathname.includes('/dashboard') && (
+                        <Navigate to={'/home'} />
+                      )
+                    }
+                  />
+                </Routes>
+              </div>
+              {!location.pathname.includes('/dashboard') && <Footer />}
+            </div>
+          </>
         )}
         {!loading && !loggedIn && !loggedInAdmin && (
           <Routes>

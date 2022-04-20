@@ -21,7 +21,7 @@ function Books() {
           className="mySwiper-container"
           modules={[Autoplay, Navigation, Pagination]}
           spaceBetween={20}
-          slidesPerView={2}
+          slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
           autoplay
