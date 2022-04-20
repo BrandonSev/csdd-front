@@ -134,7 +134,7 @@ function eventsDashboard() {
           </div>
         </div>
         <div className="events-Input">
-          <h2>Ajouter un évènement:</h2>
+          <h3>Ajouter un évènement:</h3>
           <Input
             label="Titre"
             type="text"

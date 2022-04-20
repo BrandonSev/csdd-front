@@ -26,7 +26,7 @@ function DashboardMenu() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/metiers">Livres métiers</NavLink>
+          <NavLink to="/dashboard/metiers">Livres métier</NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/medias">Médias</NavLink>

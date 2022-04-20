@@ -68,11 +68,12 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .media-dashboard .media-dashboard-body .form-media .form-group input {
+  .media-dashboard .media-dashboard-body .form-media .form-group input,
+  .media-dashboard .media-dashboard-body .form-media .form-group select {
     grid-column: span 2;
   }
 
   .media-dashboard .media-dashboard-body .form-media .roles {
-    grid-template-columns: repeat(2, 300px);
+  grid-template-columns: repeat(3, 1fr);
   }
 }
