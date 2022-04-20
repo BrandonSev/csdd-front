@@ -27,19 +27,19 @@ function Register() {
       email: '',
       password: '',
       confirmPassword: '',
-      province_id: '',
-      adoption_place_id: '',
-      adoption_date: '',
+      province_id: null,
+      adoption_place_id: null,
+      adoption_date: null,
     },
     onSubmit: (values, { resetForm }) => {
       if (values.password !== values.confirmPassword) {
-        return toast.error('Les mot de passe ne correspondent pas.');
+        return toast.error('Les mots de passe ne correspondent pas.');
       }
       axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/api/users`, values)
         .then((res) => {
           toast.success(
-            "Votre demande à bien été enregistrer, votre compte est en cours de validation, vous serez avertis par mail lors de l'activation de votre compte"
+            "Votre demande à bien été enregistrée, votre compte est en cours de validation, vous serez avertis par mail lors de l'activation de votre compte"
           );
           resetForm();
         })
