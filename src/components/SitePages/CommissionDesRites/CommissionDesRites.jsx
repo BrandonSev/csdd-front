@@ -6,9 +6,9 @@ import cultureCompagnonique from '../../../assets/cultureCompagnonique.png';
 
 function CommissionDesRites() {
   return (
-    <>
-      <h1 className="TitleForMobile">CommissionDesRites</h1>
-      <div className="container grid-container grid-3">
+    <div className="container">
+      <h1 className="TitleForMobile">Commission Des Rites</h1>
+      <div className="formation-container">
         <div className="child">
           <div className="formation-image-container">
             <img
@@ -63,7 +63,7 @@ function CommissionDesRites() {
           </div>
         </div>
       </div>
-    </>
+</div>
   );
 }
 
