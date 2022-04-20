@@ -121,7 +121,7 @@ function MediaDashboard() {
         if (response.status === 200) {
           const replaceMediaChange = assets.map((asset) => {
             const item = [response.data].find(({ id }) => id === asset.id);
-            return item ? item : asset;
+            return item || asset;
           });
           setAssets(replaceMediaChange);
           setModify(false);
@@ -154,7 +154,7 @@ function MediaDashboard() {
   return (
     <>
       <ModalConfirm
-        message={'Etes vous sûr de vouloir supprimer ce fichier'}
+        message="Etes vous sûr de vouloir supprimer ce fichier"
         isOpen={open}
         handleOpen={setOpen}
         handleValid={handleDeleteMedia}

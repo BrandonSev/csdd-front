@@ -1,17 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './UserDashboard.css';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FaUserAlt } from 'react-icons/fa';
 import moment from 'moment';
+import { useLocation } from 'react-router-dom';
 import Button from '../../Button/Button';
 import Input from '../../Input/Input';
 import SelectComponant from '../../SelectComponents/Select';
 import { AppContext } from '../../../context/AppContext';
 import ModalConfirm from '../../ModalConfirm';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 function UserDashboard() {
   const { state } = useLocation();
@@ -54,7 +53,7 @@ function UserDashboard() {
               );
             }
             if (res.data[0].roles) {
-              let array = [];
+              const array = [];
               res.data[0].roles.split(',').map((res) => {
                 return roles.map((role) => {
                   if (res === role.name) {
@@ -162,7 +161,7 @@ function UserDashboard() {
   return (
     <>
       <ModalConfirm
-        message={'Etes-vous sur de vouloir supprimer cet utilisateur?'}
+        message="Etes-vous sur de vouloir supprimer cet utilisateur?"
         handleOpen={setOpen}
         isOpen={open}
         handleValid={handleDelete}

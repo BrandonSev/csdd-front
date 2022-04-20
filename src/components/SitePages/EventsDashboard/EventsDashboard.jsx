@@ -96,7 +96,7 @@ function eventsDashboard() {
         if (response.status === 200) {
           const replaceEventChange = events.map((event) => {
             const item = [response.data].find(({ id }) => id === event.id);
-            return item ? item : event;
+            return item || event;
           });
           setEvents(replaceEventChange);
           setModify(false);
@@ -114,7 +114,7 @@ function eventsDashboard() {
   return (
     <>
       <ModalConfirm
-        message={'Etes vous sûr de vouloir supprimer cet évènement?'}
+        message="Etes vous sûr de vouloir supprimer cet évènement?"
         handleOpen={setOpen}
         isOpen={open}
         handleValid={handleDeleteEvent}
