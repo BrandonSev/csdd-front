@@ -14,13 +14,17 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 function MediaDashboard() {
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
-  const { assets, roles, categories } = useContext(AppContext);
+  const { categories, roles } = useContext(AppContext);
+  const { assets, setAssets } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   const pushSelectedInFormik = (data) => {
+    setModify(true);
     setFilename(data.filename);
     console.log(data);
     for (const [key, value] of Object.entries(data)) {
+      const date = ['file_date', 'created_at'];
+
       if (data.roles) {
         const array = [];
         data.roles.split(',').map((role) => {
@@ -32,7 +36,21 @@ function MediaDashboard() {
         });
         formik.setFieldValue('roleId', array);
       }
-      formik.setFieldValue(`${key}`, value);
+      if (data.categories) {
+        const array = [];
+        data.categories.split(',').map((categorie) => {
+          return categories.map((categories) => {
+            if (categories.name === categorie) {
+              array.push(categories.id);
+            }
+          });
+        });
+        formik.setFieldValue('categoryId', array);
+      }
+      formik.setFieldValue(
+        `${key}`,
+        date.includes(key) ? moment(value).format('YYYY-MM-DD') : value
+      );
     }
   };
 
@@ -52,14 +70,14 @@ function MediaDashboard() {
       bodyFormData.append(
         'data',
         JSON.stringify({
-          ...formik.values,
+          ...values,
         })
       );
-      console.log(values);
       bodyFormData.append('assets', values.filename);
       axios
         .post(`${API_URL}/api/assets/`, bodyFormData)
-        .then((data) => {
+        .then((res) => {
+          setAssets([...assets, res.data[0]]);
           resetForm();
           toast.success('Le fichier a bien été ajouté');
         })
@@ -74,12 +92,14 @@ function MediaDashboard() {
 
       .then((response) => {
         if (response.status === 204) {
+          setAssets(assets.filter((asset) => asset.id !== formik.values.id));
+          setModify(false);
           formik.resetForm();
           toast.success('Le fichier a bien été supprimé ');
         }
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error(err);
       });
   };
 
@@ -99,10 +119,14 @@ function MediaDashboard() {
       .put(`${API_URL}/api/assets/${formik.values.id}`, bodyFormData)
       .then((response) => {
         if (response.status === 200) {
-          setModify(true);
+          const replaceMediaChange = assets.map((asset) => {
+            const item = [response.data].find(({ id }) => id === asset.id);
+            return item ? item : asset;
+          });
+          setAssets(replaceMediaChange);
+          setModify(false);
           toast.success('Le fichier a bien été modifié ');
-
-          formik.resetForm;
+          formik.resetForm();
         } else {
           alert('Erreur');
         }
@@ -143,6 +167,7 @@ function MediaDashboard() {
               setValue={(data) => pushSelectedInFormik(data)}
               data={assets}
               optionValue="title"
+              defaultValue={formik.values.id}
             />
           </div>
         </div>
@@ -171,10 +196,6 @@ function MediaDashboard() {
                 }}
                 name="filename"
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="file">Localisation du fichier</label>
-              <input type="text" name="file" id="file" />
             </div>
             <div className="form-group">
               <label htmlFor="file">Date du fichier</label>
@@ -228,7 +249,7 @@ function MediaDashboard() {
                   data={categories}
                   optionValue="name"
                   label="Selectionner une categorie"
-                  defaultValue={formik.values.id}
+                  defaultValue={formik.values.categoryId[0]}
                 />
               </div>
             </div>

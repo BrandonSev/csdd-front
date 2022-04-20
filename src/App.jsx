@@ -45,7 +45,7 @@ function App() {
   const [jobOffers, setJobOffers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [assets, setAssets] = useState([]);
-  const [categories, setcategories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -155,7 +155,7 @@ function App() {
         axios
           .get(`${process.env.REACT_APP_BACKEND_URL}/api/categories/`)
           .then(({ data }) => {
-            setcategories(data);
+            setCategories(data);
           })
           .catch((err) =>
             toast.error(
@@ -188,7 +188,9 @@ function App() {
           setJobOffers,
           roles,
           assets,
+          setAssets,
           categories,
+          setCategories,
         }}
       >
         <ToastContainer
