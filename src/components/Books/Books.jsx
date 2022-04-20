@@ -24,7 +24,6 @@ function Books() {
           slidesPerView={2}
           navigation
           pagination={{ clickable: true }}
-          loop
           autoplay
           centeredSlides={false}
           speed={700}

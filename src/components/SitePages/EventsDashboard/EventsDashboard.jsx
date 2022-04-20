@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import moment from 'moment';
+import ModalConfirm from '../../ModalConfirm';
 import SelectComponant from '../../SelectComponents/Select';
 import Input from '../../Input/Input';
 import Button from '../../Button/Button';
@@ -15,6 +16,7 @@ function eventsDashboard() {
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
   const { events, setEvents } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
   /**
    * It sets the formik state to true and sets the formik values to the data passed in.
    */
@@ -59,9 +61,7 @@ function eventsDashboard() {
     enableReinitialize: true,
   });
 
-  const handleDeleteEvent = async (e) => {
-    e.preventDefault();
-
+  const handleDeleteEvent = async () => {
     await axios
       .delete(`${API_URL}/api/events/${formik.values.id}`)
       .then((response) => {
@@ -70,8 +70,6 @@ function eventsDashboard() {
           setModify(false);
           formik.resetForm();
           toast.success("L'évènement a bien été supprimé ");
-        } else {
-          alert('Erreur');
         }
       })
       .catch((err) => {
@@ -115,6 +113,13 @@ function eventsDashboard() {
 
   return (
     <>
+      <ModalConfirm
+        message={'Etes vous sûr de vouloir supprimer cet évènement?'}
+        handleOpen={setOpen}
+        isOpen={open}
+        handleValid={handleDeleteEvent}
+      />
+
       <div className="evenementDashboard-container">
         <div className="select-evenement">
           <h1 className="event-title">Evènements de la page accueil</h1>
@@ -230,7 +235,7 @@ function eventsDashboard() {
                   <Button
                     className="button-red event_button"
                     buttonName="Supprimer"
-                    onClick={handleDeleteEvent}
+                    onClick={() => setOpen(true)}
                   />
                 </div>
               </>
