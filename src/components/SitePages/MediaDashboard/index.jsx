@@ -167,14 +167,15 @@ function MediaDashboard() {
               setValue={(data) => pushSelectedInFormik(data)}
               data={assets}
               optionValue="title"
+              label="Sélectionner un fichier"
               defaultValue={formik.values.id}
             />
           </div>
         </div>
         <div className="media-dashboard-body">
-          <p>
+          <h3>
             <b>Ajouter un média</b>
-          </p>
+          </h3>
           <form className="form-media">
             <div className="form-group">
               <label htmlFor="file_Title">Nom du Fichier</label>
@@ -212,6 +213,18 @@ function MediaDashboard() {
               />
             </div>
             <div className="form-group">
+              <label htmlFor="select">Localisation</label>
+              <SelectComponant
+                setValue={(data) => {
+                  formik.setFieldValue('categoryId', [data.id]);
+                }}
+                data={categories}
+                optionValue="name"
+                defaultValue={formik.values.categoryId[0]}
+                style={{ gridColumn: 'span 2' }}
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="file">Date de mise à jour</label>
               <input
                 name="file"
@@ -223,8 +236,8 @@ function MediaDashboard() {
                 }
               />
             </div>
-            <div className="select-evenement">
-              <p>Rôles: </p> <br />
+            <div className="">
+              <h3>Niveau d'accès: </h3> <br />
               <br />
               <div className="roles">
                 {roles?.map((role) => (
@@ -240,17 +253,6 @@ function MediaDashboard() {
                     />
                   </div>
                 ))}
-              </div>
-              <div className="events-select">
-                <SelectComponant
-                  setValue={(data) => {
-                    formik.setFieldValue('categoryId', [data.id]);
-                  }}
-                  data={categories}
-                  optionValue="name"
-                  label="Selectionner une categorie"
-                  defaultValue={formik.values.categoryId[0]}
-                />
               </div>
             </div>
             {!modify && (

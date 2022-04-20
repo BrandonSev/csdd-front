@@ -10,8 +10,11 @@ import Input from '../../Input/Input';
 import SelectComponant from '../../SelectComponents/Select';
 import { AppContext } from '../../../context/AppContext';
 import ModalConfirm from '../../ModalConfirm';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function UserDashboard() {
+  const { state } = useLocation();
   const { provinces, adoptionPlace, rooms, receptionPlace, roles } =
     useContext(AppContext);
   const [open, setOpen] = useState(false);
@@ -149,7 +152,13 @@ function UserDashboard() {
         );
       });
   };
-
+  useEffect(() => {
+    if (state) {
+      userSearchForm.setFieldValue('firstname', state.message.split(' ')[0]);
+      userSearchForm.setFieldValue('lastname', state.message.split(' ')[1]);
+      userSearchForm.handleSubmit();
+    }
+  }, []);
   return (
     <>
       <ModalConfirm

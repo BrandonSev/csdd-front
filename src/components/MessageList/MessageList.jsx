@@ -4,9 +4,9 @@ import moment from 'moment';
 
 import './MessageList.css';
 
-function MessageList({ message, created_at }) {
+function MessageList({ message, created_at, onClick }) {
   return (
-    <div className="wrapper-message">
+    <div className="wrapper-message" onClick={onClick}>
       <h3 className="avatar-name">
         <BiUserPlus size={40} /> {message.split(' ')[0]} {message.split(' ')[1]}
       </h3>

@@ -8,6 +8,7 @@ function SelectComponant({
   defaultValue,
   disabled,
   label,
+  style,
 }) {
   const handleModify = (e) => {
     setValue(
@@ -17,7 +18,7 @@ function SelectComponant({
     );
   };
   return (
-    <div>
+    <div style={style}>
       <label for="select">{label}</label>
       <select
         name="select"

@@ -5,3 +5,22 @@
   overflow: hidden;
   margin-top: 2rem;
 }
+
+.enveloppe {
+  position: relative;
+}
+
+.pastille {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: .9rem;
+  border-radius: 50%;
+}

@@ -6,9 +6,16 @@ import { toast } from 'react-toastify';
 import MessageList from '../MessageList/MessageList';
 
 import './DashboardMessage.css';
+import { useNavigate } from 'react-router-dom';
 
 function DashboardMessage() {
-  const [message, setMessage] = useState();
+  const navigate = useNavigate();
+  const [message, setMessage] = useState([]);
+
+  const handleClick = (e, data) => {
+    navigate('/dashboard/utilisateurs', { state: { ...data } });
+  };
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/api/messages`)
@@ -26,12 +33,17 @@ function DashboardMessage() {
         <IconContext.Provider
           value={{ size: 40, style: { verticalAlign: 'middle' } }}
         >
-          <BiEnvelope />
+          <span className="enveloppe">
+            <BiEnvelope />
+            {message.length > 0 && (
+              <span className="pastille">{message.length}</span>
+            )}
+          </span>
         </IconContext.Provider>
       </h1>
       <div className="dashboard-message">
         {message?.map((message) => (
-          <MessageList {...message} />
+          <MessageList {...message} onClick={(e) => handleClick(e, message)} />
         ))}
       </div>
     </>

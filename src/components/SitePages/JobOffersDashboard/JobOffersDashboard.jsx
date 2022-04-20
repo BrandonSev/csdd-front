@@ -105,7 +105,7 @@ function jobOffersDashboard() {
           </div>
         </div>
         <div className="events-Input">
-          <b>Ajouter une offre:</b>
+          <h3>Ajouter une offre:</h3>
           <Input
             label="Référence"
             type="text"

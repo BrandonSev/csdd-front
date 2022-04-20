@@ -8,7 +8,7 @@ function CommissionDesRites() {
   return (
     <div className="container">
       <h1 className="TitleForMobile">Commission Des Rites</h1>
-      <div className="formation-container">
+      <div className="grid-3 grid-container">
         <div className="child">
           <div className="formation-image-container">
             <img
@@ -63,7 +63,7 @@ function CommissionDesRites() {
           </div>
         </div>
       </div>
-</div>
+    </div>
   );
 }
 

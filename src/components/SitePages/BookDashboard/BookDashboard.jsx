@@ -128,7 +128,7 @@ function bookDashboard() {
         </div>
       </div>
       <div className="events-Input">
-        <b>Ajouter un livre</b>
+        <h3>Ajouter un livre</h3>
         <Input
           label="Titre du livre"
           type="title"
