@@ -40,7 +40,6 @@ function UserDashboard() {
               );
             }
             for (const [key, value] of Object.entries(res.data[0])) {
-              console.log(typeof value);
               const listDate = ['adoption_date', 'reception_date', 'birthday'];
               userInfoForm.setFieldValue(
                 `${key}`,

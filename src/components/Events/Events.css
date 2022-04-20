@@ -1,3 +1,7 @@
+.carousel-container {
+  margin-top: 2rem;
+}
+
 .carousel-slider-events .swiper {
   padding-bottom: 2rem;
   height: 330px;
