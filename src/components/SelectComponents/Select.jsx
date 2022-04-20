@@ -18,8 +18,8 @@ function SelectComponant({
     );
   };
   return (
-    <div style={style}>
-      <label for="select">{label}</label>
+    <div>
+      <label htmlFor="select">{label}</label>
       <select
         name="select"
         id="select"
