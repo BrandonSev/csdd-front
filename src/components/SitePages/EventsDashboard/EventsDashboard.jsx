@@ -124,12 +124,13 @@ function eventsDashboard() {
         <div className="select-evenement">
           <h1 className="event-title">Evènements de la page accueil</h1>
           <div className="events-select">
-            <p>Sélectionner un évènement</p>
             <SelectComponant
+              name="select_event"
               setValue={(data) => pushSelectedInFormik(data)}
               data={events}
               optionValue="title"
               defaultValue={formik.values.id}
+              label="Sélectionner un évènement"
             />
           </div>
         </div>
@@ -144,7 +145,7 @@ function eventsDashboard() {
             value={formik.values.title}
           />
           <div className="event-text-container">
-            <p>Ajouter du texte </p>
+            <label htmlFor="description">Ajouter du texte</label>
             <textarea
               className="event-description"
               name="description"

@@ -20,14 +20,14 @@ function UserDashboard() {
 
   const userSearchForm = useFormik({
     initialValues: {
-      firstname: '',
-      lastname: '',
-      birthday: '',
+      firstname_search: '',
+      lastname_search: '',
+      birthday_search: '',
     },
     onSubmit: async (values, { resetForm }) => {
       await axios
         .get(
-          `${process.env.REACT_APP_BACKEND_URL}/api/users?firstname=${values.firstname}&lastname=${values.lastname}&birthday=${values.birthday}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/users?firstname=${values.firstname_search}&lastname=${values.lastname_search}&birthday=${values.birthday_search}`,
           {
             validateStatus: (status) => {
               return status >= 200 && status <= 404;
@@ -185,14 +185,14 @@ function UserDashboard() {
         <div className="search-wrapper">
           <Input
             label="Prénom :"
-            name="firstname"
+            name="firstname_search"
             className="firstname"
             value={userSearchForm.values.firstname}
             onChange={userSearchForm.handleChange}
           />
           <Input
             label="Nom :"
-            name="lastname"
+            name="lastname_search"
             className="lastname"
             onChange={userSearchForm.handleChange}
             value={userSearchForm.values.lastname}
@@ -200,7 +200,7 @@ function UserDashboard() {
           <Input
             label="Date de naissance :"
             type="date"
-            name="birthday"
+            name="birthday_search"
             onChange={userSearchForm.handleChange}
             value={userSearchForm.values.birthday}
           />
@@ -328,6 +328,7 @@ function UserDashboard() {
           </div>
           <div className="form-info-corpo">
             <SelectComponant
+              name="provinces"
               data={provinces}
               optionValue="name"
               setValue={(value) => {
@@ -338,6 +339,7 @@ function UserDashboard() {
               label="Nom de province :"
             />
             <SelectComponant
+              name="adoptionPlace"
               data={adoptionPlace}
               optionValue="name"
               setValue={(value) => {
@@ -357,6 +359,7 @@ function UserDashboard() {
               onChange={userInfoForm.handleChange}
             />
             <SelectComponant
+              name="room"
               data={rooms}
               optionValue="name"
               setValue={(value) => {
@@ -367,6 +370,7 @@ function UserDashboard() {
               label="Chambre :"
             />
             <SelectComponant
+              name="receptionPlace"
               data={receptionPlace}
               optionValue="name"
               setValue={(value) => {

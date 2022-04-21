@@ -28,7 +28,9 @@ input {
   display: flex;
 }
 
-input:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: #af1616 auto 1px;
 }
 

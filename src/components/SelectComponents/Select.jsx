@@ -2,6 +2,7 @@ import React from 'react';
 import './Select.css';
 
 function SelectComponant({
+  name,
   data,
   setValue,
   optionValue,
@@ -19,10 +20,10 @@ function SelectComponant({
   };
   return (
     <div>
-      <label htmlFor="select">{label}</label>
+      <label htmlFor={name}>{label}</label>
       <select
-        name="select"
-        id="select"
+        name={name}
+        id={name}
         onChange={(e) => handleModify(e)}
         defaultValue="NULL"
         disabled={disabled}
