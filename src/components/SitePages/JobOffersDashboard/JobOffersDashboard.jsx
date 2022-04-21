@@ -86,7 +86,7 @@ function jobOffersDashboard() {
   return (
     <>
       <ModalConfirm
-        message={'Etes vous sur de vouloir supprimer cette offre?'}
+        message="Etes vous sur de vouloir supprimer cette offre?"
         handleOpen={setOpen}
         isOpen={open}
         handleValid={handleDeleteJobs}
@@ -95,8 +95,9 @@ function jobOffersDashboard() {
         <div className="select-jobOffers">
           <h1 className="event-title">Offres d'embauche</h1>
           <div className="jobOffers-select">
-            <p>Sélectionner un poste</p>
             <SelectComponant
+              label="Sélectionner un poste"
+              name="select_job"
               setValue={(data) => pushSelectedInFormik(data)}
               data={jobOffers}
               optionValue="poste"

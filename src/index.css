@@ -28,7 +28,9 @@ input {
   display: flex;
 }
 
-input:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: #af1616 auto 1px;
 }
 
@@ -93,7 +95,6 @@ h3 {
 
 /* style des dossiers */
 
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -120,7 +121,7 @@ h3 {
 .formation-image-container img {
   width: 200px;
   height: 200px;
-  object-fit: contain ;
+  object-fit: contain;
 }
 
 /* Style du bouton des dossiers */
@@ -137,7 +138,7 @@ h3 {
 
 .formation-btn {
   width: 100%;
-  color: #FFF;
+  color: #fff;
 }
 
 /* Stylisation des champs input création de compte */
@@ -177,24 +178,30 @@ h3 {
     display: none;
   }
 }
+
 @media screen and (min-width: 768px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media screen and (min-width: 1024px) {
   .container {
     padding-left: 16px;
     padding-right: 16px;
   }
+
   .grid-container {
     grid-template-columns: repeat(4, 1fr);
   }
+
   .grid-container.grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
+
   /* style des dossiers */
-/* 
+
+  /*
   .formation-container {
     display: flex;
     flex-direction: row;

@@ -95,7 +95,7 @@ function bookDashboard() {
         if (response.status === 200) {
           const replaceBookChange = books.map((book) => {
             const item = [response.data].find(({ id }) => id === book.id);
-            return item ? item : book;
+            return item || book;
           });
           setBooks(replaceBookChange);
           setModify(false);
@@ -114,7 +114,7 @@ function bookDashboard() {
   return (
     <>
       <ModalConfirm
-        message={'Etes vous sûr de vouloir supprimer ce livre?'}
+        message="Etes vous sûr de vouloir supprimer ce livre?"
         handleOpen={setOpen}
         isOpen={open}
         handleValid={handleDeleteBooks}
@@ -122,8 +122,9 @@ function bookDashboard() {
       <div className="select-evenement">
         <h1 className="event-title">Livres Métier</h1>
         <div className="events-select">
-          <p>Sélectionner un livre</p>
           <SelectComponant
+            label="Sélectionner un livre"
+            name="select_book"
             setValue={(data) => pushSelectedInFormik(data)}
             data={books}
             optionValue="title"

@@ -1,17 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './UserDashboard.css';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FaUserAlt } from 'react-icons/fa';
 import moment from 'moment';
+import { useLocation } from 'react-router-dom';
 import Button from '../../Button/Button';
 import Input from '../../Input/Input';
 import SelectComponant from '../../SelectComponents/Select';
 import { AppContext } from '../../../context/AppContext';
 import ModalConfirm from '../../ModalConfirm';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 function UserDashboard() {
   const { state } = useLocation();
@@ -21,14 +20,14 @@ function UserDashboard() {
 
   const userSearchForm = useFormik({
     initialValues: {
-      firstname: '',
-      lastname: '',
-      birthday: '',
+      firstname_search: '',
+      lastname_search: '',
+      birthday_search: '',
     },
     onSubmit: async (values, { resetForm }) => {
       await axios
         .get(
-          `${process.env.REACT_APP_BACKEND_URL}/api/users?firstname=${values.firstname}&lastname=${values.lastname}&birthday=${values.birthday}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/users?firstname=${values.firstname_search}&lastname=${values.lastname_search}&birthday=${values.birthday_search}`,
           {
             validateStatus: (status) => {
               return status >= 200 && status <= 404;
@@ -54,7 +53,7 @@ function UserDashboard() {
               );
             }
             if (res.data[0].roles) {
-              let array = [];
+              const array = [];
               res.data[0].roles.split(',').map((res) => {
                 return roles.map((role) => {
                   if (res === role.name) {
@@ -162,7 +161,7 @@ function UserDashboard() {
   return (
     <>
       <ModalConfirm
-        message={'Etes-vous sur de vouloir supprimer cet utilisateur?'}
+        message="Etes-vous sur de vouloir supprimer cet utilisateur?"
         handleOpen={setOpen}
         isOpen={open}
         handleValid={handleDelete}
@@ -186,14 +185,14 @@ function UserDashboard() {
         <div className="search-wrapper">
           <Input
             label="Prénom :"
-            name="firstname"
+            name="firstname_search"
             className="firstname"
             value={userSearchForm.values.firstname}
             onChange={userSearchForm.handleChange}
           />
           <Input
             label="Nom :"
-            name="lastname"
+            name="lastname_search"
             className="lastname"
             onChange={userSearchForm.handleChange}
             value={userSearchForm.values.lastname}
@@ -201,7 +200,7 @@ function UserDashboard() {
           <Input
             label="Date de naissance :"
             type="date"
-            name="birthday"
+            name="birthday_search"
             onChange={userSearchForm.handleChange}
             value={userSearchForm.values.birthday}
           />
@@ -329,6 +328,7 @@ function UserDashboard() {
           </div>
           <div className="form-info-corpo">
             <SelectComponant
+              name="provinces"
               data={provinces}
               optionValue="name"
               setValue={(value) => {
@@ -339,6 +339,7 @@ function UserDashboard() {
               label="Nom de province :"
             />
             <SelectComponant
+              name="adoptionPlace"
               data={adoptionPlace}
               optionValue="name"
               setValue={(value) => {
@@ -358,6 +359,7 @@ function UserDashboard() {
               onChange={userInfoForm.handleChange}
             />
             <SelectComponant
+              name="room"
               data={rooms}
               optionValue="name"
               setValue={(value) => {
@@ -368,6 +370,7 @@ function UserDashboard() {
               label="Chambre :"
             />
             <SelectComponant
+              name="receptionPlace"
               data={receptionPlace}
               optionValue="name"
               setValue={(value) => {

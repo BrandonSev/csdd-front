@@ -120,7 +120,7 @@ function MediaDashboard() {
         if (response.status === 200) {
           const replaceMediaChange = assets.map((asset) => {
             const item = [response.data].find(({ id }) => id === asset.id);
-            return item ? item : asset;
+            return item || asset;
           });
           setAssets(replaceMediaChange);
           setModify(false);
@@ -152,7 +152,7 @@ function MediaDashboard() {
   return (
     <>
       <ModalConfirm
-        message={'Etes vous sûr de vouloir supprimer ce fichier'}
+        message="Etes vous sûr de vouloir supprimer ce fichier"
         isOpen={open}
         handleOpen={setOpen}
         handleValid={handleDeleteMedia}
@@ -166,6 +166,7 @@ function MediaDashboard() {
               data={assets}
               optionValue="title"
               label="Sélectionner un fichier"
+              name="select_media"
               defaultValue={formik.values.id}
             />
           </div>
@@ -179,22 +180,22 @@ function MediaDashboard() {
               <label htmlFor="file_Title">Nom du Fichier</label>
               <input
                 type="text"
-                name="title"
+                name="file_Title"
                 id="file_Title"
                 onChange={formik.handleChange}
                 value={formik.values.title}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="file">Sélectionner un fichier</label>
+              <label htmlFor="file_select">Sélectionner un fichier</label>
               <input
+                name="file_select"
                 type="file"
                 className="ignores-input-style"
                 id="file"
                 onChange={(e) => {
                   formik.setFieldValue('filename', e.target.files[0]);
                 }}
-                name="filename"
               />
             </div>
             <div className="form-group">
@@ -212,8 +213,9 @@ function MediaDashboard() {
               />
             </div>
             <div className="form-group localisation">
-              <label htmlFor="select">Localisation</label>
+              <label htmlFor="select_location">Localisation</label>
               <SelectComponant
+                name="select_location"
                 setValue={(data) => {
                   formik.setFieldValue('categoryId', [data.id]);
                 }}
@@ -223,10 +225,10 @@ function MediaDashboard() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="update">Date de mise à jour</label>
+              <label htmlFor="file_update_date">Date de mise à jour</label>
               <input
-                name="file"
-                id="update"
+                name="file_update_date"
+                id="file_update_date"
                 value={
                   formik.values.created_at
                     ? moment(formik.values.created_at).format('DD-MM-YYYY')
