@@ -124,8 +124,7 @@ const MonCompte = () => {
             />
           </div>
           <div className="user-info">
-            <p>Statut: Mon statut</p>
-            <p>Rôle: Role1</p>
+            <p>Roles: {user.roles}</p>
           </div>
           <button
             type="button"

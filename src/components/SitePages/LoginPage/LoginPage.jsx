@@ -28,7 +28,7 @@ function LoginPage() {
           setLoggedIn(true);
           if (res.data.user?.roles?.includes('admin')) {
             setLoggedInAdmin(true);
-            navigate('/dashboard/utilisateurs');
+            navigate('/dashboard/message');
           } else {
             navigate('/home');
           }
