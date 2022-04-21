@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import axios from 'axios';
@@ -13,6 +13,7 @@ import { AppContext } from '../../../context/AppContext';
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function eventsDashboard() {
+  const fileRef = useRef();
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
   const { events, setEvents } = useContext(AppContext);
@@ -52,6 +53,7 @@ function eventsDashboard() {
         .post(`${API_URL}/api/events/`, bodyFormData)
         .then((res) => {
           setEvents([...events, res.data]);
+          fileRef.current.value = '';
           resetForm();
           toast.success("L'évènement a bien été ajouté");
         })
@@ -68,6 +70,7 @@ function eventsDashboard() {
         if (response.status === 204) {
           setEvents(events.filter((event) => event.id !== formik.values.id));
           setModify(false);
+          fileRef.current.value = '';
           formik.resetForm();
           toast.success("L'évènement a bien été supprimé ");
         }
@@ -101,6 +104,7 @@ function eventsDashboard() {
           setEvents(replaceEventChange);
           setModify(false);
           toast.success("L'évènement a bien été modifié ");
+          fileRef.current.value = '';
           formik.resetForm();
         } else {
           alert('Erreur');
@@ -164,6 +168,7 @@ function eventsDashboard() {
                 formik.setFieldValue('filename', e.target.files[0]);
               }}
               name="filename"
+              ref={fileRef}
             />
             {modify &&
               (formik.values.filename === filename ? (

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -11,6 +11,7 @@ import ModalConfirm from '../../ModalConfirm';
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function bookDashboard() {
+  const fileRef = useRef();
   const [modify, setModify] = useState(false);
   const [filename, setFilename] = useState('');
   const { books, setBooks } = useContext(AppContext);
@@ -45,6 +46,7 @@ function bookDashboard() {
         .post(`${API_URL}/api/books/`, bodyFormData)
         .then((res) => {
           setBooks([...books, res.data]);
+          fileRef.current.value = '';
           resetForm();
           toast.success('Le livre a été ajouté');
         })
@@ -61,6 +63,7 @@ function bookDashboard() {
         if (response.status === 204) {
           setBooks(books.filter((book) => book.id !== formik.values.id));
           setModify(false);
+          fileRef.current.value = '';
           formik.resetForm();
           toast.success('Le livre a bien été supprimé ');
         }
@@ -96,10 +99,11 @@ function bookDashboard() {
           });
           setBooks(replaceBookChange);
           setModify(false);
-          toast.success('Le livre a bien été modifié ');
+          toast.success('Le livre a bien été modifié');
+          fileRef.current.value = '';
           formik.resetForm();
         } else {
-          alert('Erreur');
+          toast.error('Une erreur est survenue');
         }
       })
       .catch((err) => {
@@ -148,6 +152,7 @@ function bookDashboard() {
               formik.setFieldValue('filename', e.target.files[0]);
             }}
             name="filename"
+            ref={fileRef}
           />
           {modify &&
             (formik.values.filename === filename ? (

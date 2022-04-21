@@ -21,7 +21,6 @@ function MediaDashboard() {
   const pushSelectedInFormik = (data) => {
     setModify(true);
     setFilename(data.filename);
-    console.log(data);
     for (const [key, value] of Object.entries(data)) {
       const date = ['file_date', 'created_at'];
 
@@ -138,7 +137,6 @@ function MediaDashboard() {
 
   const handleSelect = (e) => {
     const { checked, name, value } = e.target;
-    console.log(checked);
     if (checked) {
       formik.setFieldValue('roleId', [
         ...formik.values.roleId,
@@ -194,6 +192,7 @@ function MediaDashboard() {
                 name="file_select"
                 type="file"
                 className="ignores-input-style"
+                id="file"
                 onChange={(e) => {
                   formik.setFieldValue('filename', e.target.files[0]);
                 }}
@@ -213,7 +212,7 @@ function MediaDashboard() {
                 }
               />
             </div>
-            <div className="form-group">
+            <div className="form-group localisation">
               <label htmlFor="select_location">Localisation</label>
               <SelectComponant
                 name="select_location"
@@ -223,7 +222,6 @@ function MediaDashboard() {
                 data={categories}
                 optionValue="name"
                 defaultValue={formik.values.categoryId[0]}
-                style={{ gridColumn: 'span 2' }}
               />
             </div>
             <div className="form-group">
