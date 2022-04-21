@@ -21,7 +21,6 @@ function MediaDashboard() {
   const pushSelectedInFormik = (data) => {
     setModify(true);
     setFilename(data.filename);
-    console.log(data);
     for (const [key, value] of Object.entries(data)) {
       const date = ['file_date', 'created_at'];
 
@@ -138,7 +137,6 @@ function MediaDashboard() {
 
   const handleSelect = (e) => {
     const { checked, name, value } = e.target;
-    console.log(checked);
     if (checked) {
       formik.setFieldValue('roleId', [
         ...formik.values.roleId,
@@ -182,7 +180,7 @@ function MediaDashboard() {
               <input
                 type="text"
                 name="title"
-                id="title"
+                id="file_Title"
                 onChange={formik.handleChange}
                 value={formik.values.title}
               />
@@ -192,6 +190,7 @@ function MediaDashboard() {
               <input
                 type="file"
                 className="ignores-input-style"
+                id="file"
                 onChange={(e) => {
                   formik.setFieldValue('filename', e.target.files[0]);
                 }}
@@ -199,7 +198,7 @@ function MediaDashboard() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="file">Date du fichier</label>
+              <label htmlFor="file_date">Date du fichier</label>
               <input
                 type="date"
                 name="file_date"
@@ -212,7 +211,7 @@ function MediaDashboard() {
                 }
               />
             </div>
-            <div className="form-group">
+            <div className="form-group localisation">
               <label htmlFor="select">Localisation</label>
               <SelectComponant
                 setValue={(data) => {
@@ -221,14 +220,13 @@ function MediaDashboard() {
                 data={categories}
                 optionValue="name"
                 defaultValue={formik.values.categoryId[0]}
-                style={{ gridColumn: 'span 2' }}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="file">Date de mise à jour</label>
+              <label htmlFor="update">Date de mise à jour</label>
               <input
                 name="file"
-                id="file"
+                id="update"
                 value={
                   formik.values.created_at
                     ? moment(formik.values.created_at).format('DD-MM-YYYY')
