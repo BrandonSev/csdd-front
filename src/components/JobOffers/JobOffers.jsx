@@ -25,7 +25,6 @@ function JobOffers() {
           pagination={{ clickable: true }}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
-          loop
           centeredSlides={false}
           speed={700}
           breakpoints={{

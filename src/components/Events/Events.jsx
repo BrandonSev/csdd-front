@@ -27,11 +27,9 @@ function Events() {
           pagination={{ clickable: true }}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
-          loop
           autoplay
           centeredSlides
           speed={500}
-          z
         >
           {events &&
             events.map((event) => (
