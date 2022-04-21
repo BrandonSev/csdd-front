@@ -126,7 +126,7 @@ function eventsDashboard() {
 
       <div className="evenementDashboard-container">
         <div className="select-evenement">
-          <h1 className="event-title">Evènements de la page accueil</h1>
+          <h1 className="event-title">Evènements</h1>
           <div className="events-select">
             <SelectComponant
               name="select_event"
