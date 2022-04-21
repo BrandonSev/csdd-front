@@ -30,7 +30,6 @@ function Events() {
           autoplay
           centeredSlides
           speed={500}
-          z
         >
           {events &&
             events.map((event) => (
