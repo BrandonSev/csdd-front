@@ -24,7 +24,6 @@ specifiers:
   react: ^17.0.2
   react-dom: ^17.0.2
   react-icons: ^4.3.1
-  react-responsive-carousel: ^3.2.23
   react-router-dom: ^6.2.1
   react-scripts: ^4.0.3
   react-select: ^5.2.2
@@ -47,7 +46,6 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-icons: 4.3.1_react@17.0.2
-  react-responsive-carousel: 3.2.23
   react-router-dom: 6.2.1_react-dom@17.0.2+react@17.0.2
   react-scripts: 4.0.3_react@17.0.2
   react-select: 5.2.2_08e041ced5dbc85933fef7a25e63a057
@@ -3916,10 +3914,6 @@ packages:
       define-property: 0.2.5
       isobject: 3.0.1
       static-extend: 0.1.2
-    dev: false
-
-  /classnames/2.3.1:
-    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
     dev: false
 
   /clean-css/4.2.4:
@@ -10181,13 +10175,6 @@ packages:
       scheduler: 0.20.2
     dev: false
 
-  /react-easy-swipe/0.0.21:
-    resolution: {integrity: sha512-OeR2jAxdoqUMHIn/nS9fgreI5hSpgGoL5ezdal4+oO7YSSgJR8ga+PkYGJrSrJ9MKlPcQjMQXnketrD7WNmNsg==}
-    engines: {node: '>= 6'}
-    dependencies:
-      prop-types: 15.7.2
-    dev: false
-
   /react-error-overlay/6.0.10:
     resolution: {integrity: sha512-mKR90fX7Pm5seCOfz8q9F+66VCc1PGsWSBxKbITjfKVQHMNF2zudxHnMdJiB1fRCb+XsbQV9sO9DCkgsMQgBIA==}
     dev: false
@@ -10214,14 +10201,6 @@ packages:
   /react-refresh/0.8.3:
     resolution: {integrity: sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==}
     engines: {node: '>=0.10.0'}
-    dev: false
-
-  /react-responsive-carousel/3.2.23:
-    resolution: {integrity: sha512-pqJLsBaKHWJhw/ItODgbVoziR2z4lpcJg+YwmRlSk4rKH32VE633mAtZZ9kDXjy4wFO+pgUZmDKPsPe1fPmHCg==}
-    dependencies:
-      classnames: 2.3.1
-      prop-types: 15.7.2
-      react-easy-swipe: 0.0.21
     dev: false
 
   /react-router-dom/6.2.1_react-dom@17.0.2+react@17.0.2:
