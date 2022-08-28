@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 import React from 'react';
 import info from '../../assets/info.pdf';
 import infoimg from '../../assets/infoimg.jpg';

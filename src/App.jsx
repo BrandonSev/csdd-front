@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
@@ -28,9 +28,6 @@ import Dashboard from './components/Dashboard';
 import DashboardHeader from './components/Dashboard/DashboardHeader';
 import DashboardMenu from './components/Dashboard/DashboardMenu';
 import DashboardBody from './components/Dashboard/DashboardBody';
-
-import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -68,6 +65,7 @@ function App() {
           }
         })
         .catch((err) => {
+          // eslint-disable-next-line no-console
           console.error(err.message);
         });
       setLoading(false);
@@ -231,7 +229,7 @@ function App() {
                     path="*"
                     element={
                       !location.pathname.includes('/dashboard') && (
-                        <Navigate to={'/home'} />
+                        <Navigate to="/home" />
                       )
                     }
                   />
@@ -251,7 +249,7 @@ function App() {
               path="/password/reset-password/:id/:token"
               element={<ResetPassword />}
             />
-            <Route path="*" element={<Navigate to={'/login'} />} />
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         )}
         {!loading && loggedInAdmin && location.pathname.includes('/dashboard') && (
@@ -280,7 +278,7 @@ function App() {
                 />
                 <Route
                   path="*"
-                  element={<Navigate to={'/dashboard/message'} />}
+                  element={<Navigate to="/dashboard/message" />}
                 />
               </Routes>
             </DashboardBody>
